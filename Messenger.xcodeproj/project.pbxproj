@@ -95,10 +95,8 @@
 		AAF834A42418FA4400FDF9D2 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				867B2F802412585C00B16B01 /* Main.storyboard */,
+				AAF834FD24192C5400FDF9D2 /* Login */,
 				867B2F852412586000B16B01 /* LaunchScreen.storyboard */,
-				AAF834F924192A1A00FDF9D2 /* SignUp.storyboard */,
-				AAF834FB24192A2B00FDF9D2 /* PasswordRecovery.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -189,6 +187,16 @@
 				AAF834E32419213C00FDF9D2 /* Router.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		AAF834FD24192C5400FDF9D2 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				867B2F802412585C00B16B01 /* Main.storyboard */,
+				AAF834F924192A1A00FDF9D2 /* SignUp.storyboard */,
+				AAF834FB24192A2B00FDF9D2 /* PasswordRecovery.storyboard */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
