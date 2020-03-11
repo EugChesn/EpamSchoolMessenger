@@ -11,5 +11,9 @@ import UIKit
 
 class SignInViewController: UIViewController {
     
-    private var signInRouter: Router = SignInRouter()
+    private var signInRouter: RoutingLogic = SignInRouter()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
 }

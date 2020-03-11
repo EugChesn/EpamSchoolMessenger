@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class SignUpRouter: Router {
+class SignUpRouter: RoutingLogic {
     func perform(to segueId: String, from context: UIViewController) {
         
     }

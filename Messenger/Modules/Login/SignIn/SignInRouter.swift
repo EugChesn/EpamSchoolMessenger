@@ -14,19 +14,9 @@ enum SignInSegue: String {
     case passwordRecovery
 }
 
-class SignInRouter: Router {
+class SignInRouter: RoutingLogic {
     func perform(to segueId: String, from context: UIViewController) {
-        guard let route = SignInSegue(rawValue: segueId) else {
-            return
-        }
-        
-        switch route {
-        case .login:
-            print(route)
-        case .passwordRecovery:
-            let vc = PasswordRecoveryViewController()
-            context.navigationController?.pushViewController(vc, animated: true)
-        }
+        context.performSegue(withIdentifier: segueId, sender: nil)
     }
     
     func popToRootViewController(from context: UIViewController) {

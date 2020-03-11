@@ -14,20 +14,9 @@ enum GreetingSegue: String {
     case signUp
 }
 
-class GreetingRouter: Router {
+class GreetingRouter: RoutingLogic {
     func perform(to segueId: String, from context: UIViewController) {
-        guard let route = GreetingSegue(rawValue: segueId) else {
-            return
-        }
-        
-        switch route {
-        case .signIn:
-            let vc = SignInViewController()
-            context.navigationController?.pushViewController(vc, animated: true)
-        case .signUp:
-            let vc = SignUpViewController()
-            context.navigationController?.pushViewController(vc, animated: true)
-        }
+       context.performSegue(withIdentifier: segueId, sender: nil)
     }
     
     func popToRootViewController(from context: UIViewController) {

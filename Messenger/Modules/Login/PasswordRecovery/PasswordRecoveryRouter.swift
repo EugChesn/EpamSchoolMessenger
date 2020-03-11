@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class PasswordRecoveryRouter: Router {
+class PasswordRecoveryRouter: RoutingLogic {
     func perform(to segueId: String, from context: UIViewController) {
         
     }

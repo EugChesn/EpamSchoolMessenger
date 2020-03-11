@@ -11,5 +11,5 @@ import UIKit
 
 class SignUpViewController: UIViewController {
     
-    private var signUpRouter: Router = SignUpRouter()
+    private var signUpRouter: RoutingLogic = SignUpRouter()
 }

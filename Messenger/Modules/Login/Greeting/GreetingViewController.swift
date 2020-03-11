@@ -1,5 +1,5 @@
 //
-//  Router.swift
+//  GreetingViewController.swift
 //  Messenger
 //
 //  Created by Евгений Гусев on 11.03.2020.
@@ -9,7 +9,8 @@
 import Foundation
 import UIKit
 
-protocol Router {
-    func perform(to segueId: String, from context: UIViewController)
-    func popToRootViewController(from context: UIViewController)
+class GreetingViewController: UIViewController {
+    
+    private var greetingRouter: RoutingLogic = GreetingRouter()
+    
 }

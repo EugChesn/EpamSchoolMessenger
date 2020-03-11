@@ -11,5 +11,5 @@ import UIKit
 
 class PasswordRecoveryViewController: UIViewController {
     
-    private let passwordRecoveryRouter: Router = PasswordRecoveryRouter()
+    private let passwordRecoveryRouter: RoutingLogic = PasswordRecoveryRouter()
 }

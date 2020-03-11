@@ -13,7 +13,7 @@
 		867B2F872412586000B16B01 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 867B2F852412586000B16B01 /* LaunchScreen.storyboard */; };
 		AAF834B12418FE6200FDF9D2 /* GreetingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF834B02418FE6200FDF9D2 /* GreetingRouter.swift */; };
 		AAF834E1241920B200FDF9D2 /* GreetingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF834E0241920B200FDF9D2 /* GreetingViewController.swift */; };
-		AAF834E42419213C00FDF9D2 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF834E32419213C00FDF9D2 /* Router.swift */; };
+		AAF834E42419213C00FDF9D2 /* RoutingLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF834E32419213C00FDF9D2 /* RoutingLogic.swift */; };
 		AAF834E62419228100FDF9D2 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF834E52419228100FDF9D2 /* SignInViewController.swift */; };
 		AAF834EA2419229D00FDF9D2 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF834E92419229D00FDF9D2 /* SignUpViewController.swift */; };
 		AAF834EC241922B900FDF9D2 /* SignUpRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF834EB241922B900FDF9D2 /* SignUpRouter.swift */; };
@@ -36,7 +36,7 @@
 		867B2F882412586000B16B01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AAF834B02418FE6200FDF9D2 /* GreetingRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingRouter.swift; sourceTree = "<group>"; };
 		AAF834E0241920B200FDF9D2 /* GreetingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingViewController.swift; sourceTree = "<group>"; };
-		AAF834E32419213C00FDF9D2 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		AAF834E32419213C00FDF9D2 /* RoutingLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutingLogic.swift; sourceTree = "<group>"; };
 		AAF834E52419228100FDF9D2 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		AAF834E92419229D00FDF9D2 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		AAF834EB241922B900FDF9D2 /* SignUpRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRouter.swift; sourceTree = "<group>"; };
@@ -134,7 +134,7 @@
 		AAF834A92418FC7700FDF9D2 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				AAF834DF2419207600FDF9D2 /*  Greeting */,
+				AAF834DF2419207600FDF9D2 /* Greeting */,
 				AAF834AC2418FCC100FDF9D2 /* PasswordRecovery */,
 				AAF834AB2418FCA700FDF9D2 /* SignUp */,
 				AAF834AA2418FC9E00FDF9D2 /* SignIn */,
@@ -172,19 +172,19 @@
 			path = PasswordRecovery;
 			sourceTree = "<group>";
 		};
-		AAF834DF2419207600FDF9D2 /*  Greeting */ = {
+		AAF834DF2419207600FDF9D2 /* Greeting */ = {
 			isa = PBXGroup;
 			children = (
 				AAF834B02418FE6200FDF9D2 /* GreetingRouter.swift */,
 				AAF834E0241920B200FDF9D2 /* GreetingViewController.swift */,
 			);
-			path = " Greeting";
+			path = Greeting;
 			sourceTree = "<group>";
 		};
 		AAF834E22419213000FDF9D2 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				AAF834E32419213C00FDF9D2 /* Router.swift */,
+				AAF834E32419213C00FDF9D2 /* RoutingLogic.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -275,7 +275,7 @@
 				AAF834F42419295900FDF9D2 /* PasswordRecoveryViewModel.swift in Sources */,
 				AAF834F22419265900FDF9D2 /* PasswordRecoveryRouter.swift in Sources */,
 				AAF834EA2419229D00FDF9D2 /* SignUpViewController.swift in Sources */,
-				AAF834E42419213C00FDF9D2 /* Router.swift in Sources */,
+				AAF834E42419213C00FDF9D2 /* RoutingLogic.swift in Sources */,
 				AAF834F82419297500FDF9D2 /* SignInViewModel.swift in Sources */,
 				AAF834F02419258100FDF9D2 /* PasswordRecoveryViewController.swift in Sources */,
 				AAF834EC241922B900FDF9D2 /* SignUpRouter.swift in Sources */,
