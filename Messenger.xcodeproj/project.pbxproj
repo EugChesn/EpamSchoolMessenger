@@ -11,6 +11,20 @@
 		867B2F822412585C00B16B01 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 867B2F802412585C00B16B01 /* Main.storyboard */; };
 		867B2F842412586000B16B01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 867B2F832412586000B16B01 /* Assets.xcassets */; };
 		867B2F872412586000B16B01 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 867B2F852412586000B16B01 /* LaunchScreen.storyboard */; };
+		AAF834B12418FE6200FDF9D2 /* GreetingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF834B02418FE6200FDF9D2 /* GreetingRouter.swift */; };
+		AAF834E1241920B200FDF9D2 /* GreetingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF834E0241920B200FDF9D2 /* GreetingViewController.swift */; };
+		AAF834E42419213C00FDF9D2 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF834E32419213C00FDF9D2 /* Router.swift */; };
+		AAF834E62419228100FDF9D2 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF834E52419228100FDF9D2 /* SignInViewController.swift */; };
+		AAF834EA2419229D00FDF9D2 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF834E92419229D00FDF9D2 /* SignUpViewController.swift */; };
+		AAF834EC241922B900FDF9D2 /* SignUpRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF834EB241922B900FDF9D2 /* SignUpRouter.swift */; };
+		AAF834EE241922CA00FDF9D2 /* SignInRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF834ED241922CA00FDF9D2 /* SignInRouter.swift */; };
+		AAF834F02419258100FDF9D2 /* PasswordRecoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF834EF2419258100FDF9D2 /* PasswordRecoveryViewController.swift */; };
+		AAF834F22419265900FDF9D2 /* PasswordRecoveryRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF834F12419265900FDF9D2 /* PasswordRecoveryRouter.swift */; };
+		AAF834F42419295900FDF9D2 /* PasswordRecoveryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF834F32419295900FDF9D2 /* PasswordRecoveryViewModel.swift */; };
+		AAF834F62419296800FDF9D2 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF834F52419296800FDF9D2 /* SignUpViewModel.swift */; };
+		AAF834F82419297500FDF9D2 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF834F72419297500FDF9D2 /* SignInViewModel.swift */; };
+		AAF834FA24192A1A00FDF9D2 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAF834F924192A1A00FDF9D2 /* SignUp.storyboard */; };
+		AAF834FC24192A2B00FDF9D2 /* PasswordRecovery.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAF834FB24192A2B00FDF9D2 /* PasswordRecovery.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +34,20 @@
 		867B2F832412586000B16B01 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		867B2F862412586000B16B01 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		867B2F882412586000B16B01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AAF834B02418FE6200FDF9D2 /* GreetingRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingRouter.swift; sourceTree = "<group>"; };
+		AAF834E0241920B200FDF9D2 /* GreetingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingViewController.swift; sourceTree = "<group>"; };
+		AAF834E32419213C00FDF9D2 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		AAF834E52419228100FDF9D2 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		AAF834E92419229D00FDF9D2 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		AAF834EB241922B900FDF9D2 /* SignUpRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRouter.swift; sourceTree = "<group>"; };
+		AAF834ED241922CA00FDF9D2 /* SignInRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInRouter.swift; sourceTree = "<group>"; };
+		AAF834EF2419258100FDF9D2 /* PasswordRecoveryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordRecoveryViewController.swift; sourceTree = "<group>"; };
+		AAF834F12419265900FDF9D2 /* PasswordRecoveryRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordRecoveryRouter.swift; sourceTree = "<group>"; };
+		AAF834F32419295900FDF9D2 /* PasswordRecoveryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordRecoveryViewModel.swift; sourceTree = "<group>"; };
+		AAF834F52419296800FDF9D2 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		AAF834F72419297500FDF9D2 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
+		AAF834F924192A1A00FDF9D2 /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
+		AAF834FB24192A2B00FDF9D2 /* PasswordRecovery.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PasswordRecovery.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +80,7 @@
 		867B2F792412585C00B16B01 /* Messenger */ = {
 			isa = PBXGroup;
 			children = (
+				AAF834E22419213000FDF9D2 /* Protocols */,
 				AAF834A52418FA5900FDF9D2 /* Modules */,
 				AAF834A72418FA8700FDF9D2 /* Servicies */,
 				AAF834A62418FA7700FDF9D2 /* Utilities */,
@@ -68,6 +97,8 @@
 			children = (
 				867B2F802412585C00B16B01 /* Main.storyboard */,
 				867B2F852412586000B16B01 /* LaunchScreen.storyboard */,
+				AAF834F924192A1A00FDF9D2 /* SignUp.storyboard */,
+				AAF834FB24192A2B00FDF9D2 /* PasswordRecovery.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -75,6 +106,7 @@
 		AAF834A52418FA5900FDF9D2 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				AAF834A92418FC7700FDF9D2 /* Login */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -99,6 +131,64 @@
 				867B2F832412586000B16B01 /* Assets.xcassets */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		AAF834A92418FC7700FDF9D2 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				AAF834DF2419207600FDF9D2 /*  Greeting */,
+				AAF834AC2418FCC100FDF9D2 /* PasswordRecovery */,
+				AAF834AB2418FCA700FDF9D2 /* SignUp */,
+				AAF834AA2418FC9E00FDF9D2 /* SignIn */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		AAF834AA2418FC9E00FDF9D2 /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+				AAF834ED241922CA00FDF9D2 /* SignInRouter.swift */,
+				AAF834E52419228100FDF9D2 /* SignInViewController.swift */,
+				AAF834F72419297500FDF9D2 /* SignInViewModel.swift */,
+			);
+			path = SignIn;
+			sourceTree = "<group>";
+		};
+		AAF834AB2418FCA700FDF9D2 /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				AAF834EB241922B900FDF9D2 /* SignUpRouter.swift */,
+				AAF834E92419229D00FDF9D2 /* SignUpViewController.swift */,
+				AAF834F52419296800FDF9D2 /* SignUpViewModel.swift */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
+		AAF834AC2418FCC100FDF9D2 /* PasswordRecovery */ = {
+			isa = PBXGroup;
+			children = (
+				AAF834F12419265900FDF9D2 /* PasswordRecoveryRouter.swift */,
+				AAF834EF2419258100FDF9D2 /* PasswordRecoveryViewController.swift */,
+				AAF834F32419295900FDF9D2 /* PasswordRecoveryViewModel.swift */,
+			);
+			path = PasswordRecovery;
+			sourceTree = "<group>";
+		};
+		AAF834DF2419207600FDF9D2 /*  Greeting */ = {
+			isa = PBXGroup;
+			children = (
+				AAF834B02418FE6200FDF9D2 /* GreetingRouter.swift */,
+				AAF834E0241920B200FDF9D2 /* GreetingViewController.swift */,
+			);
+			path = " Greeting";
+			sourceTree = "<group>";
+		};
+		AAF834E22419213000FDF9D2 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				AAF834E32419213C00FDF9D2 /* Router.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -161,6 +251,8 @@
 			files = (
 				867B2F872412586000B16B01 /* LaunchScreen.storyboard in Resources */,
 				867B2F842412586000B16B01 /* Assets.xcassets in Resources */,
+				AAF834FA24192A1A00FDF9D2 /* SignUp.storyboard in Resources */,
+				AAF834FC24192A2B00FDF9D2 /* PasswordRecovery.storyboard in Resources */,
 				867B2F822412585C00B16B01 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -172,7 +264,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAF834F42419295900FDF9D2 /* PasswordRecoveryViewModel.swift in Sources */,
+				AAF834F22419265900FDF9D2 /* PasswordRecoveryRouter.swift in Sources */,
+				AAF834EA2419229D00FDF9D2 /* SignUpViewController.swift in Sources */,
+				AAF834E42419213C00FDF9D2 /* Router.swift in Sources */,
+				AAF834F82419297500FDF9D2 /* SignInViewModel.swift in Sources */,
+				AAF834F02419258100FDF9D2 /* PasswordRecoveryViewController.swift in Sources */,
+				AAF834EC241922B900FDF9D2 /* SignUpRouter.swift in Sources */,
 				867B2F7B2412585C00B16B01 /* AppDelegate.swift in Sources */,
+				AAF834E1241920B200FDF9D2 /* GreetingViewController.swift in Sources */,
+				AAF834E62419228100FDF9D2 /* SignInViewController.swift in Sources */,
+				AAF834EE241922CA00FDF9D2 /* SignInRouter.swift in Sources */,
+				AAF834F62419296800FDF9D2 /* SignUpViewModel.swift in Sources */,
+				AAF834B12418FE6200FDF9D2 /* GreetingRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
