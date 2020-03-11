@@ -9,7 +9,15 @@
 import Foundation
 import UIKit
 
-class SignInRouter: RoutingLogic {
+protocol PassAutorizationData {
+    func passData(autorizationToken: UserToken, destination: UIViewController)
+}
+
+class SignInRouter: RoutingLogic, PassAutorizationData {
+    func passData(autorizationToken: UserToken, destination: UIViewController) {
+        
+    }
+    
     func perform(to segueId: String, from context: UIViewController) {
         context.performSegue(withIdentifier: segueId, sender: nil)
     }

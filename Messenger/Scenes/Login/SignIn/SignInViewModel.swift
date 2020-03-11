@@ -12,10 +12,18 @@ import Foundation
 
 class SignInViewModel {
     
+    var autorizeModel: AutorizeModel?
     
     func login(number: String, password: String) -> Bool {
-        let autorizeModel = AutorizeModel(phone: number, password: password)
+        autorizeModel = AutorizeModel(phone: number, password: password)
         
-        return autorizeModel.autorize()
+        guard let model = autorizeModel else { return false }
+        return model.autorize()
+    }
+    
+    func getToken() -> UserToken {
+        guard let token = autorizeModel?.getUserToken()
+            else { return UserToken(phone: "",token: "") }
+        return token
     }
 }

@@ -11,7 +11,7 @@ import UIKit
 
 class SignInViewController: UIViewController {
     
-    private let signInRouter: RoutingLogic = SignInRouter()
+    private let signInRouter = SignInRouter()
     let signInViewModel = SignInViewModel()
     
     @IBOutlet weak var numberTextField: UITextField!
@@ -26,6 +26,15 @@ class SignInViewController: UIViewController {
         
         if (isAutorize) {
             signInRouter.perform(to: "messenger", from: self)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "messenger" {
+            if let destinition = segue.destination as? MessengerTabBarController {
+                let token = signInViewModel.getToken()
+                signInRouter.passData(autorizationToken: token, destination: destinition)
+            }
         }
     }
 }
