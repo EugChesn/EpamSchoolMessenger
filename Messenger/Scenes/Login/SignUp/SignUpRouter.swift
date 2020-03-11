@@ -9,12 +9,12 @@
 import Foundation
 import UIKit
 
-class SignUpRouter: RoutingLogic {
+class SignUpRouter: PopRoutingLogic {
     func perform(to segueId: String, from context: UIViewController) {
         
     }
     
     func popToRootViewController(from context: UIViewController) {
-        
+        context.navigationController?.popToRootViewController(animated: true)
     }
 }

@@ -11,6 +11,10 @@ import UIKit
 
 protocol RoutingLogic {
     func perform(to segueId: String, from context: UIViewController)
+}
+
+protocol PopRoutingLogic: RoutingLogic {
     func popToRootViewController(from context: UIViewController)
 }
+
 

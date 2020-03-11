@@ -34,34 +34,28 @@
                     <view key="view" contentMode="scaleToFill" id="Byk-YD-I8b">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SignIn" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gcv-Am-eva">
-                                <rect key="frame" x="186" y="438" width="48" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="iuu-Rx-gQM"/>
                     </view>
                     <navigationItem key="navigationItem" id="cbx-7v-VDk"/>
                     <connections>
                         <segue destination="80H-6J-rsR" kind="show" identifier="passwordRecovery" id="SL2-aX-7q1"/>
+                        <segue destination="R2d-H2-Wl9" kind="show" identifier="messenger" id="psE-Uq-ON4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oL9-d6-577" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1951" y="98"/>
+            <point key="canvasLocation" x="1950.7246376811595" y="97.767857142857139"/>
         </scene>
-        <!--Storyboard Reference-->
+        <!--Messenger-->
         <scene sceneID="njE-TW-2js">
             <objects>
-                <viewControllerPlaceholder id="R2d-H2-Wl9" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Messenger" id="R2d-H2-Wl9" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="xNq-rq-26n"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kkq-G3-8cb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2820" y="84"/>
+            <point key="canvasLocation" x="2807" y="98"/>
         </scene>
         <!--PasswordRecovery-->
         <scene sceneID="tS9-OY-uTh">

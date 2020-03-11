@@ -9,17 +9,8 @@
 import Foundation
 import UIKit
 
-enum GreetingSegue: String {
-    case signIn
-    case signUp
-}
-
 class GreetingRouter: RoutingLogic {
     func perform(to segueId: String, from context: UIViewController) {
        context.performSegue(withIdentifier: segueId, sender: nil)
-    }
-    
-    func popToRootViewController(from context: UIViewController) {
-        context.navigationController?.popToRootViewController(animated: true)
     }
 }

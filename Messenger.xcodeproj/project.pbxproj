@@ -25,6 +25,20 @@
 		AAF834F82419297500FDF9D2 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF834F72419297500FDF9D2 /* SignInViewModel.swift */; };
 		AAF834FA24192A1A00FDF9D2 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAF834F924192A1A00FDF9D2 /* SignUp.storyboard */; };
 		AAF834FC24192A2B00FDF9D2 /* PasswordRecovery.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAF834FB24192A2B00FDF9D2 /* PasswordRecovery.storyboard */; };
+		AAF835042419393700FDF9D2 /* Messenger.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAF835032419393700FDF9D2 /* Messenger.storyboard */; };
+		AAF835072419394A00FDF9D2 /* Chats.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAF835062419394A00FDF9D2 /* Chats.storyboard */; };
+		AAF835092419395600FDF9D2 /* Contacts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAF835082419395600FDF9D2 /* Contacts.storyboard */; };
+		AAF8350B2419395F00FDF9D2 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAF8350A2419395F00FDF9D2 /* Settings.storyboard */; };
+		AAF8350E24193C3600FDF9D2 /* MessengerTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF8350D24193C3600FDF9D2 /* MessengerTabBarController.swift */; };
+		AAF8351024193F5200FDF9D2 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF8350F24193F5200FDF9D2 /* SettingsViewController.swift */; };
+		AAF8351224193F5F00FDF9D2 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF8351124193F5F00FDF9D2 /* SettingsViewModel.swift */; };
+		AAF8351424193F6600FDF9D2 /* SettingsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF8351324193F6600FDF9D2 /* SettingsRouter.swift */; };
+		AAF8351624193F7800FDF9D2 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF8351524193F7800FDF9D2 /* ContactsViewController.swift */; };
+		AAF8351824193F8100FDF9D2 /* ContactsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF8351724193F8100FDF9D2 /* ContactsViewModel.swift */; };
+		AAF8351A24193F8900FDF9D2 /* ContactsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF8351924193F8900FDF9D2 /* ContactsRouter.swift */; };
+		AAF8351C24193F9200FDF9D2 /* ChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF8351B24193F9200FDF9D2 /* ChatsViewController.swift */; };
+		AAF8351E24193F9E00FDF9D2 /* ChatsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF8351D24193F9E00FDF9D2 /* ChatsViewModel.swift */; };
+		AAF8352024193FA600FDF9D2 /* ChatsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF8351F24193FA600FDF9D2 /* ChatsRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +62,20 @@
 		AAF834F72419297500FDF9D2 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		AAF834F924192A1A00FDF9D2 /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		AAF834FB24192A2B00FDF9D2 /* PasswordRecovery.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PasswordRecovery.storyboard; sourceTree = "<group>"; };
+		AAF835032419393700FDF9D2 /* Messenger.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Messenger.storyboard; sourceTree = "<group>"; };
+		AAF835062419394A00FDF9D2 /* Chats.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chats.storyboard; sourceTree = "<group>"; };
+		AAF835082419395600FDF9D2 /* Contacts.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Contacts.storyboard; sourceTree = "<group>"; };
+		AAF8350A2419395F00FDF9D2 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		AAF8350D24193C3600FDF9D2 /* MessengerTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessengerTabBarController.swift; sourceTree = "<group>"; };
+		AAF8350F24193F5200FDF9D2 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		AAF8351124193F5F00FDF9D2 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		AAF8351324193F6600FDF9D2 /* SettingsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRouter.swift; sourceTree = "<group>"; };
+		AAF8351524193F7800FDF9D2 /* ContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
+		AAF8351724193F8100FDF9D2 /* ContactsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewModel.swift; sourceTree = "<group>"; };
+		AAF8351924193F8900FDF9D2 /* ContactsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsRouter.swift; sourceTree = "<group>"; };
+		AAF8351B24193F9200FDF9D2 /* ChatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsViewController.swift; sourceTree = "<group>"; };
+		AAF8351D24193F9E00FDF9D2 /* ChatsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsViewModel.swift; sourceTree = "<group>"; };
+		AAF8351F24193FA600FDF9D2 /* ChatsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,10 +108,10 @@
 		867B2F792412585C00B16B01 /* Messenger */ = {
 			isa = PBXGroup;
 			children = (
-				AAF834E22419213000FDF9D2 /* Protocols */,
-				AAF834A52418FA5900FDF9D2 /* Modules */,
+				AAF834A52418FA5900FDF9D2 /* Scenes */,
 				AAF834A72418FA8700FDF9D2 /* Servicies */,
 				AAF834A62418FA7700FDF9D2 /* Utilities */,
+				AAF834E22419213000FDF9D2 /* Protocols */,
 				AAF834A42418FA4400FDF9D2 /* Storyboards */,
 				AAF834A82418FB5000FDF9D2 /* Resources */,
 				867B2F7A2412585C00B16B01 /* AppDelegate.swift */,
@@ -95,18 +123,20 @@
 		AAF834A42418FA4400FDF9D2 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				AAF83502241938FC00FDF9D2 /* Messenger */,
 				AAF834FD24192C5400FDF9D2 /* Login */,
 				867B2F852412586000B16B01 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
-		AAF834A52418FA5900FDF9D2 /* Modules */ = {
+		AAF834A52418FA5900FDF9D2 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				AAF834FE241938A700FDF9D2 /* Messenger */,
 				AAF834A92418FC7700FDF9D2 /* Login */,
 			);
-			path = Modules;
+			path = Scenes;
 			sourceTree = "<group>";
 		};
 		AAF834A62418FA7700FDF9D2 /* Utilities */ = {
@@ -145,9 +175,9 @@
 		AAF834AA2418FC9E00FDF9D2 /* SignIn */ = {
 			isa = PBXGroup;
 			children = (
-				AAF834ED241922CA00FDF9D2 /* SignInRouter.swift */,
 				AAF834E52419228100FDF9D2 /* SignInViewController.swift */,
 				AAF834F72419297500FDF9D2 /* SignInViewModel.swift */,
+				AAF834ED241922CA00FDF9D2 /* SignInRouter.swift */,
 			);
 			path = SignIn;
 			sourceTree = "<group>";
@@ -155,9 +185,9 @@
 		AAF834AB2418FCA700FDF9D2 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
-				AAF834EB241922B900FDF9D2 /* SignUpRouter.swift */,
 				AAF834E92419229D00FDF9D2 /* SignUpViewController.swift */,
 				AAF834F52419296800FDF9D2 /* SignUpViewModel.swift */,
+				AAF834EB241922B900FDF9D2 /* SignUpRouter.swift */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -165,9 +195,9 @@
 		AAF834AC2418FCC100FDF9D2 /* PasswordRecovery */ = {
 			isa = PBXGroup;
 			children = (
-				AAF834F12419265900FDF9D2 /* PasswordRecoveryRouter.swift */,
 				AAF834EF2419258100FDF9D2 /* PasswordRecoveryViewController.swift */,
 				AAF834F32419295900FDF9D2 /* PasswordRecoveryViewModel.swift */,
+				AAF834F12419265900FDF9D2 /* PasswordRecoveryRouter.swift */,
 			);
 			path = PasswordRecovery;
 			sourceTree = "<group>";
@@ -175,8 +205,8 @@
 		AAF834DF2419207600FDF9D2 /* Greeting */ = {
 			isa = PBXGroup;
 			children = (
-				AAF834B02418FE6200FDF9D2 /* GreetingRouter.swift */,
 				AAF834E0241920B200FDF9D2 /* GreetingViewController.swift */,
+				AAF834B02418FE6200FDF9D2 /* GreetingRouter.swift */,
 			);
 			path = Greeting;
 			sourceTree = "<group>";
@@ -197,6 +227,66 @@
 				AAF834FB24192A2B00FDF9D2 /* PasswordRecovery.storyboard */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		AAF834FE241938A700FDF9D2 /* Messenger */ = {
+			isa = PBXGroup;
+			children = (
+				AAF8350C24193C1800FDF9D2 /* MessengerTabBar */,
+				AAF83501241938D900FDF9D2 /* Settings */,
+				AAF83500241938CF00FDF9D2 /* Contacts */,
+				AAF834FF241938BD00FDF9D2 /* Chats */,
+			);
+			path = Messenger;
+			sourceTree = "<group>";
+		};
+		AAF834FF241938BD00FDF9D2 /* Chats */ = {
+			isa = PBXGroup;
+			children = (
+				AAF8351B24193F9200FDF9D2 /* ChatsViewController.swift */,
+				AAF8351D24193F9E00FDF9D2 /* ChatsViewModel.swift */,
+				AAF8351F24193FA600FDF9D2 /* ChatsRouter.swift */,
+			);
+			path = Chats;
+			sourceTree = "<group>";
+		};
+		AAF83500241938CF00FDF9D2 /* Contacts */ = {
+			isa = PBXGroup;
+			children = (
+				AAF8351524193F7800FDF9D2 /* ContactsViewController.swift */,
+				AAF8351724193F8100FDF9D2 /* ContactsViewModel.swift */,
+				AAF8351924193F8900FDF9D2 /* ContactsRouter.swift */,
+			);
+			path = Contacts;
+			sourceTree = "<group>";
+		};
+		AAF83501241938D900FDF9D2 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				AAF8350F24193F5200FDF9D2 /* SettingsViewController.swift */,
+				AAF8351124193F5F00FDF9D2 /* SettingsViewModel.swift */,
+				AAF8351324193F6600FDF9D2 /* SettingsRouter.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		AAF83502241938FC00FDF9D2 /* Messenger */ = {
+			isa = PBXGroup;
+			children = (
+				AAF835032419393700FDF9D2 /* Messenger.storyboard */,
+				AAF835062419394A00FDF9D2 /* Chats.storyboard */,
+				AAF835082419395600FDF9D2 /* Contacts.storyboard */,
+				AAF8350A2419395F00FDF9D2 /* Settings.storyboard */,
+			);
+			path = Messenger;
+			sourceTree = "<group>";
+		};
+		AAF8350C24193C1800FDF9D2 /* MessengerTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				AAF8350D24193C3600FDF9D2 /* MessengerTabBarController.swift */,
+			);
+			path = MessengerTabBar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,9 +347,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAF835042419393700FDF9D2 /* Messenger.storyboard in Resources */,
+				AAF835092419395600FDF9D2 /* Contacts.storyboard in Resources */,
 				867B2F872412586000B16B01 /* LaunchScreen.storyboard in Resources */,
 				867B2F842412586000B16B01 /* Assets.xcassets in Resources */,
 				AAF834FA24192A1A00FDF9D2 /* SignUp.storyboard in Resources */,
+				AAF835072419394A00FDF9D2 /* Chats.storyboard in Resources */,
+				AAF8350B2419395F00FDF9D2 /* Settings.storyboard in Resources */,
 				AAF834FC24192A2B00FDF9D2 /* PasswordRecovery.storyboard in Resources */,
 				867B2F822412585C00B16B01 /* Main.storyboard in Resources */,
 			);
@@ -275,16 +369,26 @@
 				AAF834F42419295900FDF9D2 /* PasswordRecoveryViewModel.swift in Sources */,
 				AAF834F22419265900FDF9D2 /* PasswordRecoveryRouter.swift in Sources */,
 				AAF834EA2419229D00FDF9D2 /* SignUpViewController.swift in Sources */,
+				AAF8350E24193C3600FDF9D2 /* MessengerTabBarController.swift in Sources */,
+				AAF8351C24193F9200FDF9D2 /* ChatsViewController.swift in Sources */,
+				AAF8351424193F6600FDF9D2 /* SettingsRouter.swift in Sources */,
+				AAF8351824193F8100FDF9D2 /* ContactsViewModel.swift in Sources */,
+				AAF8351624193F7800FDF9D2 /* ContactsViewController.swift in Sources */,
+				AAF8351E24193F9E00FDF9D2 /* ChatsViewModel.swift in Sources */,
+				AAF8352024193FA600FDF9D2 /* ChatsRouter.swift in Sources */,
 				AAF834E42419213C00FDF9D2 /* RoutingLogic.swift in Sources */,
 				AAF834F82419297500FDF9D2 /* SignInViewModel.swift in Sources */,
 				AAF834F02419258100FDF9D2 /* PasswordRecoveryViewController.swift in Sources */,
 				AAF834EC241922B900FDF9D2 /* SignUpRouter.swift in Sources */,
+				AAF8351024193F5200FDF9D2 /* SettingsViewController.swift in Sources */,
 				867B2F7B2412585C00B16B01 /* AppDelegate.swift in Sources */,
 				AAF834E1241920B200FDF9D2 /* GreetingViewController.swift in Sources */,
 				AAF834E62419228100FDF9D2 /* SignInViewController.swift in Sources */,
 				AAF834EE241922CA00FDF9D2 /* SignInRouter.swift in Sources */,
 				AAF834F62419296800FDF9D2 /* SignUpViewModel.swift in Sources */,
 				AAF834B12418FE6200FDF9D2 /* GreetingRouter.swift in Sources */,
+				AAF8351224193F5F00FDF9D2 /* SettingsViewModel.swift in Sources */,
+				AAF8351A24193F8900FDF9D2 /* ContactsRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

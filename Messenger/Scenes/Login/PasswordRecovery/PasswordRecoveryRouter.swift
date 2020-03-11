@@ -1,5 +1,5 @@
 //
-//  SignInRouter.swift
+//  PasswordRecoveryRouter.swift
 //  Messenger
 //
 //  Created by Евгений Гусев on 11.03.2020.
@@ -9,17 +9,12 @@
 import Foundation
 import UIKit
 
-enum SignInSegue: String {
-    case login
-    case passwordRecovery
-}
-
-class SignInRouter: RoutingLogic {
+class PasswordRecoveryRouter: PopRoutingLogic {
     func perform(to segueId: String, from context: UIViewController) {
-        context.performSegue(withIdentifier: segueId, sender: nil)
+        
     }
     
     func popToRootViewController(from context: UIViewController) {
-        
+        context.navigationController?.popToRootViewController(animated: true)
     }
 }

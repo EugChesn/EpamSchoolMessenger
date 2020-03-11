@@ -1,5 +1,5 @@
 //
-//  SignUpViewController.swift
+//  ChatsViewModel.swift
 //  Messenger
 //
 //  Created by Евгений Гусев on 11.03.2020.
@@ -7,9 +7,7 @@
 //
 
 import Foundation
-import UIKit
 
-class SignUpViewController: UIViewController {
+class ChatsViewModel {
     
-    private var signUpRouter: RoutingLogic = SignUpRouter()
 }

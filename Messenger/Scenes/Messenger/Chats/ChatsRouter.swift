@@ -1,5 +1,5 @@
 //
-//  PasswordRecoveryRouter.swift
+//  ChatsRouter.swift
 //  Messenger
 //
 //  Created by Евгений Гусев on 11.03.2020.
@@ -9,12 +9,8 @@
 import Foundation
 import UIKit
 
-class PasswordRecoveryRouter: RoutingLogic {
+class ChatsRouter: RoutingLogic {
     func perform(to segueId: String, from context: UIViewController) {
-        
-    }
-    
-    func popToRootViewController(from context: UIViewController) {
         
     }
 }
