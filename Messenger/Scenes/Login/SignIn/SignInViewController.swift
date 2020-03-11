@@ -12,29 +12,6 @@ import UIKit
 class SignInViewController: UIViewController {
     
     private let signInRouter = SignInRouter()
-    let signInViewModel = SignInViewModel()
+    private let signInViewModel = SignInViewModel()
     
-    @IBOutlet weak var numberTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
-    
-    @IBAction func autorize(_ sender: Any) {
-        guard let number = numberTextField.text,
-            let pass = passwordTextField.text else { return }
-        
-        let isAutorize = signInViewModel.login(number: number,
-                                               password: pass)
-        
-        if (isAutorize) {
-            signInRouter.perform(to: "messenger", from: self)
-        }
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "messenger" {
-            if let destinition = segue.destination as? MessengerTabBarController {
-                let token = signInViewModel.getToken()
-                signInRouter.passData(autorizationToken: token, destination: destinition)
-            }
-        }
-    }
 }
