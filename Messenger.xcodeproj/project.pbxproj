@@ -41,6 +41,7 @@
 		AAF8352024193FA600FDF9D2 /* ChatsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF8351F24193FA600FDF9D2 /* ChatsRouter.swift */; };
 		AAF83522241957A900FDF9D2 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF83521241957A900FDF9D2 /* NetworkService.swift */; };
 		AAF8352424195AF000FDF9D2 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF8352324195AF000FDF9D2 /* StorageService.swift */; };
+		AAF83526241960C200FDF9D2 /* AutorizeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF83525241960C200FDF9D2 /* AutorizeModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +81,7 @@
 		AAF8351F24193FA600FDF9D2 /* ChatsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsRouter.swift; sourceTree = "<group>"; };
 		AAF83521241957A900FDF9D2 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		AAF8352324195AF000FDF9D2 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
+		AAF83525241960C200FDF9D2 /* AutorizeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutorizeModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +186,7 @@
 				AAF834E52419228100FDF9D2 /* SignInViewController.swift */,
 				AAF834F72419297500FDF9D2 /* SignInViewModel.swift */,
 				AAF834ED241922CA00FDF9D2 /* SignInRouter.swift */,
+				AAF83525241960C200FDF9D2 /* AutorizeModel.swift */,
 			);
 			path = SignIn;
 			sourceTree = "<group>";
@@ -392,6 +395,7 @@
 				867B2F7B2412585C00B16B01 /* AppDelegate.swift in Sources */,
 				AAF834E1241920B200FDF9D2 /* GreetingViewController.swift in Sources */,
 				AAF834E62419228100FDF9D2 /* SignInViewController.swift in Sources */,
+				AAF83526241960C200FDF9D2 /* AutorizeModel.swift in Sources */,
 				AAF834EE241922CA00FDF9D2 /* SignInRouter.swift in Sources */,
 				AAF834F62419296800FDF9D2 /* SignUpViewModel.swift in Sources */,
 				AAF834B12418FE6200FDF9D2 /* GreetingRouter.swift in Sources */,
