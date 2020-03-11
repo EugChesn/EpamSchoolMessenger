@@ -11,5 +11,21 @@ import UIKit
 
 class SignInViewController: UIViewController {
     
-    private var signInRouter: RoutingLogic = SignInRouter()
+    private let signInRouter: RoutingLogic = SignInRouter()
+    let signInViewModel = SignInViewModel()
+    
+    @IBOutlet weak var numberTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    
+    @IBAction func autorize(_ sender: Any) {
+        guard let number = numberTextField.text,
+            let pass = passwordTextField.text else { return }
+        
+        let isAutorize = signInViewModel.login(number: number,
+                                               password: pass)
+        
+        if (isAutorize) {
+            signInRouter.perform(to: "messenger", from: self)
+        }
+    }
 }
