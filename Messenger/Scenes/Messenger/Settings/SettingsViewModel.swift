@@ -8,6 +8,10 @@
 
 import Foundation
 
-class SettingsViewModel {
+protocol SettingsViewModeling {
+    
+}
+
+class SettingsViewModel: SettingsViewModeling {
     
 }

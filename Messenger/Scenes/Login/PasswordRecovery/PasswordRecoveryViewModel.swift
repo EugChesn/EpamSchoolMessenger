@@ -8,6 +8,10 @@
 
 import Foundation
 
-class PasswordRecoveryViewModel {
+protocol PasswordRecoveryViewModeling {
+    
+}
+
+class PasswordRecoveryViewModel: PasswordRecoveryViewModeling {
     
 }

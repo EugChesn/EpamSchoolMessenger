@@ -10,6 +10,6 @@ import Foundation
 import UIKit
 
 class SignUpViewController: UIViewController {
-    
-    private var signUpRouter: PopRoutingLogic = SignUpRouter()
+    let viewModel: SignUpViewModeling = SignUpViewModel()
+    let router: LoginRoutingLogic = LoginRouter.shared
 }

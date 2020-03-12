@@ -19,8 +19,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="awf-Dn-fzC"/>
                     <connections>
-                        <segue destination="paf-fB-Ehw" kind="show" identifier="signIn" id="eUX-0M-Smu"/>
-                        <segue destination="PIG-lb-XbT" kind="show" identifier="signUp" id="2CT-iI-zAi"/>
+                        <segue destination="paf-fB-Ehw" kind="show" identifier="" id="eUX-0M-Smu"/>
+                        <segue destination="PIG-lb-XbT" kind="show" identifier="" id="2CT-iI-zAi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -30,7 +30,7 @@
         <!--Sign In View Controller-->
         <scene sceneID="LDB-eL-YqF">
             <objects>
-                <viewController storyboardIdentifier="signInViewController" id="paf-fB-Ehw" customClass="SignInViewController" customModule="Messenger" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="signIn" id="paf-fB-Ehw" customClass="SignInViewController" customModule="Messenger" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Byk-YD-I8b">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -40,7 +40,7 @@
                     <navigationItem key="navigationItem" id="cbx-7v-VDk"/>
                     <connections>
                         <segue destination="R2d-H2-Wl9" kind="show" identifier="messenger" id="psE-Uq-ON4"/>
-                        <segue destination="b7k-60-xVb" kind="show" identifier="passwordRecovery" id="ubq-lO-5uZ"/>
+                        <segue destination="b7k-60-xVb" kind="show" identifier="" id="ubq-lO-5uZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oL9-d6-577" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -50,7 +50,7 @@
         <!--Sign Up View Controller-->
         <scene sceneID="91D-bj-tnF">
             <objects>
-                <viewController id="PIG-lb-XbT" customClass="SignUpViewController" customModule="Messenger" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="signUp" id="PIG-lb-XbT" customClass="SignUpViewController" customModule="Messenger" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OY2-Bt-hjB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -66,7 +66,7 @@
         <!--Password Recovery View Controller-->
         <scene sceneID="Uxk-Md-vdp">
             <objects>
-                <viewController id="b7k-60-xVb" customClass="PasswordRecoveryViewController" customModule="Messenger" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="passwordRecovery" id="b7k-60-xVb" customClass="PasswordRecoveryViewController" customModule="Messenger" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dhf-HY-dIx">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

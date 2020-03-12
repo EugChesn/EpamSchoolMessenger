@@ -10,5 +10,7 @@ import Foundation
 import UIKit
 
 class SettingsViewController: UIViewController {
-    private let settingsRouter: RoutingLogic = SettingsRouter()
+    let viewModel: SettingsViewModeling = SettingsViewModel()
+    let router: MessengerRoutingLogic = MessengerRouter.shared
+
 }

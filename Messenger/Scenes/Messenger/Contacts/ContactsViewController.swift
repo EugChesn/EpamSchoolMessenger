@@ -10,5 +10,6 @@ import Foundation
 import UIKit
 
 class ContactsViewController: UIViewController {
-    private var contactsRouter: RoutingLogic = ContactsRouter()
+    let viewModel: ContactsViewModeling = ContactsViewModel()
+    let router: MessengerRoutingLogic = MessengerRouter.shared
 }

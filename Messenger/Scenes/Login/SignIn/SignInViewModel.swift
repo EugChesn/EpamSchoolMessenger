@@ -8,8 +8,9 @@
 
 import Foundation
 
+protocol SignInViewModeling {
+    
+}
 
-
-class SignInViewModel {
-
+class SignInViewModel: SignInViewModeling {
 }

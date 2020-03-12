@@ -10,8 +10,6 @@ import Foundation
 import UIKit
 
 class SignInViewController: UIViewController {
-    
-    private let signInRouter = SignInRouter()
-    private let signInViewModel = SignInViewModel()
-    
+    let viewModel: SignInViewModeling = SignInViewModel()
+    let router: LoginRoutingLogic = LoginRouter.shared
 }

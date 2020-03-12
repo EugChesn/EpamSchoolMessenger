@@ -8,6 +8,10 @@
 
 import Foundation
 
-class SignUpViewModel {
+protocol SignUpViewModeling {
+    
+}
+
+class SignUpViewModel: SignUpViewModeling {
     
 }

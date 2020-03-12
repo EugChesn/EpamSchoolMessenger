@@ -8,6 +8,10 @@
 
 import Foundation
 
-class ContactsViewModel {
+protocol ContactsViewModeling {
+    
+}
+
+class ContactsViewModel: ContactsViewModeling {
     
 }

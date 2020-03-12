@@ -8,6 +8,10 @@
 
 import Foundation
 
-class ChatsViewModel {
+protocol ChatsViewModeling {
+    
+}
+
+class ChatsViewModel: ChatsViewModeling {
     
 }
