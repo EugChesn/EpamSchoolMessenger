@@ -15,7 +15,7 @@ enum MessengerRouteType: String {
 }
 
 protocol MessengerRoutingLogic {
-    func perfrom(routeType: MessengerRouteType, from context: UIViewController)
+    func route(routeType: MessengerRouteType, from context: UIViewController)
 }
 
 class MessengerRouter: MessengerRoutingLogic {
@@ -28,7 +28,7 @@ class MessengerRouter: MessengerRoutingLogic {
 
     private init() {}
     
-    func perfrom(routeType: MessengerRouteType, from context: UIViewController) {
+    func route(routeType: MessengerRouteType, from context: UIViewController) {
         
         switch routeType {
         case .chat:

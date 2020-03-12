@@ -18,7 +18,7 @@ enum LoginRouteType: String {
 
 protocol LoginRoutingLogic {
     
-    func perfrom(routeType: LoginRouteType, from context: UIViewController)
+    func route(routeType: LoginRouteType, from context: UIViewController)
     
 }
 
@@ -32,7 +32,7 @@ class LoginRouter: LoginRoutingLogic {
 
     private init() {}
     
-    func perfrom(routeType: LoginRouteType, from context: UIViewController) {
+    func route(routeType: LoginRouteType, from context: UIViewController) {
         
         
         switch routeType {
