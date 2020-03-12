@@ -42,7 +42,8 @@ class LoginRouter: LoginRoutingLogic {
             signUpRoute(context)
         case .passwordRecovery:
             passwordRecoveryRoute(context)
-        case .mesesnger
+        case .mesesnger:
+            messengerRoute(context)
         }
     }
     
