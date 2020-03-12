@@ -10,7 +10,7 @@
         <!--Messenger Tab Bar Controller-->
         <scene sceneID="m5Y-bI-NEn">
             <objects>
-                <tabBarController id="f8k-05-Osx" customClass="MessengerTabBarController" customModule="Messenger" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="messengerTabBar" id="f8k-05-Osx" customClass="MessengerTabBarController" customModule="Messenger" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5qI-PH-xsL">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

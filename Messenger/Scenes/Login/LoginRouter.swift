@@ -13,6 +13,7 @@ enum LoginRouteType: String {
     case signIn
     case signUp
     case passwordRecovery
+    case mesesnger
 }
 
 protocol LoginRoutingLogic {
@@ -41,6 +42,7 @@ class LoginRouter: LoginRoutingLogic {
             signUpRoute(context)
         case .passwordRecovery:
             passwordRecoveryRoute(context)
+        case .mesesnger
         }
     }
     
@@ -74,4 +76,11 @@ class LoginRouter: LoginRoutingLogic {
         context.navigationController?.pushViewController(vc, animated: true)
     }
     
+    
+    private func messengerRoute(_ context: UIViewController) {
+        let storyboard = UIStoryboard(name: "Messenger", bundle: nil)
+        let tabBarVC = storyboard.instantiateViewController(withIdentifier: "messengerTabBar")
+        
+        context.navigationController?.pushViewController(tabBarVC, animated: true)
+    }
 }
