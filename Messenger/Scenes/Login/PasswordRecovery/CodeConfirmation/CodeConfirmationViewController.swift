@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 class CodeConfirmationViewController: UIViewController {
- let viewModel: CodeConfirmationViewModeling = CodeConfirmationViewModel()
- let router: LoginRoutingLogic = LoginRouter.shared
+    let viewModel: CodeConfirmationViewModeling = CodeConfirmationViewModel()
+    let router: LoginRoutingLogic = LoginRouter.shared
+
 }

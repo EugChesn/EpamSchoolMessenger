@@ -10,6 +10,6 @@ import Foundation
 import UIKit
 
 class NewPasswordViewController: UIViewController {
- let viewModel: NewPasswordViewModeling = NewPasswordViewModel()
- let router: LoginRoutingLogic = LoginRouter.shared
+    let viewModel: NewPasswordViewModeling = NewPasswordViewModel()
+    let router: LoginRoutingLogic = LoginRouter.shared
 }

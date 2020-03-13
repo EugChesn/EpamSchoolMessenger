@@ -10,6 +10,6 @@ import Foundation
 import UIKit
 
 class PasswordRecoveryViewController: UIViewController {
- let viewModel: PasswordRecoveryViewModeling = PasswordRecoveryViewModel()
- let router: LoginRoutingLogic = LoginRouter.shared
+    let viewModel: PasswordRecoveryViewModeling = PasswordRecoveryViewModel()
+    let router: LoginRoutingLogic = LoginRouter.shared
 }
