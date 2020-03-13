@@ -13,6 +13,7 @@
 		867B2F872412586000B16B01 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 867B2F852412586000B16B01 /* LaunchScreen.storyboard */; };
 		AA64DE0F241B694400ED2C63 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA64DE0E241B694400ED2C63 /* NetworkService.swift */; };
 		AA64DE12241B698D00ED2C63 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA64DE11241B698D00ED2C63 /* StorageService.swift */; };
+		AA64DE14241B72B600ED2C63 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA64DE13241B72B600ED2C63 /* Reachability.swift */; };
 		AAC0BC58241AB2B9008DFFFF /* MessengerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC0BC57241AB2B9008DFFFF /* MessengerRouter.swift */; };
 		AAC0BC5A241AB3BC008DFFFF /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC0BC59241AB3BC008DFFFF /* LoginRouter.swift */; };
 		AAF834E1241920B200FDF9D2 /* GreetingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF834E0241920B200FDF9D2 /* GreetingViewController.swift */; };
@@ -41,6 +42,7 @@
 		867B2F882412586000B16B01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA64DE0E241B694400ED2C63 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		AA64DE11241B698D00ED2C63 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
+		AA64DE13241B72B600ED2C63 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		AAC0BC57241AB2B9008DFFFF /* MessengerRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessengerRouter.swift; sourceTree = "<group>"; };
 		AAC0BC59241AB3BC008DFFFF /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
 		AAF834E0241920B200FDF9D2 /* GreetingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingViewController.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 		AAF834A62418FA7700FDF9D2 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				AA64DE13241B72B600ED2C63 /* Reachability.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 				AAF834E1241920B200FDF9D2 /* GreetingViewController.swift in Sources */,
 				AAF834E62419228100FDF9D2 /* SignInViewController.swift in Sources */,
 				AAF834F62419296800FDF9D2 /* SignUpViewModel.swift in Sources */,
+				AA64DE14241B72B600ED2C63 /* Reachability.swift in Sources */,
 				AAF8351224193F5F00FDF9D2 /* SettingsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
