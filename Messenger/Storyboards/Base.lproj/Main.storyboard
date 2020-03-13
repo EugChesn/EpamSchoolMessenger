@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hzN-SF-xLs">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Greeting View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="GreetingViewController" customModule="Messenger" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="awf-Dn-fzC"/>
+                    <connections>
+                        <segue destination="paf-fB-Ehw" kind="show" identifier="signIn" id="eUX-0M-Smu"/>
+                        <segue destination="PIG-lb-XbT" kind="show" identifier="singUp" id="2CT-iI-zAi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1047.8260869565217" y="97.767857142857139"/>
+        </scene>
+        <!--Sign In View Controller-->
+        <scene sceneID="LDB-eL-YqF">
+            <objects>
+                <viewController id="paf-fB-Ehw" customClass="SignInViewController" customModule="Messenger" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Byk-YD-I8b">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="iuu-Rx-gQM"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="cbx-7v-VDk"/>
+                    <connections>
+                        <segue destination="R2d-H2-Wl9" kind="show" identifier="messenger" id="psE-Uq-ON4"/>
+                        <segue destination="b7k-60-xVb" kind="show" identifier="passwordRecovery" id="ubq-lO-5uZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oL9-d6-577" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1950.7246376811595" y="97.767857142857139"/>
+        </scene>
+        <!--Sign Up View Controller-->
+        <scene sceneID="91D-bj-tnF">
+            <objects>
+                <viewController id="PIG-lb-XbT" customClass="SignUpViewController" customModule="Messenger" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OY2-Bt-hjB">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="I6K-wh-PME"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="nYG-t2-wrK"/>
+                    <connections>
+                        <segue destination="Aap-nj-K49" kind="show" identifier="registrationCodeConfirm" id="RqM-4l-efO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1vP-mQ-omX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1951" y="823"/>
+        </scene>
+        <!--Password Recovery View Controller-->
+        <scene sceneID="Uxk-Md-vdp">
+            <objects>
+                <viewController id="b7k-60-xVb" customClass="PasswordRecoveryViewController" customModule="Messenger" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dhf-HY-dIx">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="1nK-qD-sfO"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="2ln-eV-2ci"/>
+                    <connections>
+                        <segue destination="clX-Yj-jFY" kind="show" identifier="codeConfirm" id="cah-YN-Nr9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T3m-it-Xwt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2805" y="-423"/>
+        </scene>
+        <!--Code Confirmation View Controller-->
+        <scene sceneID="NDj-Zy-aAQ">
+            <objects>
+                <viewController id="clX-Yj-jFY" customClass="CodeConfirmationViewController" customModule="Messenger" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Q41-Mo-Vwu">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="vpn-dE-431"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Qgv-qj-zCJ"/>
+                    <connections>
+                        <segue destination="ViK-sn-YtU" kind="show" identifier="newPass" id="Nh4-iY-I0c"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fxo-zr-UDP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3767" y="-423"/>
+        </scene>
+        <!--Messenger-->
+        <scene sceneID="njE-TW-2js">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Messenger" id="R2d-H2-Wl9" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="xNq-rq-26n"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kkq-G3-8cb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2807" y="98"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ixR-17-8LM">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hzN-SF-xLs" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ORY-Ve-pGe">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="cWe-bI-vzy"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jUI-GQ-UP6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="97.767857142857139"/>
+        </scene>
+        <!--New Password View Controller-->
+        <scene sceneID="hIM-kv-hQ3">
+            <objects>
+                <viewController id="ViK-sn-YtU" customClass="NewPasswordViewController" customModule="Messenger" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bOI-hL-Mw0">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="Q33-jT-wXX"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="eDa-vH-yUI"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7zL-dU-av2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4783" y="-423"/>
+        </scene>
+        <!--Create Password View Controller-->
+        <scene sceneID="6X0-GJ-Jlo">
+            <objects>
+                <viewController id="Cdk-6S-KqT" customClass="CreatePasswordViewController" customModule="Messenger" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="AfY-Tf-zG9">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="I5t-mz-XtQ"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="hnJ-l6-55e"/>
+                    <connections>
+                        <segue destination="SpG-Fd-5fg" kind="show" identifier="setupProfile" id="jvE-bx-BfO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xhm-92-Paa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3767" y="823"/>
+        </scene>
+        <!--Registration Code Confirmation View Controller-->
+        <scene sceneID="mo9-EV-FfM">
+            <objects>
+                <viewController id="Aap-nj-K49" customClass="RegistrationCodeConfirmationViewController" customModule="Messenger" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8rt-pm-bPi">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="rq6-OM-Vnb"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="pU3-6d-WH2"/>
+                    <connections>
+                        <segue destination="Cdk-6S-KqT" kind="show" identifier="createPass" id="otu-Zm-nx3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wjz-RJ-2gm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2804" y="823"/>
+        </scene>
+        <!--Setup Profile View Controller-->
+        <scene sceneID="1WL-YO-fEW">
+            <objects>
+                <viewController id="SpG-Fd-5fg" customClass="SetupProfileViewController" customModule="Messenger" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JpX-Dt-FJ9">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="uIL-tH-Ufh"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="wLe-q9-kpr"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ndw-FK-vAo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4783" y="823"/>
+        </scene>
+    </scenes>
+</document>
