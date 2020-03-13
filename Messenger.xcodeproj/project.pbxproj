@@ -11,6 +11,8 @@
 		867B2F822412585C00B16B01 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 867B2F802412585C00B16B01 /* Main.storyboard */; };
 		867B2F842412586000B16B01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 867B2F832412586000B16B01 /* Assets.xcassets */; };
 		867B2F872412586000B16B01 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 867B2F852412586000B16B01 /* LaunchScreen.storyboard */; };
+		AA64DE0F241B694400ED2C63 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA64DE0E241B694400ED2C63 /* NetworkService.swift */; };
+		AA64DE12241B698D00ED2C63 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA64DE11241B698D00ED2C63 /* StorageService.swift */; };
 		AAC0BC58241AB2B9008DFFFF /* MessengerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC0BC57241AB2B9008DFFFF /* MessengerRouter.swift */; };
 		AAC0BC5A241AB3BC008DFFFF /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC0BC59241AB3BC008DFFFF /* LoginRouter.swift */; };
 		AAF834E1241920B200FDF9D2 /* GreetingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF834E0241920B200FDF9D2 /* GreetingViewController.swift */; };
@@ -37,6 +39,8 @@
 		867B2F832412586000B16B01 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		867B2F862412586000B16B01 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		867B2F882412586000B16B01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AA64DE0E241B694400ED2C63 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		AA64DE11241B698D00ED2C63 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
 		AAC0BC57241AB2B9008DFFFF /* MessengerRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessengerRouter.swift; sourceTree = "<group>"; };
 		AAC0BC59241AB3BC008DFFFF /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
 		AAF834E0241920B200FDF9D2 /* GreetingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingViewController.swift; sourceTree = "<group>"; };
@@ -126,6 +130,8 @@
 		AAF834A72418FA8700FDF9D2 /* Servicies */ = {
 			isa = PBXGroup;
 			children = (
+				AA64DE0E241B694400ED2C63 /* NetworkService.swift */,
+				AA64DE11241B698D00ED2C63 /* StorageService.swift */,
 			);
 			path = Servicies;
 			sourceTree = "<group>";
@@ -308,6 +314,8 @@
 				AAF834EA2419229D00FDF9D2 /* SignUpViewController.swift in Sources */,
 				AAF8350E24193C3600FDF9D2 /* MessengerTabBarController.swift in Sources */,
 				AAF8351C24193F9200FDF9D2 /* ChatsViewController.swift in Sources */,
+				AA64DE0F241B694400ED2C63 /* NetworkService.swift in Sources */,
+				AA64DE12241B698D00ED2C63 /* StorageService.swift in Sources */,
 				AAF8351824193F8100FDF9D2 /* ContactsViewModel.swift in Sources */,
 				AAF8351624193F7800FDF9D2 /* ContactsViewController.swift in Sources */,
 				AAC0BC5A241AB3BC008DFFFF /* LoginRouter.swift in Sources */,
