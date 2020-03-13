@@ -20,14 +20,6 @@ protocol MessengerRoutingLogic {
 
 class MessengerRouter: MessengerRoutingLogic {
     
-    static var shared: MessengerRouter = {
-        let instance =  MessengerRouter()
-
-        return instance
-    }()
-
-    private init() {}
-    
     func route(routeType: MessengerRouteType, from context: UIViewController) {
         
         switch routeType {

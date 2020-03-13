@@ -24,14 +24,6 @@ protocol LoginRoutingLogic {
 
 class LoginRouter: LoginRoutingLogic {
     
-    static var shared: LoginRouter = {
-        let instance =  LoginRouter()
-
-        return instance
-    }()
-
-    private init() {}
-    
     func route(routeType: LoginRouteType, from context: UIViewController) {
         
         

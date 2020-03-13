@@ -11,5 +11,5 @@ import UIKit
 
 class SignInViewController: UIViewController {
     let viewModel: SignInViewModeling = SignInViewModel()
-    let router: LoginRoutingLogic = LoginRouter.shared
+    let router: LoginRoutingLogic = LoginRouter()
 }

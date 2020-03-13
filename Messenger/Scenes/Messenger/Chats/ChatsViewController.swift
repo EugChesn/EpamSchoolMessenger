@@ -11,5 +11,5 @@ import UIKit
 
 class ChatsViewController: UIViewController {
     let viewModel: ChatsViewModeling = ChatsViewModel()
-    let router: MessengerRoutingLogic = MessengerRouter.shared
+    let router: MessengerRoutingLogic = MessengerRouter()
 }

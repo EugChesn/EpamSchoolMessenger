@@ -11,6 +11,6 @@ import UIKit
 
 class SettingsViewController: UIViewController {
     let viewModel: SettingsViewModeling = SettingsViewModel()
-    let router: MessengerRoutingLogic = MessengerRouter.shared
+    let router: MessengerRoutingLogic = MessengerRouter()
 
 }

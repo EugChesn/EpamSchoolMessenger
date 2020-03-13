@@ -11,5 +11,5 @@ import UIKit
 
 class ContactsViewController: UIViewController {
     let viewModel: ContactsViewModeling = ContactsViewModel()
-    let router: MessengerRoutingLogic = MessengerRouter.shared
+    let router: MessengerRoutingLogic = MessengerRouter()
 }
