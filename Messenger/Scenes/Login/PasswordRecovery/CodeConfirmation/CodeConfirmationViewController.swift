@@ -11,5 +11,5 @@ import UIKit
 
 class CodeConfirmationViewController: UIViewController {
  let viewModel: CodeConfirmationViewModeling = CodeConfirmationViewModel()
- let router: LoginRoutingLogic = LoginRouter()
+ let router: LoginRoutingLogic = LoginRouter.shared
 }

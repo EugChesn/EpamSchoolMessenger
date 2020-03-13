@@ -11,5 +11,5 @@ import UIKit
 
 class NewPasswordViewController: UIViewController {
  let viewModel: NewPasswordViewModeling = NewPasswordViewModel()
- let router: LoginRoutingLogic = LoginRouter()
+ let router: LoginRoutingLogic = LoginRouter.shared
 }

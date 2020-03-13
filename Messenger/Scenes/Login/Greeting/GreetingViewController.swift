@@ -10,5 +10,5 @@ import Foundation
 import UIKit
 
 class GreetingViewController: UIViewController {
-    let router: LoginRoutingLogic = LoginRouter()
+    let router: LoginRoutingLogic = LoginRouter.shared
 }

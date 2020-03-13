@@ -11,5 +11,5 @@ import UIKit
 
 class SignUpViewController: UIViewController {
     let viewModel: SignUpViewModeling = SignUpViewModel()
-    let router: LoginRoutingLogic = LoginRouter()
+    let router: LoginRoutingLogic = LoginRouter.shared
 }

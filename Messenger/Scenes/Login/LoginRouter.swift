@@ -12,6 +12,9 @@ import UIKit
 enum LoginRouteType: String {
     case signIn
     case signUp
+    case registrationCodeConfirm
+    case createPass
+    case setupProfile
     case passwordRecovery
     case codeConfirm
     case newPass
@@ -24,8 +27,14 @@ protocol LoginRoutingLogic {
 
 class LoginRouter: LoginRoutingLogic {
     
+    static var shared: LoginRouter = {
+        let instanse = LoginRouter()
+        return instanse
+    }()
+    
+    private init() {}
+    
     func route(routeType: LoginRouteType, from context: UIViewController) {
-        
         
         switch routeType {
         case .signIn:
@@ -38,6 +47,12 @@ class LoginRouter: LoginRoutingLogic {
             codeConfirmRoute(context)
         case .newPass:
             newPassRoute(context)
+        case .registrationCodeConfirm:
+            registrationCodeConfirmRoute(context)
+        case .createPass:
+            createPassRoute(context)
+        case .setupProfile:
+            setupProfileRoute(context)
         case .mesesnger:
             messengerRoute(context)
         }
@@ -46,11 +61,17 @@ class LoginRouter: LoginRoutingLogic {
     private func signInRoute(_ context: UIViewController) {
         
         let vcId = LoginRouteType.signIn.rawValue
+        let rootVCId = "greeting"
         
-        guard let vc = context.storyboard?.instantiateViewController(withIdentifier: vcId)
-            as? SignInViewController else { return }
+        let storyboard = context.storyboard
         
-        context.navigationController?.pushViewController(vc, animated: true)
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: vcId)
+            as? SignInViewController,
+            let rootVC = storyboard?.instantiateViewController(withIdentifier: rootVCId)
+            as? GreetingViewController else { return }
+        
+        context.navigationController?.popToRootViewController(animated: true)
+        rootVC.navigationController?.pushViewController(vc, animated: true)
     }
     
     private func signUpRoute(_ context: UIViewController) {
@@ -89,6 +110,36 @@ class LoginRouter: LoginRoutingLogic {
         
         guard let vc = context.storyboard?.instantiateViewController(withIdentifier: vcId)
             as? NewPasswordViewController else { return }
+        
+        context.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    private func registrationCodeConfirmRoute(_ context: UIViewController) {
+        
+        let vcId = LoginRouteType.registrationCodeConfirm.rawValue
+        
+        guard let vc = context.storyboard?.instantiateViewController(withIdentifier: vcId)
+            as? RegistrationCodeConfirmationViewController else { return }
+        
+        context.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    private func createPassRoute(_ context: UIViewController) {
+        
+        let vcId = LoginRouteType.createPass.rawValue
+        
+        guard let vc = context.storyboard?.instantiateViewController(withIdentifier: vcId)
+            as? CreatePasswordViewController else { return }
+        
+        context.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    private func setupProfileRoute(_ context: UIViewController) {
+        
+        let vcId = LoginRouteType.setupProfile.rawValue
+        
+        guard let vc = context.storyboard?.instantiateViewController(withIdentifier: vcId)
+            as? SetupProfileViewController else { return }
         
         context.navigationController?.pushViewController(vc, animated: true)
     }

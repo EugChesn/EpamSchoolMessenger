@@ -10,7 +10,7 @@
         <!--Greeting View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="greetingViewController" id="BYZ-38-t0r" customClass="GreetingViewController" customModule="Messenger" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="greeting" id="BYZ-38-t0r" customClass="GreetingViewController" customModule="Messenger" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -58,6 +58,9 @@
                         <viewLayoutGuide key="safeArea" id="I6K-wh-PME"/>
                     </view>
                     <navigationItem key="navigationItem" id="nYG-t2-wrK"/>
+                    <connections>
+                        <segue destination="Aap-nj-K49" kind="show" id="RqM-4l-efO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1vP-mQ-omX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -145,50 +148,59 @@
             </objects>
             <point key="canvasLocation" x="4783" y="-423"/>
         </scene>
-        <!--View Controller-->
+        <!--Create Password View Controller-->
         <scene sceneID="6X0-GJ-Jlo">
             <objects>
-                <viewController id="Cdk-6S-KqT" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="createPass" id="Cdk-6S-KqT" customClass="CreatePasswordViewController" customModule="Messenger" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AfY-Tf-zG9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="I5t-mz-XtQ"/>
                     </view>
+                    <navigationItem key="navigationItem" id="hnJ-l6-55e"/>
+                    <connections>
+                        <segue destination="SpG-Fd-5fg" kind="show" id="jvE-bx-BfO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xhm-92-Paa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3939" y="823"/>
+            <point key="canvasLocation" x="3767" y="823"/>
         </scene>
-        <!--View Controller-->
+        <!--Registration Code Confirmation View Controller-->
         <scene sceneID="mo9-EV-FfM">
             <objects>
-                <viewController id="Aap-nj-K49" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="registrationCodeConfirm" id="Aap-nj-K49" customClass="RegistrationCodeConfirmationViewController" customModule="Messenger" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8rt-pm-bPi">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="rq6-OM-Vnb"/>
                     </view>
+                    <navigationItem key="navigationItem" id="pU3-6d-WH2"/>
+                    <connections>
+                        <segue destination="Cdk-6S-KqT" kind="show" id="otu-Zm-nx3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wjz-RJ-2gm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2899" y="823"/>
+            <point key="canvasLocation" x="2804" y="823"/>
         </scene>
-        <!--View Controller-->
+        <!--Setup Profile View Controller-->
         <scene sceneID="1WL-YO-fEW">
             <objects>
-                <viewController id="SpG-Fd-5fg" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="setupProfile" id="SpG-Fd-5fg" customClass="SetupProfileViewController" customModule="Messenger" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JpX-Dt-FJ9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="uIL-tH-Ufh"/>
                     </view>
+                    <navigationItem key="navigationItem" id="wLe-q9-kpr"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ndw-FK-vAo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5007" y="823"/>
+            <point key="canvasLocation" x="4783" y="823"/>
         </scene>
     </scenes>
 </document>

@@ -18,6 +18,12 @@
 		AAB3AEFA241B7FB700825F00 /* NewPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB3AEF9241B7FB700825F00 /* NewPasswordViewModel.swift */; };
 		AAB3AEFC241B7FCF00825F00 /* CodeConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB3AEFB241B7FCF00825F00 /* CodeConfirmationViewController.swift */; };
 		AAB3AEFE241B7FDC00825F00 /* CodeConfirmationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB3AEFD241B7FDC00825F00 /* CodeConfirmationViewModel.swift */; };
+		AAB3AF04241B840400825F00 /* SetupProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB3AF03241B840400825F00 /* SetupProfileViewController.swift */; };
+		AAB3AF06241B840D00825F00 /* SetupProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB3AF05241B840D00825F00 /* SetupProfileViewModel.swift */; };
+		AAB3AF08241B842100825F00 /* CreatePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB3AF07241B842100825F00 /* CreatePasswordViewController.swift */; };
+		AAB3AF0A241B842A00825F00 /* CreatePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB3AF09241B842A00825F00 /* CreatePasswordViewModel.swift */; };
+		AAB3AF0C241B843900825F00 /* RegistrationCodeConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB3AF0B241B843900825F00 /* RegistrationCodeConfirmationViewController.swift */; };
+		AAB3AF0E241B844000825F00 /* RegistrationCodeConfirmationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB3AF0D241B844000825F00 /* RegistrationCodeConfirmationViewModel.swift */; };
 		AAC0BC58241AB2B9008DFFFF /* MessengerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC0BC57241AB2B9008DFFFF /* MessengerRouter.swift */; };
 		AAC0BC5A241AB3BC008DFFFF /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC0BC59241AB3BC008DFFFF /* LoginRouter.swift */; };
 		AAF834E1241920B200FDF9D2 /* GreetingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF834E0241920B200FDF9D2 /* GreetingViewController.swift */; };
@@ -51,6 +57,12 @@
 		AAB3AEF9241B7FB700825F00 /* NewPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPasswordViewModel.swift; sourceTree = "<group>"; };
 		AAB3AEFB241B7FCF00825F00 /* CodeConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeConfirmationViewController.swift; sourceTree = "<group>"; };
 		AAB3AEFD241B7FDC00825F00 /* CodeConfirmationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeConfirmationViewModel.swift; sourceTree = "<group>"; };
+		AAB3AF03241B840400825F00 /* SetupProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupProfileViewController.swift; sourceTree = "<group>"; };
+		AAB3AF05241B840D00825F00 /* SetupProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupProfileViewModel.swift; sourceTree = "<group>"; };
+		AAB3AF07241B842100825F00 /* CreatePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePasswordViewController.swift; sourceTree = "<group>"; };
+		AAB3AF09241B842A00825F00 /* CreatePasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePasswordViewModel.swift; sourceTree = "<group>"; };
+		AAB3AF0B241B843900825F00 /* RegistrationCodeConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationCodeConfirmationViewController.swift; sourceTree = "<group>"; };
+		AAB3AF0D241B844000825F00 /* RegistrationCodeConfirmationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationCodeConfirmationViewModel.swift; sourceTree = "<group>"; };
 		AAC0BC57241AB2B9008DFFFF /* MessengerRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessengerRouter.swift; sourceTree = "<group>"; };
 		AAC0BC59241AB3BC008DFFFF /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
 		AAF834E0241920B200FDF9D2 /* GreetingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingViewController.swift; sourceTree = "<group>"; };
@@ -138,6 +150,42 @@
 			path = LoginForRecovery;
 			sourceTree = "<group>";
 		};
+		AAB3AEFF241B837900825F00 /* RegistrationCodeConfirmation */ = {
+			isa = PBXGroup;
+			children = (
+				AAB3AF0B241B843900825F00 /* RegistrationCodeConfirmationViewController.swift */,
+				AAB3AF0D241B844000825F00 /* RegistrationCodeConfirmationViewModel.swift */,
+			);
+			path = RegistrationCodeConfirmation;
+			sourceTree = "<group>";
+		};
+		AAB3AF00241B839600825F00 /* CreatePassword */ = {
+			isa = PBXGroup;
+			children = (
+				AAB3AF07241B842100825F00 /* CreatePasswordViewController.swift */,
+				AAB3AF09241B842A00825F00 /* CreatePasswordViewModel.swift */,
+			);
+			path = CreatePassword;
+			sourceTree = "<group>";
+		};
+		AAB3AF01241B83AA00825F00 /* SetupProfile */ = {
+			isa = PBXGroup;
+			children = (
+				AAB3AF03241B840400825F00 /* SetupProfileViewController.swift */,
+				AAB3AF05241B840D00825F00 /* SetupProfileViewModel.swift */,
+			);
+			path = SetupProfile;
+			sourceTree = "<group>";
+		};
+		AAB3AF02241B83B400825F00 /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				AAF834E92419229D00FDF9D2 /* SignUpViewController.swift */,
+				AAF834F52419296800FDF9D2 /* SignUpViewModel.swift */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
 		AAF834A42418FA4400FDF9D2 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
@@ -206,8 +254,10 @@
 		AAF834AB2418FCA700FDF9D2 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
-				AAF834E92419229D00FDF9D2 /* SignUpViewController.swift */,
-				AAF834F52419296800FDF9D2 /* SignUpViewModel.swift */,
+				AAB3AF02241B83B400825F00 /* SignUp */,
+				AAB3AF01241B83AA00825F00 /* SetupProfile */,
+				AAB3AF00241B839600825F00 /* CreatePassword */,
+				AAB3AEFF241B837900825F00 /* RegistrationCodeConfirmation */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -358,10 +408,14 @@
 				AA64DE0F241B694400ED2C63 /* NetworkService.swift in Sources */,
 				AA64DE12241B698D00ED2C63 /* StorageService.swift in Sources */,
 				AAF8351824193F8100FDF9D2 /* ContactsViewModel.swift in Sources */,
+				AAB3AF0C241B843900825F00 /* RegistrationCodeConfirmationViewController.swift in Sources */,
 				AAF8351624193F7800FDF9D2 /* ContactsViewController.swift in Sources */,
 				AAB3AEFE241B7FDC00825F00 /* CodeConfirmationViewModel.swift in Sources */,
+				AAB3AF0A241B842A00825F00 /* CreatePasswordViewModel.swift in Sources */,
 				AAC0BC5A241AB3BC008DFFFF /* LoginRouter.swift in Sources */,
+				AAB3AF06241B840D00825F00 /* SetupProfileViewModel.swift in Sources */,
 				AAF8351E24193F9E00FDF9D2 /* ChatsViewModel.swift in Sources */,
+				AAB3AF04241B840400825F00 /* SetupProfileViewController.swift in Sources */,
 				AAF834F82419297500FDF9D2 /* SignInViewModel.swift in Sources */,
 				AAF834F02419258100FDF9D2 /* PasswordRecoveryViewController.swift in Sources */,
 				AAF8351024193F5200FDF9D2 /* SettingsViewController.swift in Sources */,
@@ -369,8 +423,10 @@
 				867B2F7B2412585C00B16B01 /* AppDelegate.swift in Sources */,
 				AAB3AEFA241B7FB700825F00 /* NewPasswordViewModel.swift in Sources */,
 				AAF834E1241920B200FDF9D2 /* GreetingViewController.swift in Sources */,
+				AAB3AF08241B842100825F00 /* CreatePasswordViewController.swift in Sources */,
 				AAF834E62419228100FDF9D2 /* SignInViewController.swift in Sources */,
 				AAF834F62419296800FDF9D2 /* SignUpViewModel.swift in Sources */,
+				AAB3AF0E241B844000825F00 /* RegistrationCodeConfirmationViewModel.swift in Sources */,
 				AA64DE14241B72B600ED2C63 /* Reachability.swift in Sources */,
 				AAF8351224193F5F00FDF9D2 /* SettingsViewModel.swift in Sources */,
 			);
