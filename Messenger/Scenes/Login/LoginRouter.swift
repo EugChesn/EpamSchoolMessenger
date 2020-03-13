@@ -13,6 +13,8 @@ enum LoginRouteType: String {
     case signIn
     case signUp
     case passwordRecovery
+    case codeConfirm
+    case newPass
     case mesesnger
 }
 
@@ -32,6 +34,10 @@ class LoginRouter: LoginRoutingLogic {
             signUpRoute(context)
         case .passwordRecovery:
             passwordRecoveryRoute(context)
+        case .codeConfirm:
+            codeConfirmRoute(context)
+        case .newPass:
+            newPassRoute(context)
         case .mesesnger:
             messengerRoute(context)
         }
@@ -67,6 +73,25 @@ class LoginRouter: LoginRoutingLogic {
         context.navigationController?.pushViewController(vc, animated: true)
     }
     
+    private func codeConfirmRoute(_ context: UIViewController) {
+        
+        let vcId = LoginRouteType.codeConfirm.rawValue
+        
+        guard let vc = context.storyboard?.instantiateViewController(withIdentifier: vcId)
+            as? CodeConfirmationViewController else { return }
+        
+        context.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    private func newPassRoute(_ context: UIViewController) {
+        
+        let vcId = LoginRouteType.newPass.rawValue
+        
+        guard let vc = context.storyboard?.instantiateViewController(withIdentifier: vcId)
+            as? NewPasswordViewController else { return }
+        
+        context.navigationController?.pushViewController(vc, animated: true)
+    }
     
     private func messengerRoute(_ context: UIViewController) {
         let storyboard = UIStoryboard(name: "Messenger", bundle: nil)
