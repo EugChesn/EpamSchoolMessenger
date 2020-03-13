@@ -14,6 +14,11 @@ protocol GreetingDelegate: class {
 }
 
 class GreetingViewController: UIViewController {
+    @IBOutlet weak var Avatar: UIImageView!
+    @IBOutlet weak var WelcomeLabel: UILabel!
+    @IBOutlet weak var LogInButton: UIButton!
+    @IBOutlet weak var SignUpButton: UIButton!
+    
     var viewModel: GreetingViewModeling?
     var router: GreetingRouting?
     
@@ -23,6 +28,12 @@ class GreetingViewController: UIViewController {
         setupDependencies()
     }
     
+    @IBAction func LogInTap(_ sender: UIButton) {
+        
+    }
+    @IBAction func SignUpTap(_ sender: UIButton) {
+        router?.routeToLogin(withIdentifier: "signIn", sender: self)
+    }
     
     func setupDependencies() {
         viewModel = GreetingViewModel(view: self)
