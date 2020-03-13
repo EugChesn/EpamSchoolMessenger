@@ -13,7 +13,9 @@ protocol PasswordRecoveryViewModeling {
 }
 
 class PasswordRecoveryViewModel: PasswordRecoveryViewModeling {
-    let netService: NetworkInteraction = NetworkService()
-    let storage: StorageData = StorageService()
-    let reachability: Reachability = NetworkReachability()
+    weak var view: PasswordRecoveryDelegate?
+    
+    init(view: PasswordRecoveryDelegate) {
+        self.view = view
+    }
 }

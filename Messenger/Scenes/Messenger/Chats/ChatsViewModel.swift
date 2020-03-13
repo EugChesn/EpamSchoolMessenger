@@ -13,7 +13,9 @@ protocol ChatsViewModeling {
 }
 
 class ChatsViewModel: ChatsViewModeling {
-    let netService: NetworkInteraction = NetworkService()
-    let storage: StorageData = StorageService()
-    let reachability: Reachability = NetworkReachability()
+    weak var view: ChatsDelegate?
+    
+    init(view: ChatsDelegate) {
+        self.view = view
+    }
 }

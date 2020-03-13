@@ -13,7 +13,9 @@ protocol SettingsViewModeling {
 }
 
 class SettingsViewModel: SettingsViewModeling {
-    let netService: NetworkInteraction = NetworkService()
-    let storage: StorageData = StorageService()
-    let reachability: Reachability = NetworkReachability()
+    weak var view: SettingsDelegate?
+    
+    init(view: SettingsDelegate) {
+        self.view = view
+    }
 }

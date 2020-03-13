@@ -1,5 +1,5 @@
 //
-//  SetupProfileViewModel.swift
+//  GreetingViewModel.swift
 //  Messenger
 //
 //  Created by Евгений Гусев on 13.03.2020.
@@ -8,14 +8,14 @@
 
 import Foundation
 
-protocol SetupProfileViewModeling {
+protocol GreetingViewModeling {
     
 }
 
-class SetupProfileViewModel: SetupProfileViewModeling {
-    weak var view: SetupProfileDelegate?
+class GreetingViewModel: GreetingViewModeling {
+    weak var view: GreetingDelegate?
     
-    init(view: SetupProfileDelegate) {
+    init(view: GreetingDelegate) {
         self.view = view
     }
 }

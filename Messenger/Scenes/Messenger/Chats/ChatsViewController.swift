@@ -9,7 +9,27 @@
 import Foundation
 import UIKit
 
+protocol ChatsDelegate: class {
+    
+}
+
 class ChatsViewController: UIViewController {
-    let viewModel: ChatsViewModeling = ChatsViewModel()
-    let router: MessengerRoutingLogic = MessengerRouter()
+    var viewModel: ChatsViewModeling?
+    var router: ChatsRouting?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setupDependencies()
+    }
+    
+    
+    func setupDependencies() {
+        viewModel = ChatsViewModel(view: self)
+        router = ChatsRouter(viewController: self)
+    }
+}
+
+extension ChatsViewController: ChatsDelegate {
+    
 }

@@ -9,7 +9,27 @@
 import Foundation
 import UIKit
 
+protocol CreatePasswordDelegate: class {
+    
+}
+
 class CreatePasswordViewController: UIViewController {
-    let viewModel: CreatePasswordViewModeling = CreatePasswordViewModel()
-    let router: LoginRoutingLogic = LoginRouter.shared
+    var viewModel: CreatePasswordViewModeling?
+    var router: CreatePasswordRouting?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setupDependencies()
+    }
+    
+    
+    func setupDependencies() {
+        viewModel = CreatePasswordViewModel(view: self)
+        router = CreatePasswordRouter(viewController: self)
+    }
+}
+
+extension CreatePasswordViewController: CreatePasswordDelegate {
+    
 }

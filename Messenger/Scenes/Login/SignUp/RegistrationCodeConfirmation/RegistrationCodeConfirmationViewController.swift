@@ -9,7 +9,27 @@
 import Foundation
 import UIKit
 
+protocol RegistrationCodeConfirmationDelegate: class {
+    
+}
+
 class RegistrationCodeConfirmationViewController: UIViewController {
-    let viewModel: RegistrationCodeConfirmationViewModeling = RegistrationCodeConfirmationViewModel()
-    let router: LoginRoutingLogic = LoginRouter.shared
+    var viewModel: RegistrationCodeConfirmationViewModeling?
+    var router: RegistrationCodeConfirmationRouting?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setupDependencies()
+    }
+    
+    
+    func setupDependencies() {
+        viewModel = RegistrationCodeConfirmationViewModel(view: self)
+        router = RegistrationCodeConfirmationRouter(viewController: self)
+    }
+}
+
+extension RegistrationCodeConfirmationViewController: RegistrationCodeConfirmationDelegate {
+    
 }

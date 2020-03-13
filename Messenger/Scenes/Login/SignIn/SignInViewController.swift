@@ -9,7 +9,27 @@
 import Foundation
 import UIKit
 
+protocol SignInDelegate: class {
+    
+}
+
 class SignInViewController: UIViewController {
-    let viewModel: SignInViewModeling = SignInViewModel()
-    let router: LoginRoutingLogic = LoginRouter.shared
+    var viewModel: SignInViewModeling?
+    var router: SignInRouting?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setupDependencies()
+    }
+    
+    
+    func setupDependencies() {
+        viewModel = SignInViewModel(view: self)
+        router = SignInRouter(viewController: self)
+    }
+}
+
+extension SignInViewController: SignInDelegate {
+    
 }

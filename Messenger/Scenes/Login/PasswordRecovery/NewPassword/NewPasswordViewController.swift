@@ -9,7 +9,27 @@
 import Foundation
 import UIKit
 
+protocol NewPasswordDelegate: class {
+    
+}
+
 class NewPasswordViewController: UIViewController {
-    let viewModel: NewPasswordViewModeling = NewPasswordViewModel()
-    let router: LoginRoutingLogic = LoginRouter.shared
+    var viewModel: NewPasswordViewModeling?
+    var router: NewPasswordRouting?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setupDependencies()
+    }
+    
+    
+    func setupDependencies() {
+        viewModel = NewPasswordViewModel(view: self)
+        router = NewPasswordRouter(viewController: self)
+    }
+}
+
+extension NewPasswordViewController: NewPasswordDelegate {
+    
 }

@@ -13,5 +13,10 @@ protocol NetworkInteraction {
 }
 
 class NetworkService: NetworkInteraction {
+    static var shared: NetworkInteraction = {
+        let instance = NetworkService()
+        return instance
+    }()
     
+    private init() {}
 }

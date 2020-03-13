@@ -13,7 +13,9 @@ protocol CodeConfirmationViewModeling {
 }
 
 class CodeConfirmationViewModel: CodeConfirmationViewModeling {
-    let netService: NetworkInteraction = NetworkService()
-    let storage: StorageData = StorageService()
-    let reachability: Reachability = NetworkReachability()
+    weak var view: CodeConfirmationDelegate?
+    
+    init(view: CodeConfirmationDelegate) {
+        self.view = view
+    }
 }

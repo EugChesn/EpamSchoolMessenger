@@ -9,7 +9,27 @@
 import Foundation
 import UIKit
 
+protocol ContactsDelegate: class {
+    
+}
+
 class ContactsViewController: UIViewController {
-    let viewModel: ContactsViewModeling = ContactsViewModel()
-    let router: MessengerRoutingLogic = MessengerRouter()
+    var viewModel: ContactsViewModeling?
+    var router: ContactsRouting?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setupDependencies()
+    }
+    
+    
+    func setupDependencies() {
+        viewModel = ContactsViewModel(view: self)
+        router = ContactsRouter(viewController: self)
+    }
+}
+
+extension ContactsViewController: ContactsDelegate {
+    
 }

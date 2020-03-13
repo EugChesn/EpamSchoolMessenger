@@ -9,8 +9,27 @@
 import Foundation
 import UIKit
 
-class SettingsViewController: UIViewController {
-    let viewModel: SettingsViewModeling = SettingsViewModel()
-    let router: MessengerRoutingLogic = MessengerRouter()
+protocol SettingsDelegate: class {
+    
+}
 
+class SettingsViewController: UIViewController {
+    var viewModel: SettingsViewModeling?
+    var router: SettingsRouting?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setupDependencies()
+    }
+    
+    
+    func setupDependencies() {
+        viewModel = SettingsViewModel(view: self)
+        router = SettingsRouter(viewController: self)
+    }
+}
+
+extension SettingsViewController: SettingsDelegate {
+    
 }

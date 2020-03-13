@@ -9,8 +9,27 @@
 import Foundation
 import UIKit
 
-class CodeConfirmationViewController: UIViewController {
-    let viewModel: CodeConfirmationViewModeling = CodeConfirmationViewModel()
-    let router: LoginRoutingLogic = LoginRouter.shared
+protocol CodeConfirmationDelegate: class {
+    
+}
 
+class CodeConfirmationViewController: UIViewController {
+    var viewModel: CodeConfirmationViewModeling?
+    var router: CodeConfirmationRouting?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setupDependencies()
+    }
+    
+    
+    func setupDependencies() {
+        viewModel = CodeConfirmationViewModel(view: self)
+        router = CodeConfirmationRouter(viewController: self)
+    }
+}
+
+extension CodeConfirmationViewController: CodeConfirmationDelegate {
+    
 }

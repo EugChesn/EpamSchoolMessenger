@@ -13,7 +13,9 @@ protocol RegistrationCodeConfirmationViewModeling {
 }
 
 class RegistrationCodeConfirmationViewModel: RegistrationCodeConfirmationViewModeling {
-    let netService: NetworkInteraction = NetworkService()
-    let storage: StorageData = StorageService()
-    let reachability: Reachability = NetworkReachability()
+    weak var view: RegistrationCodeConfirmationDelegate?
+    
+    init(view: RegistrationCodeConfirmationDelegate) {
+        self.view = view
+    }
 }

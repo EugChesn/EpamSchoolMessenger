@@ -9,7 +9,27 @@
 import Foundation
 import UIKit
 
+protocol SetupProfileDelegate: class {
+    
+}
+
 class SetupProfileViewController: UIViewController {
-    let viewModel: SetupProfileViewModeling = SetupProfileViewModel()
-    let router: LoginRoutingLogic = LoginRouter.shared
+    var viewModel: SetupProfileViewModeling?
+    var router: SetupProfileRouting?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setupDependencies()
+    }
+    
+    
+    func setupDependencies() {
+        viewModel = SetupProfileViewModel(view: self)
+        router = SetupProfileRouter(viewController: self)
+    }
+}
+
+extension SetupProfileViewController: SetupProfileDelegate {
+    
 }

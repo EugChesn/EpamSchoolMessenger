@@ -13,7 +13,9 @@ protocol NewPasswordViewModeling {
 }
 
 class NewPasswordViewModel: NewPasswordViewModeling {
-    let netService: NetworkInteraction = NetworkService()
-    let storage: StorageData = StorageService()
-    let reachability: Reachability = NetworkReachability()
+    weak var view: NewPasswordDelegate?
+    
+    init(view: NewPasswordDelegate) {
+        self.view = view
+    }
 }

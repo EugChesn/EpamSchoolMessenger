@@ -9,6 +9,27 @@
 import Foundation
 import UIKit
 
+protocol GreetingDelegate: class {
+    
+}
+
 class GreetingViewController: UIViewController {
-    let router: LoginRoutingLogic = LoginRouter.shared
+    var viewModel: GreetingViewModeling?
+    var router: GreetingRouting?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setupDependencies()
+    }
+    
+    
+    func setupDependencies() {
+        viewModel = GreetingViewModel(view: self)
+        router = GreetingRouter(viewController: self)
+    }
+}
+
+extension GreetingViewController: GreetingDelegate {
+    
 }

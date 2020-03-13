@@ -13,5 +13,10 @@ protocol StorageData {
 }
 
 class StorageService: StorageData {
+    static var shared: StorageData = {
+        let instance = StorageService()
+        return instance
+    }()
     
+    private init() {}
 }
