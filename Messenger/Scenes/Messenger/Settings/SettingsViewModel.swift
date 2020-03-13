@@ -13,5 +13,7 @@ protocol SettingsViewModeling {
 }
 
 class SettingsViewModel: SettingsViewModeling {
-    
+    let netService: NetworkInteraction = NetworkService()
+    let storage: StorageData = StorageService()
+    let reachability: Reachability = NetworkReachability()
 }

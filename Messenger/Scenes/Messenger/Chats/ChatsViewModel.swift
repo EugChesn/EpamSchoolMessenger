@@ -13,5 +13,7 @@ protocol ChatsViewModeling {
 }
 
 class ChatsViewModel: ChatsViewModeling {
-    
+    let netService: NetworkInteraction = NetworkService()
+    let storage: StorageData = StorageService()
+    let reachability: Reachability = NetworkReachability()
 }

@@ -13,5 +13,7 @@ protocol SignUpViewModeling {
 }
 
 class SignUpViewModel: SignUpViewModeling {
-    
+    let netService: NetworkInteraction = NetworkService()
+    let storage: StorageData = StorageService()
+    let reachability: Reachability = NetworkReachability()
 }

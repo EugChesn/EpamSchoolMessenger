@@ -13,4 +13,7 @@ protocol SignInViewModeling {
 }
 
 class SignInViewModel: SignInViewModeling {
+    let netService: NetworkInteraction = NetworkService()
+    let storage: StorageData = StorageService()
+    let reachability: Reachability = NetworkReachability()
 }
