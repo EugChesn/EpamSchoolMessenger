@@ -17,9 +17,7 @@ enum LoginRouteType: String {
 }
 
 protocol LoginRoutingLogic {
-    
     func route(routeType: LoginRouteType, from context: UIViewController)
-    
 }
 
 class LoginRouter: LoginRoutingLogic {
