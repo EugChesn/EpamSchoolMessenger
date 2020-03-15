@@ -26,6 +26,9 @@
 		AA1B5FDC241BF24D0080443A /* ChatsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1B5FDB241BF24D0080443A /* ChatsRouter.swift */; };
 		AA1B5FDE241BF26E0080443A /* GreetingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1B5FDD241BF26E0080443A /* GreetingViewModel.swift */; };
 		AA1B5FE1241BF3830080443A /* BaseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1B5FE0241BF3830080443A /* BaseRouter.swift */; };
+		AA487C48241E560900337FBF /* DialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA487C47241E560900337FBF /* DialogViewController.swift */; };
+		AA487C4A241E561600337FBF /* DialogViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA487C49241E561600337FBF /* DialogViewModel.swift */; };
+		AA487C4C241E563900337FBF /* DialogRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA487C4B241E563900337FBF /* DialogRouter.swift */; };
 		AA64DE0F241B694400ED2C63 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA64DE0E241B694400ED2C63 /* NetworkService.swift */; };
 		AA64DE12241B698D00ED2C63 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA64DE11241B698D00ED2C63 /* StorageService.swift */; };
 		AA64DE14241B72B600ED2C63 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA64DE13241B72B600ED2C63 /* Reachability.swift */; };
@@ -80,6 +83,9 @@
 		AA1B5FDB241BF24D0080443A /* ChatsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsRouter.swift; sourceTree = "<group>"; };
 		AA1B5FDD241BF26E0080443A /* GreetingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingViewModel.swift; sourceTree = "<group>"; };
 		AA1B5FE0241BF3830080443A /* BaseRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRouter.swift; sourceTree = "<group>"; };
+		AA487C47241E560900337FBF /* DialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogViewController.swift; sourceTree = "<group>"; };
+		AA487C49241E561600337FBF /* DialogViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogViewModel.swift; sourceTree = "<group>"; };
+		AA487C4B241E563900337FBF /* DialogRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogRouter.swift; sourceTree = "<group>"; };
 		AA64DE0E241B694400ED2C63 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		AA64DE11241B698D00ED2C63 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
 		AA64DE13241B72B600ED2C63 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
@@ -172,6 +178,26 @@
 				AA1B5FE0241BF3830080443A /* BaseRouter.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		AA487C46241E55F500337FBF /* Dialog */ = {
+			isa = PBXGroup;
+			children = (
+				AA487C47241E560900337FBF /* DialogViewController.swift */,
+				AA487C49241E561600337FBF /* DialogViewModel.swift */,
+				AA487C4B241E563900337FBF /* DialogRouter.swift */,
+			);
+			path = Dialog;
+			sourceTree = "<group>";
+		};
+		AA487C4D241E56A300337FBF /* ChatsList */ = {
+			isa = PBXGroup;
+			children = (
+				AAF8351B24193F9200FDF9D2 /* ChatsViewController.swift */,
+				AAF8351D24193F9E00FDF9D2 /* ChatsViewModel.swift */,
+				AA1B5FDB241BF24D0080443A /* ChatsRouter.swift */,
+			);
+			path = ChatsList;
 			sourceTree = "<group>";
 		};
 		AAB3AEF4241B7F4B00825F00 /* CodeConfirmation */ = {
@@ -354,9 +380,8 @@
 		AAF834FF241938BD00FDF9D2 /* Chats */ = {
 			isa = PBXGroup;
 			children = (
-				AAF8351B24193F9200FDF9D2 /* ChatsViewController.swift */,
-				AAF8351D24193F9E00FDF9D2 /* ChatsViewModel.swift */,
-				AA1B5FDB241BF24D0080443A /* ChatsRouter.swift */,
+				AA487C46241E55F500337FBF /* Dialog */,
+				AA487C4D241E56A300337FBF /* ChatsList */,
 			);
 			path = Chats;
 			sourceTree = "<group>";
@@ -543,6 +568,8 @@
 				AA1B5FCA241BF1D00080443A /* CreatePasswordRouter.swift in Sources */,
 				AA64DE0F241B694400ED2C63 /* NetworkService.swift in Sources */,
 				AA1B5FD6241BF2250080443A /* CodeConfirmationRouter.swift in Sources */,
+				AA487C4A241E561600337FBF /* DialogViewModel.swift in Sources */,
+				AA487C48241E560900337FBF /* DialogViewController.swift in Sources */,
 				AA1B5FC6241BF0DE0080443A /* SignInRouter.swift in Sources */,
 				AA64DE12241B698D00ED2C63 /* StorageService.swift in Sources */,
 				AAF8351824193F8100FDF9D2 /* ContactsViewModel.swift in Sources */,
@@ -560,6 +587,7 @@
 				AA1B5FDE241BF26E0080443A /* GreetingViewModel.swift in Sources */,
 				AAB3AF04241B840400825F00 /* SetupProfileViewController.swift in Sources */,
 				AAF834F82419297500FDF9D2 /* SignInViewModel.swift in Sources */,
+				AA487C4C241E563900337FBF /* DialogRouter.swift in Sources */,
 				AAF834F02419258100FDF9D2 /* PasswordRecoveryViewController.swift in Sources */,
 				AAF8351024193F5200FDF9D2 /* SettingsViewController.swift in Sources */,
 				AA1B5FD4241BF21B0080443A /* NewPasswordRouter.swift in Sources */,

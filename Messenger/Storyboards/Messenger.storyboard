@@ -37,10 +37,13 @@
                         <viewLayoutGuide key="safeArea" id="3BC-2j-Ajx"/>
                     </view>
                     <navigationItem key="navigationItem" id="LWH-6D-9Lg"/>
+                    <connections>
+                        <segue destination="JPB-Bh-H4w" kind="show" identifier="dialog" id="n4v-XQ-Dgx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dKH-XK-YA0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1108.6956521739132" y="204.91071428571428"/>
+            <point key="canvasLocation" x="1109" y="205"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="JFN-Vv-Cyt">
@@ -69,6 +72,9 @@
                         <viewLayoutGuide key="safeArea" id="0wy-Lx-kfK"/>
                     </view>
                     <navigationItem key="navigationItem" id="GMF-sb-cEo"/>
+                    <connections>
+                        <segue destination="JPB-Bh-H4w" kind="show" identifier="dialogWithContact" id="12M-tD-FXw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bt6-gM-8Bj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -131,10 +137,29 @@
             </objects>
             <point key="canvasLocation" x="199" y="929"/>
         </scene>
+        <!--Dialog View Controller-->
+        <scene sceneID="3Ym-mc-hHS">
+            <objects>
+                <viewController id="JPB-Bh-H4w" customClass="DialogViewController" customModule="Messenger" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dEp-8U-8bd">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="aWY-um-hZl"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="TZm-kd-xcL"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8sf-sf-IuW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2146" y="205"/>
+        </scene>
     </scenes>
     <resources>
         <image name="gear" catalog="system" width="64" height="58"/>
         <image name="message.fill" catalog="system" width="64" height="56"/>
         <image name="person.circle.fill" catalog="system" width="64" height="60"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="12M-tD-FXw"/>
+    </inferredMetricsTieBreakers>
 </document>
