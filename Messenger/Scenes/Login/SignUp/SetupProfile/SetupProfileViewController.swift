@@ -10,19 +10,26 @@ import Foundation
 import UIKit
 
 protocol SetupProfileDelegate: class {
-    
+    func profileSucces()
 }
 
 class SetupProfileViewController: UIViewController {
+    @IBOutlet weak var nameTextFiled: UITextField!
+    @IBOutlet weak var nicknameTextField: UITextField!
+    
     var viewModel: SetupProfileViewModeling?
     var router: SetupProfileRouting?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupDependencies()
     }
     
+    @IBAction func goToChatsTap(_ sender: UIButton) {
+        guard let name = nameTextFiled.text else {return}
+        guard let nick = nicknameTextField.text else {return}
+        viewModel?.setupProfileUser(name: name, nickname: nick)
+    }
     
     func setupDependencies() {
         viewModel = SetupProfileViewModel(view: self)
@@ -31,5 +38,7 @@ class SetupProfileViewController: UIViewController {
 }
 
 extension SetupProfileViewController: SetupProfileDelegate {
-    
+    func profileSucces() {
+        router?.routeToChat(withIdentifier: "profileToMessanger", sender: self)
+    }
 }

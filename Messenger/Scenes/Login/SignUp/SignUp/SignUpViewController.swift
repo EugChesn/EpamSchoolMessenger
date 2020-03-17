@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 protocol SignUpDelegate: class {
+    func successCreateUser()
 }
 
 class SignUpViewController: UIViewController {
@@ -18,6 +19,13 @@ class SignUpViewController: UIViewController {
     
     var viewModel: SignUpViewModeling?
     var router: SignUpRouting?
+    private var flagSuccessRegister = false {
+        willSet {
+            if newValue {
+                router?.routeToProfile(withIdentifier: "profile", sender: self)
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +35,7 @@ class SignUpViewController: UIViewController {
     @IBAction func signUpTap(_ sender: UIButton) {
         guard let email = emailTextField.text else {return}
         guard let pass = passwordTextField.text else {return}
-        viewModel?.registerUser(username: email, password: pass)
+        viewModel?.registerUser(email: email, password: pass)
     }
     
     func setupDependencies() {
@@ -37,5 +45,7 @@ class SignUpViewController: UIViewController {
 }
 
 extension SignUpViewController: SignUpDelegate {
-    
+    func successCreateUser() {
+        flagSuccessRegister = true
+    }
 }

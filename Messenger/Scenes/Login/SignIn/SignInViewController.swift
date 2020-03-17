@@ -18,7 +18,7 @@ protocol SignInDelegate: class {
 class SignInViewController: UIViewController {
     @IBOutlet weak var imageIcon: UIImageView!
     @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var phoneTextField: UITextField!
+    @IBOutlet weak var emailTextField: UITextField!
     
     var backName = ""
     var viewModel: SignInViewModeling?
@@ -30,25 +30,24 @@ class SignInViewController: UIViewController {
         backButton.title = backName
         self.navigationController!.navigationBar.topItem!.backBarButtonItem = backButton
         
-        phoneTextField.delegate = self
-        phoneTextField.becomeFirstResponder()
-        
+        emailTextField.delegate = self
+        emailTextField.becomeFirstResponder()
         passwordTextField.delegate = self
-        passwordTextField.isHidden = true
         setupDependencies()
     }
     
     @IBAction func LogInTap(_ sender: UIButton) {
-        guard let phone = phoneTextField.text else { return }
-        //guard let pass = passwordTextField.text else { return }
-        viewModel?.sendCodeAuth(phoneNumber: phone)
-        passwordTextField.isHidden = false
+        guard let email = emailTextField.text else { return }
+        guard let pass = passwordTextField.text else { return }
+        //viewModel?.sendCodeAuth(phoneNumber: phone)
+        viewModel?.signInHandler(email: email, pass: pass)
     }
     
-    @IBAction func LogInWithCode(_ sender: UIButton) {
+    /*@IBAction func LogInWithCode(_ sender: UIButton) {
         guard let code = passwordTextField.text else { return }
         viewModel?.handlerLogIn(code: code)
-    }
+    }*/
+    
     func setupDependencies() {
         viewModel = SignInViewModel(view: self)
         router = SignInRouter(viewController: self)
@@ -57,20 +56,20 @@ class SignInViewController: UIViewController {
 
 extension SignInViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField == phoneTextField {
+        if textField == emailTextField {
             textField.resignFirstResponder()
             passwordTextField.becomeFirstResponder()
         }
         return true
     }
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if textField == phoneTextField {
+    /*func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField == emailTextField {
             let allowedCharacters = CharacterSet(charactersIn:"+0123456789")
             let characterSet = CharacterSet(charactersIn: string)
             return allowedCharacters.isSuperset(of: characterSet)
         }
         return true
-    }
+    }*/
 }
 
 extension AuthErrorCode {

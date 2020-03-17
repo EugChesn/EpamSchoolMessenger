@@ -7,11 +7,14 @@
 //
 
 import Foundation
+import UIKit
 
 protocol SetupProfileRouting {
-    
+    func routeToChat(withIdentifier: String, sender: UIViewController?)
 }
 
 class SetupProfileRouter: BaseRouter, SetupProfileRouting {
-
+    func routeToChat(withIdentifier: String, sender: UIViewController?) {
+        performSegue(withIdentifier: withIdentifier, sender: sender)
+    }
 }

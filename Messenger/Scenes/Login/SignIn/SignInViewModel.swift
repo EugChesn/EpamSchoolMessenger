@@ -10,8 +10,9 @@ import Foundation
 import FirebaseAuth
 
 protocol SignInViewModeling {
-    func sendCodeAuth(phoneNumber: String)
-    func handlerLogIn(code: String)
+    //func sendCodeAuth(phoneNumber: String)
+    //func handlerLogIn(code: String)
+    func signInHandler(email: String, pass: String)
 }
 
 class SignInViewModel: SignInViewModeling {
@@ -21,11 +22,15 @@ class SignInViewModel: SignInViewModeling {
         self.view = view
     }
     
-    func sendCodeAuth(phoneNumber: String) {
+    func signInHandler(email: String, pass: String) {
+        FirebaseService.firebaseService.signInUser(email: email, password: pass, completion: { self.view?.successLogin()}, faulture: {(err) in  self.view?.errorLogin(error: err)})
+    }
+    
+    /*func sendCodeAuth(phoneNumber: String) {
         //Auth.auth().settings!.isAppVerificationDisabledForTesting = true
         PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate: nil) { (verificationID, error) in
             if let error = error {
-                print(error.localizedDescription)
+                self.view?.errorLogin(error: error)
               return
             }
             UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
@@ -49,7 +54,7 @@ class SignInViewModel: SignInViewModeling {
                 self.view?.successLogin()
             }
         }
-    }
+    }*/
 }
 
 

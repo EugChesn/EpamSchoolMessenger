@@ -9,7 +9,7 @@
 import Foundation
 
 protocol SetupProfileViewModeling {
-    
+    func setupProfileUser(name: String, nickname: String)
 }
 
 class SetupProfileViewModel: SetupProfileViewModeling {
@@ -17,5 +17,11 @@ class SetupProfileViewModel: SetupProfileViewModeling {
     
     init(view: SetupProfileDelegate) {
         self.view = view
+    }
+    
+    func setupProfileUser(name: String, nickname: String) {
+        FirebaseService.firebaseService.setNameUser(name: name, nickName: nickname) {
+            self.view?.profileSucces()
+        }
     }
 }
