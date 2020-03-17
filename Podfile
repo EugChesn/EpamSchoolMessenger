@@ -7,7 +7,8 @@ target 'Messenger' do
   # add the Firebase pod for Google Analytics
   pod 'Firebase/Analytics'
   pod 'FirebaseUI/Auth'
-  # add pods for any other desired Firebase products
+  pod 'Firebase/Database' 
+ # add pods for any other desired Firebase products
   # https://firebase.google.com/docs/ios/setup#available-pods
 
   # Pods for Messenger
