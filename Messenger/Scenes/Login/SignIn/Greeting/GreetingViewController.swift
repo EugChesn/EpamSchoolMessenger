@@ -22,17 +22,23 @@ class GreetingViewController: UIViewController {
     var viewModel: GreetingViewModeling?
     var router: GreetingRouting?
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupDependencies()
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard segue.identifier == "signIn" else { return }
+        guard let destination = segue.destination as? SignInViewController else { return }
+        destination.backName = "Greeting"
+    }
     
     @IBAction func LogInTap(_ sender: UIButton) {
-        
+        router?.routeToLogin(withIdentifier: "signIn", sender: self)
     }
     @IBAction func SignUpTap(_ sender: UIButton) {
-        router?.routeToLogin(withIdentifier: "signIn", sender: self)
+        router?.routeToLogin(withIdentifier: "singUp", sender: self)
     }
     
     func setupDependencies() {

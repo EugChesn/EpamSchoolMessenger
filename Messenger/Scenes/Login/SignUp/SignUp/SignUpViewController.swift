@@ -10,19 +10,25 @@ import Foundation
 import UIKit
 
 protocol SignUpDelegate: class {
-    
 }
 
 class SignUpViewController: UIViewController {
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    
     var viewModel: SignUpViewModeling?
     var router: SignUpRouting?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupDependencies()
     }
     
+    @IBAction func signUpTap(_ sender: UIButton) {
+        guard let email = emailTextField.text else {return}
+        guard let pass = passwordTextField.text else {return}
+        viewModel?.registerUser(username: email, password: pass)
+    }
     
     func setupDependencies() {
         viewModel = SignUpViewModel(view: self)

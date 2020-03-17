@@ -9,7 +9,7 @@
 import Foundation
 
 protocol SignUpViewModeling {
-    
+    func registerUser(email: String, password: String)
 }
 
 class SignUpViewModel: SignUpViewModeling {
@@ -18,4 +18,9 @@ class SignUpViewModel: SignUpViewModeling {
     init(view: SignUpDelegate) {
         self.view = view
     }
+    
+    func registerUser(email: String, password: String) {
+        FirebaseService.firebaseService.createUser(username: email, password: password)
+    }
 }
+
