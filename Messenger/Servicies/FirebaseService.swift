@@ -20,9 +20,9 @@ class FirebaseService {
         referenceDataBase.child("users").child(user.uid).setValue(["email": user.email])
     }
     // дописать данные в бд полученные из профиля
-    private func writeNewDataProfile(name: String, nickName: String, user: User) {
-        let update = ["name": name,
-                      "nickname": nickName]
+    func writeNewDataProfile(update: [String:String], user: User) {
+        /*let update = ["name": name,
+                      "nickname": nickName]*/
         referenceDataBase.child("users").child(user.uid).updateChildValues(update)
     }
     
@@ -51,7 +51,8 @@ class FirebaseService {
             if let err = error{
                 print(err.localizedDescription)
             } else {
-                self.writeNewDataProfile(name: name, nickName: nickName, user: currUser!)
+                let update = ["name": name,"nickname": nickName]
+                self.writeNewDataProfile(update: update, user: currUser!)
                 completion()
             }
         }

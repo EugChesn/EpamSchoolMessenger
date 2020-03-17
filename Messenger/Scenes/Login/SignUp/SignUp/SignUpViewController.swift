@@ -19,13 +19,6 @@ class SignUpViewController: UIViewController {
     
     var viewModel: SignUpViewModeling?
     var router: SignUpRouting?
-    private var flagSuccessRegister = false {
-        willSet {
-            if newValue {
-                router?.routeToProfile(withIdentifier: "profile", sender: self)
-            }
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +39,6 @@ class SignUpViewController: UIViewController {
 
 extension SignUpViewController: SignUpDelegate {
     func successCreateUser() {
-        flagSuccessRegister = true
+        router?.routeToProfile(withIdentifier: "profile", sender: self)
     }
 }
