@@ -25,6 +25,8 @@ class SignUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Utilities.styleTextField(emailTextField)
+        Utilities.styleTextField(passwordTextField)
         Utilities.styleButton(signUpButton)
         setupDependencies()
     }

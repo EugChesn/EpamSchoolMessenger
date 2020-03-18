@@ -21,7 +21,7 @@ extension AuthErrorCode {
         case .networkError:
             return "Network error. Please try again."
         case .weakPassword:
-            return "Your password is too weak"
+            return "Your password is too weak \n Minimum 8 characters at least 1 uppercase alphabet, 1 lowercase alphabet, 1 Number and 1 special character:"
         default:
             return "Unknown error occurred"
         }

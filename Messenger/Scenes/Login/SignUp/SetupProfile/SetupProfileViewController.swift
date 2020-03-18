@@ -23,6 +23,8 @@ class SetupProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Utilities.styleTextField(nameTextFiled)
+        Utilities.styleTextField(nicknameTextField)
         Utilities.styleButton(goChatsButton)
         setupDependencies()
     }
