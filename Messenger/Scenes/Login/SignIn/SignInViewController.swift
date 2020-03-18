@@ -19,6 +19,7 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var imageIcon: UIImageView!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var logInButton: UIButton!
     
     var backName = ""
     var viewModel: SignInViewModeling?
@@ -29,6 +30,10 @@ class SignInViewController: UIViewController {
         let backButton = UIBarButtonItem()
         backButton.title = backName
         self.navigationController!.navigationBar.topItem!.backBarButtonItem = backButton
+        
+        Utilities.styleTextField(emailTextField)
+        Utilities.styleTextField(passwordTextField)
+        Utilities.styleButton(logInButton)
         
         emailTextField.delegate = self
         emailTextField.becomeFirstResponder()

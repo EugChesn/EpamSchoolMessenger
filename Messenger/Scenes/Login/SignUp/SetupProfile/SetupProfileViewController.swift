@@ -16,12 +16,14 @@ protocol SetupProfileDelegate: class {
 class SetupProfileViewController: UIViewController {
     @IBOutlet weak var nameTextFiled: UITextField!
     @IBOutlet weak var nicknameTextField: UITextField!
+    @IBOutlet weak var goChatsButton: UIButton!
     
     var viewModel: SetupProfileViewModeling?
     var router: SetupProfileRouting?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Utilities.styleButton(goChatsButton)
         setupDependencies()
     }
     

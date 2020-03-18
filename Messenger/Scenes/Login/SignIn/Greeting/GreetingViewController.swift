@@ -26,6 +26,8 @@ class GreetingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Utilities.styleButton(LogInButton)
+        Utilities.styleButton(SignUpButton)
         setupDependencies()
     }
     override func viewWillAppear(_ animated: Bool) {

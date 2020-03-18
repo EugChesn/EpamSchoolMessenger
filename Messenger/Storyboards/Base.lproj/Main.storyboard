@@ -159,6 +159,7 @@
                     <navigationItem key="navigationItem" id="cbx-7v-VDk"/>
                     <connections>
                         <outlet property="emailTextField" destination="yCV-Nj-AdD" id="TTc-q0-P42"/>
+                        <outlet property="logInButton" destination="zB6-WP-aij" id="T7S-TX-8KG"/>
                         <outlet property="passwordTextField" destination="NG1-HE-qSU" id="mub-Eo-ZHk"/>
                         <segue destination="R2d-H2-Wl9" kind="show" identifier="messenger" id="psE-Uq-ON4"/>
                         <segue destination="b7k-60-xVb" kind="show" identifier="passwordRecovery" id="ubq-lO-5uZ"/>
@@ -230,6 +231,7 @@
                     <connections>
                         <outlet property="emailTextField" destination="wxj-Lr-b2n" id="4HM-ik-RuT"/>
                         <outlet property="passwordTextField" destination="Mhc-hf-Jgf" id="1QQ-bA-x8w"/>
+                        <outlet property="signUpButton" destination="T2P-sb-mri" id="KS1-SW-CHn"/>
                         <segue destination="SpG-Fd-5fg" kind="show" identifier="profile" id="DpX-ix-Um0"/>
                     </connections>
                 </viewController>
@@ -380,6 +382,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="wLe-q9-kpr"/>
                     <connections>
+                        <outlet property="goChatsButton" destination="KVB-EO-s6S" id="irf-SS-97O"/>
                         <outlet property="nameTextFiled" destination="NOA-Co-rj0" id="pio-HY-NNc"/>
                         <outlet property="nicknameTextField" destination="Anl-dA-UPQ" id="Qha-Bv-58z"/>
                         <segue destination="R2d-H2-Wl9" kind="show" identifier="profileToMessanger" id="0t8-jX-2j6"/>
