@@ -8,9 +8,11 @@
 
 import Foundation
 import UIKit
+import FirebaseAuth
 
 protocol SignUpDelegate: class {
     func successCreateUser()
+    func faultCreateUser(err: Error)
 }
 
 class SignUpViewController: UIViewController {
@@ -38,7 +40,18 @@ class SignUpViewController: UIViewController {
 }
 
 extension SignUpViewController: SignUpDelegate {
+    func faultCreateUser(err: Error) {
+        if let errorCode = AuthErrorCode(rawValue: err._code) {
+            print(errorCode.errorMessage)
+            let alert = UIAlertController(title: "Error", message: errorCode.errorMessage, preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+            alert.addAction(okAction)
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
     func successCreateUser() {
         router?.routeToProfile(withIdentifier: "profile", sender: self)
     }
+    
 }

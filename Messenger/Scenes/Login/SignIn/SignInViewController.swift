@@ -72,25 +72,6 @@ extension SignInViewController: UITextFieldDelegate {
     }*/
 }
 
-extension AuthErrorCode {
-    var errorMessage: String {
-        switch self {
-        case .emailAlreadyInUse:
-            return "The email is already in use with another account"
-        case .userDisabled:
-            return "Your account has been disabled. Please contact support."
-        case .invalidEmail, .invalidSender, .invalidRecipientEmail:
-            return "Please enter a valid email"
-        case .networkError:
-            return "Network error. Please try again."
-        case .weakPassword:
-            return "Your password is too weak"
-        default:
-            return "Unknown error occurred"
-        }
-    }
-}
-
 extension SignInViewController: SignInDelegate {
     func errorLogin(error: Error) {
         if let errorCode = AuthErrorCode(rawValue: error._code) {

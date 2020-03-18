@@ -21,20 +21,21 @@ class FirebaseService {
     }
     // дописать данные в бд полученные из профиля
     func writeNewDataProfile(update: [String:String], user: User) {
-        /*let update = ["name": name,
-                      "nickname": nickName]*/
         referenceDataBase.child("users").child(user.uid).updateChildValues(update)
     }
     
-    func createUser(username: String, password: String, fault: @escaping (String?)->()) { // зарегистрировать нового пользователя
+    func createUser(username: String,
+                    password: String,
+                    completion: @escaping ()->(),
+                    fault: @escaping (Error)->()) { // зарегистрировать нового пользователя
         Auth.auth().createUser(withEmail: username, password: password) { authResult, error in
             if let err = error {
                 print(err.localizedDescription)
-                fault(err.localizedDescription)
+                fault(err)
             } else {
-                fault(nil)
                 if let result = authResult {
                     self.writeNewUser(user: result.user)
+                    completion()
                 }
             }
         }

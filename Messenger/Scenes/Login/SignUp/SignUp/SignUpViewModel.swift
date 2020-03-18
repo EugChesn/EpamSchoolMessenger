@@ -20,13 +20,10 @@ class SignUpViewModel: SignUpViewModeling {
     }
     
     func registerUser(email: String, password: String) {
-        FirebaseService.firebaseService.createUser(username: email, password: password) { (err) in
-            if let error = err {
-                print("error create User")
-            } else {
-                self.view?.successCreateUser()
-            }
-        }
+        FirebaseService.firebaseService.createUser(username: email,
+                                                   password: password,
+                                                   completion: { self.view?.successCreateUser()},
+                                                   fault: {(error) in self.view?.faultCreateUser(err: error)})
     }
 }
 
