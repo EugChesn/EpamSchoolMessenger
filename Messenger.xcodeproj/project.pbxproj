@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		3E3185D1241C0381000FD0C2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3E3185D0241C0381000FD0C2 /* GoogleService-Info.plist */; };
 		3E6BD3D3241FD70800CA6780 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6BD3D2241FD70800CA6780 /* FirebaseService.swift */; };
+		3E78E7132422218F0053DD1C /* ExtensionAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E78E7122422218F0053DD1C /* ExtensionAuth.swift */; };
+		3E78E71524222A700053DD1C /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E78E71424222A700053DD1C /* Utilities.swift */; };
 		867B2F7B2412585C00B16B01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867B2F7A2412585C00B16B01 /* AppDelegate.swift */; };
 		867B2F822412585C00B16B01 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 867B2F802412585C00B16B01 /* Main.storyboard */; };
 		867B2F842412586000B16B01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 867B2F832412586000B16B01 /* Assets.xcassets */; };
@@ -64,6 +66,8 @@
 /* Begin PBXFileReference section */
 		3E3185D0241C0381000FD0C2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3E6BD3D2241FD70800CA6780 /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
+		3E78E7122422218F0053DD1C /* ExtensionAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionAuth.swift; sourceTree = "<group>"; };
+		3E78E71424222A700053DD1C /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		867B2F772412585C00B16B01 /* Messenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Messenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		867B2F7A2412585C00B16B01 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		867B2F812412585C00B16B01 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -138,6 +142,14 @@
 				A0C308099DE41D9E065508EF /* Pods_Messenger.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3E78E71624222A7E0053DD1C /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				3E78E71424222A700053DD1C /* Utilities.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		867B2F6E2412585C00B16B01 = {
@@ -320,6 +332,8 @@
 		AAF834A92418FC7700FDF9D2 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				3E78E7122422218F0053DD1C /* ExtensionAuth.swift */,
+				3E78E71624222A7E0053DD1C /* Utilities */,
 				AAF834AC2418FCC100FDF9D2 /* PasswordRecovery */,
 				AAF834AB2418FCA700FDF9D2 /* SignUp */,
 				AAF834AA2418FC9E00FDF9D2 /* SignIn */,
@@ -567,6 +581,7 @@
 				AAF834EA2419229D00FDF9D2 /* SignUpViewController.swift in Sources */,
 				AAB3AEF8241B7FAB00825F00 /* NewPasswordViewController.swift in Sources */,
 				AAF8350E24193C3600FDF9D2 /* MessengerTabBarController.swift in Sources */,
+				3E78E71524222A700053DD1C /* Utilities.swift in Sources */,
 				AAF8351C24193F9200FDF9D2 /* ChatsViewController.swift in Sources */,
 				AA1B5FCA241BF1D00080443A /* CreatePasswordRouter.swift in Sources */,
 				AA64DE0F241B694400ED2C63 /* NetworkService.swift in Sources */,
@@ -574,6 +589,7 @@
 				3E6BD3D3241FD70800CA6780 /* FirebaseService.swift in Sources */,
 				AA487C4A241E561600337FBF /* DialogViewModel.swift in Sources */,
 				AA487C48241E560900337FBF /* DialogViewController.swift in Sources */,
+				3E78E7132422218F0053DD1C /* ExtensionAuth.swift in Sources */,
 				AA1B5FC6241BF0DE0080443A /* SignInRouter.swift in Sources */,
 				AA64DE12241B698D00ED2C63 /* StorageService.swift in Sources */,
 				AAF8351824193F8100FDF9D2 /* ContactsViewModel.swift in Sources */,
