@@ -10,9 +10,13 @@ import UIKit
 
 class ChatsListTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var chatLogoImage: UIImageView!
+    @IBOutlet weak var chatNamelabel: UILabel!
+    @IBOutlet weak var lastMessageText: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        ChatListUtilities.styleImageView(chatLogoImage)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -7,3 +7,13 @@
 //
 
 import Foundation
+import UIKit
+
+class ChatListUtilities{
+    
+    static func styleImageView(_ imageView: UIImageView){
+        imageView.layer.cornerRadius = 30
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.masksToBounds = true
+    }
+}
