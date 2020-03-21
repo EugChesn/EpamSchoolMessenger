@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Firebase
 
 protocol ChatsViewModeling {
     
@@ -18,9 +17,5 @@ class ChatsViewModel: ChatsViewModeling {
     
     init(view: ChatsDelegate) {
         self.view = view
-    }
-    
-    func getChats(){
-        //let user = FirebaseService.getCurrentUser(FirebaseService)
     }
 }
