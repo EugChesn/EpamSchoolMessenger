@@ -7,14 +7,11 @@
 //
 
 import Foundation
-import UIKit
 
 protocol ChatsRouting {
-    func routeToSelectedChat(withIdentifier: String, sender: UIViewController?)
+    
 }
 
 class ChatsRouter: BaseRouter, ChatsRouting {
-    func routeToSelectedChat(withIdentifier: String, sender: UIViewController?) {
-        performSegue(withIdentifier: withIdentifier, sender: sender)
-    }
+
 }
