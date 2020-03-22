@@ -13,7 +13,7 @@ protocol SettingsDelegate: class {
     
 }
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: UITableViewController {
     var viewModel: SettingsViewModeling?
     var router: SettingsRouting?
     
@@ -23,13 +23,18 @@ class SettingsViewController: UIViewController {
         static let search = "Search"
     }
     
-    @IBOutlet weak var searchBar: UISearchBar!
+    let searchController = UISearchController(searchResultsController: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.rightBarButtonItem?.title = Title.rightBarButtonItem
-        searchBar.placeholder = Title.search
-        searchBar.delegate = self
+
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = Title.search
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+        
         setupDependencies()
     }
     
@@ -42,23 +47,9 @@ class SettingsViewController: UIViewController {
         router = SettingsRouter(viewController: self)
     }
 }
-
-extension SettingsViewController: UISearchBarDelegate {
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        searchBar.setShowsCancelButton(true, animated: true)
-    }
-
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        searchBar.setShowsCancelButton(false, animated: true)
-    }
-
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        view.endEditing(true)
-    }
-
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        view.endEditing(true)
-        searchBar.searchTextField.text = nil
+ 
+extension SettingsViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
     }
 }
 

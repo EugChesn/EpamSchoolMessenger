@@ -15,6 +15,7 @@
 		867B2F822412585C00B16B01 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 867B2F802412585C00B16B01 /* Main.storyboard */; };
 		867B2F842412586000B16B01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 867B2F832412586000B16B01 /* Assets.xcassets */; };
 		867B2F872412586000B16B01 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 867B2F852412586000B16B01 /* LaunchScreen.storyboard */; };
+		86CB7A7C2427DE0400995986 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86CB7A7B2427DE0400995986 /* Settings.storyboard */; };
 		9E0D75B8BAE4693C865075BC /* libPods-Messenger.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 05D81F87A0F4B25F695EBCAD /* libPods-Messenger.a */; };
 		AA1B5FC6241BF0DE0080443A /* SignInRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1B5FC5241BF0DE0080443A /* SignInRouter.swift */; };
 		AA1B5FC8241BF1C30080443A /* RegistrationCodeConfirmationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1B5FC7241BF1C30080443A /* RegistrationCodeConfirmationRouter.swift */; };
@@ -75,6 +76,7 @@
 		867B2F832412586000B16B01 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		867B2F862412586000B16B01 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		867B2F882412586000B16B01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		86CB7A7B2427DE0400995986 /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		AA1B5FC5241BF0DE0080443A /* SignInRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInRouter.swift; sourceTree = "<group>"; };
 		AA1B5FC7241BF1C30080443A /* RegistrationCodeConfirmationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationCodeConfirmationRouter.swift; sourceTree = "<group>"; };
 		AA1B5FC9241BF1D00080443A /* CreatePasswordRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePasswordRouter.swift; sourceTree = "<group>"; };
@@ -289,6 +291,7 @@
 			children = (
 				867B2F802412585C00B16B01 /* Main.storyboard */,
 				AAF835032419393700FDF9D2 /* Messenger.storyboard */,
+				86CB7A7B2427DE0400995986 /* Settings.storyboard */,
 				867B2F852412586000B16B01 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
@@ -503,6 +506,7 @@
 				AAF835042419393700FDF9D2 /* Messenger.storyboard in Resources */,
 				867B2F872412586000B16B01 /* LaunchScreen.storyboard in Resources */,
 				3E3185D1241C0381000FD0C2 /* GoogleService-Info.plist in Resources */,
+				86CB7A7C2427DE0400995986 /* Settings.storyboard in Resources */,
 				867B2F842412586000B16B01 /* Assets.xcassets in Resources */,
 				867B2F822412585C00B16B01 /* Main.storyboard in Resources */,
 			);
