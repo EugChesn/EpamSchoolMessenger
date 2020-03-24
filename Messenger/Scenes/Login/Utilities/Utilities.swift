@@ -22,6 +22,10 @@ class Utilities {
         button.backgroundColor = UIColor .systemBlue
         button.layer.cornerRadius = 16
     }
+    static func styleImageView(_ imageView: UIImageView) {
+        imageView.layer.cornerRadius = imageView.frame.size.width / 2
+        imageView.clipsToBounds = true
+    }
     static func validatePass(password: String) -> Bool
     {
         let regularExpression = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&])[A-Za-z\\d$@$!%*?&]{8,}"

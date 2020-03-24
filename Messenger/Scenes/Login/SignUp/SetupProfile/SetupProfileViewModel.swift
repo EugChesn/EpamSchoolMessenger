@@ -7,9 +7,10 @@
 //
 
 import Foundation
+import UIKit
 
 protocol SetupProfileViewModeling {
-    func setupProfileUser(name: String, nickname: String)
+    func setupProfileUser(name: String, nickname: String, photo: UIImage)
 }
 
 class SetupProfileViewModel: SetupProfileViewModeling {
@@ -19,8 +20,8 @@ class SetupProfileViewModel: SetupProfileViewModeling {
         self.view = view
     }
     
-    func setupProfileUser(name: String, nickname: String) {
-        FirebaseService.firebaseService.setNameUser(name: name, nickName: nickname) {
+    func setupProfileUser(name: String, nickname: String, photo: UIImage) {
+        FirebaseService.firebaseService.setNameUser(name: name, nickName: nickname, photo: photo) {
             self.view?.profileSucces()
         }
     }

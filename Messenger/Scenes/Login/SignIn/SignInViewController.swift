@@ -48,11 +48,6 @@ class SignInViewController: UIViewController {
         viewModel?.signInHandler(email: email, pass: pass)
     }
     
-    /*@IBAction func LogInWithCode(_ sender: UIButton) {
-        guard let code = passwordTextField.text else { return }
-        viewModel?.handlerLogIn(code: code)
-    }*/
-    
     func setupDependencies() {
         viewModel = SignInViewModel(view: self)
         router = SignInRouter(viewController: self)
@@ -67,14 +62,6 @@ extension SignInViewController: UITextFieldDelegate {
         }
         return true
     }
-    /*func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if textField == emailTextField {
-            let allowedCharacters = CharacterSet(charactersIn:"+0123456789")
-            let characterSet = CharacterSet(charactersIn: string)
-            return allowedCharacters.isSuperset(of: characterSet)
-        }
-        return true
-    }*/
 }
 
 extension SignInViewController: SignInDelegate {
@@ -89,6 +76,7 @@ extension SignInViewController: SignInDelegate {
     }
     
     func successLogin() {
+        //print(FirebaseService.firebaseService.getCurrentUser()?.photoURL)
         router?.routeToMessage(withIdentifier: "messenger" , sender: self)
     }
 }
