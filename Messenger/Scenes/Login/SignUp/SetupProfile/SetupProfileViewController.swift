@@ -49,6 +49,19 @@ class SetupProfileViewController: UIViewController {
         viewModel = SetupProfileViewModel(view: self)
         router = SetupProfileRouter(viewController: self)
     }
+    func Test_FirebaseUI_Download() {
+        // Reference to an image file in Firebase Storage
+        let reference = StorageService.shared.storageRef.child(Auth.auth().currentUser!.uid)
+
+        // UIImageView in your ViewController
+        let imageView: UIImageView = self.photoNewUserImageView
+
+        // Placeholder image
+        let placeholderImage = UIImage(named: "placeholder.jpg")
+
+        // Load the image using SDWebImage
+        imageView.sd_setImage(with: reference, placeholderImage: placeholderImage)
+    }
 }
 
 extension SetupProfileViewController: SetupProfileDelegate {

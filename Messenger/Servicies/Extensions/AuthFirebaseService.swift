@@ -21,8 +21,8 @@ protocol AuthFirebase: class {
                     password: String,
                     completion: @escaping ()->(),
                     fault: @escaping (Error)->())
-    
-    func setNameUser(name: String, nickName: String, photo: UIImage, completion: @escaping ()->())
+
+    func setProfileUser(name: String, nickName: String, photo: UIImage, completion: @escaping ()->())
 }
 
 extension FirebaseService: AuthFirebase {
@@ -59,21 +59,16 @@ extension FirebaseService: AuthFirebase {
         }
     }
     
-    func setNameUser(name: String, nickName: String, photo: UIImage, completion: @escaping ()->()) {
-        StorageService.shared.uploadImageProfile(img: photo) {
-            let currUser = self.getCurrentUser()
-            let changeRequest = currUser!.createProfileChangeRequest()
-            changeRequest.displayName = name
-            changeRequest.commitChanges { (error) in
-                if let err = error{
-                    print(err.localizedDescription)
-                } else {
-                    let update = ["name": name,"nickname": nickName]
-                    self.writeNewDataProfile(update: update, user: currUser!)
-                    completion()
+    func setProfileUser(name: String, nickName: String, photo: UIImage, completion: @escaping ()->()) {
+        StorageService.shared.uploadImageProfile(img: photo) { [weak self] reference in
+            reference.downloadURL { (url, error) in
+                guard let downloadURL = url else {
+                    print("an error occured after uploading and then getting the URL")
+                    return
                 }
+                self?.updateProfileInfo(name: name, nickName: nickName, photo: downloadURL)
+                completion()
             }
         }
     }
-
 }

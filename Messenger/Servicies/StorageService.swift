@@ -11,7 +11,7 @@ import FirebaseStorage
 import FirebaseAuth
 
 protocol uploadProfilePhoto {
-    func uploadImageProfile(img :UIImage, completion: @escaping () -> ())
+    func uploadImageProfile(img :UIImage, completion: @escaping (StorageReference) -> ())
 }
 
 class StorageService {
@@ -27,21 +27,23 @@ class StorageService {
 }
 
 extension StorageService: uploadProfilePhoto {
-    func uploadImageProfile(img: UIImage, completion: @escaping () -> ()) {
+    func uploadImageProfile(img: UIImage, completion: @escaping (StorageReference) -> ()) {
         guard let imageData: Data = img.jpegData(compressionQuality: 0.1) else {
             return
         }
         let user = FirebaseService.firebaseService.getCurrentUser()!
         let filePath = "\(user.uid)"
+        let reference = self.storageRef.child(filePath)
         let metaData = StorageMetadata()
         metaData.contentType = "image/jpg"
-        
-        self.storageRef.child(filePath).putData(imageData, metadata: metaData) { (metadata, error) in
+
+        reference.putData(imageData, metadata: metaData) { (metadata, error) in
             guard let _ = metadata else {
                 print("error while uploading")
                 return
             }
-            self.storageRef.child(filePath).downloadURL { (url, error) in
+            completion(reference)
+            /*reference.downloadURL { (url, error) in
                 guard let downloadURL = url else {
                     print("an error occured after uploading and then getting the URL")
                     return
@@ -56,9 +58,8 @@ extension StorageService: uploadProfilePhoto {
                     }
                 }
                 
-            }
+            }*/
         }
-        
     }
     
 }

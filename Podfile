@@ -8,7 +8,7 @@ target 'Messenger' do
   pod 'Firebase/Analytics'
   pod 'FirebaseUI/Auth'
   pod 'Firebase/Database'
-  pod 'Firebase/Storage' 
+  pod 'FirebaseUI/Storage' 
  # add pods for any other desired Firebase products
   # https://firebase.google.com/docs/ios/setup#available-pods
 
