@@ -330,7 +330,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="7NJ-DZ-0qC">
-                                <rect key="frame" x="20" y="412" width="374" height="160"/>
+                                <rect key="frame" x="20" y="421" width="374" height="160"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NOA-Co-rj0">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="40"/>
@@ -363,15 +363,15 @@
                                     <constraint firstItem="Anl-dA-UPQ" firstAttribute="height" secondItem="NOA-Co-rj0" secondAttribute="height" id="pfc-RX-7hc"/>
                                 </constraints>
                             </stackView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="rE0-ne-27q">
-                                <rect key="frame" x="107" y="120" width="200" height="197.5"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="rE0-ne-27q">
+                                <rect key="frame" x="107" y="138" width="200" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="iVq-V0-qOE"/>
                                     <constraint firstAttribute="width" constant="200" id="y82-PT-xAS"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mXD-oy-HQY">
-                                <rect key="frame" x="167" y="339" width="80" height="33"/>
+                                <rect key="frame" x="167" y="358" width="80" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Add photo"/>
                                 <connections>
@@ -382,12 +382,12 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="uIL-tH-Ufh" firstAttribute="trailing" secondItem="7NJ-DZ-0qC" secondAttribute="trailing" constant="20" id="8MD-kd-Nya"/>
-                            <constraint firstItem="rE0-ne-27q" firstAttribute="top" secondItem="uIL-tH-Ufh" secondAttribute="top" constant="31" id="HrT-1n-nSk"/>
                             <constraint firstItem="7NJ-DZ-0qC" firstAttribute="leading" secondItem="uIL-tH-Ufh" secondAttribute="leading" constant="20" id="Mtd-Vj-FDQ"/>
                             <constraint firstItem="rE0-ne-27q" firstAttribute="centerX" secondItem="JpX-Dt-FJ9" secondAttribute="centerX" id="NQh-Ox-VRr"/>
-                            <constraint firstItem="mXD-oy-HQY" firstAttribute="centerX" secondItem="JpX-Dt-FJ9" secondAttribute="centerX" id="bxI-Hu-EBM"/>
-                            <constraint firstItem="mXD-oy-HQY" firstAttribute="top" secondItem="rE0-ne-27q" secondAttribute="bottom" constant="20" id="hZl-WJ-Hsk"/>
-                            <constraint firstItem="7NJ-DZ-0qC" firstAttribute="top" secondItem="mXD-oy-HQY" secondAttribute="bottom" constant="40" id="uRS-Sh-Sr9"/>
+                            <constraint firstItem="mXD-oy-HQY" firstAttribute="top" secondItem="rE0-ne-27q" secondAttribute="bottom" constant="20" id="bzr-Eh-JSo"/>
+                            <constraint firstItem="mXD-oy-HQY" firstAttribute="centerX" secondItem="JpX-Dt-FJ9" secondAttribute="centerX" id="faN-Tr-bdo"/>
+                            <constraint firstItem="rE0-ne-27q" firstAttribute="top" secondItem="uIL-tH-Ufh" secondAttribute="top" constant="50" id="mPn-Xl-hPJ"/>
+                            <constraint firstItem="7NJ-DZ-0qC" firstAttribute="top" secondItem="mXD-oy-HQY" secondAttribute="bottom" constant="30" id="zMh-8g-hh8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uIL-tH-Ufh"/>
                     </view>
@@ -406,7 +406,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="photo" catalog="system" width="64" height="46"/>
+        <image name="profile" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="0t8-jX-2j6"/>
