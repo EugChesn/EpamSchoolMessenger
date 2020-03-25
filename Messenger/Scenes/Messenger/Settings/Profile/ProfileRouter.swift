@@ -7,3 +7,11 @@
 //
 
 import Foundation
+
+protocol ProfileRoutering {
+    
+}
+
+class ProfileRouter: BaseRouter, ProfileRoutering {
+
+}

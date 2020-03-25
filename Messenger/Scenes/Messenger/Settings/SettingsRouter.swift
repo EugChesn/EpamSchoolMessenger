@@ -7,11 +7,14 @@
 //
 
 import Foundation
+import UIKit
 
 protocol SettingsRouting {
-    
+    func routeToTable(withIdentifier: String, sender: UITableViewController?)
 }
 
 class SettingsRouter: BaseRouter, SettingsRouting {
-
+    func routeToTable(withIdentifier: String, sender: UITableViewController?) {
+        performSegue(withIdentifier: withIdentifier, sender: sender)
+    }
 }

@@ -7,3 +7,15 @@
 //
 
 import Foundation
+
+protocol ProfileViewModeling {
+    
+}
+
+class ProfileViewModel: ProfileViewModeling {
+    weak var view: ProfileDelegate?
+    
+    init(view: ProfileDelegate) {
+        self.view = view
+    }
+}

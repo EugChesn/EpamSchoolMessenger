@@ -10,10 +10,12 @@ import Foundation
 import UIKit
 
 protocol SettingsDelegate: class {
-    
+    func openProfile()
 }
 
 class SettingsViewController: UITableViewController {
+    @IBOutlet private weak var profileCell: UITableViewCell!
+
     var viewModel: SettingsViewModeling?
     var router: SettingsRouting?
     
@@ -35,6 +37,8 @@ class SettingsViewController: UITableViewController {
         navigationItem.searchController = searchController
         definesPresentationContext = true
         
+        profileCell.accessoryType = .disclosureIndicator
+        
         setupDependencies()
     }
     
@@ -54,5 +58,7 @@ extension SettingsViewController: UISearchResultsUpdating {
 }
 
 extension SettingsViewController: SettingsDelegate {
-    
+    func openProfile() {
+        router?.routeToTable(withIdentifier: "ProfileViewController", sender: self)
+    }
 }
