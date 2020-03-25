@@ -10,6 +10,10 @@ import Foundation
 import UIKit
 
 class Utilities {
+    static let maxLenPassword: Int = 16
+    static let maxLenEmail: Int = 32
+    static let maxLenText = 45
+    
     static func styleTextField(_ textfield: UITextField) {
         let bottomLine = CALayer()
         bottomLine.frame = CGRect(x: 0, y: textfield.frame.height - 2, width: textfield.frame.width, height: 2)
@@ -25,11 +29,5 @@ class Utilities {
     static func styleImageView(_ imageView: UIImageView) {
         imageView.layer.cornerRadius = imageView.frame.size.width / 2
         imageView.clipsToBounds = true
-    }
-    static func validatePass(password: String) -> Bool
-    {
-        let regularExpression = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&])[A-Za-z\\d$@$!%*?&]{8,}"
-        let passwordValidation = NSPredicate(format: "SELF MATCHES %@", regularExpression)
-        return passwordValidation.evaluate(with: password)
     }
 }

@@ -29,13 +29,19 @@ class SetupProfileViewController: UIViewController {
         Utilities.styleTextField(nicknameTextField)
         Utilities.styleButton(goChatsButton)
         Utilities.styleImageView(photoNewUserImageView)
+        
+        nameTextFiled.delegate = self
+        nicknameTextField.delegate = self
         setupDependencies()
     }
     
     @IBAction func tapAddPhoto(_ sender: UIButton) {
-        let imagePicker = UIImagePickerController() // 1
-        imagePicker.delegate = self // 2
-        self.present(imagePicker, animated: true, completion: nil) // 3
+        nameTextFiled.resignFirstResponder()
+        nicknameTextField.resignFirstResponder()
+        
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        self.present(imagePicker, animated: true, completion: nil)
     }
     
     @IBAction func goToChatsTap(_ sender: UIButton) {
@@ -61,6 +67,26 @@ class SetupProfileViewController: UIViewController {
 
         // Load the image using SDWebImage
         imageView.sd_setImage(with: reference, placeholderImage: placeholderImage)
+    }
+}
+
+extension SetupProfileViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == nameTextFiled {
+            textField.resignFirstResponder()
+            nicknameTextField.becomeFirstResponder()
+        } else if textField == nicknameTextField {
+            textField.resignFirstResponder()
+        }
+        return true
+    }
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let currentText = textField.text! + string
+        if !(currentText.count <= Utilities.maxLenText) {
+            textField.shake()
+            return false
+        }
+        return true
     }
 }
 
