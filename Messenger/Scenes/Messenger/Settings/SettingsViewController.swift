@@ -16,43 +16,43 @@ protocol SettingsDelegate: class {
 class SettingsViewController: UITableViewController {
     @IBOutlet private weak var profileCell: UITableViewCell!
     @IBOutlet private weak var profileImage: UIImageView!
+    @IBOutlet private weak var nameLabel: UILabel!
+    @IBOutlet private weak var emailLable: UILabel!
     
     var viewModel: SettingsViewModeling?
     var router: SettingsRouting?
     let searchController = UISearchController(searchResultsController: nil)
     
     private enum Constant {
-        static let setting = "Settings"
         static let rightBarButtonItem = "Edit"
+        static let setting = "Settings"
         static let search = "Search"
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.rightBarButtonItem?.title = Constant.rightBarButtonItem
+        settingNavigationItem()
 //MARK: SearchBar
+        Decor.searchBar(searchController, placeholder: Constant.search)
         searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = true
-        searchController.searchBar.placeholder = Constant.search
-        navigationItem.searchController = searchController
         definesPresentationContext = true
 //MARK: Cell setting
-        profileCell.accessoryType = .disclosureIndicator
+        Decor.styleCell(profileCell)
 //MARK: Image setting
-        profileImage.layer.borderWidth = 2
-        profileImage.layer.borderColor = UIColor.black.cgColor
-        profileImage.layer.cornerRadius = 40
+        Decor.styleImageView(profileImage)
         
         setupDependencies()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        navigationItem.title = Constant.setting
     }
     
     func setupDependencies() {
         viewModel = SettingsViewModel(view: self)
         router = SettingsRouter(viewController: self)
+    }
+    
+    func settingNavigationItem() {
+        navigationItem.rightBarButtonItem?.title = Constant.rightBarButtonItem
+        navigationItem.title = Constant.setting
+        navigationItem.searchController = searchController
     }
 }
  

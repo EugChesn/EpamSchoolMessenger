@@ -17,30 +17,44 @@ class ProfileViewController: UITableViewController {
     @IBOutlet private weak var profileImage: UIImageView!
     @IBOutlet private weak var LogOutButton: UIButton!
     @IBOutlet private weak var EditPhotoButton: UIButton!
-    
-    private enum Constant {
-        static let exit = "Log Out"
-    }
+    @IBOutlet private weak var nameTextField: UITextField!
+    @IBOutlet private weak var nickNameTextField: UITextField!
+    @IBOutlet private weak var birthdayTextField: UITextField!
     
     var viewModel: ProfileViewModeling?
     var router: ProfileRoutering?
     
+    private enum Constant {
+        static let edit = "Edit Profile"
+        static let doneButton = "Done"
+        static let exit = "Log Out"
+        static let name = "Name"
+        static let nickName = "Nickname"
+        static let birthday = "Birthday"
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//MARK: Profile Image
-        profileImage.layer.borderWidth = 2
-        profileImage.layer.borderColor = UIColor.black.cgColor
-        profileImage.layer.cornerRadius = 65
-        
+        settingNavigationItem()
         LogOutButton.setTitle(Constant.exit, for: .normal)
-        
+//MARK: Profile Image
+        Decor.styleImageView(profileImage)
+//MARK: TextField
+        Decor.styleTextField(nameTextField, placeholder: Constant.name)
+        Decor.styleTextField(nickNameTextField, placeholder: Constant.nickName)
+        Decor.styleTextField(birthdayTextField, placeholder: Constant.birthday)
+
         setupDependencies()
     }
     
     func setupDependencies() {
         viewModel = ProfileViewModel(view: self)
         router = ProfileRouter(viewController: self)
+    }
+    
+    func settingNavigationItem() {
+        navigationItem.title = Constant.edit
+        navigationItem.rightBarButtonItem?.title = Constant.doneButton
     }
 }
 
