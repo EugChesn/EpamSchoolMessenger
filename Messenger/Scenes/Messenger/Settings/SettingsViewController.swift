@@ -10,40 +10,44 @@ import Foundation
 import UIKit
 
 protocol SettingsDelegate: class {
-    func openProfile()
+    //func openProfile()
 }
 
 class SettingsViewController: UITableViewController {
     @IBOutlet private weak var profileCell: UITableViewCell!
-
+    @IBOutlet private weak var profileImage: UIImageView!
+    
     var viewModel: SettingsViewModeling?
     var router: SettingsRouting?
+    let searchController = UISearchController(searchResultsController: nil)
     
-    private enum Title {
+    private enum Constant {
         static let setting = "Settings"
         static let rightBarButtonItem = "Edit"
         static let search = "Search"
     }
     
-    let searchController = UISearchController(searchResultsController: nil)
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.rightBarButtonItem?.title = Title.rightBarButtonItem
-
+        navigationItem.rightBarButtonItem?.title = Constant.rightBarButtonItem
+//MARK: SearchBar
         searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = Title.search
+        searchController.obscuresBackgroundDuringPresentation = true
+        searchController.searchBar.placeholder = Constant.search
         navigationItem.searchController = searchController
         definesPresentationContext = true
-        
+//MARK: Cell setting
         profileCell.accessoryType = .disclosureIndicator
+//MARK: Image setting
+        profileImage.layer.borderWidth = 2
+        profileImage.layer.borderColor = UIColor.black.cgColor
+        profileImage.layer.cornerRadius = 40
         
         setupDependencies()
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        navigationItem.title = Title.setting
+        navigationItem.title = Constant.setting
     }
     
     func setupDependencies() {
@@ -58,7 +62,7 @@ extension SettingsViewController: UISearchResultsUpdating {
 }
 
 extension SettingsViewController: SettingsDelegate {
-    func openProfile() {
-        router?.routeToTable(withIdentifier: "ProfileViewController", sender: self)
-    }
+//    func openProfile() {
+//        router?.routeToTable(withIdentifier: "ProfileViewController", sender: self)
+//    }
 }

@@ -15,6 +15,7 @@
 		867B2F822412585C00B16B01 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 867B2F802412585C00B16B01 /* Main.storyboard */; };
 		867B2F842412586000B16B01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 867B2F832412586000B16B01 /* Assets.xcassets */; };
 		867B2F872412586000B16B01 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 867B2F852412586000B16B01 /* LaunchScreen.storyboard */; };
+		86BD2C29242C1E88000404A3 /* SettingsMedia.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86BD2C28242C1E88000404A3 /* SettingsMedia.xcassets */; };
 		86CB7A7C2427DE0400995986 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86CB7A7B2427DE0400995986 /* Settings.storyboard */; };
 		86CB7AA6242B6BEF00995986 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CB7AA5242B6BEF00995986 /* ProfileViewController.swift */; };
 		86CB7AA8242B6C0F00995986 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CB7AA7242B6C0F00995986 /* ProfileViewModel.swift */; };
@@ -79,6 +80,7 @@
 		867B2F832412586000B16B01 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		867B2F862412586000B16B01 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		867B2F882412586000B16B01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		86BD2C28242C1E88000404A3 /* SettingsMedia.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = SettingsMedia.xcassets; sourceTree = "<group>"; };
 		86CB7A7B2427DE0400995986 /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		86CB7AA5242B6BEF00995986 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		86CB7AA7242B6C0F00995986 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
@@ -344,6 +346,7 @@
 			isa = PBXGroup;
 			children = (
 				867B2F832412586000B16B01 /* Assets.xcassets */,
+				86BD2C28242C1E88000404A3 /* SettingsMedia.xcassets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -525,6 +528,7 @@
 				3E3185D1241C0381000FD0C2 /* GoogleService-Info.plist in Resources */,
 				86CB7A7C2427DE0400995986 /* Settings.storyboard in Resources */,
 				867B2F842412586000B16B01 /* Assets.xcassets in Resources */,
+				86BD2C29242C1E88000404A3 /* SettingsMedia.xcassets in Resources */,
 				867B2F822412585C00B16B01 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
