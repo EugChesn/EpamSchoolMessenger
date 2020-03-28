@@ -7,3 +7,10 @@
 //
 
 import Foundation
+import UIKit
+
+struct ChatsList {
+    var chatLogoImage : UIImageView?
+    var chatNameText = ""
+    var lastMessegeText : String?
+}

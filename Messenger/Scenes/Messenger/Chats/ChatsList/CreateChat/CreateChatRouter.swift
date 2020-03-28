@@ -10,11 +10,16 @@ import Foundation
 import UIKit
 
 protocol CreateChatRouting {
-    func routeToCreatedChat(withIdentifier: String, sender: UIViewController?)
+    //func routeToCreatedChat(withIdentifier: String, sender: UIViewController?)
+    func dismissModalView(viewController: UIViewController) 
 }
-
-class CreateChatRouter: BaseRouter, CreateChatRouting {
-    func routeToCreatedChat(withIdentifier: String, sender: UIViewController?) {
-        performSegue(withIdentifier: withIdentifier, sender: sender)
+//: BaseRouter, CreateChatRouting
+class CreateChatRouter{
+//    func routeToCreatedChat(withIdentifier: String, sender: UIViewController?) {
+//        performSegue(withIdentifier: withIdentifier, sender: sender)
+//    }
+    func dismissModalView(viewController: UIViewController) {
+        viewController.dismiss(animated: true, completion: nil)
     }
+    
 }

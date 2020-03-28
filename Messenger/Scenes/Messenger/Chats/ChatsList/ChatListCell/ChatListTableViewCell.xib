@@ -38,9 +38,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="chatListLogoImage" destination="bIW-Pu-JA8" id="KkF-lG-IT3"/>
                 <outlet property="chatNamelabel" destination="ULL-er-Jju" id="yyV-zV-q82"/>
-                <outlet property="lastMessageText" destination="6Cg-lJ-m2I" id="kME-eg-jmd"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="149.66517857142856"/>
         </tableViewCell>
