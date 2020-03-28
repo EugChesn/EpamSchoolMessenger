@@ -11,66 +11,39 @@ import Firebase
 
 class FirebaseService {
     private(set) var referenceDataBase: DatabaseReference
+    private(set) var referenceUser: DatabaseReference
     
     static let firebaseService = FirebaseService()
     private init(){
         referenceDataBase = Database.database().reference() // ссылка на бд
-    }
-    private func writeNewUser(user:  User) { // добавить нового юзера в бд
-        referenceDataBase.child("users").child(user.uid).setValue(["email": user.email])
-    }
-    // дописать данные в бд полученные из профиля
-    func writeNewDataProfile(update: [String:String], user: User) {
-        referenceDataBase.child("users").child(user.uid).updateChildValues(update)
-    }
-    
-    func createUser(username: String,
-                    password: String,
-                    completion: @escaping ()->(),
-                    fault: @escaping (Error)->()) { // зарегистрировать нового пользователя
-        Auth.auth().createUser(withEmail: username, password: password) { authResult, error in
-            if let err = error {
-                print(err.localizedDescription)
-                fault(err)
-            } else {
-                if let result = authResult {
-                    self.writeNewUser(user: result.user)
-                    completion()
-                }
-            }
-        }
+        referenceUser = referenceDataBase.child("users")
     }
     func getCurrentUser() -> User? { //получить текущего залогиненого пользователя
         return Auth.auth().currentUser
     }
-    func setNameUser(name: String, nickName: String, completion: @escaping ()->()) {
-        let currUser = getCurrentUser()
+    // обновить данные в бд
+    func writeNewDataProfile(update: [String:String]) {
+        let uidCurrUser = Auth.auth().currentUser?.uid
+        if let uid = uidCurrUser {
+            referenceUser.child(uid).updateChildValues(update)
+        }
+    }
+    
+    func writeNewUser(user:  User) { // добавить нового юзера в бд
+        referenceUser.child(user.uid).setValue(["email": user.email])
+    }
+
+    func updateProfileInfo(name: String, nickName: String, photo: URL) {
+        let currUser = self.getCurrentUser()
         let changeRequest = currUser!.createProfileChangeRequest()
         changeRequest.displayName = name
-        //changeRequest?.photoURL = // add later
+        changeRequest.photoURL = photo
         changeRequest.commitChanges { (error) in
             if let err = error{
                 print(err.localizedDescription)
             } else {
                 let update = ["name": name,"nickname": nickName]
-                self.writeNewDataProfile(update: update, user: currUser!)
-                completion()
-            }
-        }
-    }
-    
-    func signInUser(email: String,
-                    password: String,
-                    completion: @escaping ()->(),
-                    faulture: @escaping (Error)->()){ // произвести логин юзера
-        
-        Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
-        guard let strongSelf = self else { return }
-            if let err = error {
-                print(err.localizedDescription)
-                faulture(err)
-            } else {
-                completion()
+                self.writeNewDataProfile(update: update)
             }
         }
     }
