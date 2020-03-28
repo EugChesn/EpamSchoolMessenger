@@ -22,8 +22,11 @@ class FirebaseService {
         return Auth.auth().currentUser
     }
     // обновить данные в бд
-    func writeNewDataProfile(update: [String:String], user: User) {
-        referenceUser.child(user.uid).updateChildValues(update)
+    func writeNewDataProfile(update: [String:String]) {
+        let uidCurrUser = Auth.auth().currentUser?.uid
+        if let uid = uidCurrUser {
+            referenceUser.child(uid).updateChildValues(update)
+        }
     }
     
     func writeNewUser(user:  User) { // добавить нового юзера в бд
@@ -40,7 +43,7 @@ class FirebaseService {
                 print(err.localizedDescription)
             } else {
                 let update = ["name": name,"nickname": nickName]
-                self.writeNewDataProfile(update: update, user: currUser!)
+                self.writeNewDataProfile(update: update)
             }
         }
     }
