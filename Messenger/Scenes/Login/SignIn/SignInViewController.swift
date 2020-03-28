@@ -36,22 +36,22 @@ class SignInViewController: UIViewController {
         Utilities.styleButton(logInButton)
         
         emailTextField.delegate = self
-        emailTextField.becomeFirstResponder()
         passwordTextField.delegate = self
         setupDependencies()
     }
     
     @IBAction func LogInTap(_ sender: UIButton) {
-        guard let email = emailTextField.text else { return }
-        guard let pass = passwordTextField.text else { return }
-        //viewModel?.sendCodeAuth(phoneNumber: phone)
-        viewModel?.signInHandler(email: email, pass: pass)
+        guard let email = emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
+        guard let pass = passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
+        
+        if !email.isValidateEmail() {
+            alertError(errorCode: .invalidEmail)
+        } else if !pass.isValidatePass() {
+            alertError(errorCode: .weakPassword)
+        } else {
+            viewModel?.signInHandler(email: email, pass: pass)
+        }
     }
-    
-    /*@IBAction func LogInWithCode(_ sender: UIButton) {
-        guard let code = passwordTextField.text else { return }
-        viewModel?.handlerLogIn(code: code)
-    }*/
     
     func setupDependencies() {
         viewModel = SignInViewModel(view: self)
@@ -64,17 +64,27 @@ extension SignInViewController: UITextFieldDelegate {
         if textField == emailTextField {
             textField.resignFirstResponder()
             passwordTextField.becomeFirstResponder()
+        } else if textField == passwordTextField {
+            textField.resignFirstResponder()
         }
         return true
     }
-    /*func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if textField == emailTextField {
-            let allowedCharacters = CharacterSet(charactersIn:"+0123456789")
-            let characterSet = CharacterSet(charactersIn: string)
-            return allowedCharacters.isSuperset(of: characterSet)
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if(textField == passwordTextField) {
+            let currentText = textField.text! + string
+            if !(currentText.count <= Utilities.maxLenPassword) {
+                textField.shake()
+                return false
+            }
+        } else if (textField == emailTextField) {
+            let currentText = textField.text! + string
+            if !(currentText.count <= Utilities.maxLenEmail) {
+                textField.shake()
+                return false
+            }
         }
-        return true
-    }*/
+        return true;
+    }
 }
 
 extension SignInViewController: SignInDelegate {
@@ -89,6 +99,7 @@ extension SignInViewController: SignInDelegate {
     }
     
     func successLogin() {
+        //print(FirebaseService.firebaseService.getCurrentUser()?.photoURL)
         router?.routeToMessage(withIdentifier: "messenger" , sender: self)
     }
 }

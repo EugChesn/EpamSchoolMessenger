@@ -28,31 +28,56 @@ class SignUpViewController: UIViewController {
         Utilities.styleTextField(emailTextField)
         Utilities.styleTextField(passwordTextField)
         Utilities.styleButton(signUpButton)
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
         setupDependencies()
     }
     func setupDependencies() {
         viewModel = SignUpViewModel(view: self)
         router = SignUpRouter(viewController: self)
     }
-    private func alertError(errorCode: AuthErrorCode) {
-        let alert = UIAlertController(title: "Error", message: errorCode.errorMessage, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
-        alert.addAction(okAction)
-        self.present(alert, animated: true, completion: nil)
-    }
     
     @IBAction func signUpTap(_ sender: UIButton) {
-        guard let email = emailTextField.text else {return}
-        guard let pass = passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else
-        {return}
+        guard let email = emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
+        guard let pass = passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)  else { return }
         
-        if Utilities.validatePass(password: pass) {
-            viewModel?.registerUser(email: email, password: pass)
-        } else {
+        if !email.isValidateEmail() {
+            alertError(errorCode: .invalidEmail)
+        } else if !pass.isValidatePass() {
             alertError(errorCode: .weakPassword)
+        } else {
+            viewModel?.registerUser(email: email, password: pass)
         }
     }
-    
+}
+
+extension SignUpViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == emailTextField {
+            textField.resignFirstResponder()
+            passwordTextField.becomeFirstResponder()
+        } else if textField == passwordTextField {
+            textField.resignFirstResponder()
+        }
+        return true
+    }
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if(textField == passwordTextField) {
+            let currentText = textField.text! + string
+            if !(currentText.count <= Utilities.maxLenPassword) {
+                textField.shake()
+                return false
+            }
+        } else if (textField == emailTextField) {
+            let currentText = textField.text! + string
+            if !(currentText.count <= Utilities.maxLenEmail) {
+                textField.shake()
+                return false
+            }
+        }
+        
+        return true;
+    }
 }
 
 extension SignUpViewController: SignUpDelegate {

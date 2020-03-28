@@ -329,14 +329,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set Up Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JDL-eo-yQL">
-                                <rect key="frame" x="116.5" y="188" width="181.5" height="37"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="31"/>
-                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="7NJ-DZ-0qC">
-                                <rect key="frame" x="20" y="305" width="374" height="160"/>
+                                <rect key="frame" x="20" y="421" width="374" height="160"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NOA-Co-rj0">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="40"/>
@@ -369,14 +363,31 @@
                                     <constraint firstItem="Anl-dA-UPQ" firstAttribute="height" secondItem="NOA-Co-rj0" secondAttribute="height" id="pfc-RX-7hc"/>
                                 </constraints>
                             </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="rE0-ne-27q">
+                                <rect key="frame" x="107" y="138" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="iVq-V0-qOE"/>
+                                    <constraint firstAttribute="width" constant="200" id="y82-PT-xAS"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mXD-oy-HQY">
+                                <rect key="frame" x="167" y="358" width="80" height="33"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Add photo"/>
+                                <connections>
+                                    <action selector="tapAddPhoto:" destination="SpG-Fd-5fg" eventType="touchUpInside" id="CWO-Lo-wJ2"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="uIL-tH-Ufh" firstAttribute="trailing" secondItem="7NJ-DZ-0qC" secondAttribute="trailing" constant="20" id="8MD-kd-Nya"/>
-                            <constraint firstItem="JDL-eo-yQL" firstAttribute="centerX" secondItem="JpX-Dt-FJ9" secondAttribute="centerX" id="JGJ-oS-iSo"/>
                             <constraint firstItem="7NJ-DZ-0qC" firstAttribute="leading" secondItem="uIL-tH-Ufh" secondAttribute="leading" constant="20" id="Mtd-Vj-FDQ"/>
-                            <constraint firstItem="JDL-eo-yQL" firstAttribute="top" secondItem="uIL-tH-Ufh" secondAttribute="top" constant="100" id="e6E-9F-tUh"/>
-                            <constraint firstItem="7NJ-DZ-0qC" firstAttribute="top" secondItem="JDL-eo-yQL" secondAttribute="bottom" constant="80" id="ga0-2D-V17"/>
+                            <constraint firstItem="rE0-ne-27q" firstAttribute="centerX" secondItem="JpX-Dt-FJ9" secondAttribute="centerX" id="NQh-Ox-VRr"/>
+                            <constraint firstItem="mXD-oy-HQY" firstAttribute="top" secondItem="rE0-ne-27q" secondAttribute="bottom" constant="20" id="bzr-Eh-JSo"/>
+                            <constraint firstItem="mXD-oy-HQY" firstAttribute="centerX" secondItem="JpX-Dt-FJ9" secondAttribute="centerX" id="faN-Tr-bdo"/>
+                            <constraint firstItem="rE0-ne-27q" firstAttribute="top" secondItem="uIL-tH-Ufh" secondAttribute="top" constant="50" id="mPn-Xl-hPJ"/>
+                            <constraint firstItem="7NJ-DZ-0qC" firstAttribute="top" secondItem="mXD-oy-HQY" secondAttribute="bottom" constant="30" id="zMh-8g-hh8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uIL-tH-Ufh"/>
                     </view>
@@ -385,6 +396,7 @@
                         <outlet property="goChatsButton" destination="KVB-EO-s6S" id="irf-SS-97O"/>
                         <outlet property="nameTextFiled" destination="NOA-Co-rj0" id="pio-HY-NNc"/>
                         <outlet property="nicknameTextField" destination="Anl-dA-UPQ" id="Qha-Bv-58z"/>
+                        <outlet property="photoNewUserImageView" destination="rE0-ne-27q" id="ZKV-yh-bps"/>
                         <segue destination="R2d-H2-Wl9" kind="show" identifier="profileToMessanger" id="0t8-jX-2j6"/>
                     </connections>
                 </viewController>
@@ -393,6 +405,9 @@
             <point key="canvasLocation" x="2806" y="823"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="profile" width="256" height="256"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="0t8-jX-2j6"/>
     </inferredMetricsTieBreakers>
