@@ -53,6 +53,7 @@
 		AAB3AF0A241B842A00825F00 /* CreatePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB3AF09241B842A00825F00 /* CreatePasswordViewModel.swift */; };
 		AAB3AF0C241B843900825F00 /* RegistrationCodeConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB3AF0B241B843900825F00 /* RegistrationCodeConfirmationViewController.swift */; };
 		AAB3AF0E241B844000825F00 /* RegistrationCodeConfirmationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB3AF0D241B844000825F00 /* RegistrationCodeConfirmationViewModel.swift */; };
+		AAF194BF24310E1D00BB81BE /* MessageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF194BE24310E1D00BB81BE /* MessageCollectionViewCell.swift */; };
 		AAF834E1241920B200FDF9D2 /* GreetingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF834E0241920B200FDF9D2 /* GreetingViewController.swift */; };
 		AAF834E62419228100FDF9D2 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF834E52419228100FDF9D2 /* SignInViewController.swift */; };
 		AAF834EA2419229D00FDF9D2 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF834E92419229D00FDF9D2 /* SignUpViewController.swift */; };
@@ -122,6 +123,7 @@
 		AAB3AF0B241B843900825F00 /* RegistrationCodeConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationCodeConfirmationViewController.swift; sourceTree = "<group>"; };
 		AAB3AF0D241B844000825F00 /* RegistrationCodeConfirmationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationCodeConfirmationViewModel.swift; sourceTree = "<group>"; };
 		AAF194B72430C1A200BB81BE /* Messenger.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Messenger.entitlements; sourceTree = "<group>"; };
+		AAF194BE24310E1D00BB81BE /* MessageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCollectionViewCell.swift; sourceTree = "<group>"; };
 		AAF834E0241920B200FDF9D2 /* GreetingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingViewController.swift; sourceTree = "<group>"; };
 		AAF834E52419228100FDF9D2 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		AAF834E92419229D00FDF9D2 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 				AA487C47241E560900337FBF /* DialogViewController.swift */,
 				AA487C49241E561600337FBF /* DialogViewModel.swift */,
 				AA487C4B241E563900337FBF /* DialogRouter.swift */,
+				AAF194BE24310E1D00BB81BE /* MessageCollectionViewCell.swift */,
 			);
 			path = Dialog;
 			sourceTree = "<group>";
@@ -668,6 +671,7 @@
 				AAF834F02419258100FDF9D2 /* PasswordRecoveryViewController.swift in Sources */,
 				AAF8351024193F5200FDF9D2 /* SettingsViewController.swift in Sources */,
 				AA1B5FD4241BF21B0080443A /* NewPasswordRouter.swift in Sources */,
+				AAF194BF24310E1D00BB81BE /* MessageCollectionViewCell.swift in Sources */,
 				AA1B5FCC241BF1DE0080443A /* SetupProfileRouter.swift in Sources */,
 				867B2F7B2412585C00B16B01 /* AppDelegate.swift in Sources */,
 				AAB3AEFA241B7FB700825F00 /* NewPasswordViewModel.swift in Sources */,

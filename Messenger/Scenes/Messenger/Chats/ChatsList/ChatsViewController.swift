@@ -39,6 +39,10 @@ class ChatsViewController: UIViewController {
         searchConroller.searchBar.delegate = self
         navigationItem.searchController = searchConroller
     }
+    
+    @IBAction func routeToDialog(_ sender: Any) {
+        performSegue(withIdentifier: "dialog", sender: sender)
+    }
 }
 
 extension ChatsViewController: ChatsDelegate {
