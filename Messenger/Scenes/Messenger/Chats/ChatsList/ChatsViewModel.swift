@@ -11,13 +11,14 @@ import UIKit
 
 protocol ChatsViewModeling: class {
     var chatsCount: Int {get}
-    var selectedChat: Chat? {get set}
+    var selectedChat: ChatInfo? {get set}
     
-    func getChat(atIndex: Int) -> Chat
+    func createNewChat(with contact: Contact)
+    func getChat(atIndex: Int) -> ChatInfo
 }
 
 protocol ChatInfoGetterDelegate: class {
-    var chatInfo: Chat? {get}
+    var chatInfo: ChatInfo? {get}
 }
 
 
@@ -25,26 +26,27 @@ class ChatsViewModel: ChatsViewModeling {
     
     weak var view: ChatsDelegate?
     
-    private var chatsList: [Chat] = [] {
+    private var chatsList: [ChatInfo] = [] {
         didSet {
             view?.updateChats()
         }
     }
     
-    private var chat: Chat? {
+    private var chat: ChatInfo? {
         didSet {
             view?.openChat()
         }
     }
     
-    var selectedChat: Chat? {
+    var selectedChat: ChatInfo? {
         get {
             return chat
         }
         set {
             guard let selectedChat = newValue else {return}
+            
             let contains = chatsList.contains { (chat) -> Bool in
-                if selectedChat.uid == chat.uid {
+                if chat.contact.uid == selectedChat.contact.uid {
                     return true
                 } else {
                     return false
@@ -54,9 +56,10 @@ class ChatsViewModel: ChatsViewModeling {
             if contains {
                 chat = selectedChat
             } else {
-                chatsList.append(selectedChat)
                 chat = selectedChat
+                chatsList.append(selectedChat)
             }
+            
         }
     }
     
@@ -66,30 +69,46 @@ class ChatsViewModel: ChatsViewModeling {
         }
     }
     
-    func getChat(atIndex: Int) -> Chat {
-        let chat = Chat()
-        return chat
+    func getChat(atIndex: Int) -> ChatInfo {
+        return chatsList[atIndex]
     }
     
     init(view: ChatsDelegate) {
         self.view = view
-        let chat = Chat()
- 
-        chatsList.append(chat)
-        chatsList.append(chat)
-        chatsList.append(chat)
+        downLoadChats()
     }
     
-    private func downLoadChats() -> [Chat] {
+    func createNewChat(with contact: Contact) {
+        
+            let chat = ChatInfo(contact: contact)
+            
+            selectedChat = chat
+    }
+    
+    private func downLoadChats() {
+        let refDatabase = FirebaseService.firebaseService.referenceDataBase
+        if let currentUid = FirebaseService.firebaseService.getCurrentUser()?.uid {
+            refDatabase.child("chats").child(currentUid).observe(.childAdded) { (snapshot) in
+                let uid = snapshot.key
+                let lastMessage = snapshot.childSnapshot(forPath: "lastMessage").value as? String ?? ""
+                
+                refDatabase.child("users").observe(.childAdded) { (snapshotUsers) in
+                    if snapshotUsers.key == uid {
+                        if let dictionary = snapshotUsers.value as? [String: String] {
+                           
+                            
+                            var contact = Contact()
+                            contact.name = dictionary["name"] ?? ""
+                            contact.uid = uid
 
-        return []
+                            let chat = ChatInfo(lastMessage: lastMessage, contact: contact)
+                            self.chatsList.append(chat)
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
-struct Chat {
-    var lastMessage: String = "test"
-    var uid: String = "uid"
-    var name: String = "name"
-    var profileImage: UIImage?
-}
 

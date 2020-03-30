@@ -32,9 +32,18 @@ class CreateChatViewModel: CreateChatViewModeling {
     
     init(view: CreateChatDelegate) {
         self.view = view
+        let refDatabase = FirebaseService.firebaseService.referenceDataBase
+        refDatabase.child("users").observe(.childAdded) { (snapshot) in
+            if let dictionary = snapshot.value as? [String: Any] {
+                var contact = Contact()
+                
+                contact.name = dictionary["name"] as? String ?? ""
+                contact.uid = snapshot.key
+                
+                self.contactsList.append(contact)
+            }
+        }
         
-        contactsList.append(Contact())
-        contactsList.append(Contact())
     }
     
     func contact(atIndex: Int) -> Contact {
@@ -42,8 +51,4 @@ class CreateChatViewModel: CreateChatViewModeling {
     }
 }
 
-struct Contact {
-    var name: String = "testName"
-    var uid: String = "testuid"
-    var profileImage: UIImage?
-}
+

@@ -69,12 +69,16 @@ extension CreateChatViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return  UITableViewCell()
+        let cell = UITableViewCell(style: .default, reuseIdentifier: "contactCell")
+        cell.textLabel?.text = viewModel?.contact(atIndex: indexPath.row).name
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let contact = viewModel?.contact(atIndex: indexPath.row)
-        chatOpenerDelegate?.selectedChat = Chat()
+        guard let contact = viewModel?.contact(atIndex: indexPath.row) else {
+            return
+        }
+        chatOpenerDelegate?.dialogContact = contact
         router?.createChat()
     }
     

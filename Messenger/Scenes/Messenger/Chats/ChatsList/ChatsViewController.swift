@@ -15,7 +15,7 @@ protocol ChatsDelegate: class {
 }
 
 protocol NewChatOpenerDelegate: class {
-    var selectedChat: Chat? {get set}
+    var dialogContact: Contact {get set}
     
     func openNewChat()
 }
@@ -65,7 +65,6 @@ class ChatsViewController: UIViewController {
     
     func routeToDialog(_ sender: Any) {
         performSegue(withIdentifier: "dialog", sender: sender)
-        print("true")
     }
     
     @IBAction func routeToCreateChat(_ sender: Any) {
@@ -86,12 +85,12 @@ extension ChatsViewController: ChatsDelegate {
 }
 
 extension ChatsViewController: NewChatOpenerDelegate {
-    var selectedChat: Chat? {
+    var dialogContact: Contact {
         get {
-            return viewModel.selectedChat
+            return Contact()
         }
         set {
-            viewModel.selectedChat = newValue
+            viewModel.createNewChat(with: newValue)
         }
     }
     
@@ -114,12 +113,15 @@ extension ChatsViewController: UITableViewDelegate, UITableViewDataSource {
         
         let chat = viewModel.getChat(atIndex: indexPath.row)
         
-        cell.textLabel?.text = chat.name
+        cell.textLabel?.text = chat.contact.name
         cell.detailTextLabel?.text = chat.lastMessage
         cell.imageView?.image = UIImage(named: "profile")
         
         return cell
     }
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.selectedChat = viewModel.getChat(atIndex: indexPath.row)
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 }

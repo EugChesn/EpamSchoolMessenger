@@ -38,8 +38,8 @@ class GreetingViewController: UIViewController {
         }
     }
     override func viewWillDisappear(_ animated: Bool) {
-        Auth.auth().removeStateDidChangeListener(handlerState!)
-        TEST_FUNC_SIGN_OUT()
+//        Auth.auth().removeStateDidChangeListener(handlerState!)
+//        TEST_FUNC_SIGN_OUT()
     }
     private func TEST_FUNC_SIGN_OUT(){
         let firebaseAuth = Auth.auth()

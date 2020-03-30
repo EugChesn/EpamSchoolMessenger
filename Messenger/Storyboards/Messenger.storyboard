@@ -4,7 +4,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -164,9 +163,12 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bOa-E3-T8l">
                                         <rect key="frame" x="375" y="5" width="34" height="40"/>
                                         <state key="normal" image="paperplane.fill" catalog="system"/>
+                                        <connections>
+                                            <action selector="sendMessage:" destination="JPB-Bh-H4w" eventType="touchUpInside" id="Pqn-nZ-GMC"/>
+                                        </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="bOa-E3-T8l" secondAttribute="trailing" constant="5" id="B34-xj-GdN"/>
                                     <constraint firstAttribute="height" constant="50" id="FLA-Oc-Inj"/>
@@ -187,45 +189,7 @@
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cellId" id="sOS-Ib-pL3">
-                                        <rect key="frame" x="1" y="0.0" width="412" height="128"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="6Rz-h0-zqu">
-                                            <rect key="frame" x="0.0" y="0.0" width="412" height="128"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7oK-yA-OKC">
-                                                    <rect key="frame" x="172" y="0.0" width="240" height="128"/>
-                                                    <subviews>
-                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="wYr-kH-3st">
-                                                            <rect key="frame" x="5" y="5" width="230" height="118"/>
-                                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                                            <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                        </textView>
-                                                    </subviews>
-                                                    <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="bottom" secondItem="wYr-kH-3st" secondAttribute="bottom" constant="5" id="0XV-xv-Ivc"/>
-                                                        <constraint firstItem="wYr-kH-3st" firstAttribute="leading" secondItem="7oK-yA-OKC" secondAttribute="leading" constant="5" id="5RM-Bx-pk0"/>
-                                                        <constraint firstItem="wYr-kH-3st" firstAttribute="top" secondItem="7oK-yA-OKC" secondAttribute="top" constant="5" id="EaF-bu-3Ig"/>
-                                                        <constraint firstAttribute="width" constant="240" id="JuM-na-BYs"/>
-                                                        <constraint firstAttribute="trailing" secondItem="wYr-kH-3st" secondAttribute="trailing" constant="5" id="dEY-sq-t20"/>
-                                                    </constraints>
-                                                </view>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="7oK-yA-OKC" secondAttribute="trailing" id="IaT-NR-S7D"/>
-                                                <constraint firstItem="7oK-yA-OKC" firstAttribute="leading" secondItem="6Rz-h0-zqu" secondAttribute="leading" priority="750" id="c8P-N4-ogr"/>
-                                                <constraint firstAttribute="bottom" secondItem="7oK-yA-OKC" secondAttribute="bottom" id="g04-Qt-XSH"/>
-                                                <constraint firstItem="7oK-yA-OKC" firstAttribute="top" secondItem="6Rz-h0-zqu" secondAttribute="top" id="n39-0k-YFN"/>
-                                            </constraints>
-                                        </collectionViewCellContentView>
-                                        <size key="customSize" width="412" height="128"/>
-                                    </collectionViewCell>
-                                </cells>
+                                <cells/>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -243,6 +207,8 @@
                     <navigationItem key="navigationItem" title="Chat" id="TZm-kd-xcL"/>
                     <connections>
                         <outlet property="chatLogCollectionView" destination="fij-Ve-xi2" id="fCX-fU-ff4"/>
+                        <outlet property="messageTextField" destination="kM6-PL-Lzp" id="Dge-nJ-OQ7"/>
+                        <outlet property="sendButton" destination="bOa-E3-T8l" id="Aar-11-doB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8sf-sf-IuW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

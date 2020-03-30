@@ -15,6 +15,7 @@ class MessengerTabBarController: UITabBarController {
         
         self.navigationController?.navigationBar.isHidden = true
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+        self.selectedIndex = 1
     }
     
     override func viewWillDisappear(_ animated: Bool) {

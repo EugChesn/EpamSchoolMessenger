@@ -26,6 +26,7 @@
 		AA1B40C32431D48800E1D452 /* CreateChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1B40C22431D48800E1D452 /* CreateChatViewController.swift */; };
 		AA1B40C52431D49400E1D452 /* CreateChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1B40C42431D49400E1D452 /* CreateChatViewModel.swift */; };
 		AA1B40C72431D4A100E1D452 /* CreateChatRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1B40C62431D4A100E1D452 /* CreateChatRouter.swift */; };
+		AA1B40EA2432AC5F00E1D452 /* MessangerModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1B40E92432AC5F00E1D452 /* MessangerModels.swift */; };
 		AA1B5FC6241BF0DE0080443A /* SignInRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1B5FC5241BF0DE0080443A /* SignInRouter.swift */; };
 		AA1B5FC8241BF1C30080443A /* RegistrationCodeConfirmationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1B5FC7241BF1C30080443A /* RegistrationCodeConfirmationRouter.swift */; };
 		AA1B5FCA241BF1D00080443A /* CreatePasswordRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1B5FC9241BF1D00080443A /* CreatePasswordRouter.swift */; };
@@ -98,6 +99,7 @@
 		AA1B40C22431D48800E1D452 /* CreateChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateChatViewController.swift; sourceTree = "<group>"; };
 		AA1B40C42431D49400E1D452 /* CreateChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateChatViewModel.swift; sourceTree = "<group>"; };
 		AA1B40C62431D4A100E1D452 /* CreateChatRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateChatRouter.swift; sourceTree = "<group>"; };
+		AA1B40E92432AC5F00E1D452 /* MessangerModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessangerModels.swift; sourceTree = "<group>"; };
 		AA1B5FC5241BF0DE0080443A /* SignInRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInRouter.swift; sourceTree = "<group>"; };
 		AA1B5FC7241BF1C30080443A /* RegistrationCodeConfirmationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationCodeConfirmationRouter.swift; sourceTree = "<group>"; };
 		AA1B5FC9241BF1D00080443A /* CreatePasswordRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePasswordRouter.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 		867B2F792412585C00B16B01 /* Messenger */ = {
 			isa = PBXGroup;
 			children = (
+				AA1B40E82432AC4100E1D452 /* Models */,
 				AAF194B72430C1A200BB81BE /* Messenger.entitlements */,
 				AA1B5FDF241BF34C0080443A /* Base */,
 				AAF834A52418FA5900FDF9D2 /* Scenes */,
@@ -246,6 +249,14 @@
 				AA1B40C62431D4A100E1D452 /* CreateChatRouter.swift */,
 			);
 			path = CreateChat;
+			sourceTree = "<group>";
+		};
+		AA1B40E82432AC4100E1D452 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AA1B40E92432AC5F00E1D452 /* MessangerModels.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		AA1B5FDF241BF34C0080443A /* Base */ = {
@@ -685,6 +696,7 @@
 				AA1B5FD8241BF2390080443A /* SettingsRouter.swift in Sources */,
 				AA1B5FDE241BF26E0080443A /* GreetingViewModel.swift in Sources */,
 				AAB3AF04241B840400825F00 /* SetupProfileViewController.swift in Sources */,
+				AA1B40EA2432AC5F00E1D452 /* MessangerModels.swift in Sources */,
 				AAF834F82419297500FDF9D2 /* SignInViewModel.swift in Sources */,
 				86CB7AA6242B6BEF00995986 /* ProfileViewController.swift in Sources */,
 				AA487C4C241E563900337FBF /* DialogRouter.swift in Sources */,

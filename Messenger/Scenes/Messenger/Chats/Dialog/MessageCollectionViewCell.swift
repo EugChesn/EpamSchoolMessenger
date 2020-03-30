@@ -9,56 +9,76 @@
 import Foundation
 import UIKit
 
-
+enum CellColor {
+    case blue
+    case gray
+}
 
 class MessageCollectionViewCell: UICollectionViewCell {
     
     let messageTextView: UITextView = {
         let textView = UITextView()
-        textView.font = UIFont.systemFont(ofSize: 14)
-        textView.text = "The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from de Finibus Bonorum et Malorum"
-        textView.backgroundColor = UIColor.blue
+        textView.font = UIFont.systemFont(ofSize: 16)
+        textView.textColor = .white
+        textView.text = ""
+        textView.backgroundColor = .clear
         textView.translatesAutoresizingMaskIntoConstraints = false
         return textView
     }()
     
-    let textBubbleView: UIView = {
+    let bubbleView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 15
         view.layer.masksToBounds = true
-        view.backgroundColor = .blue
+        view.backgroundColor = UIColor(red: 0, green: 0.65, blue: 1.0, alpha: 1.0)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    var leftMessageAnchor: NSLayoutConstraint?
-    var rightMessageAnhcor: NSLayoutConstraint?
+    private var leftMessageAnchor: NSLayoutConstraint?
+    private var rightMessageAnchor: NSLayoutConstraint?
+    var bubbleWidthAnchor: NSLayoutConstraint?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        addSubview(textBubbleView)
+        addSubview(bubbleView)
         addSubview(messageTextView)
         
         
-        textBubbleView.topAnchor.constraint(equalTo: self.topAnchor, constant: 8).isActive = true
-        textBubbleView.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
-        textBubbleView.widthAnchor.constraint(equalToConstant: 240).isActive = true
+        bubbleView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        bubbleView.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
         
-        leftMessageAnchor = textBubbleView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 8)
-        rightMessageAnhcor = textBubbleView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -8)
+        bubbleWidthAnchor = bubbleView.widthAnchor.constraint(equalToConstant: 200)
+        bubbleWidthAnchor?.isActive = true
         
-        messageTextView.topAnchor.constraint(equalTo: textBubbleView.topAnchor).isActive = true
-        messageTextView.rightAnchor.constraint(equalTo: textBubbleView.rightAnchor).isActive = true
-        messageTextView.leftAnchor.constraint(equalTo: textBubbleView.leftAnchor).isActive = true
+        leftMessageAnchor = bubbleView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 8)
+        rightMessageAnchor = bubbleView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -8)
         
-        messageTextView.heightAnchor.constraint(equalToConstant: frame.height - 20).isActive = true
-        messageTextView.widthAnchor.constraint(equalToConstant: 232).isActive = true
+        messageTextView.topAnchor.constraint(equalTo: bubbleView.topAnchor).isActive = true
+        messageTextView.rightAnchor.constraint(equalTo: bubbleView.rightAnchor).isActive = true
+        messageTextView.leftAnchor.constraint(equalTo: bubbleView.leftAnchor, constant: 8).isActive = true
+        messageTextView.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
         
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func configCell(color: CellColor) {
+        switch color {
+        case .blue:
+            leftMessageAnchor?.isActive = false
+            rightMessageAnchor?.isActive = true
+            messageTextView.textColor = .white
+            bubbleView.backgroundColor = UIColor(red: 0, green: 0.65, blue: 1.0, alpha: 1.0)
+        case .gray:
+            leftMessageAnchor?.isActive = true
+            rightMessageAnchor?.isActive = false
+            bubbleView.backgroundColor = .lightGray
+            messageTextView.textColor = .black
+        }
     }
     
     
