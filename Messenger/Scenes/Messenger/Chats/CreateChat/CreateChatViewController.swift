@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 protocol CreateChatDelegate: class {
-    
+    func updateContactsList()
 }
 
 class CreateChatViewController: UIViewController {
@@ -52,7 +52,11 @@ class CreateChatViewController: UIViewController {
 }
 
 extension CreateChatViewController: CreateChatDelegate {
-    
+    func updateContactsList() {
+        DispatchQueue.main.async {
+            self.contactListTableView.reloadData()
+        }
+    }
 }
 
 extension CreateChatViewController: UISearchBarDelegate {
@@ -61,12 +65,17 @@ extension CreateChatViewController: UISearchBarDelegate {
 
 extension CreateChatViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return viewModel?.contactsCount ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return  UITableViewCell()
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let contact = viewModel?.contact(atIndex: indexPath.row)
+        chatOpenerDelegate?.selectedChat = Chat()
+        router?.createChat()
+    }
     
 }

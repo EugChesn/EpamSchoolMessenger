@@ -10,10 +10,15 @@ import Foundation
 
 protocol CreateChatRouting {
     func cancelCreate()
+    func createChat()
 }
 
 class CreateChatRouter: BaseRouter, CreateChatRouting {
     func cancelCreate() {
+        viewController?.dismiss(animated: true, completion: nil)
+    }
+    
+    func createChat() {
         viewController?.dismiss(animated: true, completion: nil)
     }
 }

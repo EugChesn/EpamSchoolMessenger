@@ -10,20 +10,20 @@ import Foundation
 import UIKit
 
 protocol DialogDelegate: class {
-    
+    func updateChatLog()
 }
 
 class DialogViewController: UIViewController {
     var viewModel: DialogViewModeling?
     var router: DialogRouting?
     
-    var currentChat: Chat?
+    weak var chatViewModel: ChatsViewModeling?
     
     @IBOutlet weak var chatLogCollectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(currentChat)
+        
         setupUI()
         setupDependencies()
     }
@@ -31,6 +31,7 @@ class DialogViewController: UIViewController {
     
     func setupDependencies() {
         viewModel = DialogViewModel(view: self)
+        viewModel?.chat = chatViewModel?.selectedChat
         router = DialogRouter(viewController: self)
     }
     
@@ -42,18 +43,25 @@ class DialogViewController: UIViewController {
 }
 
 extension DialogViewController: DialogDelegate {
-    
+    func updateChatLog() {
+        DispatchQueue.main.async {
+            self.chatLogCollectionView.reloadData()
+        }
+    }
 }
 
 extension DialogViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return viewModel?.messageCount ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "messageCell", for: indexPath) as? MessageCollectionViewCell {
             cell.leftMessageAnchor?.isActive = false
             cell.rightMessageAnhcor?.isActive = true
+            
+            let message = viewModel?.message(atIndex: indexPath.row)
+            cell.messageTextView.text = message?.text
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath)

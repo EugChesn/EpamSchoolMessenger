@@ -50,8 +50,22 @@ class ChatsViewController: UIViewController {
 
     }
     
-    @IBAction func routeToDialog(_ sender: Any) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "createChat" {
+            if let destination = segue.destination as? CreateChatViewController {
+                destination.chatOpenerDelegate = self
+            }
+        }
+        if segue.identifier == "dialog" {
+            if let destination = segue.destination as? DialogViewController {
+                destination.chatViewModel = viewModel
+            }
+        }
+    }
+    
+    func routeToDialog(_ sender: Any) {
         performSegue(withIdentifier: "dialog", sender: sender)
+        print("true")
     }
     
     @IBAction func routeToCreateChat(_ sender: Any) {
@@ -67,7 +81,7 @@ extension ChatsViewController: ChatsDelegate {
     }
     
     func openChat() {
-        
+        routeToDialog(self)
     }
 }
 

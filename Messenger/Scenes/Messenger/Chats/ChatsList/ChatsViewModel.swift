@@ -9,11 +9,15 @@
 import Foundation
 import UIKit
 
-protocol ChatsViewModeling {
+protocol ChatsViewModeling: class {
     var chatsCount: Int {get}
     var selectedChat: Chat? {get set}
     
     func getChat(atIndex: Int) -> Chat
+}
+
+protocol ChatInfoGetterDelegate: class {
+    var chatInfo: Chat? {get}
 }
 
 
