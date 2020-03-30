@@ -17,11 +17,13 @@ class DialogViewController: UIViewController {
     var viewModel: DialogViewModeling?
     var router: DialogRouting?
     
+    var currentChat: Chat?
+    
     @IBOutlet weak var chatLogCollectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print(currentChat)
         setupUI()
         setupDependencies()
     }

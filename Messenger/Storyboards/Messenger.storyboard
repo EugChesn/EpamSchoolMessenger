@@ -52,13 +52,14 @@
                     <navigationItem key="navigationItem" id="LWH-6D-9Lg">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="square.and.pencil" catalog="system" id="Eau-J2-eTm">
                             <connections>
-                                <action selector="routeToDialog:" destination="svb-cc-S14" id="ugX-dL-gsu"/>
+                                <action selector="routeToCreateChat:" destination="svb-cc-S14" id="8Kg-7e-JXw"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="chatsTableView" destination="9ma-I3-axk" id="3YD-tn-hjI"/>
                         <segue destination="JPB-Bh-H4w" kind="show" identifier="dialog" id="n4v-XQ-Dgx"/>
+                        <segue destination="qLn-hQ-cMr" kind="showDetail" identifier="createChat" id="1uS-5c-n7Z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dKH-XK-YA0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -247,6 +248,52 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8sf-sf-IuW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2143.4782608695655" y="204.91071428571428"/>
+        </scene>
+        <!--Create Chat View Controller-->
+        <scene sceneID="eiJ-Gy-QlO">
+            <objects>
+                <viewController id="qLn-hQ-cMr" customClass="CreateChatViewController" customModule="Messenger" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9YL-k4-aX1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kw9-Cl-3mn">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                                <items>
+                                    <navigationItem title="New Message" id="GXr-o9-z16">
+                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="FUB-Nv-7O4">
+                                            <connections>
+                                                <action selector="cancelCreate:" destination="qLn-hQ-cMr" id="dhD-Uh-C0f"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dfz-K6-e47">
+                                <rect key="frame" x="0.0" y="56" width="414" height="752"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Kw9-Cl-3mn" firstAttribute="trailing" secondItem="vgh-3n-blz" secondAttribute="trailing" id="82c-sr-O1g"/>
+                            <constraint firstItem="Kw9-Cl-3mn" firstAttribute="leading" secondItem="vgh-3n-blz" secondAttribute="leading" id="Ew7-gn-8He"/>
+                            <constraint firstItem="dfz-K6-e47" firstAttribute="leading" secondItem="vgh-3n-blz" secondAttribute="leading" id="HAZ-hG-pfn"/>
+                            <constraint firstItem="vgh-3n-blz" firstAttribute="trailing" secondItem="dfz-K6-e47" secondAttribute="trailing" id="HGY-Nr-inC"/>
+                            <constraint firstItem="vgh-3n-blz" firstAttribute="bottom" secondItem="dfz-K6-e47" secondAttribute="bottom" id="sJY-ol-22w"/>
+                            <constraint firstItem="Kw9-Cl-3mn" firstAttribute="top" secondItem="vgh-3n-blz" secondAttribute="top" id="tP9-sY-7fX"/>
+                            <constraint firstItem="dfz-K6-e47" firstAttribute="top" secondItem="Kw9-Cl-3mn" secondAttribute="bottom" id="y1K-Q3-OF7"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="vgh-3n-blz"/>
+                    </view>
+                    <connections>
+                        <outlet property="contactListTableView" destination="dfz-K6-e47" id="iPZ-mt-fsb"/>
+                        <outlet property="creatChatNavigationItem" destination="GXr-o9-z16" id="0EN-0J-Txj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="W06-Wy-Thz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2143" y="929"/>
         </scene>
         <!--SettingsViewController-->
         <scene sceneID="0Lc-pa-mAc">

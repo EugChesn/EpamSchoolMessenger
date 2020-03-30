@@ -11,6 +11,13 @@ import UIKit
 
 protocol ChatsDelegate: class {
     func updateChats()
+    func openChat()
+}
+
+protocol NewChatOpenerDelegate: class {
+    var selectedChat: Chat? {get set}
+    
+    func openNewChat()
 }
 
 class ChatsViewController: UIViewController {
@@ -37,11 +44,18 @@ class ChatsViewController: UIViewController {
         
         let searchConroller = UISearchController(searchResultsController: nil)
         searchConroller.searchBar.delegate = self
+        
         navigationItem.searchController = searchConroller
+        navigationItem.title = "Chats"
+
     }
     
     @IBAction func routeToDialog(_ sender: Any) {
         performSegue(withIdentifier: "dialog", sender: sender)
+    }
+    
+    @IBAction func routeToCreateChat(_ sender: Any) {
+        performSegue(withIdentifier: "createChat", sender: sender)
     }
 }
 
@@ -50,6 +64,25 @@ extension ChatsViewController: ChatsDelegate {
         DispatchQueue.main.async {
             self.chatsTableView.reloadData()
         }
+    }
+    
+    func openChat() {
+        
+    }
+}
+
+extension ChatsViewController: NewChatOpenerDelegate {
+    var selectedChat: Chat? {
+        get {
+            return viewModel.selectedChat
+        }
+        set {
+            viewModel.selectedChat = newValue
+        }
+    }
+    
+    func openNewChat() {
+        openChat()
     }
 }
 

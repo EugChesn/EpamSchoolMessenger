@@ -23,6 +23,9 @@
 		86CB7AA6242B6BEF00995986 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CB7AA5242B6BEF00995986 /* ProfileViewController.swift */; };
 		86CB7AA8242B6C0F00995986 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CB7AA7242B6C0F00995986 /* ProfileViewModel.swift */; };
 		86CB7AAA242B6C2C00995986 /* ProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CB7AA9242B6C2C00995986 /* ProfileRouter.swift */; };
+		AA1B40C32431D48800E1D452 /* CreateChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1B40C22431D48800E1D452 /* CreateChatViewController.swift */; };
+		AA1B40C52431D49400E1D452 /* CreateChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1B40C42431D49400E1D452 /* CreateChatViewModel.swift */; };
+		AA1B40C72431D4A100E1D452 /* CreateChatRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1B40C62431D4A100E1D452 /* CreateChatRouter.swift */; };
 		AA1B5FC6241BF0DE0080443A /* SignInRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1B5FC5241BF0DE0080443A /* SignInRouter.swift */; };
 		AA1B5FC8241BF1C30080443A /* RegistrationCodeConfirmationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1B5FC7241BF1C30080443A /* RegistrationCodeConfirmationRouter.swift */; };
 		AA1B5FCA241BF1D00080443A /* CreatePasswordRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1B5FC9241BF1D00080443A /* CreatePasswordRouter.swift */; };
@@ -92,6 +95,9 @@
 		86CB7AA5242B6BEF00995986 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		86CB7AA7242B6C0F00995986 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		86CB7AA9242B6C2C00995986 /* ProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRouter.swift; sourceTree = "<group>"; };
+		AA1B40C22431D48800E1D452 /* CreateChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateChatViewController.swift; sourceTree = "<group>"; };
+		AA1B40C42431D49400E1D452 /* CreateChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateChatViewModel.swift; sourceTree = "<group>"; };
+		AA1B40C62431D4A100E1D452 /* CreateChatRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateChatRouter.swift; sourceTree = "<group>"; };
 		AA1B5FC5241BF0DE0080443A /* SignInRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInRouter.swift; sourceTree = "<group>"; };
 		AA1B5FC7241BF1C30080443A /* RegistrationCodeConfirmationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationCodeConfirmationRouter.swift; sourceTree = "<group>"; };
 		AA1B5FC9241BF1D00080443A /* CreatePasswordRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePasswordRouter.swift; sourceTree = "<group>"; };
@@ -230,6 +236,16 @@
 				86CB7AA9242B6C2C00995986 /* ProfileRouter.swift */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		AA1B40C12431D44100E1D452 /* CreateChat */ = {
+			isa = PBXGroup;
+			children = (
+				AA1B40C22431D48800E1D452 /* CreateChatViewController.swift */,
+				AA1B40C42431D49400E1D452 /* CreateChatViewModel.swift */,
+				AA1B40C62431D4A100E1D452 /* CreateChatRouter.swift */,
+			);
+			path = CreateChat;
 			sourceTree = "<group>";
 		};
 		AA1B5FDF241BF34C0080443A /* Base */ = {
@@ -448,6 +464,7 @@
 		AAF834FF241938BD00FDF9D2 /* Chats */ = {
 			isa = PBXGroup;
 			children = (
+				AA1B40C12431D44100E1D452 /* CreateChat */,
 				AA487C46241E55F500337FBF /* Dialog */,
 				AA487C4D241E56A300337FBF /* ChatsList */,
 			);
@@ -635,6 +652,7 @@
 				AAF834F42419295900FDF9D2 /* PasswordRecoveryViewModel.swift in Sources */,
 				AAB3AEFC241B7FCF00825F00 /* CodeConfirmationViewController.swift in Sources */,
 				3EBEC40F242A2A5600AF858C /* AuthFirebaseService.swift in Sources */,
+				AA1B40C32431D48800E1D452 /* CreateChatViewController.swift in Sources */,
 				AAF834EA2419229D00FDF9D2 /* SignUpViewController.swift in Sources */,
 				AAB3AEF8241B7FAB00825F00 /* NewPasswordViewController.swift in Sources */,
 				AAF8350E24193C3600FDF9D2 /* MessengerTabBarController.swift in Sources */,
@@ -644,12 +662,14 @@
 				AA64DE0F241B694400ED2C63 /* NetworkService.swift in Sources */,
 				AA1B5FD6241BF2250080443A /* CodeConfirmationRouter.swift in Sources */,
 				3E6BD3D3241FD70800CA6780 /* FirebaseService.swift in Sources */,
+				AA1B40C72431D4A100E1D452 /* CreateChatRouter.swift in Sources */,
 				AA487C4A241E561600337FBF /* DialogViewModel.swift in Sources */,
 				AA487C48241E560900337FBF /* DialogViewController.swift in Sources */,
 				86CB7AA8242B6C0F00995986 /* ProfileViewModel.swift in Sources */,
 				3E78E7132422218F0053DD1C /* ExtensionAuth.swift in Sources */,
 				AA1B5FC6241BF0DE0080443A /* SignInRouter.swift in Sources */,
 				AA64DE12241B698D00ED2C63 /* StorageService.swift in Sources */,
+				AA1B40C52431D49400E1D452 /* CreateChatViewModel.swift in Sources */,
 				AAF8351824193F8100FDF9D2 /* ContactsViewModel.swift in Sources */,
 				AAB3AF0C241B843900825F00 /* RegistrationCodeConfirmationViewController.swift in Sources */,
 				AA1B5FD2241BF20F0080443A /* PasswordRecoveryRouter.swift in Sources */,

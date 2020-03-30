@@ -11,15 +11,50 @@ import UIKit
 
 protocol ChatsViewModeling {
     var chatsCount: Int {get}
+    var selectedChat: Chat? {get set}
     
     func getChat(atIndex: Int) -> Chat
 }
+
 
 class ChatsViewModel: ChatsViewModeling {
     
     weak var view: ChatsDelegate?
     
-    var chatsList: [Chat] = []
+    private var chatsList: [Chat] = [] {
+        didSet {
+            view?.updateChats()
+        }
+    }
+    
+    private var chat: Chat? {
+        didSet {
+            view?.openChat()
+        }
+    }
+    
+    var selectedChat: Chat? {
+        get {
+            return chat
+        }
+        set {
+            guard let selectedChat = newValue else {return}
+            let contains = chatsList.contains { (chat) -> Bool in
+                if selectedChat.uid == chat.uid {
+                    return true
+                } else {
+                    return false
+                }
+            }
+            
+            if contains {
+                chat = selectedChat
+            } else {
+                chatsList.append(selectedChat)
+                chat = selectedChat
+            }
+        }
+    }
     
     var chatsCount: Int {
         get {
