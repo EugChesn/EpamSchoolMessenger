@@ -11,7 +11,6 @@ import UIKit
 
 extension ChatsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(viewModel.chatsCount)
         return viewModel.chatsCount
     }
     
