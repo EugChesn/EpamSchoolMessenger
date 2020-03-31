@@ -23,6 +23,6 @@ struct MessageModel {
 }
 
 struct ChatInfo {
-    var lastMessage: String = "test"
+    var lastMessage: String = ""
     var contact: Contact
 }

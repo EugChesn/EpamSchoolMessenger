@@ -19,6 +19,8 @@ protocol DialogViewModeling {
 class DialogViewModel: DialogViewModeling {
     weak var view: DialogDelegate?
     
+    let fir = FirebaseService.firebaseService
+    
     private var chatInfo: ChatInfo? {
         didSet {
             downloadMessages()
@@ -56,23 +58,24 @@ class DialogViewModel: DialogViewModeling {
     }
     
     func sendMessage(messageText: String) {
-        let fir = FirebaseService.firebaseService
         
         if let uid = fir.getCurrentUser()?.uid, let recipientUid = chat?.contact.uid {
             let message = MessageModel(from: uid, to: recipientUid, text: messageText, timeSpan: "")
             
             fir.referenceDataBase.child("chats").child(uid).child(recipientUid).child("thread").childByAutoId().updateChildValues(["from": message.from, "to": message.to, "text": message.text, "timeSpan": message.timeSpan])
             
-            fir.referenceDataBase.child("chats").child(recipientUid).child(uid).child("thread").childByAutoId().updateChildValues(["from": message.from, "to": message.to, "text": message.text, "timeSpan": message.timeSpan])
-            
             fir.referenceDataBase.child("chats").child(uid).child(recipientUid).updateChildValues(["lastMessage": message.text])
             
-            fir.referenceDataBase.child("chats").child(recipientUid).child(uid).updateChildValues(["lastMessage": message.text])
+            if uid != recipientUid {
+                fir.referenceDataBase.child("chats").child(recipientUid).child(uid).child("thread").childByAutoId().updateChildValues(["from": message.from, "to": message.to, "text": message.text, "timeSpan": message.timeSpan])
+                
+                fir.referenceDataBase.child("chats").child(recipientUid).child(uid).updateChildValues(["lastMessage": message.text])
+            }  
         }
     }
     
     private func downloadMessages() {
-        let fir = FirebaseService.firebaseService
+        
         if let uid = fir.getCurrentUser()?.uid, let recipientUid = chat?.contact.uid  {
             fir.referenceDataBase.child("chats").child(uid).child(recipientUid).child("thread").observe(.childAdded) { (snapshot) in
                 if let dictionary = snapshot.value as? [String: String] {

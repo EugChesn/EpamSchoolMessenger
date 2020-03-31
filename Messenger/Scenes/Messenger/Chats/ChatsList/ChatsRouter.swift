@@ -9,9 +9,16 @@
 import Foundation
 
 protocol ChatsRouting {
-    
+    func routeToDialog()
+    func routeToCreateChat()
 }
 
 class ChatsRouter: BaseRouter, ChatsRouting {
-
+    func routeToDialog() {
+        performSegue(withIdentifier: "dialog", sender: viewController)
+    }
+    
+    func routeToCreateChat() {
+        performSegue(withIdentifier: "createChat", sender: viewController)
+    }
 }

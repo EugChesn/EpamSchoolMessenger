@@ -13,6 +13,7 @@ protocol ChatsViewModeling: class {
     var chatsCount: Int {get}
     var selectedChat: ChatInfo? {get set}
     
+    func downloadChats()
     func createNewChat(with contact: Contact)
     func getChat(atIndex: Int) -> ChatInfo
 }
@@ -45,22 +46,9 @@ class ChatsViewModel: ChatsViewModeling {
         set {
             guard let selectedChat = newValue else {return}
             
-            let contains = chatsList.contains { (chat) -> Bool in
-                if chat.contact.uid == selectedChat.contact.uid {
-                    return true
-                } else {
-                    return false
-                }
-            }
-            
-            if contains {
                 chat = selectedChat
-            } else {
-                chat = selectedChat
-                chatsList.append(selectedChat)
-            }
-            
         }
+            
     }
     
     var chatsCount: Int {
@@ -75,7 +63,6 @@ class ChatsViewModel: ChatsViewModeling {
     
     init(view: ChatsDelegate) {
         self.view = view
-        downLoadChats()
     }
     
     func createNewChat(with contact: Contact) {
@@ -85,7 +72,8 @@ class ChatsViewModel: ChatsViewModeling {
             selectedChat = chat
     }
     
-    private func downLoadChats() {
+    func downloadChats() {
+        chatsList = []
         let refDatabase = FirebaseService.firebaseService.referenceDataBase
         if let currentUid = FirebaseService.firebaseService.getCurrentUser()?.uid {
             refDatabase.child("chats").child(currentUid).observe(.childAdded) { (snapshot) in

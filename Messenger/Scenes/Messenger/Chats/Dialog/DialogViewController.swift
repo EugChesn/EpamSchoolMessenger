@@ -22,19 +22,46 @@ class DialogViewController: UIViewController {
     @IBOutlet weak var chatLogCollectionView: UICollectionView!
     @IBOutlet weak var messageTextField: UITextField!
     @IBOutlet weak var sendButton: UIButton!
+    @IBOutlet weak var inputViewConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
         setupDependencies()
         setupUI()
     }
     
+    @objc func keyboardWillShow(notification: NSNotification) {
+            
+        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+
+           return
+        }
+      
+      self.view.frame.origin.y = 0 - keyboardSize.height
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+      // move back the root view origin to zero
+      self.view.frame.origin.y = 0
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.tabBarController?.tabBar.isHidden = false
+    }
     
     func setupDependencies() {
         viewModel = DialogViewModel(view: self)
         viewModel.chat = chatViewModel?.selectedChat
         router = DialogRouter(viewController: self)
+        
+
     }
     
     func setupUI() {
@@ -47,7 +74,10 @@ class DialogViewController: UIViewController {
         messageTextField.layer.borderWidth = 0.5
         
         navigationItem.title = viewModel.chat?.contact.name
+        
+        self.tabBarController?.tabBar.isHidden = true
     }
+
     
     @IBAction func sendMessage(_ sender: Any) {
         guard let text = messageTextField.text, text != "" else {
@@ -56,6 +86,11 @@ class DialogViewController: UIViewController {
         
         viewModel.sendMessage(messageText: text)
         messageTextField.text = ""
+    }
+    
+    @IBAction func tapForHideKeyBoard(_ sender: Any) {
+        messageTextField.resignFirstResponder()
+
     }
 }
 
@@ -96,8 +131,6 @@ extension DialogViewController: UICollectionViewDelegateFlowLayout, UICollection
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath)
             return cell
         }
-        
-
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -117,3 +150,4 @@ extension DialogViewController: UICollectionViewDelegateFlowLayout, UICollection
     }
 
 }
+

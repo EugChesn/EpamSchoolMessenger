@@ -28,7 +28,6 @@ class CreateChatViewController: UIViewController {
         setupUI()
     }
     
-    
     func setupDependencies() {
         viewModel = CreateChatViewModel(view: self)
         router = CreateChatRouter(viewController: self)
@@ -38,7 +37,6 @@ class CreateChatViewController: UIViewController {
         let searchController = UISearchController(searchResultsController: nil)
         searchController.searchBar.delegate = self
         
-        
         creatChatNavigationItem.searchController = searchController
         creatChatNavigationItem.title = "test"
         
@@ -47,7 +45,7 @@ class CreateChatViewController: UIViewController {
     }
     
     @IBAction func cancelCreate(_ sender: Any) {
-        router?.cancelCreate()
+        router?.dismiss()
     }
 }
 
@@ -70,7 +68,10 @@ extension CreateChatViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: "contactCell")
+        
         cell.textLabel?.text = viewModel?.contact(atIndex: indexPath.row).name
+        cell.imageView?.image = UIImage(named: "profile")
+        
         return cell
     }
     
@@ -79,7 +80,7 @@ extension CreateChatViewController: UITableViewDelegate, UITableViewDataSource {
             return
         }
         chatOpenerDelegate?.dialogContact = contact
-        router?.createChat()
+        router?.dismiss()
     }
     
 }

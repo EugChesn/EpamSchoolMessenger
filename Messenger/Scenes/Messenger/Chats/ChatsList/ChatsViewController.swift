@@ -33,6 +33,12 @@ class ChatsViewController: UIViewController {
         setupDependencies()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        viewModel.downloadChats()
+    }
+    
     func setupDependencies() {
         viewModel = ChatsViewModel(view: self)
         router = ChatsRouter(viewController: self)
@@ -64,11 +70,11 @@ class ChatsViewController: UIViewController {
     }
     
     func routeToDialog(_ sender: Any) {
-        performSegue(withIdentifier: "dialog", sender: sender)
+        router?.routeToDialog()
     }
     
     @IBAction func routeToCreateChat(_ sender: Any) {
-        performSegue(withIdentifier: "createChat", sender: sender)
+        router?.routeToCreateChat()
     }
 }
 
