@@ -30,25 +30,29 @@ class GreetingViewController: UIViewController {
         Utilities.styleButton(SignUpButton)
         setupDependencies()
     }
-    override func viewWillAppear(_ animated: Bool) {
-        handlerState = Auth.auth().addStateDidChangeListener { auth, user in
-            if user != nil {
-                self.router?.routeToLogin(withIdentifier: "messengerMy", sender: self)
-            }
-        }
-    }
-    override func viewWillDisappear(_ animated: Bool) {
+//    override func viewWillAppear(_ animated: Bool) {
+//        let fir: AuthFirebase = FirebaseService.firebaseService
+//
+//        fir.signInHandlerState = Auth.auth().addStateDidChangeListener { auth, user in
+//            if user != nil {
+//                print("hello")
+//                self.router?.routeToLogin(withIdentifier: "messengerMy", sender: self)
+//            }
+//        }
+//        
+//    }
+//    override func viewWillDisappear(_ animated: Bool) {
 //        Auth.auth().removeStateDidChangeListener(handlerState!)
 //        TEST_FUNC_SIGN_OUT()
-    }
-    private func TEST_FUNC_SIGN_OUT(){
-        let firebaseAuth = Auth.auth()
-        do {
-          try firebaseAuth.signOut()
-        } catch let signOutError as NSError {
-          print ("Error signing out: %@", signOutError)
-        }
-    }
+//    }
+//    private func TEST_FUNC_SIGN_OUT(){
+//        let firebaseAuth = Auth.auth()
+//        do {
+//          try firebaseAuth.signOut()
+//        } catch let signOutError as NSError {
+//          print ("Error signing out: %@", signOutError)
+//        }
+//    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == "signIn" else { return }

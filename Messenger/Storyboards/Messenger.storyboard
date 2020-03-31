@@ -49,6 +49,11 @@
                         <viewLayoutGuide key="safeArea" id="3BC-2j-Ajx"/>
                     </view>
                     <navigationItem key="navigationItem" id="LWH-6D-9Lg">
+                        <barButtonItem key="leftBarButtonItem" title="SignOut" id="5pa-nV-DJn">
+                            <connections>
+                                <action selector="signOut:" destination="svb-cc-S14" id="jP4-rw-dZL"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" image="square.and.pencil" catalog="system" id="Eau-J2-eTm">
                             <connections>
                                 <action selector="routeToCreateChat:" destination="svb-cc-S14" id="8Kg-7e-JXw"/>

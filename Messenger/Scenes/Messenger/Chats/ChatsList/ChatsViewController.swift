@@ -76,6 +76,10 @@ class ChatsViewController: UIViewController {
     @IBAction func routeToCreateChat(_ sender: Any) {
         router?.routeToCreateChat()
     }
+    
+    @IBAction func signOut(_ sender: Any) {
+        router?.signOut()
+    }
 }
 
 extension ChatsViewController: ChatsDelegate {

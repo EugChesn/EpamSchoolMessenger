@@ -10,13 +10,13 @@ import Foundation
 import UIKit
 
 extension DialogViewController {
-    private func addKeyBoardObservers() {
+    func addKeyBoardObservers() {
         showKeyBoardObserver = NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         
         hideKeyBoardObserver = NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
-    private func removeKeyBoardObservers() {
+    func removeKeyBoardObservers() {
         guard let showObserver = showKeyBoardObserver, let hideObserver = hideKeyBoardObserver else { return }
         NotificationCenter.default.removeObserver(showObserver)
         NotificationCenter.default.removeObserver(hideObserver)
