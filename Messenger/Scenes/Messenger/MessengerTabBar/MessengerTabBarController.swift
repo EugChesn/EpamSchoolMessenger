@@ -13,9 +13,14 @@ class MessengerTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        self.selectedIndex = 1
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
-        self.selectedIndex = 1
     }
     
     override func viewWillDisappear(_ animated: Bool) {
