@@ -64,7 +64,7 @@ class ChatsViewController: UIViewController {
         }
         if segue.identifier == "dialog" {
             if let destination = segue.destination as? DialogViewController {
-                destination.chatViewModel = viewModel
+                    destination.chatInfo = viewModel.selectedChat
             }
         }
     }

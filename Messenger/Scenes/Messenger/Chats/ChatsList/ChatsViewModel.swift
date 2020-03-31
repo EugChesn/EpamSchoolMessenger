@@ -27,6 +27,7 @@ class ChatsViewModel: ChatsViewModeling {
     
     weak var view: ChatsDelegate?
     
+    
     private var chatsList: [ChatInfo] = [] {
         didSet {
             view?.updateChats()
@@ -39,16 +40,20 @@ class ChatsViewModel: ChatsViewModeling {
         }
     }
     
+    let chatTransferQueue: DispatchQueue = DispatchQueue.global()
+    
     var selectedChat: ChatInfo? {
         get {
-            return chat
+            chatTransferQueue.sync {
+                return chat
+            }
         }
         set {
             guard let selectedChat = newValue else {return}
-            
+            chatTransferQueue.sync {
                 chat = selectedChat
+            }
         }
-            
     }
     
     var chatsCount: Int {

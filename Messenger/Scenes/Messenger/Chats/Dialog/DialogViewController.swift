@@ -17,7 +17,7 @@ class DialogViewController: UIViewController {
     var viewModel: DialogViewModeling!
     var router: DialogRouting?
     
-    weak var chatViewModel: ChatsViewModeling?
+    var chatInfo: ChatInfo?
     
     @IBOutlet weak var chatLogCollectionView: UICollectionView!
     @IBOutlet weak var messageTextField: UITextField!
@@ -58,7 +58,7 @@ class DialogViewController: UIViewController {
     
     func setupDependencies() {
         viewModel = DialogViewModel(view: self)
-        viewModel.chat = chatViewModel?.selectedChat
+        viewModel.chat = chatInfo
         router = DialogRouter(viewController: self)
         
 
