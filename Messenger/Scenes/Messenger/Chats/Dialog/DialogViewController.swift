@@ -19,6 +19,9 @@ class DialogViewController: UIViewController {
     
     var chatInfo: ChatInfo?
     
+    var showKeyBoardObserver: Void?
+    var hideKeyBoardObserver: Void?
+    
     @IBOutlet weak var chatLogCollectionView: UICollectionView!
     @IBOutlet weak var messageTextField: UITextField!
     @IBOutlet weak var sendButton: UIButton!
@@ -26,42 +29,23 @@ class DialogViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         setupDependencies()
         setupUI()
     }
-    
-    @objc func keyboardWillShow(notification: NSNotification) {
-            
-        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
-
-           return
-        }
-      
-      self.view.frame.origin.y = 0 - keyboardSize.height
-    }
-    
-    @objc func keyboardWillHide(notification: NSNotification) {
-      // move back the root view origin to zero
-      self.view.frame.origin.y = 0
-    }
-    
+  
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
         self.tabBarController?.tabBar.isHidden = false
+        
+        removeKeyBoardObservers()
     }
     
     func setupDependencies() {
         viewModel = DialogViewModel(view: self)
         viewModel.chat = chatInfo
         router = DialogRouter(viewController: self)
-        
-
     }
     
     func setupUI() {
@@ -76,6 +60,8 @@ class DialogViewController: UIViewController {
         navigationItem.title = viewModel.chat?.contact.name
         
         self.tabBarController?.tabBar.isHidden = true
+        
+        addKeyBoardObservers()
     }
 
     
@@ -91,6 +77,30 @@ class DialogViewController: UIViewController {
     @IBAction func tapForHideKeyBoard(_ sender: Any) {
         messageTextField.resignFirstResponder()
 
+    }
+    
+    private func addKeyBoardObservers() {
+        showKeyBoardObserver = NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        hideKeyBoardObserver = NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    private func removeKeyBoardObservers() {
+        guard let showObserver = showKeyBoardObserver, let hideObserver = hideKeyBoardObserver else { return }
+        NotificationCenter.default.removeObserver(showObserver)
+        NotificationCenter.default.removeObserver(hideObserver)
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+            
+        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
+
+      self.view.frame.origin.y = 0 - keyboardSize.height
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+
+      self.view.frame.origin.y = 0
     }
 }
 
