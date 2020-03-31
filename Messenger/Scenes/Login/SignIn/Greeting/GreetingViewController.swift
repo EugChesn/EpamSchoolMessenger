@@ -30,16 +30,14 @@ class GreetingViewController: UIViewController {
         Utilities.styleButton(SignUpButton)
         setupDependencies()
     }
-//    override func viewWillAppear(_ animated: Bool) {
-//        let fir: AuthFirebase = FirebaseService.firebaseService
+    override func viewWillAppear(_ animated: Bool) {
+        let fir = FirebaseService.firebaseService
+
+        if fir.getCurrentUser() != nil {
+            self.router?.routeToLogin(withIdentifier: "messengerMy", sender: self)
+        }
+    }
 //
-//        fir.signInHandlerState = Auth.auth().addStateDidChangeListener { auth, user in
-//            if user != nil {
-//                print("hello")
-//                self.router?.routeToLogin(withIdentifier: "messengerMy", sender: self)
-//            }
-//        }
-//        
 //    }
 //    override func viewWillDisappear(_ animated: Bool) {
 //        Auth.auth().removeStateDidChangeListener(handlerState!)
