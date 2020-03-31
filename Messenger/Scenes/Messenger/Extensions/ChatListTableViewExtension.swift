@@ -11,17 +11,19 @@ import UIKit
 
 extension ChatsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print(viewModel.chatsCount)
         return viewModel.chatsCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "chatCellId")
-        
-        let chat = viewModel.getChat(atIndex: indexPath.row)
-        
-        cell.textLabel?.text = chat.contact.name
-        cell.detailTextLabel?.text = chat.lastMessage
-        cell.imageView?.image = UIImage(named: "profile")
+        if viewModel.chatsCount != 0 {
+            let chat = viewModel.getChat(atIndex: indexPath.row)
+            
+            cell.textLabel?.text = chat.contact.name
+            cell.detailTextLabel?.text = chat.lastMessage
+            cell.imageView?.image = UIImage(named: "profile")
+        }
         
         return cell
     }
