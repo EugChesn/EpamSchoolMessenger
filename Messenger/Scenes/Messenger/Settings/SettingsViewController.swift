@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 protocol SettingsDelegate: class {
-    //func openProfile()
+    func openProfile()
 }
 
 class SettingsViewController: UITableViewController {
@@ -18,6 +18,12 @@ class SettingsViewController: UITableViewController {
     @IBOutlet private weak var profileImage: UIImageView!
     @IBOutlet private weak var nameLabel: UILabel!
     @IBOutlet private weak var emailLable: UILabel!
+    
+    @IBAction func editButton(_ sender: Any) {
+        viewModel?.editProfile()
+    }
+    
+    @IBOutlet var settingTableView: UITableView!
     
     var viewModel: SettingsViewModeling?
     var router: SettingsRouting?
@@ -62,7 +68,7 @@ extension SettingsViewController: UISearchResultsUpdating {
 }
 
 extension SettingsViewController: SettingsDelegate {
-//    func openProfile() {
-//        router?.routeToTable(withIdentifier: "ProfileViewController", sender: self)
-//    }
+    func openProfile() {
+        router?.routeProfile(withIdentifier: "goToProfile", sender: self)
+    }
 }

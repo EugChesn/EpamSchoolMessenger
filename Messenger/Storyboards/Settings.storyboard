@@ -59,9 +59,6 @@
                                                 <constraint firstItem="Tvf-Zb-SA5" firstAttribute="leading" secondItem="TZH-q0-uOI" secondAttribute="leadingMargin" id="yiO-EV-ag3"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="kDl-0n-PFR" kind="show" id="7g7-g9-ekx"/>
-                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -86,7 +83,7 @@
                     <navigationItem key="navigationItem" id="wwE-8F-jLg">
                         <barButtonItem key="rightBarButtonItem" title="Item" id="Z4D-0z-MVK">
                             <connections>
-                                <segue destination="kDl-0n-PFR" kind="show" id="wx0-mp-uev"/>
+                                <action selector="editButton:" destination="j7f-zD-gsN" id="qlW-A5-1o5"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -96,7 +93,9 @@
                         <outlet property="nameLabel" destination="IQz-To-Pkr" id="amp-wZ-rPg"/>
                         <outlet property="profileCell" destination="WmZ-V4-07e" id="uqY-XP-I2B"/>
                         <outlet property="profileImage" destination="Tvf-Zb-SA5" id="il5-MI-4KY"/>
-                        <outlet property="tableView" destination="C9R-jO-Bmn" id="iiu-RG-Gxq"/>
+                        <outlet property="settingTableView" destination="C9R-jO-Bmn" id="ik7-BA-j98"/>
+                        <outlet property="tableView" destination="C9R-jO-Bmn" id="RsR-df-Zwc"/>
+                        <segue destination="kDl-0n-PFR" kind="show" identifier="goToProfile" id="QLb-TR-dN7"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iTN-gs-pee" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -230,9 +229,6 @@
             <point key="canvasLocation" x="1944.9275362318842" y="928.79464285714278"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="7g7-g9-ekx"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="camera" catalog="system" width="128" height="96"/>
     </resources>
