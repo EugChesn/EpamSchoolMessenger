@@ -19,9 +19,6 @@ class DialogViewController: UIViewController {
     
     var chatInfo: ChatInfo?
     
-    var showKeyBoardObserver: Void?
-    var hideKeyBoardObserver: Void?
-    
     @IBOutlet weak var chatLogCollectionView: UICollectionView!
     @IBOutlet weak var messageTextField: UITextField!
     @IBOutlet weak var sendButton: UIButton!

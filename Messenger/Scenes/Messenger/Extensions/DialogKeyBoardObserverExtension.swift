@@ -18,8 +18,7 @@ extension DialogViewController {
     
     func removeKeyBoardObservers() {
         guard let showObserver = showKeyBoardObserver, let hideObserver = hideKeyBoardObserver else { return }
-        NotificationCenter.default.removeObserver(showObserver)
-        NotificationCenter.default.removeObserver(hideObserver)
+        NotificationCenter.default.removeObserver(self)
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
