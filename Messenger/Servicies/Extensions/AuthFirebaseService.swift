@@ -23,9 +23,13 @@ protocol AuthFirebase: class {
                     fault: @escaping (Error)->())
 
     func setProfileUser(name: String, nickName: String, photo: UIImage, completion: @escaping ()->())
+    
+    //разлогинить юзера
+    func signOutUser()
 }
 
 extension FirebaseService: AuthFirebase {
+    
     func signInUser(email: String,
                     password: String,
                     completion: @escaping ()->(),
@@ -69,6 +73,14 @@ extension FirebaseService: AuthFirebase {
                 self?.updateProfileInfo(name: name, nickName: nickName, photo: downloadURL)
                 completion()
             }
+        }
+    }
+    
+    func signOutUser() {
+        do {
+            try Auth.auth().signOut()
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
         }
     }
 }

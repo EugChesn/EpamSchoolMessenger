@@ -31,24 +31,26 @@ class GreetingViewController: UIViewController {
         setupDependencies()
     }
     override func viewWillAppear(_ animated: Bool) {
-        handlerState = Auth.auth().addStateDidChangeListener { auth, user in
-            if user != nil {
-                self.router?.routeToLogin(withIdentifier: "messengerMy", sender: self)
-            }
+        let fir = FirebaseService.firebaseService
+
+        if fir.getCurrentUser() != nil {
+            self.router?.routeToLogin(withIdentifier: "messengerMy", sender: self)
         }
     }
-    override func viewWillDisappear(_ animated: Bool) {
-        Auth.auth().removeStateDidChangeListener(handlerState!)
-        TEST_FUNC_SIGN_OUT()
-    }
-    private func TEST_FUNC_SIGN_OUT(){
-        let firebaseAuth = Auth.auth()
-        do {
-          try firebaseAuth.signOut()
-        } catch let signOutError as NSError {
-          print ("Error signing out: %@", signOutError)
-        }
-    }
+//
+//    }
+//    override func viewWillDisappear(_ animated: Bool) {
+//        Auth.auth().removeStateDidChangeListener(handlerState!)
+//        TEST_FUNC_SIGN_OUT()
+//    }
+//    private func TEST_FUNC_SIGN_OUT(){
+//        let firebaseAuth = Auth.auth()
+//        do {
+//          try firebaseAuth.signOut()
+//        } catch let signOutError as NSError {
+//          print ("Error signing out: %@", signOutError)
+//        }
+//    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == "signIn" else { return }
