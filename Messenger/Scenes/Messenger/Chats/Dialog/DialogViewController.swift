@@ -36,6 +36,10 @@ class DialogViewController: UIViewController {
         
         self.tabBarController?.tabBar.isHidden = false
         
+        
+    }
+    
+    deinit {
         removeKeyBoardObservers()
     }
     
