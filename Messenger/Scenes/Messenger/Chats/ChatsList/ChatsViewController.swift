@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import FirebaseAuth
 
 protocol ChatsDelegate: class {
     func updateChats()
@@ -23,6 +24,7 @@ protocol NewChatOpenerDelegate: class {
 class ChatsViewController: UIViewController {
     var viewModel: ChatsViewModeling!
     var router: ChatsRouting?
+    var handlerState: AuthStateDidChangeListenerHandle?
     
     @IBOutlet weak var chatsTableView: UITableView!
     
@@ -36,7 +38,21 @@ class ChatsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        viewModel.downloadChats()
+        handlerState = Auth.auth().addStateDidChangeListener { (auth, user) in
+            if user == nil {
+                let storyLogin = UIStoryboard(name: "Main", bundle: nil)
+                let vsLogin = storyLogin.instantiateViewController(withIdentifier: "LoginFlow") as? GreetingViewController
+                DispatchQueue.main.async {
+                    vsLogin?.modalPresentationStyle = .fullScreen
+                    self.present(vsLogin!, animated: true, completion: nil)
+                }
+            } else {
+                self.viewModel.downloadChats()
+            }
+        }
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        Auth.auth().removeStateDidChangeListener(handlerState!)
     }
     
     func setupDependencies() {
@@ -55,6 +71,7 @@ class ChatsViewController: UIViewController {
         navigationItem.title = "Chats"
 
     }
+    @IBAction func unwindSegueChat(_ unwindSegue: UIStoryboardSegue) { }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "createChat" {
@@ -66,6 +83,9 @@ class ChatsViewController: UIViewController {
             if let destination = segue.destination as? DialogViewController {
                     destination.chatInfo = viewModel.selectedChat
             }
+        }
+        if segue.identifier == "unwindLogin" {
+            print("testUnwindSegueChat")
         }
     }
     

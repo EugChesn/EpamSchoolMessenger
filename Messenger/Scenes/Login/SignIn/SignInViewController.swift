@@ -27,9 +27,9 @@ class SignInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let backButton = UIBarButtonItem()
-        backButton.title = backName
-        self.navigationController!.navigationBar.topItem!.backBarButtonItem = backButton
+        //let backButton = UIBarButtonItem()
+        //backButton.title = backName
+        //self.navigationController!.navigationBar.topItem!.backBarButtonItem = backButton
         
         Utilities.styleTextField(emailTextField)
         Utilities.styleTextField(passwordTextField)
@@ -100,6 +100,8 @@ extension SignInViewController: SignInDelegate {
     
     func successLogin() {
         //print(FirebaseService.firebaseService.getCurrentUser()?.photoURL)
-        router?.routeToMessage(withIdentifier: "messenger" , sender: self)
+        
+        router?.routeToMessage(withIdentifier: "unwindLogin" , sender: self)
+        //performSegue(withIdentifier: "unwindLogin", sender: self)
     }
 }

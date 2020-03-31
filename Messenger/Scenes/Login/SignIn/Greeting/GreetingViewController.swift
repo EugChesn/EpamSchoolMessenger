@@ -20,7 +20,6 @@ class GreetingViewController: UIViewController {
     @IBOutlet weak var LogInButton: UIButton!
     @IBOutlet weak var SignUpButton: UIButton!
     
-    var handlerState: AuthStateDidChangeListenerHandle?
     var viewModel: GreetingViewModeling?
     var router: GreetingRouting?
     
