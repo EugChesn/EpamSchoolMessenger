@@ -26,6 +26,7 @@ class ChatsRouter: BaseRouter, ChatsRouting {
     func signOut() {
         viewController?.tabBarController?.navigationController?.popToRootViewController(animated: true)
         
+        
         let fir: AuthFirebase = FirebaseService.firebaseService
         fir.signOutUser()
     }

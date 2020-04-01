@@ -15,6 +15,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
+        navigateStart()
         return true
+    }
+    
+    func navigateStart() {
+        let vc = MessengerTabBarController.instantiate()
+        vc.selectedIndex = 1
+        UIApplication.shared.windows.first?.rootViewController = vc
     }
 }

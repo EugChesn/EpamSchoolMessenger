@@ -8,15 +8,16 @@
 
 import Foundation
 import UIKit
+import FirebaseAuth
 
 protocol ChatsDelegate: class {
     func updateChats()
     func openChat()
+    func setLoginFlow()
 }
 
 protocol NewChatOpenerDelegate: class {
     var dialogContact: Contact {get set}
-    
     func openNewChat()
 }
 
@@ -35,8 +36,10 @@ class ChatsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        viewModel.downloadChats()
+        viewModel.subscribeStateUser()
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        viewModel.unsubscribeStateUser()
     }
     
     func setupDependencies() {
@@ -55,6 +58,7 @@ class ChatsViewController: UIViewController {
         navigationItem.title = "Chats"
 
     }
+    @IBAction func unwindSegueChat(_ unwindSegue: UIStoryboardSegue) { }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "createChat" {
@@ -66,6 +70,9 @@ class ChatsViewController: UIViewController {
             if let destination = segue.destination as? DialogViewController {
                     destination.chatInfo = viewModel.selectedChat
             }
+        }
+        if segue.identifier == "unwindLogin" {
+            // ...
         }
     }
     
@@ -92,4 +99,16 @@ extension ChatsViewController: ChatsDelegate {
     func openChat() {
         routeToDialog(self)
     }
+    func setLoginFlow() {
+        let vsLogin = GreetingViewController.instantiate()
+        DispatchQueue.main.async {
+            let navBarOnModal: UINavigationController = UINavigationController(rootViewController: vsLogin)
+            navBarOnModal.modalPresentationStyle = .fullScreen
+            self.present(navBarOnModal, animated: true, completion: nil)
+        }
+    }
 }
+
+
+
+

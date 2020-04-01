@@ -12,6 +12,7 @@
 		3E78E7132422218F0053DD1C /* ExtensionAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E78E7122422218F0053DD1C /* ExtensionAuth.swift */; };
 		3E78E71524222A700053DD1C /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E78E71424222A700053DD1C /* Utilities.swift */; };
 		3E7CBF44242A83E6002DAD3F /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E7CBF43242A83E6002DAD3F /* Media.xcassets */; };
+		3EA8B18E2434AA48001B4207 /* ExtensionsStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA8B18D2434AA48001B4207 /* ExtensionsStoryboard.swift */; };
 		3EBEC40F242A2A5600AF858C /* AuthFirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBEC40E242A2A5600AF858C /* AuthFirebaseService.swift */; };
 		867B2F7B2412585C00B16B01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867B2F7A2412585C00B16B01 /* AppDelegate.swift */; };
 		867B2F822412585C00B16B01 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 867B2F802412585C00B16B01 /* Main.storyboard */; };
@@ -88,6 +89,7 @@
 		3E78E7122422218F0053DD1C /* ExtensionAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionAuth.swift; sourceTree = "<group>"; };
 		3E78E71424222A700053DD1C /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		3E7CBF43242A83E6002DAD3F /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		3EA8B18D2434AA48001B4207 /* ExtensionsStoryboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsStoryboard.swift; sourceTree = "<group>"; };
 		3EBEC40E242A2A5600AF858C /* AuthFirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFirebaseService.swift; sourceTree = "<group>"; };
 		867B2F772412585C00B16B01 /* Messenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Messenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		867B2F7A2412585C00B16B01 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -189,6 +191,14 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
+		3EA8B18C2434AA14001B4207 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3EA8B18D2434AA48001B4207 /* ExtensionsStoryboard.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		3EBEC410242A2A6000AF858C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -218,6 +228,7 @@
 		867B2F792412585C00B16B01 /* Messenger */ = {
 			isa = PBXGroup;
 			children = (
+				3EA8B18C2434AA14001B4207 /* Extensions */,
 				AA1B40E82432AC4100E1D452 /* Models */,
 				AAF194B72430C1A200BB81BE /* Messenger.entitlements */,
 				AA1B5FDF241BF34C0080443A /* Base */,
@@ -696,6 +707,7 @@
 				AA64DE0F241B694400ED2C63 /* NetworkService.swift in Sources */,
 				AA1B5FD6241BF2250080443A /* CodeConfirmationRouter.swift in Sources */,
 				3E6BD3D3241FD70800CA6780 /* FirebaseService.swift in Sources */,
+				3EA8B18E2434AA48001B4207 /* ExtensionsStoryboard.swift in Sources */,
 				AA1B40C72431D4A100E1D452 /* CreateChatRouter.swift in Sources */,
 				AA487C4A241E561600337FBF /* DialogViewModel.swift in Sources */,
 				AA487C48241E560900337FBF /* DialogViewController.swift in Sources */,

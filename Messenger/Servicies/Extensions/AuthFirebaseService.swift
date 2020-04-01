@@ -10,6 +10,7 @@ import Foundation
 import FirebaseAuth
 
 protocol AuthFirebase: class {
+    
     // произвести логин юзера
     func signInUser(email: String,
                     password: String,
@@ -26,9 +27,23 @@ protocol AuthFirebase: class {
     
     //разлогинить юзера
     func signOutUser()
+    
+    //Подписка на состояние юзера
+    func listenStateUser(completion: @escaping (StateUser) -> ())
+    func unListenStateUser()
 }
 
 extension FirebaseService: AuthFirebase {
+    
+    func listenStateUser(completion: @escaping (StateUser) -> ()) {
+        handlerState = Auth.auth().addStateDidChangeListener { (_ , user) in
+            user != nil ? completion(StateUser.Authorised) : completion(StateUser.NotAuthorised)
+        }
+    }
+    
+    func unListenStateUser() {
+        Auth.auth().removeStateDidChangeListener(handlerState!)
+    }
     
     func signInUser(email: String,
                     password: String,
