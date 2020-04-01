@@ -26,3 +26,8 @@ struct ChatInfo {
     var lastMessage: String = ""
     var contact: Contact
 }
+
+enum StateUser {
+    case Authorised
+    case NotAuthorised
+}

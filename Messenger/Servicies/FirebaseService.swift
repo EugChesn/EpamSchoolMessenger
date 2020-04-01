@@ -12,6 +12,7 @@ import Firebase
 class FirebaseService {
     private(set) var referenceDataBase: DatabaseReference
     private(set) var referenceUser: DatabaseReference
+    var handlerState: AuthStateDidChangeListenerHandle?
     
     static let firebaseService = FirebaseService()
     private init(){

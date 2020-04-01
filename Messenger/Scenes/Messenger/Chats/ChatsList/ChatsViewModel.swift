@@ -16,6 +16,9 @@ protocol ChatsViewModeling: class {
     func downloadChats()
     func createNewChat(with contact: Contact)
     func getChat(atIndex: Int) -> ChatInfo
+    
+    func subscribeStateUser()
+    func unsubscribeStateUser()
 }
 
 protocol ChatInfoGetterDelegate: class {
@@ -24,9 +27,9 @@ protocol ChatInfoGetterDelegate: class {
 
 
 class ChatsViewModel: ChatsViewModeling {
-    
+
     weak var view: ChatsDelegate?
-    
+    weak var authService: AuthFirebase?
     
     private var chatsList: [ChatInfo] = [] {
         didSet {
@@ -68,13 +71,27 @@ class ChatsViewModel: ChatsViewModeling {
     
     init(view: ChatsDelegate) {
         self.view = view
+        self.authService = FirebaseService.firebaseService
     }
     
     func createNewChat(with contact: Contact) {
-        
-            let chat = ChatInfo(contact: contact)
-            
-            selectedChat = chat
+        let chat = ChatInfo(contact: contact)
+        selectedChat = chat
+    }
+    
+    func subscribeStateUser() {
+        authService?.listenStateUser { state in
+            switch state {
+            case .NotAuthorised:
+                self.view?.setLoginFlow()
+            case .Authorised:
+                self.downloadChats()
+            }
+        }
+    }
+    
+    func unsubscribeStateUser() {
+        authService?.unListenStateUser()
     }
     
     func downloadChats() {

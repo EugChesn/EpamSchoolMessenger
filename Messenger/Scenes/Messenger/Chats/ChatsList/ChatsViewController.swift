@@ -13,18 +13,17 @@ import FirebaseAuth
 protocol ChatsDelegate: class {
     func updateChats()
     func openChat()
+    func setLoginFlow()
 }
 
 protocol NewChatOpenerDelegate: class {
     var dialogContact: Contact {get set}
-    
     func openNewChat()
 }
 
 class ChatsViewController: UIViewController {
     var viewModel: ChatsViewModeling!
     var router: ChatsRouting?
-    var handlerState: AuthStateDidChangeListenerHandle?
     
     @IBOutlet weak var chatsTableView: UITableView!
     
@@ -37,23 +36,10 @@ class ChatsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        handlerState = Auth.auth().addStateDidChangeListener { (auth, user) in
-            if user == nil {
-                let vsLogin = GreetingViewController.instantiate()
-                
-                DispatchQueue.main.async {
-                    let navBarOnModal: UINavigationController = UINavigationController(rootViewController: vsLogin)
-                    navBarOnModal.modalPresentationStyle = .fullScreen
-                    self.present(navBarOnModal, animated: true, completion: nil)
-                }
-            } else {
-                self.viewModel.downloadChats()
-            }
-        }
+        viewModel.subscribeStateUser()
     }
     override func viewWillDisappear(_ animated: Bool) {
-        Auth.auth().removeStateDidChangeListener(handlerState!)
+        viewModel.unsubscribeStateUser()
     }
     
     func setupDependencies() {
@@ -113,4 +99,16 @@ extension ChatsViewController: ChatsDelegate {
     func openChat() {
         routeToDialog(self)
     }
+    func setLoginFlow() {
+        let vsLogin = GreetingViewController.instantiate()
+        DispatchQueue.main.async {
+            let navBarOnModal: UINavigationController = UINavigationController(rootViewController: vsLogin)
+            navBarOnModal.modalPresentationStyle = .fullScreen
+            self.present(navBarOnModal, animated: true, completion: nil)
+        }
+    }
 }
+
+
+
+
