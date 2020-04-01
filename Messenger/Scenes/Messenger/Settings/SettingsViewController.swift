@@ -15,6 +15,8 @@ protocol SettingsDelegate: class {
 
 class SettingsViewController: UITableViewController {
     @IBOutlet private weak var profileCell: UITableViewCell!
+    @IBOutlet weak var notificationCell: UITableViewCell!
+    
     @IBOutlet private weak var profileImage: UIImageView!
     @IBOutlet private weak var nameLabel: UILabel!
     @IBOutlet private weak var emailLable: UILabel!
@@ -27,7 +29,8 @@ class SettingsViewController: UITableViewController {
     
     var viewModel: SettingsViewModeling?
     var router: SettingsRouting?
-    let searchController = UISearchController(searchResultsController: nil)
+    private let searchController = UISearchController(searchResultsController: nil)
+    private let settingCellId = "SettingCell"
     
     private enum Constant {
         static let rightBarButtonItem = "Edit"
@@ -38,13 +41,14 @@ class SettingsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         settingNavigationItem()
-//MARK: SearchBar
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: settingCellId)
+        //MARK: SearchBar
         Decor.searchBar(searchController, placeholder: Constant.search)
         searchController.searchResultsUpdater = self
         definesPresentationContext = true
-//MARK: Cell setting
-        Decor.styleCell(profileCell)
-//MARK: Image setting
+        //MARK: Cell setting
+        //Decor.styleCell(profileCell)
+        //MARK: Image setting
         Decor.styleImageView(profileImage)
         
         setupDependencies()
@@ -60,8 +64,33 @@ class SettingsViewController: UITableViewController {
         navigationItem.title = Constant.setting
         navigationItem.searchController = searchController
     }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0 {
+            return 1
+        } else {
+            return 1
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: settingCellId, for: indexPath)
+        Decor.styleCell(cell)
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 0 && indexPath.row == 0 {
+            tableView.deselectRow(at: indexPath, animated: true)
+            viewModel?.editProfile()
+        }
+    }
 }
- 
+
 extension SettingsViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
     }
