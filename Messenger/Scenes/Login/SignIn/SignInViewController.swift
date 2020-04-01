@@ -27,9 +27,7 @@ class SignInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //let backButton = UIBarButtonItem()
-        //backButton.title = backName
-        //self.navigationController!.navigationBar.topItem!.backBarButtonItem = backButton
+        
         
         Utilities.styleTextField(emailTextField)
         Utilities.styleTextField(passwordTextField)

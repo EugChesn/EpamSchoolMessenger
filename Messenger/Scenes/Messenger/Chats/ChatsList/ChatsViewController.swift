@@ -40,11 +40,12 @@ class ChatsViewController: UIViewController {
         
         handlerState = Auth.auth().addStateDidChangeListener { (auth, user) in
             if user == nil {
-                let storyLogin = UIStoryboard(name: "Main", bundle: nil)
-                let vsLogin = storyLogin.instantiateViewController(withIdentifier: "LoginFlow") as? GreetingViewController
+                let vsLogin = GreetingViewController.instantiate()
+                
                 DispatchQueue.main.async {
-                    vsLogin?.modalPresentationStyle = .fullScreen
-                    self.present(vsLogin!, animated: true, completion: nil)
+                    let navBarOnModal: UINavigationController = UINavigationController(rootViewController: vsLogin)
+                    navBarOnModal.modalPresentationStyle = .fullScreen
+                    self.present(navBarOnModal, animated: true, completion: nil)
                 }
             } else {
                 self.viewModel.downloadChats()
@@ -85,7 +86,7 @@ class ChatsViewController: UIViewController {
             }
         }
         if segue.identifier == "unwindLogin" {
-            print("testUnwindSegueChat")
+            // ...
         }
     }
     

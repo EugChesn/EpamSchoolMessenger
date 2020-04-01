@@ -30,11 +30,6 @@ class GreetingViewController: UIViewController {
         setupDependencies()
     }
     override func viewWillAppear(_ animated: Bool) {
-        let fir = FirebaseService.firebaseService
-
-        if fir.getCurrentUser() != nil {
-            self.router?.routeToLogin(withIdentifier: "messengerMy", sender: self)
-        }
     }
 //
 //    }
@@ -67,6 +62,18 @@ class GreetingViewController: UIViewController {
     func setupDependencies() {
         viewModel = GreetingViewModel(view: self)
         router = GreetingRouter(viewController: self)
+    }
+}
+
+extension GreetingViewController: StoryboardInstantiatable {
+    static let storyboardId = "LoginFlow"
+    static let nameStoryboard = "Main"
+    
+    static var instantiateType: StoryboardInstantiateType {
+        return .identifier(storyboardId)
+    }
+    static var storyboardName: String {
+        return nameStoryboard
     }
 }
 

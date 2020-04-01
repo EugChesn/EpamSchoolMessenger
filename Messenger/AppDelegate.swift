@@ -20,9 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func navigateStart() {
-        let story = UIStoryboard(name: "Messenger", bundle:nil)
-        let vc = story.instantiateViewController(withIdentifier: "StartPoint") as? MessengerTabBarController
-        vc?.selectedIndex = 1
+        let vc = MessengerTabBarController.instantiate()
+        vc.selectedIndex = 1
         UIApplication.shared.windows.first?.rootViewController = vc
     }
 }
