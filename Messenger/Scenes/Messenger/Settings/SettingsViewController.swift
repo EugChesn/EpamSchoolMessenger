@@ -15,13 +15,13 @@ protocol SettingsDelegate: class {
 
 class SettingsViewController: UITableViewController {
     @IBOutlet private weak var profileCell: UITableViewCell!
-    @IBOutlet weak var notificationCell: UITableViewCell!
-    @IBOutlet weak var languageCell: UITableViewCell!
-    @IBOutlet weak var appearanceCell: UITableViewCell!
-    @IBOutlet weak var infoCell: UITableViewCell!
-    @IBOutlet var settingTableView: UITableView!
+    @IBOutlet private weak var notificationCell: UITableViewCell!
+    @IBOutlet private weak var languageCell: UITableViewCell!
+    @IBOutlet private weak var appearanceCell: UITableViewCell!
+    @IBOutlet private weak var infoCell: UITableViewCell!
+    @IBOutlet private var settingTableView: UITableView!
     
-    @IBAction func editButton(_ sender: Any) {
+    @IBAction private func editButton(_ sender: Any) {
         viewModel?.editProfile()
     }
     
@@ -90,11 +90,8 @@ class SettingsViewController: UITableViewController {
         var cell: UITableViewCell!
         switch (indexPath.section) {
         case 0:
-            if let customCell = tableView.dequeueReusableCell(withIdentifier: settingCellId, for: indexPath) as? ProfileTableViewCell {
-                
-                
-                cell = customCell
-            }
+            guard let customCell = tableView.dequeueReusableCell(withIdentifier: settingCellId, for: indexPath) as? ProfileTableViewCell else { return UITableViewCell() }
+            cell = customCell
         case 1:
             cell = tableView.dequeueReusableCell(withIdentifier: generalCellId, for: indexPath)
             if indexPath.row == 0 {

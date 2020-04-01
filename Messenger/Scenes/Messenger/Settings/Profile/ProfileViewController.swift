@@ -47,12 +47,12 @@ class ProfileViewController: UITableViewController {
         setupDependencies()
     }
     
-    func setupDependencies() {
+    private func setupDependencies() {
         viewModel = ProfileViewModel(view: self)
         router = ProfileRouter(viewController: self)
     }
     
-    func settingNavigationItem() {
+    private func settingNavigationItem() {
         navigationItem.title = Constant.edit
         navigationItem.rightBarButtonItem?.title = Constant.doneButton
     }
