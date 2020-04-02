@@ -10,11 +10,11 @@ import Foundation
 import UIKit
 
 protocol SettingsRouting {
-    func routeProfile(withIdentifier: String, sender: UITableViewController?)
+    func routeToTable(withIdentifier: String, sender: UITableViewController?)
 }
 
 class SettingsRouter: BaseRouter, SettingsRouting {
-    func routeProfile(withIdentifier: String, sender: UITableViewController?) {
+    func routeToTable(withIdentifier: String, sender: UITableViewController?) {
         performSegue(withIdentifier: withIdentifier, sender: sender)
     }
 }
