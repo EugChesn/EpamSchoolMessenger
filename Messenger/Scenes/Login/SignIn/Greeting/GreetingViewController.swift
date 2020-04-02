@@ -20,7 +20,6 @@ class GreetingViewController: UIViewController {
     @IBOutlet weak var LogInButton: UIButton!
     @IBOutlet weak var SignUpButton: UIButton!
     
-    var handlerState: AuthStateDidChangeListenerHandle?
     var viewModel: GreetingViewModeling?
     var router: GreetingRouting?
     
@@ -31,24 +30,21 @@ class GreetingViewController: UIViewController {
         setupDependencies()
     }
     override func viewWillAppear(_ animated: Bool) {
-        handlerState = Auth.auth().addStateDidChangeListener { auth, user in
-            if user != nil {
-                self.router?.routeToLogin(withIdentifier: "messengerMy", sender: self)
-            }
-        }
     }
-    override func viewWillDisappear(_ animated: Bool) {
-        Auth.auth().removeStateDidChangeListener(handlerState!)
-        TEST_FUNC_SIGN_OUT()
-    }
-    private func TEST_FUNC_SIGN_OUT(){
-        let firebaseAuth = Auth.auth()
-        do {
-          try firebaseAuth.signOut()
-        } catch let signOutError as NSError {
-          print ("Error signing out: %@", signOutError)
-        }
-    }
+//
+//    }
+//    override func viewWillDisappear(_ animated: Bool) {
+//        Auth.auth().removeStateDidChangeListener(handlerState!)
+//        TEST_FUNC_SIGN_OUT()
+//    }
+//    private func TEST_FUNC_SIGN_OUT(){
+//        let firebaseAuth = Auth.auth()
+//        do {
+//          try firebaseAuth.signOut()
+//        } catch let signOutError as NSError {
+//          print ("Error signing out: %@", signOutError)
+//        }
+//    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == "signIn" else { return }
@@ -66,6 +62,18 @@ class GreetingViewController: UIViewController {
     func setupDependencies() {
         viewModel = GreetingViewModel(view: self)
         router = GreetingRouter(viewController: self)
+    }
+}
+
+extension GreetingViewController: StoryboardInstantiatable {
+    static let storyboardId = "LoginFlow"
+    static let nameStoryboard = "Main"
+    
+    static var instantiateType: StoryboardInstantiateType {
+        return .identifier(storyboardId)
+    }
+    static var storyboardName: String {
+        return nameStoryboard
     }
 }
 

@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>194699071590-f3a4aor578cth5h738jg9d4b6vjkku27.apps.googleusercontent.com</string>
+	<string>1091823141184-cor8n67bnfa0r43r5gs4ss3j5nmlggbb.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.194699071590-f3a4aor578cth5h738jg9d4b6vjkku27</string>
+	<string>com.googleusercontent.apps.1091823141184-cor8n67bnfa0r43r5gs4ss3j5nmlggbb</string>
 	<key>API_KEY</key>
-	<string>AIzaSyC9ISK2FJOuK-2EIAAJ5I0VcWueJux7bgY</string>
+	<string>AIzaSyAgwG72HtVjP25Csmm-D4_uS6kEU25x4hU</string>
 	<key>GCM_SENDER_ID</key>
-	<string>194699071590</string>
+	<string>1091823141184</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>Anastasia-Demidova.Messenger</string>
+	<string>boombastic18.Messenger</string>
 	<key>PROJECT_ID</key>
-	<string>mvvm-messanger-ios</string>
+	<string>epam-messenger-ios-school</string>
 	<key>STORAGE_BUCKET</key>
-	<string>mvvm-messanger-ios.appspot.com</string>
+	<string>epam-messenger-ios-school.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,8 +29,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:194699071590:ios:7e9f43047628bb65a79da7</string>
+	<string>1:1091823141184:ios:819a690e26bd0601ad3aa5</string>
 	<key>DATABASE_URL</key>
-	<string>https://mvvm-messanger-ios.firebaseio.com</string>
+	<string>https://epam-messenger-ios-school.firebaseio.com</string>
 </dict>
 </plist>

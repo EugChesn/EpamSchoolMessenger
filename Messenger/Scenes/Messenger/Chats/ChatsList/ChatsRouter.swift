@@ -9,9 +9,25 @@
 import Foundation
 
 protocol ChatsRouting {
-    
+    func routeToDialog()
+    func routeToCreateChat()
+    func signOut()
 }
 
 class ChatsRouter: BaseRouter, ChatsRouting {
-
+    func routeToDialog() {
+        performSegue(withIdentifier: "dialog", sender: viewController)
+    }
+    
+    func routeToCreateChat() {
+        performSegue(withIdentifier: "createChat", sender: viewController)
+    }
+    
+    func signOut() {
+        viewController?.tabBarController?.navigationController?.popToRootViewController(animated: true)
+        
+        
+        let fir: AuthFirebase = FirebaseService.firebaseService
+        fir.signOutUser()
+    }
 }

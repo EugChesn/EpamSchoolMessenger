@@ -92,7 +92,7 @@ extension SetupProfileViewController: UITextFieldDelegate {
 
 extension SetupProfileViewController: SetupProfileDelegate {
     func profileSucces() {
-        router?.routeToChat(withIdentifier: "profileToMessanger", sender: self)
+        router?.routeToChat(withIdentifier: "UnwindRegister", sender: self)
     }
 }
 

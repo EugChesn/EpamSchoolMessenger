@@ -10,6 +10,7 @@ import Foundation
 import FirebaseAuth
 
 protocol AuthFirebase: class {
+    
     // произвести логин юзера
     func signInUser(email: String,
                     password: String,
@@ -23,9 +24,27 @@ protocol AuthFirebase: class {
                     fault: @escaping (Error)->())
 
     func setProfileUser(name: String, nickName: String, photo: UIImage, completion: @escaping ()->())
+    
+    //разлогинить юзера
+    func signOutUser()
+    
+    //Подписка на состояние юзера
+    func listenStateUser(completion: @escaping (StateUser) -> ())
+    func unListenStateUser()
 }
 
 extension FirebaseService: AuthFirebase {
+    
+    func listenStateUser(completion: @escaping (StateUser) -> ()) {
+        handlerState = Auth.auth().addStateDidChangeListener { (_ , user) in
+            user != nil ? completion(StateUser.Authorised) : completion(StateUser.NotAuthorised)
+        }
+    }
+    
+    func unListenStateUser() {
+        Auth.auth().removeStateDidChangeListener(handlerState!)
+    }
+    
     func signInUser(email: String,
                     password: String,
                     completion: @escaping ()->(),
@@ -69,6 +88,14 @@ extension FirebaseService: AuthFirebase {
                 self?.updateProfileInfo(name: name, nickName: nickName, photo: downloadURL)
                 completion()
             }
+        }
+    }
+    
+    func signOutUser() {
+        do {
+            try Auth.auth().signOut()
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
         }
     }
 }
