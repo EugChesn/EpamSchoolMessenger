@@ -21,8 +21,6 @@ class ProfileViewController: UITableViewController {
     @IBOutlet private weak var nickNameTextField: UITextField!
     @IBOutlet private weak var birthdayTextField: UITextField!
     
-    let datePicker = UIDatePicker()
-    
     var viewModel: ProfileViewModeling?
     var router: ProfileRoutering?
     
@@ -34,62 +32,29 @@ class ProfileViewController: UITableViewController {
         static let nickName = "Nickname"
         static let birthday = "Birthday"
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         settingNavigationItem()
         LogOutButton.setTitle(Constant.exit, for: .normal)
-        //MARK: Profile Image
+//MARK: Profile Image
         Decor.styleImageView(profileImage)
-        //MARK: TextField
+//MARK: TextField
         Decor.styleTextField(nameTextField, placeholder: Constant.name)
         Decor.styleTextField(nickNameTextField, placeholder: Constant.nickName)
         Decor.styleTextField(birthdayTextField, placeholder: Constant.birthday)
-        //MARK: DatePicker
-        createDatePicker()
-        
+
         setupDependencies()
     }
     
-    private func setupDependencies() {
+    func setupDependencies() {
         viewModel = ProfileViewModel(view: self)
         router = ProfileRouter(viewController: self)
     }
     
-    private func settingNavigationItem() {
+    func settingNavigationItem() {
         navigationItem.title = Constant.edit
         navigationItem.rightBarButtonItem?.title = Constant.doneButton
-    }
-    
-    private func createDatePicker() {
-        let localeID = Locale.preferredLanguages.first
-        datePicker.locale = Locale(identifier: localeID!)
-        datePicker.maximumDate = Date()
-        datePicker.datePickerMode = .date
-        birthdayTextField.inputView = datePicker
-                
-        let toolbar = UIToolbar()
-        toolbar.sizeToFit()
-        let doneButton = UIBarButtonItem(title: Constant.doneButton, style: .plain, target: self, action: #selector(doneAction))
-        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        toolbar.setItems([flexSpace, doneButton], animated: true)
-        
-        datePicker.addTarget(self, action: #selector(dateChanged), for: .valueChanged)
-        birthdayTextField.inputAccessoryView = toolbar
-    }
-    
-    @objc private func doneAction() {
-        self.view.endEditing(true)
-    }
-    
-    @objc private func dateChanged() {
-        getDateFromPicker()
-    }
-    
-    private func getDateFromPicker() {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MMMM d, yyyy"
-        birthdayTextField.text = formatter.string(from: datePicker.date)
     }
 }
 
