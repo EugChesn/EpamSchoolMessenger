@@ -9,7 +9,7 @@
 import Foundation
 
 protocol SettingsViewModeling {
-    
+    func editProfile()
 }
 
 class SettingsViewModel: SettingsViewModeling {
@@ -17,5 +17,9 @@ class SettingsViewModel: SettingsViewModeling {
     
     init(view: SettingsDelegate) {
         self.view = view
+    }
+    
+    func editProfile() {
+        self.view?.openProfile()
     }
 }
