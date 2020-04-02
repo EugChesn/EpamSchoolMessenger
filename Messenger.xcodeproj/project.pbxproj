@@ -180,6 +180,15 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		86338F4924354B3000F35E13 /* ProfileTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				86338F452435199400F35E13 /* ProfileTableViewCell.swift */,
+				86338F462435199400F35E13 /* ProfileTableViewCell.xib */,
+			);
+			path = ProfileTableViewCell;
+			sourceTree = "<group>";
+		};
 		867B2F6E2412585C00B16B01 = {
 			isa = PBXGroup;
 			children = (
@@ -218,8 +227,7 @@
 			isa = PBXGroup;
 			children = (
 				8685160D242CE0AE00B06F7D /* Decor.swift */,
-				86338F452435199400F35E13 /* ProfileTableViewCell.swift */,
-				86338F462435199400F35E13 /* ProfileTableViewCell.xib */,
+				86338F4924354B3000F35E13 /* ProfileTableViewCell */,
 			);
 			path = Decor;
 			sourceTree = "<group>";
