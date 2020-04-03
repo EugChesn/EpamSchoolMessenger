@@ -137,6 +137,9 @@
                                         <state key="normal" title="Forgot your password?">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="forgotPasswordButtonPressed:" destination="paf-fB-Ehw" eventType="touchUpInside" id="6sw-IW-6Bk"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>

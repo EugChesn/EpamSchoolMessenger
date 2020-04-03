@@ -22,7 +22,6 @@ class PasswordRecoveryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupDependencies()
     }
     
@@ -45,10 +44,11 @@ class PasswordRecoveryViewController: UIViewController {
             }
         }
         let alert = UIAlertController(title: "Mail Sent", message: "We have just sent you a password reset e-mail. Please, check your inbox and follow the instructions", preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        let okAction = UIAlertAction(title: "Ok", style: .default) { (action) in
+            self.navigationController?.popViewController(animated: true)
+        }
         alert.addAction(okAction)
         self.present(alert, animated: true, completion: nil)
-        self.dismiss(animated: true, completion: nil)
     }
     
 }

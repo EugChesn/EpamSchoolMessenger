@@ -55,6 +55,11 @@ class SignInViewController: UIViewController {
         viewModel = SignInViewModel(view: self)
         router = SignInRouter(viewController: self)
     }
+    
+    @IBAction func forgotPasswordButtonPressed(_ sender: UIButton) {
+        router?.routeToPasswordReset()
+    }
+    
 }
 
 extension SignInViewController: UITextFieldDelegate {
@@ -83,6 +88,8 @@ extension SignInViewController: UITextFieldDelegate {
         }
         return true;
     }
+    
+    
 }
 
 extension SignInViewController: SignInDelegate {
@@ -96,6 +103,7 @@ extension SignInViewController: SignInDelegate {
         }
     }
     
+  
     func successLogin() {
         //print(FirebaseService.firebaseService.getCurrentUser()?.photoURL)
         

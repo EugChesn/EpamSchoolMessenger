@@ -11,10 +11,14 @@ import UIKit
 
 protocol SignInRouting {
     func routeToMessage(withIdentifier: String, sender: UIViewController?)
+    func routeToPasswordReset()
 }
 
 class SignInRouter: BaseRouter, SignInRouting {
     func routeToMessage(withIdentifier: String, sender: UIViewController?) {
         performSegue(withIdentifier: withIdentifier, sender: sender)
+    }
+    func routeToPasswordReset() {
+        performSegue(withIdentifier: "passwordRecovery", sender: viewController)
     }
 }
