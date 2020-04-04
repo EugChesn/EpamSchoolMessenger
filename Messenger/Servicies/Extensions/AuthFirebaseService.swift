@@ -98,4 +98,12 @@ extension FirebaseService: AuthFirebase {
             print ("Error signing out: %@", signOutError)
         }
     }
+    
+    func resetWithPassword(email: String, fault: @escaping (Error)->()){
+        Auth.auth().sendPasswordReset(withEmail: email) { (error) in
+            if let err = error{
+                fault(err)
+            }
+        }
+    }
 }

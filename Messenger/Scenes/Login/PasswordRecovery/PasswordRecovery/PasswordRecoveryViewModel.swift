@@ -18,10 +18,8 @@ class PasswordRecoveryViewModel: PasswordRecoveryViewModeling {
     weak var view: PasswordRecoveryDelegate?
     
     func resetPassword(email: String){
-        Auth.auth().sendPasswordReset(withEmail: email) { (error) in
-            if let err = error{
-                self.view?.faultToResetPassword(error: err)
-            }
+        FirebaseService.firebaseService.resetWithPassword(email: email) { (err) in
+            self.view?.faultToResetPassword(error: err)
         }
         view?.resetSuccess()
     }
