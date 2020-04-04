@@ -7,13 +7,31 @@
 //
 
 import Foundation
+import FirebaseAuth
 
 protocol PasswordRecoveryViewModeling {
-    
+    func resetPassword(email: String)
+    func isValidEmail(_ email: String) -> Bool
 }
 
 class PasswordRecoveryViewModel: PasswordRecoveryViewModeling {
     weak var view: PasswordRecoveryDelegate?
+    
+    func resetPassword(email: String){
+        Auth.auth().sendPasswordReset(withEmail: email) { (error) in
+            if let err = error{
+                self.view?.faultToResetPassword(error: err)
+            }
+        }
+        view?.resetSuccess()
+    }
+    
+    func isValidEmail(_ email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+
+        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailPred.evaluate(with: email)
+    }
     
     init(view: PasswordRecoveryDelegate) {
         self.view = view
