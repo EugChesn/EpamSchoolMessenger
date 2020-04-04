@@ -11,7 +11,8 @@ import UIKit
 import FirebaseAuth
 
 protocol PasswordRecoveryDelegate: class {
-    
+    func faultToResetPassword(error: Error)
+    func resetSuccess()
 }
 
 class PasswordRecoveryViewController: UIViewController {
@@ -36,13 +37,22 @@ class PasswordRecoveryViewController: UIViewController {
             alertError(errorCode: .invalidEmail)
             return
         }
-        
-        Auth.auth().sendPasswordReset(withEmail: email) { (error) in
-            if let err = error{
-                self.alertError(errorCode: .invalidEmail)
-                print(err)
-            }
+        if !(viewModel?.isValidEmail(email))!{
+            alertError(errorCode: .invalidEmail)
         }
+        self.viewModel?.resetPassword(email: email)
+    }
+    
+}
+
+extension PasswordRecoveryViewController: PasswordRecoveryDelegate {
+    
+    func faultToResetPassword(error: Error){
+        if let errorCode = AuthErrorCode(rawValue: error._code) {
+            alertError(errorCode: errorCode)
+        }
+    }
+    func resetSuccess(){
         let alert = UIAlertController(title: "Mail Sent", message: "We have just sent you a password reset e-mail. Please, check your inbox and follow the instructions", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Ok", style: .default) { (action) in
             self.navigationController?.popViewController(animated: true)
@@ -50,9 +60,4 @@ class PasswordRecoveryViewController: UIViewController {
         alert.addAction(okAction)
         self.present(alert, animated: true, completion: nil)
     }
-    
-}
-
-extension PasswordRecoveryViewController: PasswordRecoveryDelegate {
-    
 }
