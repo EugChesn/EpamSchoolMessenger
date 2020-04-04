@@ -37,7 +37,7 @@ class PasswordRecoveryViewController: UIViewController {
             alertError(errorCode: .invalidEmail)
             return
         }
-        if !(viewModel?.isValidEmail(email))!{
+        if !email.isValidateEmail(){
             alertError(errorCode: .invalidEmail)
         }
         self.viewModel?.resetPassword(email: email)
