@@ -11,7 +11,6 @@ import Foundation
 protocol ContactsViewModeling {
     var contactCount: Int {get}
     func getContact(index: Int) -> Contact
-    func downloadContacts()
 }
 
 class ContactsViewModel: ContactsViewModeling {
@@ -35,8 +34,8 @@ class ContactsViewModel: ContactsViewModeling {
         }
     }
     
-    func downloadContacts(){
-        contactList = []
+    init(view: ContactsDelegate) {
+        self.view = view
         let dataReference = FirebaseService.firebaseService.referenceDataBase
         if let currentuser = FirebaseService.firebaseService.getCurrentUser()?.uid {
             dataReference.child("users").observe(.childAdded) { (snapshot) in
@@ -49,20 +48,5 @@ class ContactsViewModel: ContactsViewModeling {
                 }
             }
         }
-    }
-    
-    func subscribeStateUser() {
-        authService?.listenStateUser { state in
-            switch state {
-            case .NotAuthorised:
-                self.view?.setLoginFlow()
-            case .Authorised:
-                self.downloadContacts()
-            }
-        }
-    }
-    
-    init(view: ContactsDelegate) {
-        self.view = view
     }
 }

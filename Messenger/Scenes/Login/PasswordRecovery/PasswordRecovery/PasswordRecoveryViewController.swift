@@ -41,7 +41,6 @@ class PasswordRecoveryViewController: UIViewController {
             alertError(errorCode: .invalidEmail)
         }
         self.viewModel?.resetPassword(email: email)
-        
     }
     
 }
@@ -50,7 +49,6 @@ extension PasswordRecoveryViewController: PasswordRecoveryDelegate {
     
     func faultToResetPassword(error: Error){
         if let errorCode = AuthErrorCode(rawValue: error._code) {
-            print(errorCode.errorMessage)
             alertError(errorCode: errorCode)
         }
     }
