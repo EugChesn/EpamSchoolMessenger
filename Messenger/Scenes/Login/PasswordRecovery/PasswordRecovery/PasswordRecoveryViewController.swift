@@ -39,8 +39,9 @@ class PasswordRecoveryViewController: UIViewController {
         }
         if !email.isValidateEmail(){
             alertError(errorCode: .invalidEmail)
-        }
+        } else {
         self.viewModel?.resetPassword(email: email)
+        }
     }
     
 }

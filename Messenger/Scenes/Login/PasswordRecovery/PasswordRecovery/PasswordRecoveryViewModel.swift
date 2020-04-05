@@ -15,11 +15,12 @@ protocol PasswordRecoveryViewModeling {
 
 class PasswordRecoveryViewModel: PasswordRecoveryViewModeling {
     weak var view: PasswordRecoveryDelegate?
+    weak var authFirebase: FirebaseService?
     
     func resetPassword(email: String){
-       FirebaseService.firebaseService.resetWithPassword(email: email) { (err) in
-            self.view?.faultToResetPassword(error: err)
-        }
+       authFirebase?.resetWithPassword(email: email) { (err) in
+           self.view?.faultToResetPassword(error: err)
+       }
         view?.resetSuccess()
     }
     
