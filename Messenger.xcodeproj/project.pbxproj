@@ -54,6 +54,7 @@
 		AA487C4C241E563900337FBF /* DialogRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA487C4B241E563900337FBF /* DialogRouter.swift */; };
 		AA57A48C243A0E23001EE763 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA57A48B243A0E23001EE763 /* DateExtensions.swift */; };
 		AA57A48E243A1452001EE763 /* MessagesObserverExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA57A48D243A1452001EE763 /* MessagesObserverExtensions.swift */; };
+		AA57A490243A470D001EE763 /* ContactsObserverExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA57A48F243A470D001EE763 /* ContactsObserverExtension.swift */; };
 		AA64DE0F241B694400ED2C63 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA64DE0E241B694400ED2C63 /* NetworkService.swift */; };
 		AA64DE12241B698D00ED2C63 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA64DE11241B698D00ED2C63 /* StorageService.swift */; };
 		AA64DE14241B72B600ED2C63 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA64DE13241B72B600ED2C63 /* Reachability.swift */; };
@@ -137,6 +138,7 @@
 		AA487C4B241E563900337FBF /* DialogRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogRouter.swift; sourceTree = "<group>"; };
 		AA57A48B243A0E23001EE763 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		AA57A48D243A1452001EE763 /* MessagesObserverExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesObserverExtensions.swift; sourceTree = "<group>"; };
+		AA57A48F243A470D001EE763 /* ContactsObserverExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsObserverExtension.swift; sourceTree = "<group>"; };
 		AA64DE0E241B694400ED2C63 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		AA64DE11241B698D00ED2C63 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
 		AA64DE13241B72B600ED2C63 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 			children = (
 				3EBEC40E242A2A5600AF858C /* AuthFirebaseService.swift */,
 				AA57A48D243A1452001EE763 /* MessagesObserverExtensions.swift */,
+				AA57A48F243A470D001EE763 /* ContactsObserverExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -716,6 +719,7 @@
 			files = (
 				AA1B5FDC241BF24D0080443A /* ChatsRouter.swift in Sources */,
 				AAF834F42419295900FDF9D2 /* PasswordRecoveryViewModel.swift in Sources */,
+				AA57A490243A470D001EE763 /* ContactsObserverExtension.swift in Sources */,
 				AAB3AEFC241B7FCF00825F00 /* CodeConfirmationViewController.swift in Sources */,
 				86338F472435199400F35E13 /* ProfileTableViewCell.swift in Sources */,
 				3EBEC40F242A2A5600AF858C /* AuthFirebaseService.swift in Sources */,

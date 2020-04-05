@@ -11,6 +11,7 @@ import UIKit
 
 struct Contact {
     var name: String = "testName"
+    var nickname: String = "testNickName"
     var uid: String = "testuid"
     var profileImage: UIImage?
 }
@@ -31,10 +32,10 @@ struct MessageModel {
     
     mutating func fromDictionary(dictionary: [String: String]) {
         guard let from = dictionary["from"],
-                let to = dictionary["to"],
-                let text = dictionary["text"],
-                let timeSpan = dictionary["timeSpan"]
-        else {return}
+            let to = dictionary["to"],
+            let text = dictionary["text"],
+            let timeSpan = dictionary["timeSpan"]
+            else {return}
         
         self.from = from
         self.to = to
