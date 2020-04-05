@@ -52,6 +52,8 @@
 		AA487C48241E560900337FBF /* DialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA487C47241E560900337FBF /* DialogViewController.swift */; };
 		AA487C4A241E561600337FBF /* DialogViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA487C49241E561600337FBF /* DialogViewModel.swift */; };
 		AA487C4C241E563900337FBF /* DialogRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA487C4B241E563900337FBF /* DialogRouter.swift */; };
+		AA57A48C243A0E23001EE763 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA57A48B243A0E23001EE763 /* DateExtensions.swift */; };
+		AA57A48E243A1452001EE763 /* MessagesObserverExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA57A48D243A1452001EE763 /* MessagesObserverExtensions.swift */; };
 		AA64DE0F241B694400ED2C63 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA64DE0E241B694400ED2C63 /* NetworkService.swift */; };
 		AA64DE12241B698D00ED2C63 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA64DE11241B698D00ED2C63 /* StorageService.swift */; };
 		AA64DE14241B72B600ED2C63 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA64DE13241B72B600ED2C63 /* Reachability.swift */; };
@@ -133,6 +135,8 @@
 		AA487C47241E560900337FBF /* DialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogViewController.swift; sourceTree = "<group>"; };
 		AA487C49241E561600337FBF /* DialogViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogViewModel.swift; sourceTree = "<group>"; };
 		AA487C4B241E563900337FBF /* DialogRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogRouter.swift; sourceTree = "<group>"; };
+		AA57A48B243A0E23001EE763 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
+		AA57A48D243A1452001EE763 /* MessagesObserverExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesObserverExtensions.swift; sourceTree = "<group>"; };
 		AA64DE0E241B694400ED2C63 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		AA64DE11241B698D00ED2C63 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
 		AA64DE13241B72B600ED2C63 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
@@ -199,6 +203,7 @@
 			isa = PBXGroup;
 			children = (
 				3EA8B18D2434AA48001B4207 /* ExtensionsStoryboard.swift */,
+				AA57A48B243A0E23001EE763 /* DateExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -207,6 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				3EBEC40E242A2A5600AF858C /* AuthFirebaseService.swift */,
+				AA57A48D243A1452001EE763 /* MessagesObserverExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -713,6 +719,7 @@
 				AAB3AEFC241B7FCF00825F00 /* CodeConfirmationViewController.swift in Sources */,
 				86338F472435199400F35E13 /* ProfileTableViewCell.swift in Sources */,
 				3EBEC40F242A2A5600AF858C /* AuthFirebaseService.swift in Sources */,
+				AA57A48C243A0E23001EE763 /* DateExtensions.swift in Sources */,
 				AA1B40C32431D48800E1D452 /* CreateChatViewController.swift in Sources */,
 				AAF834EA2419229D00FDF9D2 /* SignUpViewController.swift in Sources */,
 				AAB3AEF8241B7FAB00825F00 /* NewPasswordViewController.swift in Sources */,
@@ -743,6 +750,7 @@
 				86CB7AAA242B6C2C00995986 /* ProfileRouter.swift in Sources */,
 				AA1B40F5243360F800E1D452 /* ChatListTableViewExtension.swift in Sources */,
 				AAB3AF06241B840D00825F00 /* SetupProfileViewModel.swift in Sources */,
+				AA57A48E243A1452001EE763 /* MessagesObserverExtensions.swift in Sources */,
 				AA1B5FC8241BF1C30080443A /* RegistrationCodeConfirmationRouter.swift in Sources */,
 				AA1B5FD0241BF2010080443A /* GreetingRouter.swift in Sources */,
 				AA1B5FDA241BF2450080443A /* ContactsRouter.swift in Sources */,

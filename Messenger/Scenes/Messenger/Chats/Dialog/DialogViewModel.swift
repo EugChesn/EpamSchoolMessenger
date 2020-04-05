@@ -19,7 +19,7 @@ protocol DialogViewModeling {
 class DialogViewModel: DialogViewModeling {
     weak var view: DialogDelegate?
     
-    let fir = FirebaseService.firebaseService
+    let fir:MessagesObserver = FirebaseService.firebaseService
     
     private var chatInfo: ChatInfo? {
         didSet {
@@ -46,7 +46,10 @@ class DialogViewModel: DialogViewModeling {
     
     init(view: DialogDelegate) {
         self.view = view
-        downloadMessages()
+    }
+    
+    deinit {
+        
     }
     
     func message(atIndex: Int) -> MessageModel {
@@ -55,38 +58,30 @@ class DialogViewModel: DialogViewModeling {
     
     func sendMessage(messageText: String) {
         
-        if let uid = fir.getCurrentUser()?.uid, let recipientUid = chat?.contact.uid {
-            let message = MessageModel(from: uid, to: recipientUid, text: messageText, timeSpan: "")
-            
-            fir.referenceDataBase.child("chats").child(uid).child(recipientUid).child("thread").childByAutoId().updateChildValues(["from": message.from, "to": message.to, "text": message.text, "timeSpan": message.timeSpan])
-            
-            fir.referenceDataBase.child("chats").child(uid).child(recipientUid).updateChildValues(["lastMessage": message.text])
-            
-            if uid != recipientUid {
-                fir.referenceDataBase.child("chats").child(recipientUid).child(uid).child("thread").childByAutoId().updateChildValues(["from": message.from, "to": message.to, "text": message.text, "timeSpan": message.timeSpan])
-                
-                fir.referenceDataBase.child("chats").child(recipientUid).child(uid).updateChildValues(["lastMessage": message.text])
-            }  
-        }
+        guard let recipientUid = chatInfo?.contact.uid else {return}
+        
+        let timeSpan = Date().currentTime
+        
+        let message = MessageModel(from: "", to: recipientUid, text: messageText, timeSpan: timeSpan)
+        
+        fir.sendMessages(recipientUid: recipientUid, message: message)
     }
     
     private func downloadMessages() {
+        guard let recipientUid = chatInfo?.contact.uid else {return}
         
-        if let uid = fir.getCurrentUser()?.uid, let recipientUid = chat?.contact.uid  {
-            fir.referenceDataBase.child("chats").child(uid).child(recipientUid).child("thread").observe(.childAdded) { (snapshot) in
-                if let dictionary = snapshot.value as? [String: String] {
-                    var message = MessageModel()
-                    
-                    message.from = dictionary["from"]!
-                    message.to = dictionary["to"]!
-                    message.text = dictionary["text"]!
-                    message.timeSpan = dictionary["timeSpan"]!
-                    
-                    self.messageList.append(message)
-                    self.view?.insertMessage(index: self.messageList.count - 1)
-                }
+        fir.downloadMessages(recipientUid: recipientUid) { [weak self] (messagesList) in
+            guard let strongSelf = self else {return}
+            
+            strongSelf.messageList = messagesList
+            strongSelf.view?.updateChatLog()
+            
+            strongSelf.fir.observeNewMessages(recipientUid: recipientUid) {[weak self] (message) in
+                guard let strongSelf = self else {return}
+                
+                strongSelf.messageList.append(message)
+                strongSelf.view?.insertMessage(index: strongSelf.messageCount - 1)
             }
         }
-        
     }
 }
