@@ -44,7 +44,13 @@ struct MessageModel {
         
 }
 
+enum ChatMode {
+    case newChat
+    case existstChat
+}
+
 struct ChatInfo {
+    var chatMode: ChatMode
     var lastMessage: String = ""
     var contact: Contact
 }

@@ -14,6 +14,7 @@ protocol DialogViewModeling {
     
     func message(atIndex: Int) -> MessageModel
     func sendMessage(messageText: String)
+    func updateChatLog()
 }
 
 class DialogViewModel: DialogViewModeling {
@@ -23,7 +24,7 @@ class DialogViewModel: DialogViewModeling {
     
     private var chatInfo: ChatInfo? {
         didSet {
-            downloadMessages()
+
         }
     }
     let queque = DispatchQueue.global()
@@ -52,6 +53,10 @@ class DialogViewModel: DialogViewModeling {
         fir.removeMessagesObserver()
     }
     
+    func updateChatLog() {
+        downloadMessages()
+    }
+    
     func message(atIndex: Int) -> MessageModel {
         return messageList[atIndex]
     }
@@ -68,15 +73,25 @@ class DialogViewModel: DialogViewModeling {
     }
     
     private func downloadMessages() {
-        guard let recipientUid = chatInfo?.contact.uid else {return}
+        guard let recipientUid = chatInfo?.contact.uid, let chatMode = chat?.chatMode else {return}
         
-        fir.downloadMessages(recipientUid: recipientUid) { [weak self] (messagesList) in
-            guard let strongSelf = self else {return}
-            
-            strongSelf.messageList = messagesList
-            strongSelf.view?.updateChatLog()
-            
-            strongSelf.fir.observeNewMessages(recipientUid: recipientUid) {[weak self] (message) in
+        switch chatMode{
+        case .existstChat:
+            fir.downloadMessages(recipientUid: recipientUid) { [weak self] (messagesList) in
+                guard let strongSelf = self else {return}
+                
+                strongSelf.messageList = messagesList
+                strongSelf.view?.updateChatLog()
+                
+                strongSelf.fir.observeNewMessages(recipientUid: recipientUid) {[weak self] (message) in
+                    guard let strongSelf = self else {return}
+                    
+                    strongSelf.messageList.append(message)
+                    strongSelf.view?.insertMessage(index: strongSelf.messageCount - 1)
+                }
+            }
+        case .newChat:
+            fir.observeNewMessages(recipientUid: recipientUid) {[weak self] (message) in
                 guard let strongSelf = self else {return}
                 
                 strongSelf.messageList.append(message)

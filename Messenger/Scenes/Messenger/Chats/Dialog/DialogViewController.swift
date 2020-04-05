@@ -29,6 +29,7 @@ class DialogViewController: UIViewController {
         super.viewDidLoad()
         setupDependencies()
         setupUI()
+        viewModel.updateChatLog()
     }
   
     override func viewWillDisappear(_ animated: Bool) {

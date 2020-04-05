@@ -75,7 +75,8 @@ class ChatsViewModel: ChatsViewModeling {
     }
     
     func createNewChat(with contact: Contact) {
-        let chat = ChatInfo(contact: contact)
+        let chat = ChatInfo(chatMode: .newChat, contact: contact)
+
         selectedChat = chat
     }
     
@@ -105,13 +106,12 @@ class ChatsViewModel: ChatsViewModeling {
                 refDatabase.child("users").observe(.childAdded) { (snapshotUsers) in
                     if snapshotUsers.key == uid {
                         if let dictionary = snapshotUsers.value as? [String: String] {
-                           
                             
                             var contact = Contact()
                             contact.name = dictionary["name"] ?? ""
                             contact.uid = uid
 
-                            let chat = ChatInfo(lastMessage: lastMessage, contact: contact)
+                            let chat = ChatInfo(chatMode: .existstChat, lastMessage: lastMessage, contact: contact)
                             self.chatsList.append(chat)
                         }
                     }

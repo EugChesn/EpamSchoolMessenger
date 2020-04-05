@@ -24,7 +24,6 @@ extension FirebaseService: MessagesObserver {
         
         messagesReference.observeSingleEvent(of: .value) { (snapshot) in
             let thread = snapshot.childSnapshot(forPath: "thread")
-            
             if let dictionary = thread.value as? [String: Any?] {
                 
                 var messagesList: [MessageModel] = []
@@ -34,6 +33,14 @@ extension FirebaseService: MessagesObserver {
                         var message = MessageModel()
                         message.fromDictionary(dictionary: messageDictionary)
                         messagesList.append(message)
+                    }
+                }
+                
+                messagesList.sort { (message1, message2) -> Bool in
+                    if message1.timeSpan < message2.timeSpan {
+                        return true
+                    } else {
+                        return false
                     }
                 }
                 
@@ -53,10 +60,8 @@ extension FirebaseService: MessagesObserver {
             if let dictionary = snapshot.value as? [String: String] {
                 var message = MessageModel()
                 message.fromDictionary(dictionary: dictionary)
-                
                 completion(message)
             }
-            
         }
         
         addObserverId(observer: "messagesObserver", id: messageObserverId)
@@ -72,7 +77,6 @@ extension FirebaseService: MessagesObserver {
         
         userReference.child("thread").childByAutoId().updateChildValues(message.asDictionary())
         userReference.updateChildValues(message.asDictionaryForChatInfo())
-        
         
         if uid != recipientUid {
             let recipientReference = referenceDataBase.child("chats").child(recipientUid).child(uid)
