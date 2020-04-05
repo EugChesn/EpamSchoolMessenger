@@ -26,10 +26,10 @@ class ChatsViewController: UIViewController {
     var router: ChatsRouting?
     
     @IBOutlet weak var chatsTableView: UITableView!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupUI()
         setupDependencies()
     }

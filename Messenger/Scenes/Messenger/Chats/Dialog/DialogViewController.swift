@@ -11,6 +11,7 @@ import UIKit
 
 protocol DialogDelegate: class {
     func updateChatLog()
+    func insertMessage(index: Int)
 }
 
 class DialogViewController: UIViewController {
@@ -22,11 +23,10 @@ class DialogViewController: UIViewController {
     @IBOutlet weak var chatLogCollectionView: UICollectionView!
     @IBOutlet weak var messageTextField: UITextField!
     @IBOutlet weak var sendButton: UIButton!
-    @IBOutlet weak var inputViewConstraint: NSLayoutConstraint!
+    @IBOutlet weak var inputTextFiledBottomConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupDependencies()
         setupUI()
     }
@@ -52,6 +52,9 @@ class DialogViewController: UIViewController {
     func setupUI() {
         chatLogCollectionView.delegate = self
         chatLogCollectionView.dataSource = self
+
+        chatLogCollectionView.contentInset = UIEdgeInsets(top: 8, left: 0, bottom: 58, right: 0)
+        chatLogCollectionView.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: 50, right: 0)
         chatLogCollectionView.register(MessageCollectionViewCell.self, forCellWithReuseIdentifier: "messageCell")
         
         messageTextField.layer.cornerRadius = 15
@@ -74,16 +77,25 @@ class DialogViewController: UIViewController {
         messageTextField.text = ""
     }
     
-    @IBAction func tapForHideKeyBoard(_ sender: Any) {
+    @IBAction func hideKeyboard(_ sender: Any) {
         messageTextField.resignFirstResponder()
-
     }
+    
 }
 
 extension DialogViewController: DialogDelegate {
     func updateChatLog() {
         DispatchQueue.main.async {
             self.chatLogCollectionView.reloadData()
+        }
+    }
+    
+    func insertMessage(index: Int) {
+        DispatchQueue.main.async {
+            self.chatLogCollectionView.performBatchUpdates({
+                self.chatLogCollectionView.insertItems(at: [IndexPath(row: index, section: 0)])
+            }, completion: nil)
+            
         }
     }
 }

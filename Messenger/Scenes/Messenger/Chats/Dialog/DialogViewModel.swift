@@ -26,12 +26,8 @@ class DialogViewModel: DialogViewModeling {
             downloadMessages()
         }
     }
-    
-    private var messageList: [MessageModel] = [] {
-        didSet {
-            view?.updateChatLog()
-        }
-    }
+    let queque = DispatchQueue.global()
+    private var messageList: [MessageModel] = []
     
     var chat: ChatInfo? {
         get {
@@ -87,6 +83,7 @@ class DialogViewModel: DialogViewModeling {
                     message.timeSpan = dictionary["timeSpan"]!
                     
                     self.messageList.append(message)
+                    self.view?.insertMessage(index: self.messageList.count - 1)
                 }
             }
         }

@@ -31,4 +31,5 @@ extension ChatsViewController: UITableViewDelegate, UITableViewDataSource {
         viewModel.selectedChat = viewModel.getChat(atIndex: indexPath.row)
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    
 }

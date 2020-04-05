@@ -23,6 +23,7 @@ class MessageCollectionViewCell: UICollectionViewCell {
         textView.text = ""
         textView.backgroundColor = .clear
         textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.isUserInteractionEnabled = false
         return textView
     }()
     
@@ -32,6 +33,7 @@ class MessageCollectionViewCell: UICollectionViewCell {
         view.layer.masksToBounds = true
         view.backgroundColor = UIColor(red: 0, green: 0.65, blue: 1.0, alpha: 1.0)
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.layer.masksToBounds = true
         return view
     }()
     
@@ -45,7 +47,6 @@ class MessageCollectionViewCell: UICollectionViewCell {
         addSubview(bubbleView)
         addSubview(messageTextView)
         
-        
         bubbleView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         bubbleView.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
         
@@ -55,7 +56,7 @@ class MessageCollectionViewCell: UICollectionViewCell {
         leftMessageAnchor = bubbleView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 8)
         rightMessageAnchor = bubbleView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -8)
         
-        messageTextView.topAnchor.constraint(equalTo: bubbleView.topAnchor).isActive = true
+        messageTextView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         messageTextView.rightAnchor.constraint(equalTo: bubbleView.rightAnchor).isActive = true
         messageTextView.leftAnchor.constraint(equalTo: bubbleView.leftAnchor, constant: 8).isActive = true
         messageTextView.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
@@ -67,6 +68,7 @@ class MessageCollectionViewCell: UICollectionViewCell {
     }
     
     func configCell(color: CellColor) {
+
         switch color {
         case .blue:
             leftMessageAnchor?.isActive = false
