@@ -35,8 +35,6 @@ class DialogViewController: UIViewController {
         super.viewWillDisappear(animated)
         
         self.tabBarController?.tabBar.isHidden = false
-        
-        
     }
     
     deinit {
@@ -80,7 +78,6 @@ class DialogViewController: UIViewController {
     @IBAction func hideKeyboard(_ sender: Any) {
         messageTextField.resignFirstResponder()
     }
-    
 }
 
 extension DialogViewController: DialogDelegate {

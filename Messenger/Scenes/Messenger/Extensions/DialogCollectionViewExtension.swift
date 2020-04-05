@@ -33,8 +33,8 @@ extension DialogViewController: UICollectionViewDelegateFlowLayout, UICollection
 
             return cell
         } else {
-
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath)
+            
             return cell
         }
         
@@ -56,9 +56,5 @@ extension DialogViewController: UICollectionViewDelegateFlowLayout, UICollection
         let estimatedFrame = NSString(string: text).boundingRect(with: size, options: options, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16)], context: nil)
         
         return estimatedFrame
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("bob")
     }
 }

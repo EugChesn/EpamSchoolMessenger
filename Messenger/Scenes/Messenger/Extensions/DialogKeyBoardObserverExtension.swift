@@ -17,12 +17,10 @@ extension DialogViewController {
     }
     
     func removeKeyBoardObservers() {
-
         NotificationCenter.default.removeObserver(self)
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
-            
         guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
         
         var newDistance = -keyboardSize.height
@@ -39,8 +37,6 @@ extension DialogViewController {
         chatLogCollectionView.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: 50 + collectionViewInset, right: 0)
         
         chatLogCollectionView.scrollToItem(at: IndexPath(row: viewModel.messageCount - 1, section: 0), at: .bottom, animated: false)
-        
-        
         
         inputTextFiledBottomConstraint.constant = newDistance
     }

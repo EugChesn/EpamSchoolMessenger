@@ -49,7 +49,6 @@ class MessageCollectionViewCell: UICollectionViewCell {
         
         bubbleView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         bubbleView.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
-        
         bubbleWidthAnchor = bubbleView.widthAnchor.constraint(equalToConstant: 200)
         bubbleWidthAnchor?.isActive = true
         
