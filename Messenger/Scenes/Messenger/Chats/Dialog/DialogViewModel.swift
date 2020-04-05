@@ -49,7 +49,7 @@ class DialogViewModel: DialogViewModeling {
     }
     
     deinit {
-        
+        fir.removeMessagesObserver()
     }
     
     func message(atIndex: Int) -> MessageModel {
