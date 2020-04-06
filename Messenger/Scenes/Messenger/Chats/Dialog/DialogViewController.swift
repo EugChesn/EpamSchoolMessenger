@@ -85,6 +85,8 @@ extension DialogViewController: DialogDelegate {
     func updateChatLog() {
         DispatchQueue.main.async {
             self.chatLogCollectionView.reloadData()
+            
+            self.chatLogCollectionView.scrollToItem(at: IndexPath(row: self.viewModel.messageCount - 1 , section: 0), at: .bottom, animated: true)
         }
     }
     
@@ -94,6 +96,7 @@ extension DialogViewController: DialogDelegate {
                 self.chatLogCollectionView.insertItems(at: [IndexPath(row: index, section: 0)])
             }, completion: nil)
             
+            self.chatLogCollectionView.scrollToItem(at: IndexPath(row: index, section: 0), at: .bottom, animated: true)
         }
     }
 }

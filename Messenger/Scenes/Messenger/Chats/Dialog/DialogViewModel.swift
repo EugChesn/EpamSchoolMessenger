@@ -89,7 +89,6 @@ class DialogViewModel: DialogViewModeling {
                 
                 strongSelf.messageList = messagesList
                 strongSelf.view?.updateChatLog()
-    
             }
             
             fir.observeNewMessages(recipientUid: recipientUid) {[weak self] (message) in
@@ -98,8 +97,5 @@ class DialogViewModel: DialogViewModeling {
                 strongSelf.messageList.append(message)
                 strongSelf.view?.insertMessage(index: strongSelf.messageCount - 1)
             }
-
-            
-    }
-    
+    }  
 }

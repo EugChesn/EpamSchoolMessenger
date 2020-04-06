@@ -31,7 +31,6 @@ class ChatsViewModel: ChatsViewModeling {
     weak var view: ChatsDelegate?
     weak var authService: AuthFirebase?
     
-    
     let fir: ChatsObserver = FirebaseService.firebaseService
     
     private var chatsList: [ChatInfo] = []
