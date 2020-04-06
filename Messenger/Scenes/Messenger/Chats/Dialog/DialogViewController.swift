@@ -86,7 +86,7 @@ extension DialogViewController: DialogDelegate {
         DispatchQueue.main.async {
             self.chatLogCollectionView.reloadData()
             
-            self.chatLogCollectionView.scrollToItem(at: IndexPath(row: self.viewModel.messageCount - 1 , section: 0), at: .bottom, animated: true)
+            self.chatLogCollectionView.scrollToItem(at: IndexPath(row: self.viewModel.messageCount - 1 , section: 0), at: .bottom, animated: false)
         }
     }
     
