@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import UIKit
+import FirebaseUI
 
 protocol DialogDelegate: class {
     func updateChatLog()

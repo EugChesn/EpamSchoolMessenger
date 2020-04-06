@@ -13,7 +13,6 @@ protocol ChatsViewModeling: class {
     var chatsCount: Int {get}
     var selectedChat: ChatInfo? {get set}
     
-    func downloadChats()
     func createNewChat(with contact: Contact)
     func getChat(atIndex: Int) -> ChatInfo
     
@@ -24,7 +23,6 @@ protocol ChatsViewModeling: class {
 protocol ChatInfoGetterDelegate: class {
     var chatInfo: ChatInfo? {get}
 }
-
 
 class ChatsViewModel: ChatsViewModeling {
 
@@ -72,6 +70,10 @@ class ChatsViewModel: ChatsViewModeling {
         self.authService = FirebaseService.firebaseService
     }
     
+    deinit {
+        fir.removeObservers()
+    }
+    
     func createNewChat(with contact: Contact) {
         let chat = ChatInfo(contact: contact)
 
@@ -93,7 +95,7 @@ class ChatsViewModel: ChatsViewModeling {
         authService?.unListenStateUser()
     }
 
-    func downloadChats() {
+    private func downloadChats() {
         fir.downloadChats() { chatsList in
             
             var chatsList = chatsList
@@ -108,6 +110,25 @@ class ChatsViewModel: ChatsViewModeling {
             
             self.chatsList = chatsList
             self.view?.updateChats()
+            
+            self.fir.observeChats() { newChat in
+                
+                let index = self.chatsList.firstIndex { (chat) -> Bool in
+                    if chat.contact.uid == newChat.contact.uid {
+                        return true
+                    } else {
+                        return false
+                    }
+                }
+                
+                if let index = index {
+                    self.chatsList.remove(at: index)
+                }
+                
+                self.chatsList.insert(newChat, at: 0)
+                
+                self.view?.updateChats()
+            }
         }
     }
 }

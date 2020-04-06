@@ -33,15 +33,13 @@ class ChatsViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         setupDependencies()
+        viewModel.subscribeStateUser()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        viewModel.subscribeStateUser()
-        chatsTableView.reloadData()
-    }
-    override func viewWillDisappear(_ animated: Bool) {
-        viewModel.unsubscribeStateUser()
+        
+        updateChats()
     }
     
     func setupDependencies() {

@@ -17,6 +17,7 @@ protocol MessagesObserver {
 
 extension FirebaseService: MessagesObserver {
     
+    //Стягивает предыдущую историю сообщений
     func downloadMessages(recipientUid: String, completion: @escaping ([MessageModel]) -> ()) {
         guard let uid = getCurrentUser()?.uid else {return}
          
@@ -41,6 +42,7 @@ extension FirebaseService: MessagesObserver {
         }
     }
     
+    //Подписка на получение новых сообщений
     func observeNewMessages(recipientUid: String, completion: @escaping (MessageModel) -> ()) {
         
         guard let uid = getCurrentUser()?.uid else {return}
@@ -59,6 +61,7 @@ extension FirebaseService: MessagesObserver {
         addObserverId(observer: "messagesObserver", id: messageObserverId)
     }
     
+    //Добавляет сообщение в thread чата юзера и получателя
     func sendMessages(recipientUid: String, message: MessageModel) {
         guard let uid = getCurrentUser()?.uid else {return}
         

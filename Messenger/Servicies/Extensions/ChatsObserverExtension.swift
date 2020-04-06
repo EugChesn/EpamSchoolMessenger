@@ -10,10 +10,13 @@ import Foundation
 
 protocol ChatsObserver {
     func downloadChats(completion: @escaping ([ChatInfo]) -> ())
-//    func observeChats(completion: @escaping (ChatInfo) -> ())
+    func observeChats(completion: @escaping (ChatInfo) -> ())
+    func removeObservers()
 }
 
 extension FirebaseService: ChatsObserver {
+    
+    //Скачивание всех существующих чатов
     func downloadChats(completion: @escaping ([ChatInfo]) -> ()) {
         guard let uid = getCurrentUser()?.uid else {return}
         
@@ -52,34 +55,37 @@ extension FirebaseService: ChatsObserver {
         }
     }
     
-//    func observeChats(completion: @escaping (ChatInfo) -> ()) {
-//        guard let uid = getCurrentUser()?.uid else {return}
-//        
-//        let chatsReference = referenceDataBase.child("chats").child(uid)
-//        
-//        let chatsObserverId = chatsReference.observe(.childAdded) { (chatSnapshot) in
-//            self.referenceDataBase.child("users").observeSingleEvent(of: .value) { (usersSnapshot) in
-//                let userSnapshot = usersSnapshot.childSnapshot(forPath: chatSnapshot.key)
-//                print("-------------------------")
-//                if let userInfo = userSnapshot.value as? [String: String] {
-//                    var contact = Contact()
-//
-//                    contact.uid = chatSnapshot.key
-//                    contact.name = userInfo["name"] ?? ""
-//                    contact.nickname = userInfo["nickname"] ?? ""
-//                    
-//                    var chat = ChatInfo(contact: contact)
-//                    
-//                    chat.lastMessage = chatSnapshot.childSnapshot(forPath: "lastMessage").value as? String ?? ""
-//                    chat.timeSpan = chatSnapshot.childSnapshot(forPath: "timeSpan").value as? String ?? ""
-//                    
-//                    completion(chat)
-//                }
-//            }
-//        }
-//        
-//        addObserverId(observer: "newChats", id: chatsObserverId)
-//    }
+    //Добавление листнера на добавление новых чатов или обновление чатов
+    func observeChats(completion: @escaping (ChatInfo) -> ()) {
+        guard let uid = getCurrentUser()?.uid else {return}
+        
+        let chatsReference = referenceDataBase.child("chats").child(uid)
+        
+        let chatsObserverId = chatsReference.observe(.childChanged) { (chatSnapshot) in
+            
+            //Скачиваем информацию по пользователю для нового или обновленного чата
+            self.referenceDataBase.child("users").observeSingleEvent(of: .value) { (usersSnapshot) in
+                let userSnapshot = usersSnapshot.childSnapshot(forPath: chatSnapshot.key)
+
+                if let userInfo = userSnapshot.value as? [String: String] {
+                    var contact = Contact()
+
+                    contact.uid = chatSnapshot.key
+                    contact.name = userInfo["name"] ?? ""
+                    contact.nickname = userInfo["nickname"] ?? ""
+                    
+                    var chat = ChatInfo(contact: contact)
+                    
+                    chat.lastMessage = chatSnapshot.childSnapshot(forPath: "lastMessage").value as? String ?? ""
+                    chat.timeSpan = chatSnapshot.childSnapshot(forPath: "timeSpan").value as? String ?? ""
+                    
+                    completion(chat)
+                }
+            }
+        }
+        
+        addObserverId(observer: "newChats", id: chatsObserverId)
+    }
     
     func removeObservers() {
         removeObserver(observer: "newChats")

@@ -42,7 +42,7 @@ extension DialogViewController {
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
-         chatLogCollectionView.contentInset = UIEdgeInsets(top: 8, left: 0, bottom: 58, right: 0)
+        chatLogCollectionView.contentInset = UIEdgeInsets(top: 8, left: 0, bottom: 58, right: 0)
         chatLogCollectionView.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: 50, right: 0)
         inputTextFiledBottomConstraint.constant = 0
     }

@@ -13,6 +13,8 @@ protocol ContactsObserver {
 }
 
 extension FirebaseService: ContactsObserver {
+    
+    //Скачивает список всех юзеров в базе данных
     func downloadContacts(completion: @escaping ([Contact]) -> ()) {
         guard let uid = getCurrentUser()?.uid else {return}
         
