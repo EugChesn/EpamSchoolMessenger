@@ -24,8 +24,6 @@ class ChatsRouter: BaseRouter, ChatsRouting {
     }
     
     func signOut() {
-        
-        
         let fir: AuthFirebase = FirebaseService.firebaseService
         fir.signOutUser()
     }

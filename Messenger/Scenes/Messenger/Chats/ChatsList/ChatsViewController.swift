@@ -59,8 +59,8 @@ class ChatsViewController: UIViewController {
         
         navigationItem.searchController = searchConroller
         navigationItem.title = "Chats"
-
     }
+    
     @IBAction func unwindSegueChat(_ unwindSegue: UIStoryboardSegue) { }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -113,6 +113,7 @@ extension ChatsViewController: ChatsDelegate {
     func openChat() {
         routeToDialog(self)
     }
+    
     func setLoginFlow() {
         let vsLogin = GreetingViewController.instantiate()
         DispatchQueue.main.async {
