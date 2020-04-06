@@ -28,18 +28,21 @@ class ChatsViewController: UIViewController {
     
     @IBOutlet weak var chatsTableView: UITableView!
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         setupDependencies()
-        viewModel.subscribeStateUser()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        viewModel.subscribeStateUser()
         updateChats()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        viewModel.unsubscribeStateUser()
     }
     
     func setupDependencies() {

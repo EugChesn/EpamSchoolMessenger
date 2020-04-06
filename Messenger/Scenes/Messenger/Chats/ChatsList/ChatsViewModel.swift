@@ -68,6 +68,7 @@ class ChatsViewModel: ChatsViewModeling {
     init(view: ChatsDelegate) {
         self.view = view
         self.authService = FirebaseService.firebaseService
+        downloadChats()
     }
     
     deinit {
@@ -89,6 +90,10 @@ class ChatsViewModel: ChatsViewModeling {
                 self.downloadChats()
             }
         }
+    }
+    
+    func doNothing() {
+        
     }
     
     func unsubscribeStateUser() {

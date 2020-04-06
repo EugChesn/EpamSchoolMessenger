@@ -94,7 +94,6 @@ extension FirebaseService: AuthFirebase {
     func signOutUser() {
         do {
             try Auth.auth().signOut()
-            unListenStateUser()
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
         }
