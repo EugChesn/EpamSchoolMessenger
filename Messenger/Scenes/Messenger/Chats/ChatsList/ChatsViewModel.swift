@@ -115,25 +115,25 @@ class ChatsViewModel: ChatsViewModeling {
             
             self.chatsList = chatsList
             self.view?.updateChats()
+        }
+        
+        fir.observeChats() { newChat in
             
-            self.fir.observeChats() { newChat in
-                
-                let index = self.chatsList.firstIndex { (chat) -> Bool in
-                    if chat.contact.uid == newChat.contact.uid {
-                        return true
-                    } else {
-                        return false
-                    }
+            let index = self.chatsList.firstIndex { (chat) -> Bool in
+                if chat.contact.uid == newChat.contact.uid {
+                    return true
+                } else {
+                    return false
                 }
-                
-                if let index = index {
-                    self.chatsList.remove(at: index)
-                }
-                
-                self.chatsList.insert(newChat, at: 0)
-                
-                self.view?.updateChats()
             }
+            
+            if let index = index {
+                self.chatsList.remove(at: index)
+            }
+            
+            self.chatsList.insert(newChat, at: 0)
+            
+            self.view?.updateChats()
         }
     }
 }
