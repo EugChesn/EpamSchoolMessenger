@@ -30,7 +30,6 @@ extension DialogViewController: UICollectionViewDelegateFlowLayout, UICollection
             }
 
             cell.messageTextView.text = message.text
-
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath)
