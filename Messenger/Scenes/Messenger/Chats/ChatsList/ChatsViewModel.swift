@@ -132,12 +132,14 @@ class ChatsViewModel: ChatsViewModeling {
                     return false
                 }
             }
-            
+
             if let index = index {
                 self.chatsList.remove(at: index)
             }
             
             self.chatsList.insert(newChat, at: 0)
+            
+            self.view?.insertChat(removeIndex: index)
             
             self.view?.updateChats()
         }

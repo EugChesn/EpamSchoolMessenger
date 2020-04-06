@@ -68,6 +68,14 @@ class SetupProfileViewController: UIViewController {
         // Load the image using SDWebImage
         imageView.sd_setImage(with: reference, placeholderImage: placeholderImage)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "UnwindRegister"{
+            if let destination = segue.destination as? ChatsViewController {
+                destination.viewModel.downloadChats()
+            }
+        }
+    }
 }
 
 extension SetupProfileViewController: UITextFieldDelegate {
