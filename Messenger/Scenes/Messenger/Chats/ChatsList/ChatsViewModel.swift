@@ -100,6 +100,7 @@ class ChatsViewModel: ChatsViewModeling {
     
     func removeObservers() {
         fir.removeObservers()
+        chatsList = []
     }
     
     func unsubscribeStateUser() {
