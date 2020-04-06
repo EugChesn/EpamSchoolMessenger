@@ -52,6 +52,10 @@
 		AA487C48241E560900337FBF /* DialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA487C47241E560900337FBF /* DialogViewController.swift */; };
 		AA487C4A241E561600337FBF /* DialogViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA487C49241E561600337FBF /* DialogViewModel.swift */; };
 		AA487C4C241E563900337FBF /* DialogRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA487C4B241E563900337FBF /* DialogRouter.swift */; };
+		AA57A48C243A0E23001EE763 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA57A48B243A0E23001EE763 /* DateExtensions.swift */; };
+		AA57A48E243A1452001EE763 /* MessagesObserverExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA57A48D243A1452001EE763 /* MessagesObserverExtensions.swift */; };
+		AA57A490243A470D001EE763 /* ContactsObserverExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA57A48F243A470D001EE763 /* ContactsObserverExtension.swift */; };
+		AA57A492243A5B28001EE763 /* ChatsObserverExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA57A491243A5B28001EE763 /* ChatsObserverExtension.swift */; };
 		AA64DE0F241B694400ED2C63 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA64DE0E241B694400ED2C63 /* NetworkService.swift */; };
 		AA64DE12241B698D00ED2C63 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA64DE11241B698D00ED2C63 /* StorageService.swift */; };
 		AA64DE14241B72B600ED2C63 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA64DE13241B72B600ED2C63 /* Reachability.swift */; };
@@ -133,6 +137,10 @@
 		AA487C47241E560900337FBF /* DialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogViewController.swift; sourceTree = "<group>"; };
 		AA487C49241E561600337FBF /* DialogViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogViewModel.swift; sourceTree = "<group>"; };
 		AA487C4B241E563900337FBF /* DialogRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogRouter.swift; sourceTree = "<group>"; };
+		AA57A48B243A0E23001EE763 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
+		AA57A48D243A1452001EE763 /* MessagesObserverExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesObserverExtensions.swift; sourceTree = "<group>"; };
+		AA57A48F243A470D001EE763 /* ContactsObserverExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsObserverExtension.swift; sourceTree = "<group>"; };
+		AA57A491243A5B28001EE763 /* ChatsObserverExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsObserverExtension.swift; sourceTree = "<group>"; };
 		AA64DE0E241B694400ED2C63 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		AA64DE11241B698D00ED2C63 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
 		AA64DE13241B72B600ED2C63 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
@@ -199,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				3EA8B18D2434AA48001B4207 /* ExtensionsStoryboard.swift */,
+				AA57A48B243A0E23001EE763 /* DateExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -207,6 +216,9 @@
 			isa = PBXGroup;
 			children = (
 				3EBEC40E242A2A5600AF858C /* AuthFirebaseService.swift */,
+				AA57A48D243A1452001EE763 /* MessagesObserverExtensions.swift */,
+				AA57A48F243A470D001EE763 /* ContactsObserverExtension.swift */,
+				AA57A491243A5B28001EE763 /* ChatsObserverExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -710,9 +722,11 @@
 			files = (
 				AA1B5FDC241BF24D0080443A /* ChatsRouter.swift in Sources */,
 				AAF834F42419295900FDF9D2 /* PasswordRecoveryViewModel.swift in Sources */,
+				AA57A490243A470D001EE763 /* ContactsObserverExtension.swift in Sources */,
 				AAB3AEFC241B7FCF00825F00 /* CodeConfirmationViewController.swift in Sources */,
 				86338F472435199400F35E13 /* ProfileTableViewCell.swift in Sources */,
 				3EBEC40F242A2A5600AF858C /* AuthFirebaseService.swift in Sources */,
+				AA57A48C243A0E23001EE763 /* DateExtensions.swift in Sources */,
 				AA1B40C32431D48800E1D452 /* CreateChatViewController.swift in Sources */,
 				AAF834EA2419229D00FDF9D2 /* SignUpViewController.swift in Sources */,
 				AAB3AEF8241B7FAB00825F00 /* NewPasswordViewController.swift in Sources */,
@@ -743,6 +757,7 @@
 				86CB7AAA242B6C2C00995986 /* ProfileRouter.swift in Sources */,
 				AA1B40F5243360F800E1D452 /* ChatListTableViewExtension.swift in Sources */,
 				AAB3AF06241B840D00825F00 /* SetupProfileViewModel.swift in Sources */,
+				AA57A48E243A1452001EE763 /* MessagesObserverExtensions.swift in Sources */,
 				AA1B5FC8241BF1C30080443A /* RegistrationCodeConfirmationRouter.swift in Sources */,
 				AA1B5FD0241BF2010080443A /* GreetingRouter.swift in Sources */,
 				AA1B5FDA241BF2450080443A /* ContactsRouter.swift in Sources */,
@@ -766,6 +781,7 @@
 				AAF834E1241920B200FDF9D2 /* GreetingViewController.swift in Sources */,
 				AAB3AF08241B842100825F00 /* CreatePasswordViewController.swift in Sources */,
 				AA1B5FCE241BF1F00080443A /* SignUpRouter.swift in Sources */,
+				AA57A492243A5B28001EE763 /* ChatsObserverExtension.swift in Sources */,
 				AAF834E62419228100FDF9D2 /* SignInViewController.swift in Sources */,
 				AA1B5FE1241BF3830080443A /* BaseRouter.swift in Sources */,
 				8685160E242CE0AE00B06F7D /* Decor.swift in Sources */,
@@ -926,7 +942,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = boombastci18.Messenger;
+				PRODUCT_BUNDLE_IDENTIFIER = boombastic18.Messenger;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -948,7 +964,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = boombastci18.Messenger;
+				PRODUCT_BUNDLE_IDENTIFIER = boombastic18.Messenger;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;

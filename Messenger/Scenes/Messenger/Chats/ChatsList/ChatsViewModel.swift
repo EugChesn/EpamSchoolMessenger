@@ -13,7 +13,6 @@ protocol ChatsViewModeling: class {
     var chatsCount: Int {get}
     var selectedChat: ChatInfo? {get set}
     
-    func downloadChats()
     func createNewChat(with contact: Contact)
     func getChat(atIndex: Int) -> ChatInfo
     
@@ -25,17 +24,14 @@ protocol ChatInfoGetterDelegate: class {
     var chatInfo: ChatInfo? {get}
 }
 
-
 class ChatsViewModel: ChatsViewModeling {
 
     weak var view: ChatsDelegate?
     weak var authService: AuthFirebase?
     
-    private var chatsList: [ChatInfo] = [] {
-        didSet {
-            view?.updateChats()
-        }
-    }
+    let fir: ChatsObserver = FirebaseService.firebaseService
+    
+    private var chatsList: [ChatInfo] = []
     
     private var chat: ChatInfo? {
         didSet {
@@ -72,10 +68,16 @@ class ChatsViewModel: ChatsViewModeling {
     init(view: ChatsDelegate) {
         self.view = view
         self.authService = FirebaseService.firebaseService
+        downloadChats()
+    }
+    
+    deinit {
+        fir.removeObservers()
     }
     
     func createNewChat(with contact: Contact) {
         let chat = ChatInfo(contact: contact)
+
         selectedChat = chat
     }
     
@@ -85,37 +87,52 @@ class ChatsViewModel: ChatsViewModeling {
             case .NotAuthorised:
                 self.view?.setLoginFlow()
             case .Authorised:
-                self.downloadChats()
+                self.doNothing()
             }
         }
+    }
+    
+    func doNothing() {
+        
     }
     
     func unsubscribeStateUser() {
         authService?.unListenStateUser()
     }
-    
-    func downloadChats() {
-        chatsList = []
-        let refDatabase = FirebaseService.firebaseService.referenceDataBase
-        if let currentUid = FirebaseService.firebaseService.getCurrentUser()?.uid {
-            refDatabase.child("chats").child(currentUid).observe(.childAdded) { (snapshot) in
-                let uid = snapshot.key
-                let lastMessage = snapshot.childSnapshot(forPath: "lastMessage").value as? String ?? ""
-                
-                refDatabase.child("users").observe(.childAdded) { (snapshotUsers) in
-                    if snapshotUsers.key == uid {
-                        if let dictionary = snapshotUsers.value as? [String: String] {
-                           
-                            
-                            var contact = Contact()
-                            contact.name = dictionary["name"] ?? ""
-                            contact.uid = uid
 
-                            let chat = ChatInfo(lastMessage: lastMessage, contact: contact)
-                            self.chatsList.append(chat)
-                        }
+    private func downloadChats() {
+        fir.downloadChats() { chatsList in
+            
+            var chatsList = chatsList
+            
+            chatsList.sort { (chat1, chat2) -> Bool in
+                if chat1.timeSpan > chat2.timeSpan {
+                    return true
+                } else {
+                    return false
+                }
+            }
+            
+            self.chatsList = chatsList
+            self.view?.updateChats()
+            
+            self.fir.observeChats() { newChat in
+                
+                let index = self.chatsList.firstIndex { (chat) -> Bool in
+                    if chat.contact.uid == newChat.contact.uid {
+                        return true
+                    } else {
+                        return false
                     }
                 }
+                
+                if let index = index {
+                    self.chatsList.remove(at: index)
+                }
+                
+                self.chatsList.insert(newChat, at: 0)
+                
+                self.view?.updateChats()
             }
         }
     }

@@ -79,6 +79,7 @@ extension CreateChatViewController: UITableViewDelegate, UITableViewDataSource {
         guard let contact = viewModel?.contact(atIndex: indexPath.row) else {
             return
         }
+        
         chatOpenerDelegate?.dialogContact = contact
         router?.dismiss()
     }

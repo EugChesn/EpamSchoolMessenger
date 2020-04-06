@@ -14,6 +14,7 @@ protocol ChatsDelegate: class {
     func updateChats()
     func openChat()
     func setLoginFlow()
+    func insertChat(removeIndex: Int?)
 }
 
 protocol NewChatOpenerDelegate: class {
@@ -26,10 +27,9 @@ class ChatsViewController: UIViewController {
     var router: ChatsRouting?
     
     @IBOutlet weak var chatsTableView: UITableView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupUI()
         setupDependencies()
     }
@@ -37,8 +37,11 @@ class ChatsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewModel.subscribeStateUser()
+        updateChats()
     }
+    
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
         viewModel.unsubscribeStateUser()
     }
     
@@ -56,8 +59,8 @@ class ChatsViewController: UIViewController {
         
         navigationItem.searchController = searchConroller
         navigationItem.title = "Chats"
-
     }
+    
     @IBAction func unwindSegueChat(_ unwindSegue: UIStoryboardSegue) { }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -96,9 +99,21 @@ extension ChatsViewController: ChatsDelegate {
         }
     }
     
+    func insertChat(removeIndex: Int?) {
+        DispatchQueue.main.async {
+            self.chatsTableView.beginUpdates()
+            if let removeIndex = removeIndex {
+                self.chatsTableView.deleteRows(at: [IndexPath(row: removeIndex, section: 0)], with: .fade)
+            }
+            self.chatsTableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: .fade)
+            self.chatsTableView.endUpdates()
+        }
+    }
+    
     func openChat() {
         routeToDialog(self)
     }
+    
     func setLoginFlow() {
         let vsLogin = GreetingViewController.instantiate()
         DispatchQueue.main.async {

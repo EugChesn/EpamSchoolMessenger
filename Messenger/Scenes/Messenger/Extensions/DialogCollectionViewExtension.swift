@@ -17,9 +17,9 @@ extension DialogViewController: UICollectionViewDelegateFlowLayout, UICollection
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "messageCell", for: indexPath) as? MessageCollectionViewCell {
-            
+
             let message = viewModel.message(atIndex: indexPath.row)
-            
+
             let estimatedFrame = estimateFrame(text: message.text)
             cell.bubbleWidthAnchor?.constant = estimatedFrame.width + 32
 
@@ -28,22 +28,24 @@ extension DialogViewController: UICollectionViewDelegateFlowLayout, UICollection
             } else {
                 cell.configCell(color: .gray)
             }
-            
+
             cell.messageTextView.text = message.text
-            
-            collectionView.scrollToItem(at: indexPath, at: .bottom, animated: true)
-            
+
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath)
+            
             return cell
         }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let text = viewModel.message(atIndex: indexPath.row).text
 
         let estimatedFrame = estimateFrame(text: text)
+        
+        chatLogCollectionView.contentSize.height += estimatedFrame.height + 20
         
         return CGSize(width: view.frame.width, height: estimatedFrame.height + 20)
     }
@@ -55,5 +57,4 @@ extension DialogViewController: UICollectionViewDelegateFlowLayout, UICollection
         
         return estimatedFrame
     }
-
 }

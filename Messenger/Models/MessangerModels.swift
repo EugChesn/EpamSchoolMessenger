@@ -11,19 +11,43 @@ import UIKit
 
 struct Contact {
     var name: String = "testName"
+    var nickname: String = "testNickName"
     var uid: String = "testuid"
     var profileImage: UIImage?
 }
 
 struct MessageModel {
-    var from: String = "testFrom"
-    var to: String = "testTo"
-    var text: String = "testText"
-    var timeSpan: String = "testTime"
+    var from: String = ""
+    var to: String = ""
+    var text: String = ""
+    var timeSpan: String = ""
+    
+    func asDictionary() -> [String: String] {
+        return ["from": from, "to": to, "text": text, "timeSpan": timeSpan]
+    }
+    
+    func asDictionaryForChatInfo() -> [String: String] {
+        return ["lastMessage": text, "timeSpan": timeSpan]
+    }
+    
+    mutating func fromDictionary(dictionary: [String: String]) {
+        guard let from = dictionary["from"],
+            let to = dictionary["to"],
+            let text = dictionary["text"],
+            let timeSpan = dictionary["timeSpan"]
+            else {return}
+        
+        self.from = from
+        self.to = to
+        self.text = text
+        self.timeSpan = timeSpan
+    }
+        
 }
 
 struct ChatInfo {
     var lastMessage: String = ""
+    var timeSpan: String = ""
     var contact: Contact
 }
 
