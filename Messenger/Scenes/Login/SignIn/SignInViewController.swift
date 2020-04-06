@@ -96,6 +96,14 @@ extension SignInViewController: SignInDelegate {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "unwindLogin"{
+            if let destination = segue.destination as? ChatsViewController {
+                destination.viewModel.downloadChats()
+            }
+        }
+    }
+    
     func successLogin() {
         //print(FirebaseService.firebaseService.getCurrentUser()?.photoURL)
         

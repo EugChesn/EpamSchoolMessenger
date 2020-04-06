@@ -13,6 +13,8 @@ protocol ChatsViewModeling: class {
     var chatsCount: Int {get}
     var selectedChat: ChatInfo? {get set}
     
+    func downloadChats()
+    func removeObservers()
     func createNewChat(with contact: Contact)
     func getChat(atIndex: Int) -> ChatInfo
     
@@ -96,11 +98,15 @@ class ChatsViewModel: ChatsViewModeling {
         
     }
     
+    func removeObservers() {
+        fir.removeObservers()
+    }
+    
     func unsubscribeStateUser() {
         authService?.unListenStateUser()
     }
 
-    private func downloadChats() {
+    func downloadChats() {
         fir.downloadChats() { chatsList in
             
             var chatsList = chatsList

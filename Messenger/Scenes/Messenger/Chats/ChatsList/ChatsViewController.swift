@@ -74,9 +74,6 @@ class ChatsViewController: UIViewController {
                     destination.chatInfo = viewModel.selectedChat
             }
         }
-        if segue.identifier == "unwindLogin" {
-            // ...
-        }
     }
     
     func routeToDialog(_ sender: Any) {
@@ -89,6 +86,7 @@ class ChatsViewController: UIViewController {
     
     @IBAction func signOut(_ sender: Any) {
         router?.signOut()
+        viewModel.removeObservers()
     }
 }
 
