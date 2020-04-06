@@ -87,7 +87,7 @@ class ChatsViewModel: ChatsViewModeling {
             case .NotAuthorised:
                 self.view?.setLoginFlow()
             case .Authorised:
-                self.downloadChats()
+                self.doNothing()
             }
         }
     }
