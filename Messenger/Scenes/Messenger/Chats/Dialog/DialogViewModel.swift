@@ -73,30 +73,33 @@ class DialogViewModel: DialogViewModeling {
     }
     
     private func downloadMessages() {
-        guard let recipientUid = chatInfo?.contact.uid, let chatMode = chat?.chatMode else {return}
+        guard let recipientUid = chatInfo?.contact.uid else {return}
         
-        switch chatMode{
-        case .existstChat:
             fir.downloadMessages(recipientUid: recipientUid) { [weak self] (messagesList) in
                 guard let strongSelf = self else {return}
+                var messagesList = messagesList
+                
+                messagesList.sort { (message1, message2) -> Bool in
+                    if message1.timeSpan < message2.timeSpan {
+                        return true
+                    } else {
+                        return false
+                    }
+                }
                 
                 strongSelf.messageList = messagesList
                 strongSelf.view?.updateChatLog()
-                
-                strongSelf.fir.observeNewMessages(recipientUid: recipientUid) {[weak self] (message) in
-                    guard let strongSelf = self else {return}
-                    
-                    strongSelf.messageList.append(message)
-                    strongSelf.view?.insertMessage(index: strongSelf.messageCount - 1)
-                }
+    
             }
-        case .newChat:
+            
             fir.observeNewMessages(recipientUid: recipientUid) {[weak self] (message) in
                 guard let strongSelf = self else {return}
                 
                 strongSelf.messageList.append(message)
                 strongSelf.view?.insertMessage(index: strongSelf.messageCount - 1)
             }
-        }
+
+            
     }
+    
 }

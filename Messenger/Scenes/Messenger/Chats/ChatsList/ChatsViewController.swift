@@ -14,6 +14,7 @@ protocol ChatsDelegate: class {
     func updateChats()
     func openChat()
     func setLoginFlow()
+    func insertChat(removeIndex: Int?)
 }
 
 protocol NewChatOpenerDelegate: class {
@@ -37,6 +38,7 @@ class ChatsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewModel.subscribeStateUser()
+        chatsTableView.reloadData()
     }
     override func viewWillDisappear(_ animated: Bool) {
         viewModel.unsubscribeStateUser()
@@ -93,6 +95,17 @@ extension ChatsViewController: ChatsDelegate {
     func updateChats() {
         DispatchQueue.main.async {
             self.chatsTableView.reloadData()
+        }
+    }
+    
+    func insertChat(removeIndex: Int?) {
+        DispatchQueue.main.async {
+            self.chatsTableView.beginUpdates()
+            if let removeIndex = removeIndex {
+                self.chatsTableView.deleteRows(at: [IndexPath(row: removeIndex, section: 0)], with: .fade)
+            }
+            self.chatsTableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: .fade)
+            self.chatsTableView.endUpdates()
         }
     }
     

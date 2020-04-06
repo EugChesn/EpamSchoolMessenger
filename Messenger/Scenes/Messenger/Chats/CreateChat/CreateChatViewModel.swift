@@ -43,7 +43,6 @@ class CreateChatViewModel: CreateChatViewModeling {
             guard let strongSelf = self else {return}
             
             strongSelf.contactsList = contactsList
-            print(contactsList)
             strongSelf.view?.updateContactsList()
         }
     }

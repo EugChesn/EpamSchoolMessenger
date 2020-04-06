@@ -31,11 +31,10 @@ class ChatsViewModel: ChatsViewModeling {
     weak var view: ChatsDelegate?
     weak var authService: AuthFirebase?
     
-    private var chatsList: [ChatInfo] = [] {
-        didSet {
-            view?.updateChats()
-        }
-    }
+    
+    let fir: ChatsObserver = FirebaseService.firebaseService
+    
+    private var chatsList: [ChatInfo] = []
     
     private var chat: ChatInfo? {
         didSet {
@@ -75,7 +74,7 @@ class ChatsViewModel: ChatsViewModeling {
     }
     
     func createNewChat(with contact: Contact) {
-        let chat = ChatInfo(chatMode: .newChat, contact: contact)
+        let chat = ChatInfo(contact: contact)
 
         selectedChat = chat
     }
@@ -94,29 +93,22 @@ class ChatsViewModel: ChatsViewModeling {
     func unsubscribeStateUser() {
         authService?.unListenStateUser()
     }
-    
-    func downloadChats() {
-        chatsList = []
-        let refDatabase = FirebaseService.firebaseService.referenceDataBase
-        if let currentUid = FirebaseService.firebaseService.getCurrentUser()?.uid {
-            refDatabase.child("chats").child(currentUid).observe(.childAdded) { (snapshot) in
-                let uid = snapshot.key
-                let lastMessage = snapshot.childSnapshot(forPath: "lastMessage").value as? String ?? ""
-                
-                refDatabase.child("users").observe(.childAdded) { (snapshotUsers) in
-                    if snapshotUsers.key == uid {
-                        if let dictionary = snapshotUsers.value as? [String: String] {
-                            
-                            var contact = Contact()
-                            contact.name = dictionary["name"] ?? ""
-                            contact.uid = uid
 
-                            let chat = ChatInfo(chatMode: .existstChat, lastMessage: lastMessage, contact: contact)
-                            self.chatsList.append(chat)
-                        }
-                    }
+    func downloadChats() {
+        fir.downloadChats() { chatsList in
+            
+            var chatsList = chatsList
+            
+            chatsList.sort { (chat1, chat2) -> Bool in
+                if chat1.timeSpan > chat2.timeSpan {
+                    return true
+                } else {
+                    return false
                 }
             }
+            
+            self.chatsList = chatsList
+            self.view?.updateChats()
         }
     }
 }

@@ -55,6 +55,7 @@
 		AA57A48C243A0E23001EE763 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA57A48B243A0E23001EE763 /* DateExtensions.swift */; };
 		AA57A48E243A1452001EE763 /* MessagesObserverExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA57A48D243A1452001EE763 /* MessagesObserverExtensions.swift */; };
 		AA57A490243A470D001EE763 /* ContactsObserverExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA57A48F243A470D001EE763 /* ContactsObserverExtension.swift */; };
+		AA57A492243A5B28001EE763 /* ChatsObserverExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA57A491243A5B28001EE763 /* ChatsObserverExtension.swift */; };
 		AA64DE0F241B694400ED2C63 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA64DE0E241B694400ED2C63 /* NetworkService.swift */; };
 		AA64DE12241B698D00ED2C63 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA64DE11241B698D00ED2C63 /* StorageService.swift */; };
 		AA64DE14241B72B600ED2C63 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA64DE13241B72B600ED2C63 /* Reachability.swift */; };
@@ -139,6 +140,7 @@
 		AA57A48B243A0E23001EE763 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		AA57A48D243A1452001EE763 /* MessagesObserverExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesObserverExtensions.swift; sourceTree = "<group>"; };
 		AA57A48F243A470D001EE763 /* ContactsObserverExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsObserverExtension.swift; sourceTree = "<group>"; };
+		AA57A491243A5B28001EE763 /* ChatsObserverExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsObserverExtension.swift; sourceTree = "<group>"; };
 		AA64DE0E241B694400ED2C63 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		AA64DE11241B698D00ED2C63 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
 		AA64DE13241B72B600ED2C63 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 				3EBEC40E242A2A5600AF858C /* AuthFirebaseService.swift */,
 				AA57A48D243A1452001EE763 /* MessagesObserverExtensions.swift */,
 				AA57A48F243A470D001EE763 /* ContactsObserverExtension.swift */,
+				AA57A491243A5B28001EE763 /* ChatsObserverExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -778,6 +781,7 @@
 				AAF834E1241920B200FDF9D2 /* GreetingViewController.swift in Sources */,
 				AAB3AF08241B842100825F00 /* CreatePasswordViewController.swift in Sources */,
 				AA1B5FCE241BF1F00080443A /* SignUpRouter.swift in Sources */,
+				AA57A492243A5B28001EE763 /* ChatsObserverExtension.swift in Sources */,
 				AAF834E62419228100FDF9D2 /* SignInViewController.swift in Sources */,
 				AA1B5FE1241BF3830080443A /* BaseRouter.swift in Sources */,
 				8685160E242CE0AE00B06F7D /* Decor.swift in Sources */,

@@ -36,14 +36,6 @@ extension FirebaseService: MessagesObserver {
                     }
                 }
                 
-                messagesList.sort { (message1, message2) -> Bool in
-                    if message1.timeSpan < message2.timeSpan {
-                        return true
-                    } else {
-                        return false
-                    }
-                }
-                
                 completion(messagesList)
             }
         }
@@ -67,7 +59,7 @@ extension FirebaseService: MessagesObserver {
         addObserverId(observer: "messagesObserver", id: messageObserverId)
     }
     
-    func sendMessages(recipientUid: String ,message: MessageModel) {
+    func sendMessages(recipientUid: String, message: MessageModel) {
         guard let uid = getCurrentUser()?.uid else {return}
         
         var message = message
