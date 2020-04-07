@@ -22,6 +22,7 @@ class SetupProfileViewController: UIViewController {
     
     var viewModel: SetupProfileViewModeling?
     var router: SetupProfileRouting?
+    var imagePicker = UIImagePickerController() // временное решение
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +40,7 @@ class SetupProfileViewController: UIViewController {
         nameTextFiled.resignFirstResponder()
         nicknameTextField.resignFirstResponder()
         
-        let imagePicker = UIImagePickerController()
+        imagePicker.allowsEditing = true
         imagePicker.delegate = self
         self.present(imagePicker, animated: true, completion: nil)
     }
@@ -107,7 +108,7 @@ extension SetupProfileViewController: SetupProfileDelegate {
 extension SetupProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     // UIImagePickerControllerDelegate
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        let imageFromPC = info[UIImagePickerController.InfoKey.originalImage] as! UIImage // 1
+        let imageFromPC = info[UIImagePickerController.InfoKey.editedImage] as! UIImage // 1
         photoNewUserImageView.image = imageFromPC // 2
         self.dismiss(animated: true, completion: nil) // 3
     }

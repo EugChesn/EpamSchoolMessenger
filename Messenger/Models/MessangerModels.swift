@@ -13,7 +13,15 @@ struct Contact {
     var name: String = "testName"
     var nickname: String = "testNickName"
     var uid: String = "testuid"
-    var profileImage: UIImage?
+    var profileImageUrl: String?
+    
+    init() {}
+    init (name: String, nickname: String, uid: String, profileImage: String?) {
+        self.name = name
+        self.nickname = nickname
+        self.uid = uid
+        self.profileImageUrl = profileImage
+    }
 }
 
 struct MessageModel {

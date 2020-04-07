@@ -19,11 +19,11 @@ extension FirebaseService: ContactsObserver {
         guard let uid = getCurrentUser()?.uid else {return}
         
         let userContactsReference = referenceDataBase
-        
+        var contactsList: [Contact] = []
+    
         userContactsReference.observeSingleEvent(of: .value) { (snapshot) in
             let contacts = snapshot.childSnapshot(forPath: "users")
             if let dictionary = contacts.value as? [String: Any?] {
-                var contactsList: [Contact] = []
                 
                 for key in dictionary.keys {
                     guard let contactInfo = dictionary[key] as? [String: String] else {return}
@@ -32,12 +32,14 @@ extension FirebaseService: ContactsObserver {
                     contact.uid = key
                     contact.name = contactInfo["name"] ?? ""
                     contact.nickname = contactInfo["nickname"] ?? ""
-                    
+                    contact.profileImageUrl = contactInfo["photoUrl"] ?? nil
+        
                     contactsList.append(contact)
                 }
-                
-                 completion(contactsList)
+        
+                completion(contactsList)
             }
         }
+        
     }
 }

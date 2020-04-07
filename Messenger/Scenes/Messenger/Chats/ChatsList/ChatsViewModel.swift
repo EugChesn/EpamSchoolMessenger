@@ -40,6 +40,11 @@ class ChatsViewModel: ChatsViewModeling {
             view?.openChat()
         }
     }
+    init(view: ChatsDelegate) {
+        self.view = view
+        self.authService = FirebaseService.firebaseService
+        downloadChats()
+    }
     
     let chatTransferQueue: DispatchQueue = DispatchQueue.global()
     
@@ -65,12 +70,6 @@ class ChatsViewModel: ChatsViewModeling {
     
     func getChat(atIndex: Int) -> ChatInfo {
         return chatsList[atIndex]
-    }
-    
-    init(view: ChatsDelegate) {
-        self.view = view
-        self.authService = FirebaseService.firebaseService
-        downloadChats()
     }
     
     deinit {
@@ -119,8 +118,15 @@ class ChatsViewModel: ChatsViewModeling {
                     return false
                 }
             }
-            
             self.chatsList = chatsList
+            
+            /*for (index, _) in chatsList.enumerated() {
+                let reference = StorageService.shared.storageRef.child(self.chatsList[index].contact.uid)
+                StorageService.shared.downloadImage(ref: reference) { (image) in
+                    self.chatsList[index].contact.profileImage = image
+                    self.view?.updateChats()
+                }
+            }*/
             self.view?.updateChats()
         }
         

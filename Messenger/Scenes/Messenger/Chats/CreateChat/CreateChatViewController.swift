@@ -20,6 +20,7 @@ class CreateChatViewController: UIViewController {
     
     @IBOutlet weak var contactListTableView: UITableView!
     @IBOutlet weak var creatChatNavigationItem: UINavigationItem!
+    let heightRow: CGFloat = 70
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +43,8 @@ class CreateChatViewController: UIViewController {
         
         contactListTableView.delegate = self
         contactListTableView.dataSource = self
+        let nib = UINib(nibName: "ChatTableViewCell", bundle: nil)
+        contactListTableView.register(nib, forCellReuseIdentifier: "ChatCell")
     }
     
     @IBAction func cancelCreate(_ sender: Any) {
@@ -66,11 +69,30 @@ extension CreateChatViewController: UITableViewDelegate, UITableViewDataSource {
         return viewModel?.contactsCount ?? 0
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return heightRow
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        /*DispatchQueue.main.async {
+            let myCell = cell as! ChatTableViewCell
+            let uidContact = self.viewModel?.contact(atIndex: indexPath.row).uid
+            let reference = StorageService.shared.storageRef.child(uidContact!)
+            //myCell.photo.sd_setImage(with: reference, placeholderImage: nil)
+            StorageService.shared.downloadImage(ref: reference) { image in
+                myCell.photo.image = image
+            }
+        }*/
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: "contactCell")
-        
-        cell.textLabel?.text = viewModel?.contact(atIndex: indexPath.row).name
-        cell.imageView?.image = UIImage(named: "profile")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ChatCell", for: indexPath) as! ChatTableViewCell
+
+        let contact = viewModel?.contact(atIndex: indexPath.row)
+        cell.nameChat.text = contact?.name
+        if let uid = contact?.uid {
+            cell.photo.image = viewModel?.getImageContact(uid: uid)
+        }
         
         return cell
     }

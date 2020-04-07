@@ -11,14 +11,24 @@ import UIKit
 
 protocol CreateChatViewModeling {
     var contactsCount: Int {get}
-    
     func contact(atIndex: Int) -> Contact
+    
+    func getImageContact(uid: String) -> UIImage?
 }
 
 class CreateChatViewModel: CreateChatViewModeling {
     weak var view: CreateChatDelegate?
     
     private var contactsList: [Contact] = []
+    private var imageContacts: [String: UIImage] = [:] {
+        didSet {
+            view?.updateContactsList()
+        }
+    }
+    
+    func getImageContact(uid: String) -> UIImage? {
+        return imageContacts[uid]
+    }
     
     var contactsCount: Int {
         get {
@@ -31,21 +41,33 @@ class CreateChatViewModel: CreateChatViewModeling {
         
         downloadContacts()
     }
-    
     func contact(atIndex: Int) -> Contact {
         return contactsList[atIndex]
     }
     
+    private func downloadImageUrl(contact: Contact) {
+        if let urlPhoto = contact.profileImageUrl {
+            let reference = StorageService.shared.getReference(url: urlPhoto)
+            StorageService.shared.downloadImage(ref: reference) { [weak self] image in
+                guard let strongSelf = self else {return}
+                strongSelf.imageContacts.updateValue(image, forKey: contact.uid)
+            }
+        }
+    }
+
     private func downloadContacts() {
         let fir:ContactsObserver = FirebaseService.firebaseService
         
         fir.downloadContacts { [weak self] (contactsList) in
             guard let strongSelf = self else {return}
-            
             strongSelf.contactsList = contactsList
-            strongSelf.view?.updateContactsList()
+            contactsList.forEach { contact in
+                strongSelf.downloadImageUrl(contact: contact)
+            }
+            //strongSelf.view?.updateContactsList()
         }
     }
+    
 }
 
 

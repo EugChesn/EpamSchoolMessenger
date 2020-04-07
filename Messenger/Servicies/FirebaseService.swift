@@ -44,7 +44,7 @@ class FirebaseService {
             if let err = error{
                 print(err.localizedDescription)
             } else {
-                let update = ["name": name,"nickname": nickName]
+                let update = ["name": name,"nickname": nickName,"photoUrl": photo.absoluteString]
                 self.writeNewDataProfile(update: update)
             }
         }

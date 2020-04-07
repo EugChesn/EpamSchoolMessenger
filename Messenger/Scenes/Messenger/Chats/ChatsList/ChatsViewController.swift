@@ -27,6 +27,7 @@ class ChatsViewController: UIViewController {
     var router: ChatsRouting?
     
     @IBOutlet weak var chatsTableView: UITableView!
+    let heightRow: CGFloat = 70
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,6 +55,9 @@ class ChatsViewController: UIViewController {
         chatsTableView.delegate = self
         chatsTableView.dataSource = self
         
+        let nib = UINib(nibName: "ChatTableViewCell", bundle: nil)
+        chatsTableView.register(nib, forCellReuseIdentifier: "ChatCell")
+        
         let searchConroller = UISearchController(searchResultsController: nil)
         searchConroller.searchBar.delegate = self
         
@@ -75,6 +79,7 @@ class ChatsViewController: UIViewController {
             }
         }
     }
+    
     
     func routeToDialog(_ sender: Any) {
         router?.routeToDialog()

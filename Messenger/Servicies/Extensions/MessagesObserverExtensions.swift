@@ -28,7 +28,6 @@ extension FirebaseService: MessagesObserver {
             if let dictionary = thread.value as? [String: Any?] {
                 
                 var messagesList: [MessageModel] = []
-                
                 for item in dictionary.values {
                     if let messageDictionary = item as? [String: String]{
                         var message = MessageModel()
