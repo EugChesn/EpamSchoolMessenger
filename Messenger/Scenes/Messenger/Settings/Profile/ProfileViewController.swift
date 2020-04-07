@@ -35,6 +35,10 @@ class ProfileViewController: UITableViewController {
         static let birthday = "Birthday"
     }
     
+    @IBAction func doneButton(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         settingNavigationItem()
@@ -49,6 +53,32 @@ class ProfileViewController: UITableViewController {
         createDatePicker()
         
         setupDependencies()
+        
+        getData()
+                
+    }
+    
+    func getData() {
+        if let uid = FirebaseService.firebaseService.getCurrentUser()?.uid {
+            let referenseDB = FirebaseService.firebaseService.referenceDataBase
+            referenseDB.child("users").child(uid).observe(.value) { (snapshot) in
+                guard let value = snapshot.value, snapshot.exists() else {
+                    return
+                }
+                
+                if let dictionary = value as? [String: String] {
+                    var user = Contact()
+                    
+                    user.name = dictionary["name"] ?? ""
+                    user.nickname = dictionary["nickname"] ?? ""
+                    
+                    self.nameTextField.text = user.name
+                    self.nickNameTextField.text = user.nickname
+                    
+                }
+            }
+            
+        }
     }
     
     private func setupDependencies() {
@@ -67,7 +97,7 @@ class ProfileViewController: UITableViewController {
         datePicker.maximumDate = Date()
         datePicker.datePickerMode = .date
         birthdayTextField.inputView = datePicker
-                
+        
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
         let doneButton = UIBarButtonItem(title: Constant.doneButton, style: .plain, target: self, action: #selector(doneAction))
