@@ -22,7 +22,7 @@ class ChatTableViewCell: UITableViewCell {
     override func prepareForReuse() { // MARK Important change!
         super.prepareForReuse()
         self.photo.sd_cancelCurrentImageLoad()
-        //self.imageView?.image = nil
+        self.photo?.image = nil
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -19,20 +19,6 @@ extension ChatsViewController: UITableViewDelegate, UITableViewDataSource {
         return heightRow
     }
     
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        /*DispatchQueue.main.async {
-            let myCell = cell as! ChatTableViewCell
-            if self.viewModel.chatsCount != 0 {
-                let chat = self.viewModel.getChat(atIndex: indexPath.row)
-                //let reference = StorageService.shared.storageRef.child(chat.contact.uid)
-                if let url = chat.contact.profileImageUrl {
-                    let reference = StorageService.shared.getReference(url: url)
-                    myCell.photo.sd_setImage(with: reference, placeholderImage: nil)
-                }
-            }
-        }*/
-    }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let cell = tableView.dequeueReusableCell(with: ChatTableViewCell.self, for: indexPath)

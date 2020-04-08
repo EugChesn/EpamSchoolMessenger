@@ -73,18 +73,6 @@ extension CreateChatViewController: UITableViewDelegate, UITableViewDataSource {
         return heightRow
     }
     
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        /*DispatchQueue.main.async {
-            let myCell = cell as! ChatTableViewCell
-            let uidContact = self.viewModel?.contact(atIndex: indexPath.row).uid
-            let reference = StorageService.shared.storageRef.child(uidContact!)
-            //myCell.photo.sd_setImage(with: reference, placeholderImage: nil)
-            StorageService.shared.downloadImage(ref: reference) { image in
-                myCell.photo.image = image
-            }
-        }*/
-    }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(with: ChatTableViewCell.self, for: indexPath)

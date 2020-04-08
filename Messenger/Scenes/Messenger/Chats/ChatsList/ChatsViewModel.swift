@@ -119,14 +119,6 @@ class ChatsViewModel: ChatsViewModeling {
                 }
             }
             self.chatsList = chatsList
-            
-            /*for (index, _) in chatsList.enumerated() {
-                let reference = StorageService.shared.storageRef.child(self.chatsList[index].contact.uid)
-                StorageService.shared.downloadImage(ref: reference) { (image) in
-                    self.chatsList[index].contact.profileImage = image
-                    self.view?.updateChats()
-                }
-            }*/
             self.view?.updateChats()
         }
         
@@ -145,7 +137,7 @@ class ChatsViewModel: ChatsViewModeling {
             }
             
             self.chatsList.insert(newChat, at: 0)
-            
+        
             self.view?.insertChat(removeIndex: index)
             
             self.view?.updateChats()

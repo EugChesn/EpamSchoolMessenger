@@ -74,6 +74,7 @@ extension FirebaseService: ChatsObserver {
                     contact.uid = chatSnapshot.key
                     contact.name = userInfo["name"] ?? ""
                     contact.nickname = userInfo["nickname"] ?? ""
+                    contact.profileImageUrl = userInfo["photoUrl"] ?? ""
                     
                     var chat = ChatInfo(contact: contact)
                     
