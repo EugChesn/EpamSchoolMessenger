@@ -15,7 +15,8 @@ protocol PasswordRecoveryViewModeling {
 
 class PasswordRecoveryViewModel: PasswordRecoveryViewModeling {
     weak var view: PasswordRecoveryDelegate?
-    weak var authFirebase: FirebaseService?
+    //weak var authFirebase: FirebaseService?
+    weak var authFirebase: AuthFirebase?
     
     func resetPassword(email: String){
         authFirebase?.resetWithPassword(email: email) { (err) in

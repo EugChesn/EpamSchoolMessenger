@@ -31,6 +31,7 @@ protocol AuthFirebase: class {
     //Подписка на состояние юзера
     func listenStateUser(completion: @escaping (StateUser) -> ())
     func unListenStateUser()
+    func resetWithPassword(email: String, fault: @escaping (Error)->())
 }
 
 extension FirebaseService: AuthFirebase {
