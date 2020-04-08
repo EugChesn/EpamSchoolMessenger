@@ -375,7 +375,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ndw-FK-vAo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="GA7-x6-tU4" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2806" y="823"/>
+            <point key="canvasLocation" x="2805.7971014492755" y="822.99107142857144"/>
         </scene>
     </scenes>
     <resources>

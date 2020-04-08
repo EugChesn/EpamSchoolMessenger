@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-import FirebaseAuth
 
 protocol ChatsDelegate: class {
     func updateChats()
@@ -28,6 +27,7 @@ class ChatsViewController: UIViewController {
     
     @IBOutlet weak var chatsTableView: UITableView!
     let heightRow: CGFloat = 70
+    let placeHolderImage = UIImage(named: "profile")
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,9 +54,7 @@ class ChatsViewController: UIViewController {
     func setupUI() {
         chatsTableView.delegate = self
         chatsTableView.dataSource = self
-        
-        let nib = UINib(nibName: "ChatTableViewCell", bundle: nil)
-        chatsTableView.register(nib, forCellReuseIdentifier: "ChatCell")
+        chatsTableView.register(cellType: ChatTableViewCell.self)
         
         let searchConroller = UISearchController(searchResultsController: nil)
         searchConroller.searchBar.delegate = self

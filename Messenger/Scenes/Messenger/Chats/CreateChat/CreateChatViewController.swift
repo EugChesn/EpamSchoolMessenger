@@ -21,6 +21,7 @@ class CreateChatViewController: UIViewController {
     @IBOutlet weak var contactListTableView: UITableView!
     @IBOutlet weak var creatChatNavigationItem: UINavigationItem!
     let heightRow: CGFloat = 70
+    let placeHolderImage = UIImage(named: "profile")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,8 +44,7 @@ class CreateChatViewController: UIViewController {
         
         contactListTableView.delegate = self
         contactListTableView.dataSource = self
-        let nib = UINib(nibName: "ChatTableViewCell", bundle: nil)
-        contactListTableView.register(nib, forCellReuseIdentifier: "ChatCell")
+        contactListTableView.register(cellType: ChatTableViewCell.self)
     }
     
     @IBAction func cancelCreate(_ sender: Any) {
@@ -86,12 +86,14 @@ extension CreateChatViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ChatCell", for: indexPath) as! ChatTableViewCell
-
+        
+        let cell = tableView.dequeueReusableCell(with: ChatTableViewCell.self, for: indexPath)
         let contact = viewModel?.contact(atIndex: indexPath.row)
         cell.nameChat.text = contact?.name
-        if let uid = contact?.uid {
-            cell.photo.image = viewModel?.getImageContact(uid: uid)
+        let url = contact?.profileImageUrl
+        if let urlPhoto = url {
+            let reference = StorageService.shared.getReference(url: urlPhoto)
+            cell.photo.sd_setImage(with: reference, placeholderImage: placeHolderImage)
         }
         
         return cell

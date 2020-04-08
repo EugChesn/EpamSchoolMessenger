@@ -13,22 +13,21 @@ protocol CreateChatViewModeling {
     var contactsCount: Int {get}
     func contact(atIndex: Int) -> Contact
     
-    func getImageContact(uid: String) -> UIImage?
+    //func getImageContact(uid: String) -> UIImage?
 }
 
 class CreateChatViewModel: CreateChatViewModeling {
     weak var view: CreateChatDelegate?
-    
     private var contactsList: [Contact] = []
-    private var imageContacts: [String: UIImage] = [:] {
+    
+    /*private var imageContacts: [String: UIImage] = [:] {
         didSet {
             view?.updateContactsList()
         }
     }
-    
     func getImageContact(uid: String) -> UIImage? {
         return imageContacts[uid]
-    }
+    }*/
     
     var contactsCount: Int {
         get {
@@ -45,7 +44,31 @@ class CreateChatViewModel: CreateChatViewModeling {
         return contactsList[atIndex]
     }
     
-    private func downloadImageUrl(contact: Contact) {
+    private func downloadContacts() {
+        let fir:ContactsObserver = FirebaseService.firebaseService
+        
+        fir.downloadContacts { [weak self] (contactsList) in
+            guard let strongSelf = self else {return}
+            
+            var tmpList = contactsList
+            tmpList.sort{ (contact1,contact2) -> Bool in
+                if contact1.name > contact2.name {
+                    return true
+                } else {
+                    return false
+                }
+            }
+            strongSelf.contactsList = tmpList
+            
+            /*contactsList.forEach { contact in
+                strongSelf.downloadImageUrl(contact: contact)
+            }*/
+            
+            strongSelf.view?.updateContactsList()
+        }
+    }
+    
+    /*private func downloadImageUrl(contact: Contact) {
         if let urlPhoto = contact.profileImageUrl {
             let reference = StorageService.shared.getReference(url: urlPhoto)
             StorageService.shared.downloadImage(ref: reference) { [weak self] image in
@@ -53,21 +76,7 @@ class CreateChatViewModel: CreateChatViewModeling {
                 strongSelf.imageContacts.updateValue(image, forKey: contact.uid)
             }
         }
-    }
-
-    private func downloadContacts() {
-        let fir:ContactsObserver = FirebaseService.firebaseService
-        
-        fir.downloadContacts { [weak self] (contactsList) in
-            guard let strongSelf = self else {return}
-            strongSelf.contactsList = contactsList
-            contactsList.forEach { contact in
-                strongSelf.downloadImageUrl(contact: contact)
-            }
-            //strongSelf.view?.updateContactsList()
-        }
-    }
-    
+    }*/
 }
 
 

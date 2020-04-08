@@ -20,7 +20,7 @@ extension ChatsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        DispatchQueue.main.async {
+        /*DispatchQueue.main.async {
             let myCell = cell as! ChatTableViewCell
             if self.viewModel.chatsCount != 0 {
                 let chat = self.viewModel.getChat(atIndex: indexPath.row)
@@ -30,16 +30,23 @@ extension ChatsViewController: UITableViewDelegate, UITableViewDataSource {
                     myCell.photo.sd_setImage(with: reference, placeholderImage: nil)
                 }
             }
-        }
+        }*/
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ChatCell", for: indexPath) as! ChatTableViewCell
-        
+
+        let cell = tableView.dequeueReusableCell(with: ChatTableViewCell.self, for: indexPath)
         if viewModel.chatsCount != 0 {
             let chat = viewModel.getChat(atIndex: indexPath.row)
             cell.nameChat.text = chat.contact.name
             cell.lastMessage.text = chat.lastMessage
+            
+        
+            if let url = chat.contact.profileImageUrl {
+                let reference = StorageService.shared.getReference(url: url)
+                cell.photo.sd_setImage(with: reference, placeholderImage: placeHolderImage)
+            }
+                
             
         }
         return cell
