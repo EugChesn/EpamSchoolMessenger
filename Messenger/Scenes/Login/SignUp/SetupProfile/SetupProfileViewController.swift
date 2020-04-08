@@ -22,6 +22,7 @@ class SetupProfileViewController: UIViewController {
     
     var viewModel: SetupProfileViewModeling?
     var router: SetupProfileRouting?
+    private lazy var imagePicker = ImagePicker()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +31,7 @@ class SetupProfileViewController: UIViewController {
         Utilities.styleButton(goChatsButton)
         Utilities.styleImageView(photoNewUserImageView)
         
+        imagePicker.delegate = self
         nameTextFiled.delegate = self
         nicknameTextField.delegate = self
         setupDependencies()
@@ -39,9 +41,8 @@ class SetupProfileViewController: UIViewController {
         nameTextFiled.resignFirstResponder()
         nicknameTextField.resignFirstResponder()
         
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        self.present(imagePicker, animated: true, completion: nil)
+        imagePicker.photoGalleryAsscessRequest()
+        //imagePicker.cameraAsscessRequest()
     }
     
     @IBAction func goToChatsTap(_ sender: UIButton) {
@@ -55,19 +56,10 @@ class SetupProfileViewController: UIViewController {
         viewModel = SetupProfileViewModel(view: self)
         router = SetupProfileRouter(viewController: self)
     }
-    func Test_FirebaseUI_Download() {
-        // Reference to an image file in Firebase Storage
-        let reference = StorageService.shared.storageRef.child(Auth.auth().currentUser!.uid)
-
-        // UIImageView in your ViewController
-        let imageView: UIImageView = self.photoNewUserImageView
-
-        // Placeholder image
-        let placeholderImage = UIImage(named: "placeholder.jpg")
-
-        // Load the image using SDWebImage
-        imageView.sd_setImage(with: reference, placeholderImage: placeholderImage)
-    }
+    
+    private func presentImagePicker(sourceType: UIImagePickerController.SourceType) {
+         imagePicker.present(parent: self, sourceType: sourceType)
+     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "UnwindRegister"{
@@ -104,15 +96,22 @@ extension SetupProfileViewController: SetupProfileDelegate {
     }
 }
 
-extension SetupProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    // UIImagePickerControllerDelegate
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        let imageFromPC = info[UIImagePickerController.InfoKey.originalImage] as! UIImage // 1
-        photoNewUserImageView.image = imageFromPC // 2
-        self.dismiss(animated: true, completion: nil) // 3
+extension SetupProfileViewController: ImagePickerDelegate  {
+    func imagePickerDelegate(didSelect image: UIImage, delegatedForm: ImagePicker) {
+        photoNewUserImageView.image = image
+        imagePicker.dismiss()
     }
-    
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        self.dismiss(animated: true, completion: nil)
+
+    func imagePickerDelegate(didCancel delegatedForm: ImagePicker) {
+        imagePicker.dismiss()
+    }
+
+    func imagePickerDelegate(canUseGallery accessIsAllowed: Bool, delegatedForm: ImagePicker) {
+        if accessIsAllowed { presentImagePicker(sourceType: .photoLibrary) }
+    }
+
+    func imagePickerDelegate(canUseCamera accessIsAllowed: Bool, delegatedForm: ImagePicker) {
+        //Работает только на реальном устройстве
+        if accessIsAllowed { presentImagePicker(sourceType: .camera) }
     }
 }

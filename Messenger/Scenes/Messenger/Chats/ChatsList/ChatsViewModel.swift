@@ -40,6 +40,11 @@ class ChatsViewModel: ChatsViewModeling {
             view?.openChat()
         }
     }
+    init(view: ChatsDelegate) {
+        self.view = view
+        self.authService = FirebaseService.firebaseService
+        downloadChats()
+    }
     
     let chatTransferQueue: DispatchQueue = DispatchQueue.global()
     
@@ -65,12 +70,6 @@ class ChatsViewModel: ChatsViewModeling {
     
     func getChat(atIndex: Int) -> ChatInfo {
         return chatsList[atIndex]
-    }
-    
-    init(view: ChatsDelegate) {
-        self.view = view
-        self.authService = FirebaseService.firebaseService
-        downloadChats()
     }
     
     deinit {
@@ -119,7 +118,6 @@ class ChatsViewModel: ChatsViewModeling {
                     return false
                 }
             }
-            
             self.chatsList = chatsList
             self.view?.updateChats()
         }
@@ -139,7 +137,7 @@ class ChatsViewModel: ChatsViewModeling {
             }
             
             self.chatsList.insert(newChat, at: 0)
-            
+        
             self.view?.insertChat(removeIndex: index)
             
             self.view?.updateChats()
