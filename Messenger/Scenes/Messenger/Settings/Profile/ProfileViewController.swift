@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 protocol ProfileDelegate: class {
-    func updateProfile(userData:Contact)
+    func updateProfile(user:Contact)
 }
 
 class ProfileViewController: UITableViewController {
@@ -116,10 +116,10 @@ extension ProfileViewController: UITextFieldDelegate {
 }
 
 extension ProfileViewController: ProfileDelegate {
-    func updateProfile(userData:Contact) {
+    func updateProfile(user:Contact) {
         DispatchQueue.main.async {
-            self.nameTextField.text = userData.name
-            self.nickNameTextField.text = userData.nickname
+            self.nameTextField.text = user.name
+            self.nickNameTextField.text = user.nickname
         }
     }
 }

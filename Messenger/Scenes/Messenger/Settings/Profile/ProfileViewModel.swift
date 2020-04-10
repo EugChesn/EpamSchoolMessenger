@@ -11,7 +11,7 @@ import Foundation
 protocol ProfileViewModeling {
 }
 
-private var userData = Contact()
+private var data = Contact()
 
 class ProfileViewModel: ProfileViewModeling {
     
@@ -27,8 +27,8 @@ class ProfileViewModel: ProfileViewModeling {
         base.getUserData() { [weak self] (user) in
             guard let current = user else { return }
             
-            userData = current
-            self?.view?.updateProfile(userData: userData)
+            data = current
+            self?.view?.updateProfile(user: data)
         }
     }
 }
