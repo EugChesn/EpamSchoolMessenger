@@ -11,7 +11,7 @@ import UIKit
 
 struct Contact: Codable {
     var name = ""
-    var nickname = ""
+    var nickname: String?
     var uid: String!
     var profileImageUrl: String?
     
