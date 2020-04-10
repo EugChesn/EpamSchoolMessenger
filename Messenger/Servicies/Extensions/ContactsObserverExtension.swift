@@ -26,20 +26,16 @@ extension FirebaseService: ContactsObserver {
             if let dictionary = contacts.value as? [String: Any?] {
                 
                 for key in dictionary.keys {
-                    guard let contactInfo = dictionary[key] as? [String: String] else {return}
+                    let contact = SnapshotDecoder.decode(type: Contact.self, snapshot: dictionary[key] as Any?)
                     
-                    var contact = Contact()
-                    contact.uid = key
-                    contact.name = contactInfo["name"] ?? ""
-                    contact.nickname = contactInfo["nickname"] ?? ""
-                    contact.profileImageUrl = contactInfo["photoUrl"] ?? nil
-        
-                    contactsList.append(contact)
+                    if var contact = contact {
+                        contact.uid = key
+                        contactsList.append(contact)
+                    }
                 }
         
                 completion(contactsList)
             }
         }
-        
     }
 }

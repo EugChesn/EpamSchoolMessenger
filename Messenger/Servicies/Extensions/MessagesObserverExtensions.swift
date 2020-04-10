@@ -28,10 +28,12 @@ extension FirebaseService: MessagesObserver {
             if let dictionary = thread.value as? [String: Any?] {
                 
                 var messagesList: [MessageModel] = []
+
+                //В словаре dictionary храняться значения в виде (key) id сообщения: (item) тело сообщения вида [String:String].
                 for item in dictionary.values {
-                    if let messageDictionary = item as? [String: String]{
-                        var message = MessageModel()
-                        message.fromDictionary(dictionary: messageDictionary)
+                    let message = SnapshotDecoder.decode(type: MessageModel.self, snapshot: item)
+                    
+                    if let message = message {
                         messagesList.append(message)
                     }
                 }
@@ -50,9 +52,8 @@ extension FirebaseService: MessagesObserver {
         
         let messageObserverId = messagesReference.observe(.childAdded) { (snapshot) in
             
-            if let dictionary = snapshot.value as? [String: String] {
-                var message = MessageModel()
-                message.fromDictionary(dictionary: dictionary)
+            if let message =  SnapshotDecoder.decode(type: MessageModel.self, snapshot: snapshot.value) {
+
                 completion(message)
             }
         }

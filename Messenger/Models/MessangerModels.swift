@@ -9,14 +9,21 @@
 import Foundation
 import UIKit
 
-struct Contact {
-    var name: String = "testName"
-    var nickname: String = "testNickName"
-    var uid: String = "testuid"
+struct Contact: Codable {
+    var name = ""
+    var nickname = ""
+    var uid: String!
     var profileImageUrl: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case name = "name"
+        case nickname = "nickname"
+        case uid = "uid"
+        case profileImageUrl = "photoUrl"
+    }
 }
 
-struct MessageModel {
+struct MessageModel: Codable {
     var from: String = ""
     var to: String = ""
     var text: String = ""
@@ -45,10 +52,10 @@ struct MessageModel {
         
 }
 
-struct ChatInfo {
+struct ChatInfo: Codable {
     var lastMessage: String = ""
     var timeSpan: String = ""
-    var contact: Contact
+    var contact: Contact!
 }
 
 enum StateUser {

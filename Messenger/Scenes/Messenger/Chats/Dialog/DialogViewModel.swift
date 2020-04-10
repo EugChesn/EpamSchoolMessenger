@@ -79,17 +79,8 @@ class DialogViewModel: DialogViewModeling {
         //скачиваем сообщения
             fir.downloadMessages(recipientUid: recipientUid) { [weak self] (messagesList) in
                 guard let strongSelf = self else {return}
-                var messagesList = messagesList
-                
-                messagesList.sort { (message1, message2) -> Bool in
-                    if message1.timeSpan < message2.timeSpan {
-                        return true
-                    } else {
-                        return false
-                    }
-                }
-                
-                strongSelf.messageList = messagesList
+
+                strongSelf.messageList = messagesList.sorted(by: {$0.timeSpan < $1.timeSpan})
                 strongSelf.view?.updateChatLog()
             }
             

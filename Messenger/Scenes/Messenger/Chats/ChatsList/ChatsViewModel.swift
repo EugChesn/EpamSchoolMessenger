@@ -107,40 +107,28 @@ class ChatsViewModel: ChatsViewModeling {
     }
 
     func downloadChats() {
-        fir.downloadChats() { chatsList in
+        fir.downloadChats() { [weak self] chatsList in
+            guard let strongSelf = self else {return}
             
-            var chatsList = chatsList
-            
-            chatsList.sort { (chat1, chat2) -> Bool in
-                if chat1.timeSpan > chat2.timeSpan {
-                    return true
-                } else {
-                    return false
-                }
-            }
-            self.chatsList = chatsList
-            self.view?.updateChats()
+            strongSelf.chatsList = chatsList.sorted(by: {$0.timeSpan > $1.timeSpan})
+            strongSelf.view?.updateChats()
         }
         
-        fir.observeChats() { newChat in
+        fir.observeChats() { [weak self] newChat in
+            guard let strongSelf = self else {return}
             
-            let index = self.chatsList.firstIndex { (chat) -> Bool in
-                if chat.contact.uid == newChat.contact.uid {
-                    return true
-                } else {
-                    return false
-                }
+            let index = strongSelf.chatsList.firstIndex {$0.contact.uid == newChat.contact.uid
             }
 
             if let index = index {
-                self.chatsList.remove(at: index)
+                strongSelf.chatsList.remove(at: index)
             }
             
-            self.chatsList.insert(newChat, at: 0)
+            strongSelf.chatsList.insert(newChat, at: 0)
         
-            self.view?.insertChat(removeIndex: index)
+            strongSelf.view?.insertChat(removeIndex: index)
             
-            self.view?.updateChats()
+            strongSelf.view?.updateChats()
         }
     }
 }

@@ -39,15 +39,7 @@ class CreateChatViewModel: CreateChatViewModeling {
         fir.downloadContacts { [weak self] (contactsList) in
             guard let strongSelf = self else {return}
             
-            var tmpList = contactsList
-            tmpList.sort{ (contact1,contact2) -> Bool in
-                if contact1.name > contact2.name {
-                    return true
-                } else {
-                    return false
-                }
-            }
-            strongSelf.contactsList = tmpList
+            strongSelf.contactsList = contactsList.sorted(by: {$0.name.lowercased() < $1.name.lowercased()})
             strongSelf.view?.updateContactsList()
         }
     }
