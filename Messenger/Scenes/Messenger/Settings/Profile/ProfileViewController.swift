@@ -52,33 +52,14 @@ class ProfileViewController: UITableViewController {
         //MARK: DatePicker
         createDatePicker()
         
+        nameTextField.delegate = self
+        nickNameTextField.delegate = self
+        
         setupDependencies()
         
-        getData()
-                
-    }
-    
-    func getData() {
-        if let uid = FirebaseService.firebaseService.getCurrentUser()?.uid {
-            let referenseDB = FirebaseService.firebaseService.referenceDataBase
-            referenseDB.child("users").child(uid).observe(.value) { (snapshot) in
-                guard let value = snapshot.value, snapshot.exists() else {
-                    return
-                }
-                
-                if let dictionary = value as? [String: String] {
-                    var user = Contact()
-                    
-                    user.name = dictionary["name"] ?? ""
-                    user.nickname = dictionary["nickname"] ?? ""
-                    
-                    self.nameTextField.text = user.name
-                    self.nickNameTextField.text = user.nickname
-                    
-                }
-            }
-            
-        }
+        nameTextField.text = viewModel?.getContact().name
+        
+        //FirebaseService.firebaseService.updateProfileInfo(name: "Nastya", nickName: "test", photo: nil)
     }
     
     private func setupDependencies() {
@@ -123,6 +104,19 @@ class ProfileViewController: UITableViewController {
     }
 }
 
+extension ProfileViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == nameTextField {
+            textField.resignFirstResponder()
+            nickNameTextField.becomeFirstResponder()
+        } else if textField == nickNameTextField {
+            textField.resignFirstResponder()
+            birthdayTextField.becomeFirstResponder()
+        }
+        return true
+    }
+}
+
 extension ProfileViewController: ProfileDelegate {
-    
+
 }

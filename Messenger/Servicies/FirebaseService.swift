@@ -35,7 +35,7 @@ class FirebaseService {
         referenceUser.child(user.uid).setValue(["email": user.email])
     }
 
-    func updateProfileInfo(name: String, nickName: String, photo: URL) {
+    func updateProfileInfo(name: String, nickName: String, photo: URL?) {
         let currUser = self.getCurrentUser()
         let changeRequest = currUser!.createProfileChangeRequest()
         changeRequest.displayName = name
@@ -46,6 +46,25 @@ class FirebaseService {
             } else {
                 let update = ["name": name,"nickname": nickName]
                 self.writeNewDataProfile(update: update)
+            }
+        }
+    }
+    
+    func getUserData(completion: @escaping (Contact?) -> ()) {
+        if let uid = FirebaseService.firebaseService.getCurrentUser()?.uid {
+            let referenseDB = FirebaseService.firebaseService.referenceDataBase
+            referenseDB.child("users").child(uid).observe(.value) { (snapshot) in
+                guard let value = snapshot.value, snapshot.exists() else { return }
+                
+                if let dictionary = value as? [String: String] {
+                    var user = Contact()
+                    
+                    user.email = dictionary["email"] ?? ""
+                    user.name = dictionary["name"] ?? ""
+                    user.nickname = dictionary["nickname"] ?? ""
+                    
+                    completion(user)
+                }
             }
         }
     }

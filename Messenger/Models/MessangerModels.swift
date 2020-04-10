@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 struct Contact {
+    var email: String = ""
     var name: String = "testName"
     var nickname: String = "testNickName"
     var uid: String = "testuid"
