@@ -14,7 +14,7 @@ struct Contact {
     var name: String = "testName"
     var nickname: String = "testNickName"
     var uid: String = "testuid"
-    var profileImage: UIImage?
+    var profileImageUrl: String?
 }
 
 struct MessageModel {

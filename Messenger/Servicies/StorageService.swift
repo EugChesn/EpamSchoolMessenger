@@ -10,8 +10,9 @@ import Foundation
 import FirebaseStorage
 import FirebaseAuth
 
-protocol uploadProfilePhoto {
+protocol ProfilePhoto {
     func uploadImageProfile(img :UIImage, completion: @escaping (StorageReference) -> ())
+    func downloadImage(ref: StorageReference, completion: @escaping (UIImage) -> ())
 }
 
 class StorageService {
@@ -24,16 +25,19 @@ class StorageService {
     private init() {
         storageRef = Storage.storage().reference()
     }
+    func getReference(url: String) -> StorageReference {
+        return Storage.storage().reference(forURL: url)
+    }
 }
 
-extension StorageService: uploadProfilePhoto {
+extension StorageService: ProfilePhoto {
     func uploadImageProfile(img: UIImage, completion: @escaping (StorageReference) -> ()) {
         guard let imageData: Data = img.jpegData(compressionQuality: 0.1) else {
             return
         }
         let user = FirebaseService.firebaseService.getCurrentUser()!
         let filePath = "\(user.uid)"
-        let reference = self.storageRef.child(filePath)
+        let reference = self.storageRef.child("ProfileImage").child(filePath)
         let metaData = StorageMetadata()
         metaData.contentType = "image/jpg"
 
@@ -43,23 +47,20 @@ extension StorageService: uploadProfilePhoto {
                 return
             }
             completion(reference)
-            /*reference.downloadURL { (url, error) in
-                guard let downloadURL = url else {
-                    print("an error occured after uploading and then getting the URL")
-                    return
-                }
-                let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
-                changeRequest?.photoURL = downloadURL
-                changeRequest?.commitChanges { (error) in
-                    if let err = error{
-                        print(err.localizedDescription)
-                    } else {
-                        completion()
-                    }
-                }
-                
-            }*/
         }
     }
     
+    func downloadImage(ref: StorageReference, completion: @escaping (UIImage) -> ()) {
+        ref.getData(maxSize: 1000000) { (data, error) in
+            if error != nil {
+                print("Could not load image")
+            } else {
+                if let imgData = data {
+                    if let img = UIImage(data: imgData) {
+                        completion(img)
+                    }
+                }
+            }
+        }
+    }
 }
