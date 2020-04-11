@@ -40,14 +40,16 @@ class ProfileViewController: UITableViewController {
         guard let nickname = nickNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
         
         if !name.isEmpty && !nickname.isEmpty {
-        FirebaseService.firebaseService.updateProfileInfo(name: name, nickName: nickname, photo: nil)
+            viewModel?.updateDataProfile(name: name, nickName: nickname, photo: nil)
         }
-        navigationController?.popViewController(animated: true)
+        router?.routeSettings()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         settingNavigationItem()
+        nameTextField.delegate = self
+        nickNameTextField.delegate = self
         LogOutButton.setTitle(Constant.exit, for: .normal)
         //MARK: Profile Image
         Decor.styleImageView(profileImage)
@@ -57,7 +59,7 @@ class ProfileViewController: UITableViewController {
         Decor.styleTextField(birthdayTextField, placeholder: Constant.birthday)
         //MARK: DatePicker
         createDatePicker()
-
+    
         setupDependencies()
     }
     

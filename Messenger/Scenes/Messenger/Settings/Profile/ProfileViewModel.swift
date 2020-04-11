@@ -9,33 +9,31 @@
 import Foundation
 
 protocol ProfileViewModeling {
+    func updateDataProfile(name: String, nickName: String, photo: URL?)
 }
 
-private var data = Contact()
-
 class ProfileViewModel: ProfileViewModeling {
-    
     weak var view: ProfileDelegate?
+    
+    private var data = Contact()
+    let base = FirebaseService.firebaseService
     
     init(view: ProfileDelegate) {
         self.view = view
         getDataProfile()
-        
-        //updateDataProfile()
     }
     
     private func getDataProfile()  {
-        let base = FirebaseService.firebaseService
         base.getUserData() { [weak self] (user) in
             guard let current = user else { return }
             
-            data = current
-            self?.view?.updateProfile(user: data)
+            self?.data = current
+            self?.view?.updateProfile(user: self!.data)
         }
     }
     
-    private func updateDataProfile() {
-        //let base = FirebaseService.firebaseService
-        //base.updateProfileInfo(name: data.name, nickName: data.nickname, photo: nil)
+    func updateDataProfile(name: String, nickName: String, photo: URL?) {
+        base.updateProfileInfo(name: name, nickName: nickName, photo: photo)
     }
+
 }
