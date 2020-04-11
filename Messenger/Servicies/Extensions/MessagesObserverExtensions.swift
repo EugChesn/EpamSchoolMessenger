@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Firebase
 
 protocol MessagesObserver {
     func downloadMessages(recipientUid: String, completion: @escaping ([MessageModel]) -> ())
@@ -21,23 +22,22 @@ extension FirebaseService: MessagesObserver {
     func downloadMessages(recipientUid: String, completion: @escaping ([MessageModel]) -> ()) {
         guard let uid = getCurrentUser()?.uid else {return}
          
-        let messagesReference = referenceDataBase.child("chats").child(uid).child(recipientUid)
+        let messagesReference = referenceDataBase.child("chats").child(uid).child(recipientUid).child("thread")
         
-        messagesReference.observeSingleEvent(of: .value) { (snapshot) in
-            let thread = snapshot.childSnapshot(forPath: "thread")
-            if let dictionary = thread.value as? [String: Any?] {
+        messagesReference.observeSingleEvent(of: .value) { (threadSnapshot) in
+            var messagesList: [MessageModel] = []
+            
+            for child in threadSnapshot.children {
+                let currentChild = child as! DataSnapshot
                 
-                var messagesList: [MessageModel] = []
-                for item in dictionary.values {
-                    if let messageDictionary = item as? [String: String]{
-                        var message = MessageModel()
-                        message.fromDictionary(dictionary: messageDictionary)
-                        messagesList.append(message)
-                    }
+                let message = SnapshotDecoder.decode(type: MessageModel.self, snapshot: currentChild.value)
+                
+                if let message = message {
+                    messagesList.append(message)
                 }
-                
-                completion(messagesList)
             }
+            
+            completion(messagesList)
         }
     }
     
@@ -50,9 +50,8 @@ extension FirebaseService: MessagesObserver {
         
         let messageObserverId = messagesReference.observe(.childAdded) { (snapshot) in
             
-            if let dictionary = snapshot.value as? [String: String] {
-                var message = MessageModel()
-                message.fromDictionary(dictionary: dictionary)
+            if let message =  SnapshotDecoder.decode(type: MessageModel.self, snapshot: snapshot.value) {
+
                 completion(message)
             }
         }

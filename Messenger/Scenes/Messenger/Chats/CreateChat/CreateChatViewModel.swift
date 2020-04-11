@@ -34,20 +34,12 @@ class CreateChatViewModel: CreateChatViewModeling {
     }
     
     private func downloadContacts() {
-        let fir:ContactsObserver = FirebaseService.firebaseService
+        let firebaseObserver:ContactsObserver = FirebaseService.firebaseService
         
-        fir.downloadContacts { [weak self] (contactsList) in
+        firebaseObserver.downloadContacts { [weak self] (contactsList) in
             guard let strongSelf = self else {return}
             
-            var tmpList = contactsList
-            tmpList.sort{ (contact1,contact2) -> Bool in
-                if contact1.name > contact2.name {
-                    return true
-                } else {
-                    return false
-                }
-            }
-            strongSelf.contactsList = tmpList
+            strongSelf.contactsList = contactsList.sorted(by: {$0.name?.lowercased() ?? "z" < $1.name?.lowercased() ?? "z"})
             strongSelf.view?.updateContactsList()
         }
     }
