@@ -20,6 +20,8 @@ class ProfileViewModel: ProfileViewModeling {
     init(view: ProfileDelegate) {
         self.view = view
         getDataProfile()
+        
+        //updateDataProfile()
     }
     
     private func getDataProfile()  {
@@ -30,5 +32,10 @@ class ProfileViewModel: ProfileViewModeling {
             data = current
             self?.view?.updateProfile(user: data)
         }
+    }
+    
+    private func updateDataProfile() {
+        //let base = FirebaseService.firebaseService
+        //base.updateProfileInfo(name: data.name, nickName: data.nickname, photo: nil)
     }
 }

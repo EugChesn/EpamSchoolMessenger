@@ -36,6 +36,12 @@ class ProfileViewController: UITableViewController {
     }
     
     @IBAction func doneButton(_ sender: Any) {
+        guard let name = nameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
+        guard let nickname = nickNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
+        
+        if !name.isEmpty && !nickname.isEmpty {
+        FirebaseService.firebaseService.updateProfileInfo(name: name, nickName: nickname, photo: nil)
+        }
         navigationController?.popViewController(animated: true)
     }
     
@@ -51,13 +57,8 @@ class ProfileViewController: UITableViewController {
         Decor.styleTextField(birthdayTextField, placeholder: Constant.birthday)
         //MARK: DatePicker
         createDatePicker()
-        
-        nameTextField.delegate = self
-        nickNameTextField.delegate = self
-        
+
         setupDependencies()
-        
-        //FirebaseService.firebaseService.updateProfileInfo(name: "Nastya", nickName: "test", photo: nil)
     }
     
     private func setupDependencies() {
