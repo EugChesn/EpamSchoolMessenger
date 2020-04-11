@@ -31,7 +31,7 @@ class ChatsViewModel: ChatsViewModeling {
     weak var view: ChatsDelegate?
     weak var authService: AuthFirebase?
     
-    let fir: ChatsObserver = FirebaseService.firebaseService
+    let firebaseObserver: ChatsObserver = FirebaseService.firebaseService
     
     private var chatsList: [ChatInfo] = []
     
@@ -40,6 +40,7 @@ class ChatsViewModel: ChatsViewModeling {
             view?.openChat()
         }
     }
+    
     init(view: ChatsDelegate) {
         self.view = view
         self.authService = FirebaseService.firebaseService
@@ -73,7 +74,7 @@ class ChatsViewModel: ChatsViewModeling {
     }
     
     deinit {
-        fir.removeObservers()
+        firebaseObserver.removeObservers()
     }
     
     func createNewChat(with contact: Contact) {
@@ -98,7 +99,7 @@ class ChatsViewModel: ChatsViewModeling {
     }
     
     func removeObservers() {
-        fir.removeObservers()
+        firebaseObserver.removeObservers()
         chatsList = []
     }
     
@@ -107,14 +108,14 @@ class ChatsViewModel: ChatsViewModeling {
     }
 
     func downloadChats() {
-        fir.downloadChats() { [weak self] chatsList in
+        firebaseObserver.downloadChats() { [weak self] chatsList in
             guard let strongSelf = self else {return}
             
             strongSelf.chatsList = chatsList.sorted(by: {$0.timeSpan ?? "" > $1.timeSpan ?? ""})
             strongSelf.view?.updateChats()
         }
         
-        fir.observeChats() { [weak self] newChat in
+        firebaseObserver.observeChats() { [weak self] newChat in
             guard let strongSelf = self else {return}
             
             let index = strongSelf.chatsList.firstIndex {$0.contact.uid == newChat.contact.uid
@@ -125,10 +126,7 @@ class ChatsViewModel: ChatsViewModeling {
             }
             
             strongSelf.chatsList.insert(newChat, at: 0)
-        
             strongSelf.view?.insertChat(removeIndex: index)
-            
-            strongSelf.view?.updateChats()
         }
     }
 }
