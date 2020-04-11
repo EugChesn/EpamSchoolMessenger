@@ -10,9 +10,9 @@ import Foundation
 import UIKit
 
 struct Contact: Codable {
-    var name = ""
+    var name: String?
     var nickname: String?
-    var uid: String!
+    var uid: String?
     var profileImageUrl: String?
     
     enum CodingKeys: String, CodingKey {
@@ -24,10 +24,10 @@ struct Contact: Codable {
 }
 
 struct MessageModel: Codable {
-    var from: String = ""
-    var to: String = ""
-    var text: String = ""
-    var timeSpan: String = ""
+    var from: String!
+    var to: String!
+    var text: String!
+    var timeSpan: String!
     
     func asDictionary() -> [String: String] {
         return ["from": from, "to": to, "text": text, "timeSpan": timeSpan]
@@ -49,16 +49,19 @@ struct MessageModel: Codable {
         self.text = text
         self.timeSpan = timeSpan
     }
-        
 }
 
 struct ChatInfo: Codable {
-    var lastMessage: String = ""
-    var timeSpan: String = ""
+    var lastMessage: String?
+    var timeSpan: String?
     var contact: Contact!
 }
 
 enum StateUser {
     case Authorised
     case NotAuthorised
+}
+
+struct ContactList: Codable {
+    var users: [String:[Contact]]
 }

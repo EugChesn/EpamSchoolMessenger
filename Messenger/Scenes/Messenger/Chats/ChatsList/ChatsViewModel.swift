@@ -110,7 +110,7 @@ class ChatsViewModel: ChatsViewModeling {
         fir.downloadChats() { [weak self] chatsList in
             guard let strongSelf = self else {return}
             
-            strongSelf.chatsList = chatsList.sorted(by: {$0.timeSpan > $1.timeSpan})
+            strongSelf.chatsList = chatsList.sorted(by: {$0.timeSpan ?? "" > $1.timeSpan ?? ""})
             strongSelf.view?.updateChats()
         }
         

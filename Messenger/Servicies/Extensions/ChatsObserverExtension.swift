@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Firebase
 
 protocol ChatsObserver {
     func downloadChats(completion: @escaping ([ChatInfo]) -> ())
@@ -23,33 +24,32 @@ extension FirebaseService: ChatsObserver {
         let chatsReference = referenceDataBase.child("chats").child(uid)
         
         chatsReference.observeSingleEvent(of: .value) { (chatsSnapshot) in
-            if let chatInfoDictionary = chatsSnapshot.value as? [String: Any?] {
+            
+            self.referenceDataBase.child("users").observeSingleEvent(of: .value) { (usersSnapshot) in
                 
                 var chatsInfoList: [ChatInfo] = []
-        
-                self.referenceDataBase.child("users").observeSingleEvent(of: .value) { (usersSnapshot) in
-                    if let usersInfoDictionary = usersSnapshot.value as? [String: Any?] {
-                        for key in chatInfoDictionary.keys {
-                            
-                            let user = SnapshotDecoder.decode(type: Contact.self, snapshot: usersInfoDictionary[key] as Any?)
-                            
-                            if var user = user {
-                                user.uid = key
-                                
-                                var chat = ChatInfo(contact: user)
-                                
-                                let chatSnapshot = chatsSnapshot.childSnapshot(forPath: key)
-                                
-                                chat.lastMessage = chatSnapshot.childSnapshot(forPath: "lastMessage").value as? String ?? ""
-                                chat.timeSpan = chatSnapshot.childSnapshot(forPath: "timeSpan").value as? String ?? ""
-                                
-                                chatsInfoList.append(chat)
-                            }
-                        }
+                
+                for chat in chatsSnapshot.children {
+
+                    let currentChat = chat as! DataSnapshot
+                    
+                    let userSnapshot = usersSnapshot.childSnapshot(forPath: currentChat.key)
+                    
+                    let contact = SnapshotDecoder.decode(type: Contact.self, snapshot: userSnapshot.value)
+                    
+                    if var contact = contact {
+                        contact.uid = userSnapshot.key
                         
-                        completion(chatsInfoList)
+                        var chatInfo = ChatInfo(contact: contact)
+                        
+                        chatInfo.lastMessage = currentChat.childSnapshot(forPath: "lastMessage").value as? String
+                        chatInfo.timeSpan = currentChat.childSnapshot(forPath: "timeSpan").value as? String
+                        
+                        chatsInfoList.append(chatInfo)
                     }
                 }
+                
+                completion(chatsInfoList)
             }
         }
     }
@@ -63,8 +63,7 @@ extension FirebaseService: ChatsObserver {
         let chatsObserverId = chatsReference.observe(.childChanged) { (chatSnapshot) in
             
             //Скачиваем информацию по пользователю для нового или обновленного чата
-            self.referenceDataBase.child("users").observeSingleEvent(of: .value) { (usersSnapshot) in
-                let userSnapshot = usersSnapshot.childSnapshot(forPath: chatSnapshot.key)
+            self.referenceDataBase.child("users").child(chatSnapshot.key).observeSingleEvent(of: .value) { (userSnapshot) in
 
                 if var user = SnapshotDecoder.decode(type: Contact.self, snapshot: userSnapshot.value) {
 

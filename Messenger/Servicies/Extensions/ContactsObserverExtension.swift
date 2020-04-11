@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Firebase
 
 protocol ContactsObserver {
     func downloadContacts(completion: @escaping ([Contact]) -> ())
@@ -18,24 +19,24 @@ extension FirebaseService: ContactsObserver {
     func downloadContacts(completion: @escaping ([Contact]) -> ()) {
         guard let uid = getCurrentUser()?.uid else {return}
         
-        let userContactsReference = referenceDataBase
-        var contactsList: [Contact] = []
-    
-        userContactsReference.observeSingleEvent(of: .value) { (snapshot) in
-            let contacts = snapshot.childSnapshot(forPath: "users")
-            if let dictionary = contacts.value as? [String: Any?] {
-                
-                for key in dictionary.keys {
-                    let contact = SnapshotDecoder.decode(type: Contact.self, snapshot: dictionary[key] as Any?)
-                    
-                    if var contact = contact {
-                        contact.uid = key
-                        contactsList.append(contact)
-                    }
-                }
+        let userContactsReference = referenceDataBase.child("users")
         
-                completion(contactsList)
+        userContactsReference.observeSingleEvent(of: .value) { (usersSnapshot) in
+            var contactsList: [Contact] = []
+            
+            for user in usersSnapshot.children {
+
+                let currentUser = user as! DataSnapshot
+                
+                let contact = SnapshotDecoder.decode(type: Contact.self, snapshot: currentUser.value)
+                
+                if var contact = contact {
+                    contact.uid = currentUser.key
+                    contactsList.append(contact)
+                }
             }
+            
+            completion(contactsList)
         }
     }
 }

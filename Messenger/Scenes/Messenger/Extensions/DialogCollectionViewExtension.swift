@@ -42,7 +42,7 @@ extension DialogViewController: UICollectionViewDelegateFlowLayout, UICollection
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let text = viewModel.message(atIndex: indexPath.row).text
 
-        let estimatedFrame = estimateFrame(text: text)
+        let estimatedFrame = estimateFrame(text: text ?? "")
         
         chatLogCollectionView.contentSize.height += estimatedFrame.height + 20
         
