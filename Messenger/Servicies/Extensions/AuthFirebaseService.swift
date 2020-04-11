@@ -32,6 +32,7 @@ protocol AuthFirebase: class {
     func listenStateUser(completion: @escaping (StateUser) -> ())
     func unListenStateUser()
     func resetWithPassword(email: String, fault: @escaping (Error)->())
+    func checkMailExtistence(mail: String, responce: @escaping ()->(), fault: @escaping ()->(), errorWithFetch: @escaping (Error)->())
 }
 
 extension FirebaseService: AuthFirebase {
@@ -101,9 +102,26 @@ extension FirebaseService: AuthFirebase {
     }
     
     func resetWithPassword(email: String, fault: @escaping (Error)->()){
-        Auth.auth().sendPasswordReset(withEmail: email) { (error) in
+        Auth.auth().sendPasswordReset(withEmail: email) { [weak self] (error) in
+            guard let strongSelf = self else { return }
             if let err = error{
                 fault(err)
+            }
+        }
+    }
+    
+    func checkMailExtistence(mail: String, responce: @escaping ()->(), fault: @escaping ()->(), errorWithFetch: @escaping (Error)->()){
+        Auth.auth().fetchSignInMethods(forEmail: mail) { [weak self] (respond, error) in
+            guard let strongSelf = self else {return}
+            if let err = error{
+                print(err.localizedDescription)
+                errorWithFetch(err)
+            } else {
+                if respond != nil{
+                    responce()
+                } else {
+                    fault()
+                }
             }
         }
     }

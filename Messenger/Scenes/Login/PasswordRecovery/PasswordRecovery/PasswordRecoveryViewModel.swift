@@ -18,10 +18,16 @@ class PasswordRecoveryViewModel: PasswordRecoveryViewModeling {
     weak var authFirebase: AuthFirebase?
     
     func resetPassword(email: String){
-        authFirebase?.resetWithPassword(email: email) { (err) in
+        authFirebase?.checkMailExtistence(mail: email, responce: {
+            self.authFirebase?.resetWithPassword(email: email, fault: { (err) in
             self.view?.faultToResetPassword(error: err)
-        }
-        view?.resetSuccess()
+        })
+            self.view?.resetSuccess()
+        }, fault: {
+            self.view?.noSuchEmail()
+        }, errorWithFetch: { (err) in
+            self.view?.faultToResetPassword(error: err)
+        })
     }
     
     init(view: PasswordRecoveryDelegate) {

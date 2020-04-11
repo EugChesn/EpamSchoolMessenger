@@ -88,8 +88,6 @@ extension SignInViewController: UITextFieldDelegate {
         }
         return true;
     }
-    
-    
 }
 
 extension SignInViewController: SignInDelegate {
@@ -102,8 +100,7 @@ extension SignInViewController: SignInDelegate {
             self.present(alert, animated: true, completion: nil)
         }
     }
-    
-  
+      
     func successLogin() {
         //print(FirebaseService.firebaseService.getCurrentUser()?.photoURL)
         

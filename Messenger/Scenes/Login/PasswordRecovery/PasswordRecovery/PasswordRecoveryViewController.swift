@@ -13,6 +13,7 @@ import FirebaseAuth
 protocol PasswordRecoveryDelegate: class {
     func faultToResetPassword(error: Error)
     func resetSuccess()
+    func noSuchEmail()
 }
 
 class PasswordRecoveryViewController: UIViewController {
@@ -20,12 +21,10 @@ class PasswordRecoveryViewController: UIViewController {
     var router: PasswordRecoveryRouting?
     @IBOutlet weak var emailInputText: UITextField!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupDependencies()
     }
-    
     
     func setupDependencies() {
         viewModel = PasswordRecoveryViewModel(view: self)
@@ -52,6 +51,16 @@ extension PasswordRecoveryViewController: PasswordRecoveryDelegate {
             alertError(errorCode: errorCode)
         }
     }
+    
+    func noSuchEmail(){
+        let alert = UIAlertController(title: "Wrong Email", message: "No such Email registered. Please, check you email.", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .default) { (action) in
+            self.emailInputText.text = ""
+        }
+        alert.addAction(okAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     func resetSuccess(){
         let alert = UIAlertController(title: "Mail Sent", message: "We have just sent you a password reset e-mail. Please, check your inbox and follow the instructions", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Ok", style: .default) { (action) in
