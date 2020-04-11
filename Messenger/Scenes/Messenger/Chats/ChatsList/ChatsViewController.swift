@@ -14,6 +14,9 @@ protocol ChatsDelegate: class {
     func openChat()
     func setLoginFlow()
     func insertChat(removeIndex: Int?)
+    
+    @available(iOS 13, *)
+    func updateSearchChat(diff: CollectionDifference<ChatInfo>)
 }
 
 protocol NewChatOpenerDelegate: class {
@@ -23,11 +26,13 @@ protocol NewChatOpenerDelegate: class {
 
 class ChatsViewController: UIViewController {
     var viewModel: ChatsViewModeling!
+
     var router: ChatsRouting?
     
     @IBOutlet weak var chatsTableView: UITableView!
     let heightRow: CGFloat = 70
     let placeHolderImage = UIImage(named: "profile")
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,15 +56,20 @@ class ChatsViewController: UIViewController {
         router = ChatsRouter(viewController: self)
     }
     
+    
     func setupUI() {
         chatsTableView.delegate = self
         chatsTableView.dataSource = self
         chatsTableView.register(cellType: ChatTableViewCell.self)
+        chatsTableView.keyboardDismissMode = .onDrag
         
-        let searchConroller = UISearchController(searchResultsController: nil)
-        searchConroller.searchBar.delegate = self
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        navigationItem.hidesSearchBarWhenScrolling = true
+        navigationItem.searchController = searchController
         
-        navigationItem.searchController = searchConroller
         navigationItem.title = "Chats"
     }
     
@@ -73,7 +83,7 @@ class ChatsViewController: UIViewController {
         }
         if segue.identifier == "dialog" {
             if let destination = segue.destination as? DialogViewController {
-                    destination.chatInfo = viewModel.selectedChat
+                destination.chatInfo = viewModel.selectedChat
             }
         }
     }
@@ -94,6 +104,23 @@ class ChatsViewController: UIViewController {
 }
 
 extension ChatsViewController: ChatsDelegate {
+    @available(iOS 13, *)
+    func updateSearchChat(diff: CollectionDifference<ChatInfo>) {
+        chatsTableView.performBatchUpdates({
+            for change in diff {
+                switch change {
+                case let .remove(offset, _, _):
+                    viewModel.remove(offset: offset)
+                    chatsTableView.deleteRows(at: [IndexPath(row: offset, section: 0)], with: .automatic)
+                case let .insert(offset, newElement, _):
+                    viewModel.insert(offset: offset, element: newElement)
+                    chatsTableView.insertRows(at: [IndexPath(row: offset, section: 0)], with: .automatic)
+                }
+            }
+            
+        },completion: nil)
+    }
+    
     func updateChats() {
         DispatchQueue.main.async {
             self.chatsTableView.reloadData()

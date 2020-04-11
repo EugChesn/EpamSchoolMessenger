@@ -9,6 +9,9 @@
 import Foundation
 import UIKit
 
-extension ChatsViewController: UISearchBarDelegate {
-    
+extension ChatsViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let search = searchController.searchBar.text else { return }
+        viewModel.handlerSearch(searchText: search)
+    }
 }
