@@ -11,6 +11,7 @@ import UIKit
 
 protocol SettingsDelegate: class {
     func openProfile()
+    func updateProfileCell()
 }
 
 class SettingsViewController: UITableViewController {
@@ -52,6 +53,8 @@ class SettingsViewController: UITableViewController {
         definesPresentationContext = true
         
         setupDependencies()
+        
+        self.settingTableView.register(cellType: ProfileTableViewCell.self)
     }
     
     private func setupDependencies() {
@@ -127,5 +130,10 @@ extension SettingsViewController: UISearchResultsUpdating {
 extension SettingsViewController: SettingsDelegate {
     func openProfile() {
         router?.routeProfile(withIdentifier: "goToProfile", sender: self)
+    }
+    func updateProfileCell() {
+        DispatchQueue.main.async {
+            self.settingTableView.reloadData()
+        }
     }
 }

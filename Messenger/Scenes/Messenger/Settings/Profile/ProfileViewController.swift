@@ -40,7 +40,7 @@ class ProfileViewController: UITableViewController {
         guard let nickname = nickNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
         
         if !name.isEmpty && !nickname.isEmpty {
-            viewModel?.updateDataProfile(name: name, nickName: nickname, photo: nil)
+            viewModel?.updateDataProfile(name: name, nickname: nickname, photo: nil)
         }
         router?.routeSettings()
     }

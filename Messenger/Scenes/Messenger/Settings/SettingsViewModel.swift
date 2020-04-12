@@ -23,5 +23,3 @@ class SettingsViewModel: SettingsViewModeling {
         self.view?.openProfile()
     }
 }
-
-//Сделать добавление к полям ячейки профиля из userDefault
