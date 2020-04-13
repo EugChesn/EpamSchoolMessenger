@@ -39,7 +39,6 @@ class ProfileViewModel: ProfileViewModeling {
             let profile = ProfileSetting(current.name, current.nickname, current.email)
             UserSettings.save(object: profile.name, for: ProfileSetting.name)
             UserSettings.save(object: profile.nickname, for: ProfileSetting.nickname)
-            UserSettings.save(object: profile.email, for: ProfileSetting.email)
         }
     }
     

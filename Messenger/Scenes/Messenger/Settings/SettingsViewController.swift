@@ -11,6 +11,7 @@ import UIKit
 
 protocol SettingsDelegate: class {
     func openProfile()
+    func updateProfile(user:Contact)
 }
 
 class SettingsViewController: UITableViewController {
@@ -28,6 +29,7 @@ class SettingsViewController: UITableViewController {
     var viewModel: SettingsViewModeling?
     var router: SettingsRouting?
     private let searchController = UISearchController(searchResultsController: nil)
+    private let placeHolderImage = UIImage(named: "profile")
     private let settingCellId = "SettingCell"
     private let generalCellId = "General"
     private let infoCellId = "Info"
@@ -53,7 +55,7 @@ class SettingsViewController: UITableViewController {
         
         setupDependencies()
     }
-
+    
     private func setupDependencies() {
         viewModel = SettingsViewModel(view: self)
         router = SettingsRouter(viewController: self)
@@ -91,8 +93,19 @@ class SettingsViewController: UITableViewController {
         switch (indexPath.section) {
         case 0:
             guard let customCell = tableView.dequeueReusableCell(withIdentifier: settingCellId, for: indexPath) as? ProfileTableViewCell else { return UITableViewCell() }
+            let contact = viewModel?.contact()
+            
+            customCell.nameLabel.text = contact?.name
+            customCell.emailLabel.text = contact?.email
+            
+            let url = contact?.profileImageUrl
+            if let urlPhoto = url {
+                let reference = StorageService.shared.getReference(url: urlPhoto)
+                customCell.profileImage.sd_setImage(with: reference, placeholderImage: placeHolderImage)
+            }
             customCell.nameLabel.text = UserSettings.getObject(for: ProfileSetting.name) as? String
             customCell.emailLabel.text = UserSettings.getObject(for: ProfileSetting.email) as? String
+            
             cell = customCell
         case 1:
             cell = tableView.dequeueReusableCell(withIdentifier: generalCellId, for: indexPath)
@@ -129,5 +142,10 @@ extension SettingsViewController: UISearchResultsUpdating {
 extension SettingsViewController: SettingsDelegate {
     func openProfile() {
         router?.routeProfile(withIdentifier: "goToProfile", sender: self)
+    }
+    func updateProfile(user:Contact) {
+        DispatchQueue.main.async {
+            self.settingTableView.reloadData()
+        }
     }
 }

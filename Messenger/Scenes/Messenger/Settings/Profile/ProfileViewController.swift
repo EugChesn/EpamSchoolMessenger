@@ -42,10 +42,12 @@ class ProfileViewController: UITableViewController {
         let contactURL = viewModel?.contact().profileImageUrl
         if let urlPhoto = contactURL {
             let reference = StorageService.shared.getReference(url: urlPhoto)
-            profileImage.sd_setImage(with: reference, placeholderImage: placeHolderImage)
-            
-            if !name.isEmpty && !nickname.isEmpty {
-                //viewModel?.updateDataProfile(name: name, nickname: nickname, photo: reference)
+            self.profileImage.sd_setImage(with: reference, placeholderImage: placeHolderImage)
+            reference.downloadURL { (url, error) in
+                
+                if !name.isEmpty && !nickname.isEmpty {
+                    self.viewModel?.updateDataProfile(name: name, nickname: nickname, photo: url!)
+                }
             }
             router?.routeSettings()
         }
@@ -58,7 +60,19 @@ class ProfileViewController: UITableViewController {
         nickNameTextField.delegate = self
         LogOutButton.setTitle(Constant.exit, for: .normal)
         //MARK: Profile Image
-        Decor.styleImageView(profileImage)
+        if profileImage != nil {
+            Decor.styleImageView(profileImage)
+            
+            FirebaseService.firebaseService.getUserData() { [weak self] (user) in
+                guard let current = user else { return }
+                let contactURL = current.profileImageUrl
+                if let urlPhoto = contactURL {
+                    let reference = StorageService.shared.getReference(url: urlPhoto)
+                    self?.profileImage.sd_setImage(with: reference, placeholderImage: self?.placeHolderImage)
+                }
+            }
+        }
+        
         //MARK: TextField
         Decor.styleTextField(nameTextField, placeholder: Constant.name)
         Decor.styleTextField(nickNameTextField, placeholder: Constant.nickName)

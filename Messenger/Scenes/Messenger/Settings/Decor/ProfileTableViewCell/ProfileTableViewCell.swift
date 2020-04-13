@@ -19,14 +19,13 @@ class ProfileTableViewCell: UITableViewCell {
         super.awakeFromNib()
         if profileImage != nil {
             Decor.styleImageView(profileImage)
-        } else {
+
 //            FirebaseService.firebaseService.getUserData() { [weak self] (user) in
 //                guard let current = user else { return }
-//
-//
+//                let contactURL = current.profileImageUrl
 //                if let urlPhoto = contactURL {
 //                    let reference = StorageService.shared.getReference(url: urlPhoto)
-//                    self.profileImage.sd_setImage(with: reference, placeholderImage: self.placeHolderImage)
+//                    self?.profileImage.sd_setImage(with: reference, placeholderImage: self?.placeHolderImage)
 //                }
 //            }
         }
