@@ -30,10 +30,10 @@ class ProfileViewModel: ProfileViewModeling {
             self?.data = current
             self?.view?.updateProfile(user: self!.data)
             
-            let prolele = ProfileSetting(current.name, current.nickname, current.email)
-            UserSettings.save(object: prolele.name, for: ProfileSetting.name)
-            UserSettings.save(object: prolele.nickname, for: ProfileSetting.nickname)
-            UserSettings.save(object: prolele.email, for: ProfileSetting.email)
+            let profile = ProfileSetting(current.name, current.nickname, current.email)
+            UserSettings.save(object: profile.name, for: ProfileSetting.name)
+            UserSettings.save(object: profile.nickname, for: ProfileSetting.nickname)
+            UserSettings.save(object: profile.email, for: ProfileSetting.email)
         }
     }
     
