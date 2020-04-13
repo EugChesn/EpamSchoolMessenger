@@ -53,8 +53,6 @@ class SettingsViewController: UITableViewController {
         definesPresentationContext = true
         
         setupDependencies()
-        
-        self.settingTableView.register(cellType: ProfileTableViewCell.self)
     }
     
     private func setupDependencies() {
@@ -131,9 +129,11 @@ extension SettingsViewController: SettingsDelegate {
     func openProfile() {
         router?.routeProfile(withIdentifier: "goToProfile", sender: self)
     }
+    
     func updateProfileCell() {
         DispatchQueue.main.async {
-            self.settingTableView.reloadData()
+            self.settingTableView.reloadSections(IndexSet(integer: 0), with: .automatic)
+            
         }
     }
 }

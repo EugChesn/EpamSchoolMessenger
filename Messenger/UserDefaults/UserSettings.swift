@@ -10,6 +10,9 @@ import Foundation
 
 class UserSettings {
     static func save(object: String, for key: String) {
+        if UserDefaults.standard.value(forKey: key) != nil {
+            UserDefaults.standard.removeObject(forKey: key)
+        }
         UserDefaults.standard.set(object, forKey: key)
     }
     

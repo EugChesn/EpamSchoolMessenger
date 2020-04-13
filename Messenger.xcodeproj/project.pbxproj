@@ -19,6 +19,8 @@
 		3EE90AC3243DDCEA009E0759 /* TableViewRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE90AC2243DDCEA009E0759 /* TableViewRegister.swift */; };
 		3EE90AC5243DDF2F009E0759 /* ClassNameExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE90AC4243DDF2F009E0759 /* ClassNameExtension.swift */; };
 		3EE90AC7243DE219009E0759 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE90AC6243DE219009E0759 /* ImagePicker.swift */; };
+		860A8FCB244281600070D8D5 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860A8FCA244281600070D8D5 /* UserSettings.swift */; };
+		860A8FCD24437BAF0070D8D5 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860A8FCC24437BAF0070D8D5 /* UserModel.swift */; };
 		86338F472435199400F35E13 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86338F452435199400F35E13 /* ProfileTableViewCell.swift */; };
 		86338F482435199400F35E13 /* ProfileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86338F462435199400F35E13 /* ProfileTableViewCell.xib */; };
 		867B2F7B2412585C00B16B01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867B2F7A2412585C00B16B01 /* AppDelegate.swift */; };
@@ -107,6 +109,8 @@
 		3EE90AC2243DDCEA009E0759 /* TableViewRegister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewRegister.swift; sourceTree = "<group>"; };
 		3EE90AC4243DDF2F009E0759 /* ClassNameExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassNameExtension.swift; sourceTree = "<group>"; };
 		3EE90AC6243DE219009E0759 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		860A8FCA244281600070D8D5 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
+		860A8FCC24437BAF0070D8D5 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		86338F452435199400F35E13 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		86338F462435199400F35E13 /* ProfileTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileTableViewCell.xib; sourceTree = "<group>"; };
 		867B2F772412585C00B16B01 /* Messenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Messenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -244,6 +248,15 @@
 			path = CellChat;
 			sourceTree = "<group>";
 		};
+		860A8FC9244281240070D8D5 /* UserDefaults */ = {
+			isa = PBXGroup;
+			children = (
+				860A8FCA244281600070D8D5 /* UserSettings.swift */,
+				860A8FCC24437BAF0070D8D5 /* UserModel.swift */,
+			);
+			path = UserDefaults;
+			sourceTree = "<group>";
+		};
 		86338F4924354B3000F35E13 /* ProfileTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -274,6 +287,7 @@
 		867B2F792412585C00B16B01 /* Messenger */ = {
 			isa = PBXGroup;
 			children = (
+				860A8FC9244281240070D8D5 /* UserDefaults */,
 				3EA8B18C2434AA14001B4207 /* Extensions */,
 				AA1B40E82432AC4100E1D452 /* Models */,
 				AAF194B72430C1A200BB81BE /* Messenger.entitlements */,
@@ -802,6 +816,7 @@
 				AAF194BF24310E1D00BB81BE /* MessageCollectionViewCell.swift in Sources */,
 				3EE90AC5243DDF2F009E0759 /* ClassNameExtension.swift in Sources */,
 				AA1B40F3243360EB00E1D452 /* ChatListSearchBarExtension.swift in Sources */,
+				860A8FCD24437BAF0070D8D5 /* UserModel.swift in Sources */,
 				AA1B5FCC241BF1DE0080443A /* SetupProfileRouter.swift in Sources */,
 				867B2F7B2412585C00B16B01 /* AppDelegate.swift in Sources */,
 				AAB3AEFA241B7FB700825F00 /* NewPasswordViewModel.swift in Sources */,
@@ -816,6 +831,7 @@
 				AAB3AF0E241B844000825F00 /* RegistrationCodeConfirmationViewModel.swift in Sources */,
 				3ECF658E243CA0530095A53C /* ChatTableViewCell.swift in Sources */,
 				AA64DE14241B72B600ED2C63 /* Reachability.swift in Sources */,
+				860A8FCB244281600070D8D5 /* UserSettings.swift in Sources */,
 				AAF8351224193F5F00FDF9D2 /* SettingsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -963,14 +979,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Messenger/Messenger.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = H5C9369377;
+				DEVELOPMENT_TEAM = SA46VNKRBQ;
 				INFOPLIST_FILE = Messenger/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = boombastic18.Messenger;
+				PRODUCT_BUNDLE_IDENTIFIER = "Anastasia-Demidova.Messenger";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -985,14 +1001,14 @@
 				CODE_SIGN_ENTITLEMENTS = Messenger/Messenger.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = H5C9369377;
+				DEVELOPMENT_TEAM = SA46VNKRBQ;
 				INFOPLIST_FILE = Messenger/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = boombastic18.Messenger;
+				PRODUCT_BUNDLE_IDENTIFIER = "Anastasia-Demidova.Messenger";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
