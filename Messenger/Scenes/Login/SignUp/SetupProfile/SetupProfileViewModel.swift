@@ -24,9 +24,8 @@ class SetupProfileViewModel: SetupProfileViewModeling {
         FirebaseService.firebaseService.setProfileUser(name: name, nickName: nickname, photo: photo) {
             self.view?.profileSucces()
             
-            let profile = ProfileSetting(name, nickname, nil)
-            UserSettings.save(object: profile.name, for: ProfileSetting.name)
-            UserSettings.save(object: profile.nickname, for: ProfileSetting.nickname)
+            UserSettings.save(object: name, for: ProfileSetting.name)
+            UserSettings.save(object: nickname, for: ProfileSetting.nickname)
         }
     }
 }

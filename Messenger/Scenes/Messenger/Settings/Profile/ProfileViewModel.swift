@@ -9,13 +9,19 @@
 import Foundation
 
 protocol ProfileViewModeling {
-    func updateDataProfile(name: String, nickname: String, photo: URL?)
+    func updateDataProfile(name: String, nickname: String, photo: URL)
+    func contact() -> Contact 
 }
 
 class ProfileViewModel: ProfileViewModeling {
     weak var view: ProfileDelegate?
     
     private var data = Contact()
+    
+    func contact() -> Contact {
+        return data
+    }
+    
     let base = FirebaseService.firebaseService
     
     init(view: ProfileDelegate) {
@@ -37,7 +43,7 @@ class ProfileViewModel: ProfileViewModeling {
         }
     }
     
-    func updateDataProfile(name: String, nickname: String, photo: URL?) {
+    func updateDataProfile(name: String, nickname: String, photo: URL) {
         base.updateProfileInfo(name: name, nickName: nickname, photo: photo)
     }
 }

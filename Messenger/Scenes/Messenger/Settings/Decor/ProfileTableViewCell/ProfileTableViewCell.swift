@@ -9,19 +9,26 @@
 import UIKit
 
 class ProfileTableViewCell: UITableViewCell {
-    @IBOutlet private weak var profileImage: UIImageView!
-    @IBOutlet private weak var nameLabel: UILabel!
-    @IBOutlet private weak var emailLabel: UILabel!
+    @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
+    
+    let placeHolderImage = UIImage(named: "profile")
     
     override func awakeFromNib() {
         super.awakeFromNib()
         if profileImage != nil {
             Decor.styleImageView(profileImage)
-            if let name = UserSettings.getObject(for: ProfileSetting.name),
-                let email = UserSettings.getObject(for: ProfileSetting.email) {
-                nameLabel.text = name as? String
-                emailLabel.text = email as? String
-            }
+        } else {
+//            FirebaseService.firebaseService.getUserData() { [weak self] (user) in
+//                guard let current = user else { return }
+//
+//
+//                if let urlPhoto = contactURL {
+//                    let reference = StorageService.shared.getReference(url: urlPhoto)
+//                    self.profileImage.sd_setImage(with: reference, placeholderImage: self.placeHolderImage)
+//                }
+//            }
         }
     }
 }

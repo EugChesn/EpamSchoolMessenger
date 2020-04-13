@@ -22,6 +22,7 @@ class ProfileViewController: UITableViewController {
     @IBOutlet private weak var birthdayTextField: UITextField!
     
     let datePicker = UIDatePicker()
+    let placeHolderImage = UIImage(named: "profile")
     
     var viewModel: ProfileViewModeling?
     var router: ProfileRoutering?
@@ -38,11 +39,16 @@ class ProfileViewController: UITableViewController {
     @IBAction func doneButton(_ sender: Any) {
         guard let name = nameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
         guard let nickname = nickNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
-        
-        if !name.isEmpty && !nickname.isEmpty {
-            viewModel?.updateDataProfile(name: name, nickname: nickname, photo: nil)
+        let contactURL = viewModel?.contact().profileImageUrl
+        if let urlPhoto = contactURL {
+            let reference = StorageService.shared.getReference(url: urlPhoto)
+            profileImage.sd_setImage(with: reference, placeholderImage: placeHolderImage)
+            
+            if !name.isEmpty && !nickname.isEmpty {
+                //viewModel?.updateDataProfile(name: name, nickname: nickname, photo: reference)
+            }
+            router?.routeSettings()
         }
-        router?.routeSettings()
     }
     
     override func viewDidLoad() {
@@ -59,8 +65,10 @@ class ProfileViewController: UITableViewController {
         Decor.styleTextField(birthdayTextField, placeholder: Constant.birthday)
         //MARK: DatePicker
         createDatePicker()
-    
+        
         setupDependencies()
+        
+        birthdayTextField.text = UserSettings.getObject(for: "birthday") as? String
     }
     
     private func setupDependencies() {
@@ -102,6 +110,7 @@ class ProfileViewController: UITableViewController {
         let formatter = DateFormatter()
         formatter.dateFormat = "MMMM d, yyyy"
         birthdayTextField.text = formatter.string(from: datePicker.date)
+        UserSettings.save(object: birthdayTextField.text ?? "", for: "birthday")
     }
 }
 

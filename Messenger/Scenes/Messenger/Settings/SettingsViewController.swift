@@ -11,7 +11,6 @@ import UIKit
 
 protocol SettingsDelegate: class {
     func openProfile()
-    func updateProfileCell()
 }
 
 class SettingsViewController: UITableViewController {
@@ -54,7 +53,7 @@ class SettingsViewController: UITableViewController {
         
         setupDependencies()
     }
-    
+
     private func setupDependencies() {
         viewModel = SettingsViewModel(view: self)
         router = SettingsRouter(viewController: self)
@@ -92,6 +91,8 @@ class SettingsViewController: UITableViewController {
         switch (indexPath.section) {
         case 0:
             guard let customCell = tableView.dequeueReusableCell(withIdentifier: settingCellId, for: indexPath) as? ProfileTableViewCell else { return UITableViewCell() }
+            customCell.nameLabel.text = UserSettings.getObject(for: ProfileSetting.name) as? String
+            customCell.emailLabel.text = UserSettings.getObject(for: ProfileSetting.email) as? String
             cell = customCell
         case 1:
             cell = tableView.dequeueReusableCell(withIdentifier: generalCellId, for: indexPath)
@@ -128,12 +129,5 @@ extension SettingsViewController: UISearchResultsUpdating {
 extension SettingsViewController: SettingsDelegate {
     func openProfile() {
         router?.routeProfile(withIdentifier: "goToProfile", sender: self)
-    }
-    
-    func updateProfileCell() {
-        DispatchQueue.main.async {
-            self.settingTableView.reloadSections(IndexSet(integer: 0), with: .automatic)
-            
-        }
     }
 }

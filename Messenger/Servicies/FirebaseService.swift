@@ -35,7 +35,7 @@ class FirebaseService {
         referenceUser.child(user.uid).setValue(["email": user.email])
     }
 
-    func updateProfileInfo(name: String, nickName: String, photo: URL?) {
+    func updateProfileInfo(name: String, nickName: String, photo: URL) {
         let currUser = self.getCurrentUser()
         let changeRequest = currUser!.createProfileChangeRequest()
         changeRequest.displayName = name
@@ -44,7 +44,7 @@ class FirebaseService {
             if let err = error{
                 print(err.localizedDescription)
             } else {
-                let update = ["name": name,"nickname": nickName,"photoUrl": photo?.absoluteString]
+                let update = ["name": name,"nickname": nickName,"photoUrl": photo.absoluteString]
                 self.writeNewDataProfile(update: update)
             }
         }
@@ -62,6 +62,7 @@ class FirebaseService {
                     user.email = dictionary["email"] ?? ""
                     user.name = dictionary["name"] ?? ""
                     user.nickname = dictionary["nickname"] ?? ""
+                    user.profileImageUrl = dictionary["photoUrl"] ?? ""
                     
                     completion(user)
                 }
