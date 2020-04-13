@@ -11,19 +11,13 @@ import UIKit
 
 protocol CreateChatViewModeling {
     var contactsCount: Int {get}
-    
     func contact(atIndex: Int) -> Contact
 }
 
 class CreateChatViewModel: CreateChatViewModeling {
     weak var view: CreateChatDelegate?
-    
-    private var contactsList: [Contact] = [] {
-        didSet {
-            view?.updateContactsList()
-        }
-    }
-    
+    private var contactsList: [Contact] = []
+
     var contactsCount: Int {
         get {
             return contactsList.count
@@ -32,22 +26,22 @@ class CreateChatViewModel: CreateChatViewModeling {
     
     init(view: CreateChatDelegate) {
         self.view = view
-        let refDatabase = FirebaseService.firebaseService.referenceDataBase
-        refDatabase.child("users").observe(.childAdded) { (snapshot) in
-            if let dictionary = snapshot.value as? [String: Any] {
-                var contact = Contact()
-                
-                contact.name = dictionary["name"] as? String ?? ""
-                contact.uid = snapshot.key
-                
-                self.contactsList.append(contact)
-            }
-        }
         
+        downloadContacts()
     }
-    
     func contact(atIndex: Int) -> Contact {
         return contactsList[atIndex]
+    }
+    
+    private func downloadContacts() {
+        let firebaseObserver:ContactsObserver = FirebaseService.firebaseService
+        
+        firebaseObserver.downloadContacts { [weak self] (contactsList) in
+            guard let strongSelf = self else {return}
+            
+            strongSelf.contactsList = contactsList.sorted(by: {$0.name?.lowercased() ?? "z" < $1.name?.lowercased() ?? "z"})
+            strongSelf.view?.updateContactsList()
+        }
     }
 }
 

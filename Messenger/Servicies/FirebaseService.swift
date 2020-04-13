@@ -13,6 +13,7 @@ class FirebaseService {
     private(set) var referenceDataBase: DatabaseReference
     private(set) var referenceUser: DatabaseReference
     var handlerState: AuthStateDidChangeListenerHandle?
+    private var firebasObservers: [String: UInt] = [:]
     
     static let firebaseService = FirebaseService()
     private init(){
@@ -43,10 +44,20 @@ class FirebaseService {
             if let err = error{
                 print(err.localizedDescription)
             } else {
-                let update = ["name": name,"nickname": nickName]
+                let update = ["name": name,"nickname": nickName,"photoUrl": photo.absoluteString]
                 self.writeNewDataProfile(update: update)
             }
         }
+    }
+    
+    func removeObserver(observer: String) {
+        guard let observerId = firebasObservers[observer] else {return}
+        referenceDataBase.removeObserver(withHandle: observerId)
+        firebasObservers.removeValue(forKey: observer)
+    }
+    
+    func addObserverId(observer: String, id: UInt) {
+        firebasObservers[observer] = id
     }
 }
 

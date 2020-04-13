@@ -14,6 +14,7 @@ protocol ChatsViewModeling: class {
     var selectedChat: ChatInfo? {get set}
     
     func downloadChats()
+    func removeObservers()
     func createNewChat(with contact: Contact)
     func getChat(atIndex: Int) -> ChatInfo
     
@@ -25,22 +26,25 @@ protocol ChatInfoGetterDelegate: class {
     var chatInfo: ChatInfo? {get}
 }
 
-
 class ChatsViewModel: ChatsViewModeling {
 
     weak var view: ChatsDelegate?
     weak var authService: AuthFirebase?
     
-    private var chatsList: [ChatInfo] = [] {
-        didSet {
-            view?.updateChats()
-        }
-    }
+    let firebaseObserver: ChatsObserver = FirebaseService.firebaseService
+    
+    private var chatsList: [ChatInfo] = []
     
     private var chat: ChatInfo? {
         didSet {
             view?.openChat()
         }
+    }
+    
+    init(view: ChatsDelegate) {
+        self.view = view
+        self.authService = FirebaseService.firebaseService
+        downloadChats()
     }
     
     let chatTransferQueue: DispatchQueue = DispatchQueue.global()
@@ -69,13 +73,13 @@ class ChatsViewModel: ChatsViewModeling {
         return chatsList[atIndex]
     }
     
-    init(view: ChatsDelegate) {
-        self.view = view
-        self.authService = FirebaseService.firebaseService
+    deinit {
+        firebaseObserver.removeObservers()
     }
     
     func createNewChat(with contact: Contact) {
         let chat = ChatInfo(contact: contact)
+
         selectedChat = chat
     }
     
@@ -85,38 +89,44 @@ class ChatsViewModel: ChatsViewModeling {
             case .NotAuthorised:
                 self.view?.setLoginFlow()
             case .Authorised:
-                self.downloadChats()
+                self.doNothing()
             }
         }
+    }
+    
+    func doNothing() {
+        
+    }
+    
+    func removeObservers() {
+        firebaseObserver.removeObservers()
+        chatsList = []
     }
     
     func unsubscribeStateUser() {
         authService?.unListenStateUser()
     }
-    
-    func downloadChats() {
-        chatsList = []
-        let refDatabase = FirebaseService.firebaseService.referenceDataBase
-        if let currentUid = FirebaseService.firebaseService.getCurrentUser()?.uid {
-            refDatabase.child("chats").child(currentUid).observe(.childAdded) { (snapshot) in
-                let uid = snapshot.key
-                let lastMessage = snapshot.childSnapshot(forPath: "lastMessage").value as? String ?? ""
-                
-                refDatabase.child("users").observe(.childAdded) { (snapshotUsers) in
-                    if snapshotUsers.key == uid {
-                        if let dictionary = snapshotUsers.value as? [String: String] {
-                           
-                            
-                            var contact = Contact()
-                            contact.name = dictionary["name"] ?? ""
-                            contact.uid = uid
 
-                            let chat = ChatInfo(lastMessage: lastMessage, contact: contact)
-                            self.chatsList.append(chat)
-                        }
-                    }
-                }
+    func downloadChats() {
+        firebaseObserver.downloadChats() { [weak self] chatsList in
+            guard let strongSelf = self else {return}
+            
+            strongSelf.chatsList = chatsList.sorted(by: {$0.timeSpan ?? "" > $1.timeSpan ?? ""})
+            strongSelf.view?.updateChats()
+        }
+        
+        firebaseObserver.observeChats() { [weak self] newChat in
+            guard let strongSelf = self else {return}
+            
+            let index = strongSelf.chatsList.firstIndex {$0.contact.uid == newChat.contact.uid
             }
+
+            if let index = index {
+                strongSelf.chatsList.remove(at: index)
+            }
+            
+            strongSelf.chatsList.insert(newChat, at: 0)
+            strongSelf.view?.insertChat(removeIndex: index)
         }
     }
 }

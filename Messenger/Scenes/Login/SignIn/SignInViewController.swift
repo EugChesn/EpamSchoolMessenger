@@ -28,7 +28,7 @@ class SignInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+
         Utilities.styleTextField(emailTextField)
         Utilities.styleTextField(passwordTextField)
         Utilities.styleButton(logInButton)
@@ -100,7 +100,15 @@ extension SignInViewController: SignInDelegate {
             self.present(alert, animated: true, completion: nil)
         }
     }
-      
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "unwindLogin"{
+            if let destination = segue.destination as? ChatsViewController {
+                destination.viewModel.downloadChats()
+            }
+        }
+    }
+  
     func successLogin() {
         //print(FirebaseService.firebaseService.getCurrentUser()?.photoURL)
         
