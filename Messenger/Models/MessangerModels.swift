@@ -9,19 +9,25 @@
 import Foundation
 import UIKit
 
-struct Contact {
-    var email: String = ""
-    var name: String = "testName"
-    var nickname: String = "testNickName"
-    var uid: String = "testuid"
+struct Contact: Codable {
+    var name: String?
+    var nickname: String?
+    var uid: String?
     var profileImageUrl: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case name = "name"
+        case nickname = "nickname"
+        case uid = "uid"
+        case profileImageUrl = "photoUrl"
+    }
 }
 
-struct MessageModel {
-    var from: String = ""
-    var to: String = ""
-    var text: String = ""
-    var timeSpan: String = ""
+struct MessageModel: Codable {
+    var from: String!
+    var to: String!
+    var text: String!
+    var timeSpan: String!
     
     func asDictionary() -> [String: String] {
         return ["from": from, "to": to, "text": text, "timeSpan": timeSpan]
@@ -43,16 +49,19 @@ struct MessageModel {
         self.text = text
         self.timeSpan = timeSpan
     }
-        
 }
 
-struct ChatInfo {
-    var lastMessage: String = ""
-    var timeSpan: String = ""
-    var contact: Contact
+struct ChatInfo: Codable {
+    var lastMessage: String?
+    var timeSpan: String?
+    var contact: Contact!
 }
 
 enum StateUser {
     case Authorised
     case NotAuthorised
+}
+
+struct ContactList: Codable {
+    var users: [String:[Contact]]
 }

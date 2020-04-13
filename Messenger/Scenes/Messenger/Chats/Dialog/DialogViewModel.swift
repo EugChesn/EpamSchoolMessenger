@@ -20,7 +20,7 @@ protocol DialogViewModeling {
 class DialogViewModel: DialogViewModeling {
     weak var view: DialogDelegate?
     
-    let fir:MessagesObserver = FirebaseService.firebaseService
+    let firebaseObserver:MessagesObserver = FirebaseService.firebaseService
     
     private var chatInfo: ChatInfo? {
         didSet {
@@ -50,7 +50,7 @@ class DialogViewModel: DialogViewModeling {
     }
     
     deinit {
-        fir.removeMessagesObserver()
+        firebaseObserver.removeMessagesObserver()
     }
     
     func updateChatLog() {
@@ -69,7 +69,7 @@ class DialogViewModel: DialogViewModeling {
         
         let message = MessageModel(from: "", to: recipientUid, text: messageText, timeSpan: timeSpan)
         
-        fir.sendMessages(recipientUid: recipientUid, message: message)
+        firebaseObserver.sendMessages(recipientUid: recipientUid, message: message)
     }
     
     
@@ -77,24 +77,15 @@ class DialogViewModel: DialogViewModeling {
         guard let recipientUid = chatInfo?.contact.uid else {return}
             
         //скачиваем сообщения
-            fir.downloadMessages(recipientUid: recipientUid) { [weak self] (messagesList) in
+            firebaseObserver.downloadMessages(recipientUid: recipientUid) { [weak self] (messagesList) in
                 guard let strongSelf = self else {return}
-                var messagesList = messagesList
-                
-                messagesList.sort { (message1, message2) -> Bool in
-                    if message1.timeSpan < message2.timeSpan {
-                        return true
-                    } else {
-                        return false
-                    }
-                }
-                
-                strongSelf.messageList = messagesList
+
+                strongSelf.messageList = messagesList.sorted(by: {$0.timeSpan < $1.timeSpan})
                 strongSelf.view?.updateChatLog()
             }
             
         //после скачивания подписываемся но получение новых сообщений
-            fir.observeNewMessages(recipientUid: recipientUid) {[weak self] (message) in
+            firebaseObserver.observeNewMessages(recipientUid: recipientUid) {[weak self] (message) in
                 guard let strongSelf = self else {return}
                 
                 strongSelf.messageList.append(message)

@@ -55,6 +55,11 @@ class SignInViewController: UIViewController {
         viewModel = SignInViewModel(view: self)
         router = SignInRouter(viewController: self)
     }
+    
+    @IBAction func forgotPasswordButtonPressed(_ sender: UIButton) {
+        router?.routeToPasswordReset()
+    }
+    
 }
 
 extension SignInViewController: UITextFieldDelegate {
@@ -95,7 +100,7 @@ extension SignInViewController: SignInDelegate {
             self.present(alert, animated: true, completion: nil)
         }
     }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "unwindLogin"{
             if let destination = segue.destination as? ChatsViewController {
@@ -103,7 +108,7 @@ extension SignInViewController: SignInDelegate {
             }
         }
     }
-    
+  
     func successLogin() {
         //print(FirebaseService.firebaseService.getCurrentUser()?.photoURL)
         
