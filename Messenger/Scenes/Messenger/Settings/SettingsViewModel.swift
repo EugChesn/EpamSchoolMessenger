@@ -33,9 +33,11 @@ class SettingsViewModel: SettingsViewModeling {
     
     private func getDataProfileSettings() {
         FirebaseService.firebaseService.getUserData() { [weak self] (user) in
+            guard let self = self else { return }
             guard let current = user else { return }
-            self?.data = current
-            self?.view?.updateProfile(user: current)
+            
+            self.data = current
+            self.view?.updateProfile(user: current)
         }
     }
 }

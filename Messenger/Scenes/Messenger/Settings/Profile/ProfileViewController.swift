@@ -39,18 +39,12 @@ class ProfileViewController: UITableViewController {
     @IBAction func doneButton(_ sender: Any) {
         guard let name = nameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
         guard let nickname = nickNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
-        let contactURL = viewModel?.contact().profileImageUrl
-        if let urlPhoto = contactURL {
-            let reference = StorageService.shared.getReference(url: urlPhoto)
-            self.profileImage.sd_setImage(with: reference, placeholderImage: placeHolderImage)
-            reference.downloadURL { (url, error) in
-                
-                if !name.isEmpty && !nickname.isEmpty {
-                    self.viewModel?.updateDataProfile(name: name, nickname: nickname, photo: url!)
-                }
-            }
-            router?.routeSettings()
+        
+        if !name.isEmpty && !nickname.isEmpty {
+            let update = ["name": name, "nickname": nickname]
+            self.viewModel?.updateDataProfile(update: update)
         }
+        router?.routeSettings()
     }
     
     override func viewDidLoad() {

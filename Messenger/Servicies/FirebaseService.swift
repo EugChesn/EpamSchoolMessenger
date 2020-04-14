@@ -27,14 +27,14 @@ class FirebaseService {
     func writeNewDataProfile(update: [String:String]) {
         let uidCurrUser = Auth.auth().currentUser?.uid
         if let uid = uidCurrUser {
-            referenceUser.child(uid).updateChildValues(update as [AnyHashable : Any])
+            referenceUser.child(uid).updateChildValues(update)
         }
     }
     
     func writeNewUser(user:  User) { // добавить нового юзера в бд
         referenceUser.child(user.uid).setValue(["email": user.email])
     }
-
+    
     func updateProfileInfo(name: String, nickName: String, photo: URL) {
         let currUser = self.getCurrentUser()
         let changeRequest = currUser!.createProfileChangeRequest()
@@ -51,21 +51,11 @@ class FirebaseService {
     }
     
     func getUserData(completion: @escaping (Contact?) -> ()) {
-        if let uid = FirebaseService.firebaseService.getCurrentUser()?.uid {
-            let referenseDB = FirebaseService.firebaseService.referenceDataBase
-            referenseDB.child("users").child(uid).observe(.value) { (snapshot) in
-                guard let value = snapshot.value, snapshot.exists() else { return }
-                
-                if let dictionary = value as? [String: String] {
-                    var user = Contact()
-                    
-                    user.email = dictionary["email"] ?? ""
-                    user.name = dictionary["name"] ?? ""
-                    user.nickname = dictionary["nickname"] ?? ""
-                    user.profileImageUrl = dictionary["photoUrl"] ?? ""
-                    
-                    completion(user)
-                }
+        if let uid = getCurrentUser()?.uid {
+            let referenseDB = referenceDataBase.child("users").child(uid)
+            referenseDB.observe(.value) { (snapshot) in
+                guard let user = SnapshotDecoder.decode(type: Contact.self, snapshot: snapshot.value) else { return }
+                completion(user)
             }
         }
     }
@@ -80,4 +70,3 @@ class FirebaseService {
         firebasObservers[observer] = id
     }
 }
-

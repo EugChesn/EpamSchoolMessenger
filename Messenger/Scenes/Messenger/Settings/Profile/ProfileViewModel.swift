@@ -9,8 +9,8 @@
 import Foundation
 
 protocol ProfileViewModeling {
-    func updateDataProfile(name: String, nickname: String, photo: URL)
-    func contact() -> Contact 
+    func updateDataProfile(update: [String: String])
+    func contact() -> Contact
 }
 
 class ProfileViewModel: ProfileViewModeling {
@@ -31,10 +31,11 @@ class ProfileViewModel: ProfileViewModeling {
     
     private func getDataProfile()  {
         base.getUserData() { [weak self] (user) in
+            guard let self = self else { return }
             guard let current = user else { return }
             
-            self?.data = current
-            self?.view?.updateProfile(user: self!.data)
+            self.data = current
+            self.view?.updateProfile(user: self.data)
             
             let profile = ProfileSetting(current.name, current.nickname, current.email)
             UserSettings.save(object: profile.name, for: ProfileSetting.name)
@@ -42,7 +43,7 @@ class ProfileViewModel: ProfileViewModeling {
         }
     }
     
-    func updateDataProfile(name: String, nickname: String, photo: URL) {
-        base.updateProfileInfo(name: name, nickName: nickname, photo: photo)
+    func updateDataProfile(update: [String: String]) {
+        base.writeNewDataProfile(update: update)
     }
 }
