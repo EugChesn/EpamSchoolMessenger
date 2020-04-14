@@ -30,6 +30,7 @@ class SignUpViewController: UIViewController {
         Utilities.styleButton(signUpButton)
         emailTextField.delegate = self
         passwordTextField.delegate = self
+        emailTextField.becomeFirstResponder()
         setupDependencies()
     }
     func setupDependencies() {
@@ -41,12 +42,17 @@ class SignUpViewController: UIViewController {
         guard let email = emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
         guard let pass = passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)  else { return }
         
+        emailTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
+        
         if !email.isValidateEmail() {
             alertError(errorCode: .invalidEmail)
         } else if !pass.isValidatePass() {
             alertError(errorCode: .weakPassword)
         } else {
             viewModel?.registerUser(email: email, password: pass)
+            let activity = ManagerActivityIndicator.styleActivity(message: "Register...", type: .ballClipRotate)
+            ManagerActivityIndicator.startAnimating(activity: activity)
         }
     }
 }
@@ -83,11 +89,12 @@ extension SignUpViewController: UITextFieldDelegate {
 extension SignUpViewController: SignUpDelegate {
     func faultCreateUser(err: Error) {
         if let errorCode = AuthErrorCode(rawValue: err._code) {
-            print(errorCode.errorMessage)
+            ManagerActivityIndicator.stopAnimating()
             alertError(errorCode: errorCode)
         }
     }
     func successCreateUser() {
+        ManagerActivityIndicator.stopAnimating()
         router?.routeToProfile(withIdentifier: "profile", sender: self)
     }
 }

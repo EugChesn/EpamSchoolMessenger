@@ -8,10 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		3E3185D1241C0381000FD0C2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3E3185D0241C0381000FD0C2 /* GoogleService-Info.plist */; };
+		3E50F191244634F900B34F8F /* ManagerActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E50F190244634F900B34F8F /* ManagerActivityIndicator.swift */; };
 		3E6BD3D3241FD70800CA6780 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6BD3D2241FD70800CA6780 /* FirebaseService.swift */; };
 		3E78E7132422218F0053DD1C /* ExtensionAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E78E7122422218F0053DD1C /* ExtensionAuth.swift */; };
 		3E78E71524222A700053DD1C /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E78E71424222A700053DD1C /* Utilities.swift */; };
 		3E7CBF44242A83E6002DAD3F /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E7CBF43242A83E6002DAD3F /* Media.xcassets */; };
+		3E871EEB2444B06400B00A7C /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E871EE92444B06400B00A7C /* ChatCell.swift */; };
+		3E871EEC2444B06400B00A7C /* ChatCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E871EEA2444B06400B00A7C /* ChatCell.xib */; };
 		3EA8B18E2434AA48001B4207 /* ExtensionsStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA8B18D2434AA48001B4207 /* ExtensionsStoryboard.swift */; };
 		3EBEC40F242A2A5600AF858C /* AuthFirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBEC40E242A2A5600AF858C /* AuthFirebaseService.swift */; };
 		3ECF658E243CA0530095A53C /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECF658C243CA0530095A53C /* ChatTableViewCell.swift */; };
@@ -97,10 +100,13 @@
 /* Begin PBXFileReference section */
 		262A7F8CC6FE8C4DBCBB667B /* Pods_Messenger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Messenger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E3185D0241C0381000FD0C2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3E50F190244634F900B34F8F /* ManagerActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerActivityIndicator.swift; sourceTree = "<group>"; };
 		3E6BD3D2241FD70800CA6780 /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
 		3E78E7122422218F0053DD1C /* ExtensionAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionAuth.swift; sourceTree = "<group>"; };
 		3E78E71424222A700053DD1C /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		3E7CBF43242A83E6002DAD3F /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		3E871EE92444B06400B00A7C /* ChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
+		3E871EEA2444B06400B00A7C /* ChatCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatCell.xib; sourceTree = "<group>"; };
 		3EA8B18D2434AA48001B4207 /* ExtensionsStoryboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsStoryboard.swift; sourceTree = "<group>"; };
 		3EBEC40E242A2A5600AF858C /* AuthFirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFirebaseService.swift; sourceTree = "<group>"; };
 		3ECF658C243CA0530095A53C /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
@@ -242,6 +248,8 @@
 			children = (
 				3ECF658C243CA0530095A53C /* ChatTableViewCell.swift */,
 				3ECF658D243CA0530095A53C /* ChatTableViewCell.xib */,
+				3E871EE92444B06400B00A7C /* ChatCell.swift */,
+				3E871EEA2444B06400B00A7C /* ChatCell.xib */,
 			);
 			path = CellChat;
 			sourceTree = "<group>";
@@ -495,6 +503,7 @@
 			children = (
 				3E78E7122422218F0053DD1C /* ExtensionAuth.swift */,
 				3EE90AC6243DE219009E0759 /* ImagePicker.swift */,
+				3E50F190244634F900B34F8F /* ManagerActivityIndicator.swift */,
 				3E78E71624222A7E0053DD1C /* Utilities */,
 				AAF834AC2418FCC100FDF9D2 /* PasswordRecovery */,
 				AAF834AB2418FCA700FDF9D2 /* SignUp */,
@@ -673,6 +682,7 @@
 				3E3185D1241C0381000FD0C2 /* GoogleService-Info.plist in Resources */,
 				86CB7A7C2427DE0400995986 /* Settings.storyboard in Resources */,
 				867B2F842412586000B16B01 /* Assets.xcassets in Resources */,
+				3E871EEC2444B06400B00A7C /* ChatCell.xib in Resources */,
 				86338F482435199400F35E13 /* ProfileTableViewCell.xib in Resources */,
 				86BD2C29242C1E88000404A3 /* SettingsMedia.xcassets in Resources */,
 				3ECF658F243CA0530095A53C /* ChatTableViewCell.xib in Resources */,
@@ -781,6 +791,7 @@
 				3EE90AC3243DDCEA009E0759 /* TableViewRegister.swift in Sources */,
 				AA1B5FD2241BF20F0080443A /* PasswordRecoveryRouter.swift in Sources */,
 				AAF8351624193F7800FDF9D2 /* ContactsViewController.swift in Sources */,
+				3E50F191244634F900B34F8F /* ManagerActivityIndicator.swift in Sources */,
 				AAB3AEFE241B7FDC00825F00 /* CodeConfirmationViewModel.swift in Sources */,
 				AAB3AF0A241B842A00825F00 /* CreatePasswordViewModel.swift in Sources */,
 				AA1B40F72433615B00E1D452 /* DialogKeyBoardObserverExtension.swift in Sources */,
@@ -800,6 +811,7 @@
 				86CB7AA6242B6BEF00995986 /* ProfileViewController.swift in Sources */,
 				AA487C4C241E563900337FBF /* DialogRouter.swift in Sources */,
 				AA1B40EF2433607200E1D452 /* DialogCollectionViewExtension.swift in Sources */,
+				3E871EEB2444B06400B00A7C /* ChatCell.swift in Sources */,
 				AAF834F02419258100FDF9D2 /* PasswordRecoveryViewController.swift in Sources */,
 				AAF8351024193F5200FDF9D2 /* SettingsViewController.swift in Sources */,
 				AA1B5FD4241BF21B0080443A /* NewPasswordRouter.swift in Sources */,

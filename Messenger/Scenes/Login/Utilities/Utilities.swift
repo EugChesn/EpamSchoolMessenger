@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import NVActivityIndicatorView
 
 class Utilities {
     static let maxLenPassword: Int = 16

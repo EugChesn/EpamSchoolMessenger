@@ -44,7 +44,7 @@ class CreateChatViewController: UIViewController {
         
         contactListTableView.delegate = self
         contactListTableView.dataSource = self
-        contactListTableView.register(cellType: ChatTableViewCell.self)
+        contactListTableView.register(cellType: ChatCell.self)
     }
     
     @IBAction func cancelCreate(_ sender: Any) {
@@ -74,10 +74,10 @@ extension CreateChatViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(with: ChatTableViewCell.self, for: indexPath)
+        let cell = tableView.dequeueReusableCell(with: ChatCell.self, for: indexPath)
         let contact = viewModel?.contact(atIndex: indexPath.row)
-        cell.nameChat.text = contact?.name
+        cell.nameChat.text = contact?.name ?? "Unnamed"
+        
         let url = contact?.profileImageUrl
         if let urlPhoto = url {
             let reference = StorageService.shared.getReference(url: urlPhoto)

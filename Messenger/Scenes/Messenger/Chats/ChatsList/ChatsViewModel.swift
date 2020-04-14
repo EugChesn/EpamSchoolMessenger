@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-protocol ChatsViewModeling: ManagersDataFilter {
+protocol ChatsViewModeling: class {
     var chatsCount: Int {get}
     var selectedChat: ChatInfo? {get set}
     
@@ -26,11 +26,6 @@ protocol ChatsViewModeling: ManagersDataFilter {
 
 protocol ChatInfoGetterDelegate: class {
     var chatInfo: ChatInfo? {get}
-}
-
-protocol ManagersDataFilter {
-    func remove(offset: Int)
-    func insert(offset: Int, element: ChatInfo)
 }
 
 class ChatsViewModel: ChatsViewModeling {
@@ -154,22 +149,8 @@ class ChatsViewModel: ChatsViewModeling {
             return false
         }
         
-        if #available(iOS 13, *) {
-            let difference = valueFilter.difference(from: filteredChatsList)
-            view?.updateSearchChat(diff: difference)
-        } else {
-            fatalError("difference need ios 13")
-        }
-    }
-}
-
-extension ChatsViewModel: ManagersDataFilter {
-    func remove(offset: Int) {
-        filteredChatsList.remove(at: offset)
-    }
-    
-    func insert(offset: Int, element: ChatInfo) {
-        filteredChatsList.insert(element, at: offset)
+        filteredChatsList = valueFilter
+        view?.updateSearch()
     }
 }
 

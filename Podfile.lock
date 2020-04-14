@@ -96,6 +96,9 @@ PODS:
     - nanopb/encode (= 0.3.9011)
   - nanopb/decode (0.3.9011)
   - nanopb/encode (0.3.9011)
+  - NVActivityIndicatorView (4.8.0):
+    - NVActivityIndicatorView/Presenter (= 4.8.0)
+  - NVActivityIndicatorView/Presenter (4.8.0)
   - PromisesObjC (1.2.8)
   - SDWebImage (5.6.1):
     - SDWebImage/Core (= 5.6.1)
@@ -106,6 +109,7 @@ DEPENDENCIES:
   - Firebase/Database
   - FirebaseUI/Auth
   - FirebaseUI/Storage
+  - NVActivityIndicatorView
 
 SPEC REPOS:
   trunk:
@@ -127,6 +131,7 @@ SPEC REPOS:
     - GTMSessionFetcher
     - leveldb-library
     - nanopb
+    - NVActivityIndicatorView
     - PromisesObjC
     - SDWebImage
 
@@ -149,9 +154,10 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: cea130bbfe5a7edc8d06d3f0d17288c32ffe9925
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
+  NVActivityIndicatorView: d24b7ebcf80af5dcd994adb650e2b6c93379270f
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
   SDWebImage: 7edb9c3ea661e77a66661f7f044de8c1b55d1120
 
-PODFILE CHECKSUM: fd82bd93b1aa0a597e0c7e5fa56b863ba6f5fa41
+PODFILE CHECKSUM: 042fd7670171996c7eb606dc70d17fca2a829e1e
 
 COCOAPODS: 1.9.1

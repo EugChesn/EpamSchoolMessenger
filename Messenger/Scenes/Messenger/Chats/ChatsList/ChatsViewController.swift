@@ -14,9 +14,8 @@ protocol ChatsDelegate: class {
     func openChat()
     func setLoginFlow()
     func insertChat(removeIndex: Int?)
-    
-    @available(iOS 13, *)
-    func updateSearchChat(diff: CollectionDifference<ChatInfo>)
+
+    func updateSearch()
 }
 
 protocol NewChatOpenerDelegate: class {
@@ -104,21 +103,10 @@ class ChatsViewController: UIViewController {
 }
 
 extension ChatsViewController: ChatsDelegate {
-    @available(iOS 13, *)
-    func updateSearchChat(diff: CollectionDifference<ChatInfo>) {
-        chatsTableView.performBatchUpdates({
-            for change in diff {
-                switch change {
-                case let .remove(offset, _, _):
-                    viewModel.remove(offset: offset)
-                    chatsTableView.deleteRows(at: [IndexPath(row: offset, section: 0)], with: .automatic)
-                case let .insert(offset, newElement, _):
-                    viewModel.insert(offset: offset, element: newElement)
-                    chatsTableView.insertRows(at: [IndexPath(row: offset, section: 0)], with: .automatic)
-                }
-            }
-            
-        },completion: nil)
+    func updateSearch() {
+        DispatchQueue.main.async {
+            self.chatsTableView.reloadSections(IndexSet(integer: 0), with: .automatic)
+        }
     }
     
     func updateChats() {
