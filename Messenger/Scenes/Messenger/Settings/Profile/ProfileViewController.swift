@@ -56,14 +56,10 @@ class ProfileViewController: UITableViewController {
         //MARK: Profile Image
         if profileImage != nil {
             profileImage.roundWithBorder()
-            
-            FirebaseService.firebaseService.getUserData() { [weak self] (user) in
-                guard let current = user else { return }
-                let contactURL = current.profileImageUrl
-                if let urlPhoto = contactURL {
-                    let reference = StorageService.shared.getReference(url: urlPhoto)
-                    self?.profileImage.sd_setImage(with: reference, placeholderImage: self?.placeHolderImage)
-                }
+            let url = viewModel?.contact.profileImageUrl
+            if let urlPhoto = url {
+                let reference = StorageService.shared.getReference(url: urlPhoto)
+                profileImage.sd_setImage(with: reference, placeholderImage: placeHolderImage)
             }
         }
         //MARK: TextField
@@ -72,10 +68,8 @@ class ProfileViewController: UITableViewController {
         birthdayTextField.styleTextField(placeholder: Constant.birthday)
         //MARK: DatePicker
         createDatePicker()
-        
+      
         setupDependencies()
-        
-        birthdayTextField.text = UserSettings.getObject(for: "birthday") as? String
     }
     
     private func setupDependencies() {
@@ -117,7 +111,6 @@ class ProfileViewController: UITableViewController {
         let formatter = DateFormatter()
         formatter.dateFormat = "MMMM d, yyyy"
         birthdayTextField.text = formatter.string(from: datePicker.date)
-        UserSettings.save(object: birthdayTextField.text ?? "", for: "birthday")
     }
 }
 

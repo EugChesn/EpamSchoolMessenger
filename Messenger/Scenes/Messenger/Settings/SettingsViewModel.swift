@@ -11,20 +11,12 @@ import Foundation
 protocol SettingsViewModeling {
     func editProfile()
     var contact: Contact { get }
-    var userName: String { get }
-    var userEmail: String { get }
 }
 
 class SettingsViewModel: SettingsViewModeling {
     weak var view: SettingsDelegate?
     
     private var data = Contact()
-    var userName: String {
-        return UserSettings.getObject(for: ProfileSetting.name) as! String
-    }
-    var userEmail: String {
-        return UserSettings.getObject(for: ProfileSetting.email) as! String
-    }
     var contact: Contact {
         return data
     }

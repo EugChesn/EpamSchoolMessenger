@@ -24,7 +24,5 @@ class SignUpViewModel: SignUpViewModeling {
                                                    password: password,
                                                    completion: { self.view?.successCreateUser()},
                                                    fault: {(error) in self.view?.faultCreateUser(err: error)})
-        
-        UserSettings.save(object: email, for: ProfileSetting.email)
     }
 }

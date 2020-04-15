@@ -93,12 +93,11 @@ class SettingsViewController: UITableViewController {
         switch (indexPath.section) {
         case 0:
             guard let customCell = tableView.dequeueReusableCell(withIdentifier: settingCellId, for: indexPath) as? ProfileTableViewCell else { return UITableViewCell() }
-            let contact = viewModel?.contact
+           
+            customCell.nameLabel.text = viewModel?.contact.name
+            customCell.emailLabel.text = viewModel?.contact.nickname
             
-            customCell.nameLabel.text = viewModel?.userName
-            customCell.emailLabel.text = viewModel?.userEmail
-            
-            let url = contact?.profileImageUrl
+            let url = viewModel?.contact.profileImageUrl
             if let urlPhoto = url {
                 let reference = StorageService.shared.getReference(url: urlPhoto)
                 customCell.profileImage.sd_setImage(with: reference, placeholderImage: placeHolderImage)

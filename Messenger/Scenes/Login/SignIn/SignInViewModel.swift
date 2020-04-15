@@ -22,25 +22,10 @@ class SignInViewModel: SignInViewModeling {
     
     init(view: SignInDelegate) {
         self.view = view
-        
-        getDataProfile()
     }
     
     func signInHandler(email: String, pass: String) {
         FirebaseService.firebaseService.signInUser(email: email, password: pass, completion: { self.view?.successLogin()}, faulture: {(err) in  self.view?.errorLogin(error: err)})
-    }
-    
-    private func getDataProfile()  {
-        FirebaseService.firebaseService.getUserData() { [weak self] (user) in
-            guard let current = user else { return }
-            
-            self?.data = current
-            
-            let profile = ProfileSetting(current.name, current.nickname, current.email)
-            UserSettings.save(object: profile.name, for: ProfileSetting.name)
-            UserSettings.save(object: profile.nickname, for: ProfileSetting.nickname)
-            UserSettings.save(object: profile.email, for: ProfileSetting.email)
-        }
     }
     
     /*func sendCodeAuth(phoneNumber: String) {

@@ -13,16 +13,6 @@ struct ProfileSetting {
     static let nickname = "nickname"
     static let email = "email"
     static let birthday = "birthday"
-   
-    var name: String
-    var nickname: String
-    var email: String
-
-    init(_ name: String?, _ nickname: String?, _ email: String?) {
-        self.name = name ?? ""
-        self.nickname = nickname ?? ""
-        self.email = email ?? ""
-    }
 }
 
 class UserSettings {
