@@ -55,7 +55,7 @@ class ProfileViewController: UITableViewController {
         LogOutButton.setTitle(Constant.exit, for: .normal)
         //MARK: Profile Image
         if profileImage != nil {
-            Decor.styleImageView(profileImage)
+            profileImage.roundWithBorder()
             
             FirebaseService.firebaseService.getUserData() { [weak self] (user) in
                 guard let current = user else { return }
@@ -66,11 +66,10 @@ class ProfileViewController: UITableViewController {
                 }
             }
         }
-        
         //MARK: TextField
-        Decor.styleTextField(nameTextField, placeholder: Constant.name)
-        Decor.styleTextField(nickNameTextField, placeholder: Constant.nickName)
-        Decor.styleTextField(birthdayTextField, placeholder: Constant.birthday)
+        nameTextField.styleTextField(placeholder: Constant.name)
+        nickNameTextField.styleTextField(placeholder: Constant.nickName)
+        birthdayTextField.styleTextField(placeholder: Constant.birthday)
         //MARK: DatePicker
         createDatePicker()
         

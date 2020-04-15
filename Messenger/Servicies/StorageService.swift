@@ -35,7 +35,7 @@ extension StorageService: ProfilePhoto {
         guard let imageData: Data = img.jpegData(compressionQuality: 0.1) else {
             return
         }
-        let user = FirebaseService.firebaseService.getCurrentUser()!
+        let user = FirebaseService.firebaseService.currentUser!
         let filePath = "\(user.uid)"
         let reference = self.storageRef.child("ProfileImage").child(filePath)
         let metaData = StorageMetadata()

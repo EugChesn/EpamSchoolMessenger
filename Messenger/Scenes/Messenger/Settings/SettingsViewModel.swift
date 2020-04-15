@@ -10,21 +10,28 @@ import Foundation
 
 protocol SettingsViewModeling {
     func editProfile()
-    func contact() -> Contact
+    var contact: Contact { get }
+    var userName: String { get }
+    var userEmail: String { get }
 }
 
 class SettingsViewModel: SettingsViewModeling {
     weak var view: SettingsDelegate?
     
     private var data = Contact()
+    var userName: String {
+        return UserSettings.getObject(for: ProfileSetting.name) as! String
+    }
+    var userEmail: String {
+        return UserSettings.getObject(for: ProfileSetting.email) as! String
+    }
+    var contact: Contact {
+        return data
+    }
     
     init(view: SettingsDelegate) {
         self.view = view
         getDataProfileSettings()
-    }
-    
-    func contact() -> Contact {
-        return data
     }
     
     func editProfile() {

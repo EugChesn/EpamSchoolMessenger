@@ -49,7 +49,7 @@ class SettingsViewController: UITableViewController {
         settingNavigationItem()
         self.registerTableViewCells()
         //MARK: SearchBar
-        Decor.searchBar(searchController, placeholder: Constant.search)
+        searchController.searchBarStyle(placeholder: Constant.search)
         searchController.searchResultsUpdater = self
         definesPresentationContext = true
         
@@ -93,18 +93,16 @@ class SettingsViewController: UITableViewController {
         switch (indexPath.section) {
         case 0:
             guard let customCell = tableView.dequeueReusableCell(withIdentifier: settingCellId, for: indexPath) as? ProfileTableViewCell else { return UITableViewCell() }
-            let contact = viewModel?.contact()
+            let contact = viewModel?.contact
             
-            customCell.nameLabel.text = contact?.name
-            customCell.emailLabel.text = contact?.email
+            customCell.nameLabel.text = viewModel?.userName
+            customCell.emailLabel.text = viewModel?.userEmail
             
             let url = contact?.profileImageUrl
             if let urlPhoto = url {
                 let reference = StorageService.shared.getReference(url: urlPhoto)
                 customCell.profileImage.sd_setImage(with: reference, placeholderImage: placeHolderImage)
             }
-            customCell.nameLabel.text = UserSettings.getObject(for: ProfileSetting.name) as? String
-            customCell.emailLabel.text = UserSettings.getObject(for: ProfileSetting.email) as? String
             
             cell = customCell
         case 1:
@@ -122,7 +120,8 @@ class SettingsViewController: UITableViewController {
         default:
             fatalError("NoCell")
         }
-        Decor.styleCell(cell)
+        
+        cell.accessoryType = .disclosureIndicator
         return cell
     }
     
@@ -143,6 +142,7 @@ extension SettingsViewController: SettingsDelegate {
     func openProfile() {
         router?.routeProfile(withIdentifier: "goToProfile", sender: self)
     }
+    
     func updateProfile(user:Contact) {
         DispatchQueue.main.async {
             self.settingTableView.reloadData()

@@ -23,7 +23,7 @@ extension DialogViewController: UICollectionViewDelegateFlowLayout, UICollection
             let estimatedFrame = estimateFrame(text: message.text)
             cell.bubbleWidthAnchor?.constant = estimatedFrame.width + 32
 
-            if message.from == FirebaseService.firebaseService.getCurrentUser()?.uid {
+            if message.from == FirebaseService.firebaseService.currentUser?.uid {
                 cell.configCell(color: .blue)
             } else {
                 cell.configCell(color: .gray)
