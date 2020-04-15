@@ -10,6 +10,7 @@ import Foundation
 import Firebase
 
 class FirebaseService {
+    
     private(set) var referenceDataBase: DatabaseReference
     private(set) var referenceUser: DatabaseReference
     var handlerState: AuthStateDidChangeListenerHandle?
@@ -24,18 +25,15 @@ class FirebaseService {
         return Auth.auth().currentUser
     }
     // обновить данные в бд
-    func writeNewDataProfile(update: [String:String]) {
-        let uidCurrUser = Auth.auth().currentUser?.uid
-        if let uid = uidCurrUser {
-            referenceUser.child(uid).updateChildValues(update)
+    func writeNewDataCurrUser(update: [String:String], completion: @escaping (Error?)->()) {
+        if let uid = Auth.auth().currentUser?.uid {
+            referenceUser.child(uid).updateChildValues(update) { err, _ in
+                completion(err)
+            }
         }
     }
-    
-    func writeNewUser(user:  User) { // добавить нового юзера в бд
-        referenceUser.child(user.uid).setValue(["email": user.email])
-    }
 
-    func updateProfileInfo(name: String, nickName: String, photo: URL) {
+    func updateProfileInfo(email: String, name: String, nickName: String, photo: URL, completion: @escaping (Error?)->()) {
         let currUser = self.getCurrentUser()
         let changeRequest = currUser!.createProfileChangeRequest()
         changeRequest.displayName = name
@@ -44,8 +42,10 @@ class FirebaseService {
             if let err = error{
                 print(err.localizedDescription)
             } else {
-                let update = ["name": name,"nickname": nickName,"photoUrl": photo.absoluteString]
-                self.writeNewDataProfile(update: update)
+                let update = ["email": email, "name": name,"nickname": nickName,"photoUrl": photo.absoluteString]
+                self.writeNewDataCurrUser(update: update) { err in
+                    completion(err)
+                }
             }
         }
     }

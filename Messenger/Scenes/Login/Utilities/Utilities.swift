@@ -13,7 +13,7 @@ import NVActivityIndicatorView
 class Utilities {
     static let maxLenPassword: Int = 16
     static let maxLenEmail: Int = 32
-    static let maxLenText = 45
+    static let maxLenText = 20
     
     static func styleTextField(_ textfield: UITextField) {
         let bottomLine = CALayer()
@@ -28,7 +28,16 @@ class Utilities {
         button.layer.cornerRadius = 16
     }
     static func styleImageView(_ imageView: UIImageView) {
-        imageView.layer.cornerRadius = imageView.frame.size.width / 2
-        imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = imageView.frame.size.height / 2
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.masksToBounds = true
+        imageView.layer.borderWidth = 1
+        imageView.layer.borderColor = UIColor.lightGray.cgColor
     }
+    /*static func styleTextFieldRadius(_ textfield: UITextField) {
+        textfield.layer.masksToBounds = true
+        textfield.layer.cornerRadius = textfield.frame.height / 2
+        textfield.layer.borderWidth = 1
+        textfield.layer.borderColor = UIColor.black.cgColor
+    }*/
 }

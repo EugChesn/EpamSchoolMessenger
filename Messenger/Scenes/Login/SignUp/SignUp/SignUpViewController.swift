@@ -18,39 +18,97 @@ protocol SignUpDelegate: class {
 class SignUpViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var nickTextField: UITextField!
+    @IBOutlet weak var photoProfile: UIImageView!
+    @IBOutlet weak var labelPhoto: UILabel!
     @IBOutlet weak var signUpButton: UIButton!
     
     var viewModel: SignUpViewModeling?
     var router: SignUpRouting?
+    private lazy var imagePicker = ImagePicker()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        Utilities.styleTextField(emailTextField)
-        Utilities.styleTextField(passwordTextField)
+        Utilities.styleImageView(photoProfile)
         Utilities.styleButton(signUpButton)
+        
+        let pictureTap = UITapGestureRecognizer(target: self, action: #selector(SignUpViewController.imageTapped))
+        photoProfile.addGestureRecognizer(pictureTap)
+        photoProfile.isUserInteractionEnabled = true
+        
+        imagePicker.delegate = self
         emailTextField.delegate = self
+        nameTextField.delegate = self
+        nickTextField.delegate = self
         passwordTextField.delegate = self
-        emailTextField.becomeFirstResponder()
+        nameTextField.becomeFirstResponder()
+        
         setupDependencies()
     }
+    
+    @objc func imageTapped() {
+        alertSheetPhotoSource()
+    }
+    private func presentImagePicker(sourceType: UIImagePickerController.SourceType) {
+         imagePicker.present(parent: self, sourceType: sourceType)
+    }
+    
+    private func alertSheetPhotoSource() {
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        let actionCancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let actionCamera = UIAlertAction(title: "Camera", style: .default) { action in
+            self.imagePicker.cameraAsscessRequest()
+        }
+        let actionGalery = UIAlertAction(title: "Galery", style: .default) { action in
+            self.imagePicker.photoGalleryAsscessRequest()
+        }
+        
+        actionSheet.addAction(actionCamera)
+        actionSheet.addAction(actionGalery)
+        actionSheet.addAction(actionCancel)
+        
+        present(actionSheet, animated: true, completion: nil)
+    }
+    
+    private func alertErrorName(errorMessage: String) {
+        let alert = UIAlertController(title: "Error", message: errorMessage, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        alert.addAction(okAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     func setupDependencies() {
         viewModel = SignUpViewModel(view: self)
         router = SignUpRouter(viewController: self)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "UnwindRegister"{
+            if let destination = segue.destination as? ChatsViewController {
+                destination.viewModel.downloadChats()
+            }
+        }
+    }
+    
     @IBAction func signUpTap(_ sender: UIButton) {
         guard let email = emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
-        guard let pass = passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)  else { return }
+        guard let pass = passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
+        guard let name = nameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
+        guard let nick = nickTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
         
         emailTextField.resignFirstResponder()
         passwordTextField.resignFirstResponder()
         
-        if !email.isValidateEmail() {
+        if ((!name.isValidName()) || (!nick.isValidName())) {
+            alertErrorName(errorMessage: "Invalid name.")
+        } else if !email.isValidateEmail() {
             alertError(errorCode: .invalidEmail)
         } else if !pass.isValidatePass() {
             alertError(errorCode: .weakPassword)
         } else {
-            viewModel?.registerUser(email: email, password: pass)
+            viewModel?.registerUser(name: name, nick: nick, email: email, password: pass, image: photoProfile.image)
             let activity = ManagerActivityIndicator.styleActivity(message: "Register...", type: .ballClipRotate)
             ManagerActivityIndicator.startAnimating(activity: activity)
         }
@@ -58,23 +116,37 @@ class SignUpViewController: UIViewController {
 }
 
 extension SignUpViewController: UITextFieldDelegate {
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField == emailTextField {
+        if textField == nameTextField {
+            textField.resignFirstResponder()
+            nickTextField.becomeFirstResponder()
+        } else if textField == nickTextField {
+            textField.resignFirstResponder()
+            emailTextField.becomeFirstResponder()
+        } else if textField == emailTextField {
             textField.resignFirstResponder()
             passwordTextField.becomeFirstResponder()
-        } else if textField == passwordTextField {
+        } else {
             textField.resignFirstResponder()
         }
         return true
     }
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if(textField == passwordTextField) {
+        if (textField == passwordTextField) {
             let currentText = textField.text! + string
             if !(currentText.count <= Utilities.maxLenPassword) {
                 textField.shake()
                 return false
             }
         } else if (textField == emailTextField) {
+            let currentText = textField.text! + string
+            if !(currentText.count <= Utilities.maxLenEmail) {
+                textField.shake()
+                return false
+            }
+        } else {
             let currentText = textField.text! + string
             if !(currentText.count <= Utilities.maxLenEmail) {
                 textField.shake()
@@ -88,13 +160,39 @@ extension SignUpViewController: UITextFieldDelegate {
 
 extension SignUpViewController: SignUpDelegate {
     func faultCreateUser(err: Error) {
+        ManagerActivityIndicator.stopAnimating()
         if let errorCode = AuthErrorCode(rawValue: err._code) {
-            ManagerActivityIndicator.stopAnimating()
             alertError(errorCode: errorCode)
+        } else {
+            alertErrorName(errorMessage: err.localizedDescription)
         }
     }
     func successCreateUser() {
         ManagerActivityIndicator.stopAnimating()
-        router?.routeToProfile(withIdentifier: "profile", sender: self)
+        router?.routeToChat(withIdentifier: "UnwindRegister", sender: self)
+    }
+}
+
+extension SignUpViewController: ImagePickerDelegate  {
+    func imagePickerDelegate(didSelect image: UIImage, delegatedForm: ImagePicker) {
+        photoProfile.image = image
+        labelPhoto.isHidden = true
+        imagePicker.dismiss()
+    }
+
+    func imagePickerDelegate(didCancel delegatedForm: ImagePicker) {
+        if photoProfile.image == nil {
+            labelPhoto.isHidden = false
+        }
+        imagePicker.dismiss()
+    }
+
+    func imagePickerDelegate(canUseGallery accessIsAllowed: Bool, delegatedForm: ImagePicker) {
+        if accessIsAllowed { presentImagePicker(sourceType: .photoLibrary) }
+    }
+
+    func imagePickerDelegate(canUseCamera accessIsAllowed: Bool, delegatedForm: ImagePicker) {
+        //Работает только на реальном устройстве
+        if accessIsAllowed { presentImagePicker(sourceType: .camera) }
     }
 }

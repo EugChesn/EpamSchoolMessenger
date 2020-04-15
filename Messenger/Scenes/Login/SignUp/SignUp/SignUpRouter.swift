@@ -10,11 +10,11 @@ import Foundation
 import UIKit
 
 protocol SignUpRouting {
-    func routeToProfile(withIdentifier: String, sender: UIViewController?)
+    func routeToChat(withIdentifier: String, sender: UIViewController?)
 }
 
 class SignUpRouter: BaseRouter, SignUpRouting {
-    func routeToProfile(withIdentifier: String, sender: UIViewController?) {
+    func routeToChat(withIdentifier: String, sender: UIViewController?) {
         performSegue(withIdentifier: withIdentifier, sender: sender)
     }
 }
