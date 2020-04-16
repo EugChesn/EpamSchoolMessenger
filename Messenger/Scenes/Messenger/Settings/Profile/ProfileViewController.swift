@@ -41,8 +41,11 @@ class ProfileViewController: UITableViewController {
         guard let nickname = nickNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
         
         if !name.isEmpty && !nickname.isEmpty {
-            let update = ["name": name, "nickname": nickname]
-            self.viewModel?.updateDataProfile(update: update)
+            if viewModel?.userName != name || viewModel?.userNickname != nickname {
+                let update = ["name": name, "nickname": nickname]
+                self.viewModel?.updateDataProfile(update: update)
+                self.viewModel?.updateUserDefaults(name, nickname)
+            }
         }
         router?.routeSettings()
     }
@@ -61,7 +64,7 @@ class ProfileViewController: UITableViewController {
         birthdayTextField.styleTextField(placeholder: Constant.birthday)
         //MARK: DatePicker
         createDatePicker()
-      
+        
         setupDependencies()
     }
     

@@ -11,6 +11,9 @@ import Foundation
 protocol ProfileViewModeling {
     func updateDataProfile(update: [String: String])
     var contact: Contact { get }
+    var userName: String { get }
+    var userNickname: String { get }
+    func updateUserDefaults(_ name: String, _ nickname: String)
 }
 
 class ProfileViewModel: ProfileViewModeling {
@@ -22,9 +25,18 @@ class ProfileViewModel: ProfileViewModeling {
         return data
     }
     
+    var userName: String {
+        return UserSettings.getObject(for: ProfileSetting.name) as! String
+    }
+    
+    var userNickname: String {
+        return UserSettings.getObject(for: ProfileSetting.nickname) as! String
+    }
+    
     init(view: ProfileDelegate) {
         self.view = view
         getDataProfile()
+        updateUserDefaults(data.name ?? "", data.nickname ?? "")
     }
     
     private func getDataProfile()  {
@@ -39,5 +51,10 @@ class ProfileViewModel: ProfileViewModeling {
     
     func updateDataProfile(update: [String: String]) {
         base?.writeNewDataProfile(update: update)
+    }
+    
+    func updateUserDefaults(_ name: String, _ nickname: String) {
+        UserSettings.save(object: name, for: ProfileSetting.name)
+        UserSettings.save(object: nickname, for: ProfileSetting.nickname)
     }
 }
