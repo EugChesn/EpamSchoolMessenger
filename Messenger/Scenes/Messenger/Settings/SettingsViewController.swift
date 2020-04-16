@@ -95,7 +95,7 @@ class SettingsViewController: UITableViewController {
             guard let customCell = tableView.dequeueReusableCell(withIdentifier: settingCellId, for: indexPath) as? ProfileTableViewCell else { return UITableViewCell() }
            
             customCell.nameLabel.text = viewModel?.contact.name
-            customCell.emailLabel.text = viewModel?.contact.nickname
+            customCell.emailLabel.text = viewModel?.contact.email
             
             let url = viewModel?.contact.profileImageUrl
             if let urlPhoto = url {
