@@ -15,6 +15,7 @@ protocol ProfileViewModeling {
 
 class ProfileViewModel: ProfileViewModeling {
     weak var view: ProfileDelegate?
+    weak var base = FirebaseService.firebaseService
     
     private var data = Contact()
     var contact: Contact {
@@ -27,7 +28,7 @@ class ProfileViewModel: ProfileViewModeling {
     }
     
     private func getDataProfile()  {
-        FirebaseService.firebaseService.getUserData() { [weak self] (user) in
+        base?.getUserData() { [weak self] (user) in
             guard let self = self else { return }
             guard let current = user else { return }
             
@@ -37,6 +38,6 @@ class ProfileViewModel: ProfileViewModeling {
     }
     
     func updateDataProfile(update: [String: String]) {
-        FirebaseService.firebaseService.writeNewDataProfile(update: update)
+        base?.writeNewDataProfile(update: update)
     }
 }
