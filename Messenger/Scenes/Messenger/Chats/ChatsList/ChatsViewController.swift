@@ -62,6 +62,14 @@ class ChatsViewController: UIViewController {
         chatsTableView.register(cellType: ChatTableViewCell.self)
         chatsTableView.keyboardDismissMode = .onDrag
         
+        //Fix bar with search bar
+        /*let appearance = UINavigationBarAppearance()
+        appearance.backgroundColor = .systemBackground
+        appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
+        navigationItem.standardAppearance = appearance
+        navigationItem.scrollEdgeAppearance = appearance*/
+        //
+        
         let searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false

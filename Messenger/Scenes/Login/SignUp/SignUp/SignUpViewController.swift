@@ -23,6 +23,7 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var photoProfile: UIImageView!
     @IBOutlet weak var labelPhoto: UILabel!
     @IBOutlet weak var signUpButton: UIButton!
+    @IBOutlet weak var StackContent: UIStackView!
     
     var viewModel: SignUpViewModeling?
     var router: SignUpRouting?
@@ -30,6 +31,10 @@ class SignUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Utilities.styleTextField(nameTextField)
+        Utilities.styleTextField(nickTextField)
+        Utilities.styleTextField(emailTextField)
+        Utilities.styleTextField(passwordTextField)
         Utilities.styleImageView(photoProfile)
         Utilities.styleButton(signUpButton)
         
@@ -37,14 +42,52 @@ class SignUpViewController: UIViewController {
         photoProfile.addGestureRecognizer(pictureTap)
         photoProfile.isUserInteractionEnabled = true
         
+        NotificationCenter.default.addObserver(self, selector: #selector(SignUpViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(SignUpViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
         imagePicker.delegate = self
         emailTextField.delegate = self
         nameTextField.delegate = self
         nickTextField.delegate = self
         passwordTextField.delegate = self
-        nameTextField.becomeFirstResponder()
         
         setupDependencies()
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "UnwindRegister"{
+            if let destination = segue.destination as? ChatsViewController {
+                destination.viewModel.downloadChats()
+            }
+        }
+    }
+    
+    func setupDependencies() {
+        viewModel = SignUpViewModel(view: self)
+        router = SignUpRouter(viewController: self)
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) { // условие поднятие content view под вопросом
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if emailTextField.isFirstResponder {
+                let freeSpace = StackContent.frame.origin.y + photoProfile.frame.origin.y - self.view.frame.origin.y
+                if freeSpace < keyboardSize.height {
+                    self.view.frame.origin.y -= keyboardSize.height
+                }
+            }
+        }
+    }
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if passwordTextField.resignFirstResponder() {
+            if self.view.frame.origin.y != 0 {
+                self.view.frame.origin.y = 0
+            }
+        }
     }
     
     @objc func imageTapped() {
@@ -79,27 +122,12 @@ class SignUpViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
-    func setupDependencies() {
-        viewModel = SignUpViewModel(view: self)
-        router = SignUpRouter(viewController: self)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "UnwindRegister"{
-            if let destination = segue.destination as? ChatsViewController {
-                destination.viewModel.downloadChats()
-            }
-        }
-    }
-    
     @IBAction func signUpTap(_ sender: UIButton) {
         guard let email = emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
         guard let pass = passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
         guard let name = nameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
         guard let nick = nickTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
         
-        emailTextField.resignFirstResponder()
-        passwordTextField.resignFirstResponder()
         
         if ((!name.isValidName()) || (!nick.isValidName())) {
             alertErrorName(errorMessage: "Invalid name.")

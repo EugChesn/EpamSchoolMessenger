@@ -16,12 +16,16 @@ class Utilities {
     static let maxLenText = 20
     
     static func styleTextField(_ textfield: UITextField) {
-        let bottomLine = CALayer()
-        bottomLine.frame = CGRect(x: 0, y: textfield.frame.height - 2, width: textfield.frame.width, height: 2)
-        bottomLine.backgroundColor = UIColor .systemBlue.cgColor
-        
         textfield.borderStyle = .none
-        textfield.layer.addSublayer(bottomLine)
+        let border = CALayer()
+        let width = CGFloat(1.0)
+        border.borderColor = UIColor.blue.cgColor
+        border.frame = CGRect(x: 0, y: textfield.frame.size.height - width,
+                              width:  textfield.frame.size.width, height: textfield.frame.size.height)
+        border.borderWidth = width
+        
+        textfield.layer.masksToBounds = true
+        textfield.layer.addSublayer(border)
     }
     static func styleButton(_ button: UIButton) {
         button.backgroundColor = UIColor .systemBlue

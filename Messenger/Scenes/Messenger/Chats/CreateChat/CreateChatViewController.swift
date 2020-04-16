@@ -11,6 +11,7 @@ import UIKit
 
 protocol CreateChatDelegate: class {
     func updateContactsList()
+    func updateSearch()
 }
 
 class CreateChatViewController: UIViewController {
@@ -36,15 +37,18 @@ class CreateChatViewController: UIViewController {
     }
     
     func setupUI() {
-        let searchController = UISearchController(searchResultsController: nil)
-        searchController.searchBar.delegate = self
-        
-        creatChatNavigationItem.searchController = searchController
-        creatChatNavigationItem.title = "test"
-        
+        creatChatNavigationItem.title = "New Message"
         contactListTableView.delegate = self
         contactListTableView.dataSource = self
         contactListTableView.register(cellType: ChatCell.self)
+        
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        navigationItem.hidesSearchBarWhenScrolling = true
+        navigationItem.searchController = searchController
+        creatChatNavigationItem.searchController = searchController
     }
     
     @IBAction func cancelCreate(_ sender: Any) {
@@ -56,6 +60,12 @@ extension CreateChatViewController: CreateChatDelegate {
     func updateContactsList() {
         DispatchQueue.main.async {
             self.contactListTableView.reloadData()
+        }
+    }
+    
+    func updateSearch() {
+        DispatchQueue.main.async {
+            self.contactListTableView.reloadSections(IndexSet(integer: 0), with: .automatic)
         }
     }
 }

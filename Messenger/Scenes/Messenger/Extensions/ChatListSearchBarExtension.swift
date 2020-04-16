@@ -15,3 +15,10 @@ extension ChatsViewController: UISearchResultsUpdating {
         viewModel.handlerSearch(searchText: search)
     }
 }
+
+extension CreateChatViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let search = searchController.searchBar.text else { return }
+        viewModel?.handlerSearch(searchText: search)
+    }
+}
