@@ -17,7 +17,7 @@ class ProfileViewModel: ProfileViewModeling {
     weak var view: ProfileDelegate?
     
     private var data = Contact()
-    var contact:Contact {
+    var contact: Contact {
         return data
     }
     

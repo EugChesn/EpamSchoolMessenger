@@ -54,14 +54,7 @@ class ProfileViewController: UITableViewController {
         nickNameTextField.delegate = self
         LogOutButton.setTitle(Constant.exit, for: .normal)
         //MARK: Profile Image
-        if profileImage != nil {
-            profileImage.roundWithBorder()
-            let url = viewModel?.contact.profileImageUrl
-            if let urlPhoto = url {
-                let reference = StorageService.shared.getReference(url: urlPhoto)
-                profileImage.sd_setImage(with: reference, placeholderImage: placeHolderImage)
-            }
-        }
+        profileImage.roundWithBorder()
         //MARK: TextField
         nameTextField.styleTextField(placeholder: Constant.name)
         nickNameTextField.styleTextField(placeholder: Constant.nickName)
@@ -132,6 +125,11 @@ extension ProfileViewController: ProfileDelegate {
         DispatchQueue.main.async {
             self.nameTextField.text = user.name
             self.nickNameTextField.text = user.nickname
+            let url = user.profileImageUrl
+            if let urlPhoto = url {
+                let reference = StorageService.shared.getReference(url: urlPhoto)
+                self.profileImage.sd_setImage(with: reference, placeholderImage: self.placeHolderImage)
+            }
         }
     }
 }
