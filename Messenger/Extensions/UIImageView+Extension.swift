@@ -1,5 +1,5 @@
 //
-//  UIImageView+Extention.swift
+//  UIImageView+Extension.swift
 //  Messenger
 //
 //  Created by Анастасия Демидова on 15.04.2020.
@@ -10,8 +10,8 @@ import UIKit
 
 extension UIImageView {
     func roundWithBorder() {
-        self.layer.borderWidth = 2
-        self.layer.borderColor = UIColor.systemBlue.cgColor
-        self.layer.cornerRadius = self.frame.size.width/2
+        layer.borderWidth = 2
+        layer.borderColor = UIColor.systemBlue.cgColor
+        layer.cornerRadius = frame.size.width/2
     }
 }

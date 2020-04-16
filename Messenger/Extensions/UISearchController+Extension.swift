@@ -1,5 +1,5 @@
 //
-//  UISearchController+Extention.swift
+//  UISearchController+Extension.swift
 //  Messenger
 //
 //  Created by Анастасия Демидова on 15.04.2020.
