@@ -9,9 +9,11 @@
 import Foundation
 
 protocol ProfileRoutering {
-    
+    func routeSettings()
 }
 
 class ProfileRouter: BaseRouter, ProfileRoutering {
-
+    func routeSettings() {
+        viewController?.navigationController?.popViewController(animated: true)
+    }
 }

@@ -11,6 +11,7 @@ import UIKit
 
 protocol SettingsDelegate: class {
     func openProfile()
+    func updateProfile(user:Contact)
 }
 
 class SettingsViewController: UITableViewController {
@@ -28,6 +29,7 @@ class SettingsViewController: UITableViewController {
     var viewModel: SettingsViewModeling?
     var router: SettingsRouting?
     private let searchController = UISearchController(searchResultsController: nil)
+    private let placeHolderImage = UIImage(named: "profile")
     private let settingCellId = "SettingCell"
     private let generalCellId = "General"
     private let infoCellId = "Info"
@@ -47,7 +49,7 @@ class SettingsViewController: UITableViewController {
         settingNavigationItem()
         self.registerTableViewCells()
         //MARK: SearchBar
-        Decor.searchBar(searchController, placeholder: Constant.search)
+        searchController.searchBarStyle(placeholder: Constant.search)
         searchController.searchResultsUpdater = self
         definesPresentationContext = true
         
@@ -91,6 +93,16 @@ class SettingsViewController: UITableViewController {
         switch (indexPath.section) {
         case 0:
             guard let customCell = tableView.dequeueReusableCell(withIdentifier: settingCellId, for: indexPath) as? ProfileTableViewCell else { return UITableViewCell() }
+           
+            customCell.nameLabel.text = viewModel?.contact.name
+            customCell.emailLabel.text = viewModel?.contact.email
+            
+            let url = viewModel?.contact.profileImageUrl
+            if let urlPhoto = url {
+                let reference = StorageService.shared.getReference(url: urlPhoto)
+                customCell.profileImage.sd_setImage(with: reference, placeholderImage: placeHolderImage)
+            }
+            
             cell = customCell
         case 1:
             cell = tableView.dequeueReusableCell(withIdentifier: generalCellId, for: indexPath)
@@ -107,7 +119,8 @@ class SettingsViewController: UITableViewController {
         default:
             fatalError("NoCell")
         }
-        Decor.styleCell(cell)
+        
+        cell.accessoryType = .disclosureIndicator
         return cell
     }
     
@@ -127,5 +140,11 @@ extension SettingsViewController: UISearchResultsUpdating {
 extension SettingsViewController: SettingsDelegate {
     func openProfile() {
         router?.routeProfile(withIdentifier: "goToProfile", sender: self)
+    }
+    
+    func updateProfile(user:Contact) {
+        DispatchQueue.main.async {
+            self.settingTableView.reloadSections(IndexSet(integer: 0), with: .automatic)
+        }
     }
 }

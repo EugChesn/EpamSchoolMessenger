@@ -10,12 +10,14 @@ import Foundation
 import UIKit
 
 struct Contact: Codable {
+    var email: String?
     var name: String?
     var nickname: String?
     var uid: String?
     var profileImageUrl: String?
     
     enum CodingKeys: String, CodingKey {
+        case email = "email"
         case name = "name"
         case nickname = "nickname"
         case uid = "uid"

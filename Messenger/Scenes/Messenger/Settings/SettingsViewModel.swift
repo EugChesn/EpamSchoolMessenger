@@ -10,16 +10,33 @@ import Foundation
 
 protocol SettingsViewModeling {
     func editProfile()
+    var contact: Contact { get }
 }
 
 class SettingsViewModel: SettingsViewModeling {
     weak var view: SettingsDelegate?
     
+    private var data = Contact()
+    var contact: Contact {
+        return data
+    }
+    
     init(view: SettingsDelegate) {
         self.view = view
+        getDataProfileSettings()
     }
     
     func editProfile() {
         self.view?.openProfile()
+    }
+    
+    private func getDataProfileSettings() {
+        FirebaseService.firebaseService.getUserData() { [weak self] (user) in
+            guard let self = self else { return }
+            guard let current = user else { return }
+            
+            self.data = current
+            self.view?.updateProfile(user: current)
+        }
     }
 }

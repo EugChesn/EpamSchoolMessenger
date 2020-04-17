@@ -9,14 +9,14 @@
 import UIKit
 
 class ProfileTableViewCell: UITableViewCell {
-    @IBOutlet private weak var profileImage: UIImageView!
-    @IBOutlet private weak var nameLabel: UILabel!
-    @IBOutlet private weak var emailLabel: UILabel!
+    @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         if profileImage != nil {
-            Decor.styleImageView(profileImage)
+            profileImage.roundWithBorder()
         }
     }
 }

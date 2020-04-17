@@ -17,7 +17,7 @@ protocol SignInViewModeling {
 
 class SignInViewModel: SignInViewModeling {
     weak var view: SignInDelegate?
-    
+        
     init(view: SignInDelegate) {
         self.view = view
     }

@@ -20,7 +20,8 @@ class FirebaseService {
         referenceDataBase = Database.database().reference() // ссылка на бд
         referenceUser = referenceDataBase.child("users")
     }
-    func getCurrentUser() -> User? { //получить текущего залогиненого пользователя
+    
+    var currentUser: User? { //получить текущего залогиненого пользователя
         return Auth.auth().currentUser
     }
     // обновить данные в бд
@@ -34,9 +35,9 @@ class FirebaseService {
     func writeNewUser(user:  User) { // добавить нового юзера в бд
         referenceUser.child(user.uid).setValue(["email": user.email])
     }
-
+    
     func updateProfileInfo(name: String, nickName: String, photo: URL) {
-        let currUser = self.getCurrentUser()
+        let currUser = self.currentUser
         let changeRequest = currUser!.createProfileChangeRequest()
         changeRequest.displayName = name
         changeRequest.photoURL = photo
@@ -46,6 +47,16 @@ class FirebaseService {
             } else {
                 let update = ["name": name,"nickname": nickName,"photoUrl": photo.absoluteString]
                 self.writeNewDataProfile(update: update)
+            }
+        }
+    }
+    
+    func getUserData(completion: @escaping (Contact?) -> ()) {
+        if let uid = currentUser?.uid {
+            let referenseDB = referenceDataBase.child("users").child(uid)
+            referenseDB.observe(.value) { (snapshot) in
+                guard let user = SnapshotDecoder.decode(type: Contact.self, snapshot: snapshot.value) else { return }
+                completion(user)
             }
         }
     }
@@ -60,4 +71,3 @@ class FirebaseService {
         firebasObservers[observer] = id
     }
 }
-

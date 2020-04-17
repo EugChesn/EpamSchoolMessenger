@@ -26,4 +26,3 @@ class SignUpViewModel: SignUpViewModeling {
                                                    fault: {(error) in self.view?.faultCreateUser(err: error)})
     }
 }
-

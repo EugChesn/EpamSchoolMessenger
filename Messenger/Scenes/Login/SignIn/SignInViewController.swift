@@ -110,7 +110,7 @@ extension SignInViewController: SignInDelegate {
     }
   
     func successLogin() {
-        //print(FirebaseService.firebaseService.getCurrentUser()?.photoURL)
+        //print(FirebaseService.firebaseService.currentUser?.photoURL)
         
         router?.routeToMessage(withIdentifier: "unwindLogin" , sender: self)
         //performSegue(withIdentifier: "unwindLogin", sender: self)

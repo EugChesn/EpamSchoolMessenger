@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 protocol ProfileDelegate: class {
-    
+    func updateProfile(user:Contact)
 }
 
 class ProfileViewController: UITableViewController {
@@ -22,6 +22,7 @@ class ProfileViewController: UITableViewController {
     @IBOutlet private weak var birthdayTextField: UITextField!
     
     let datePicker = UIDatePicker()
+    let placeHolderImage = UIImage(named: "profile")
     
     var viewModel: ProfileViewModeling?
     var router: ProfileRoutering?
@@ -35,16 +36,32 @@ class ProfileViewController: UITableViewController {
         static let birthday = "Birthday"
     }
     
+    @IBAction func doneButton(_ sender: Any) {
+        guard let name = nameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
+        guard let nickname = nickNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
+        
+        if !name.isEmpty && !nickname.isEmpty {
+            if viewModel?.userName != name || viewModel?.userNickname != nickname {
+                let update = ["name": name, "nickname": nickname]
+                self.viewModel?.updateDataProfile(update: update)
+                self.viewModel?.updateUserDefaults(name, nickname)
+            }
+        }
+        router?.routeSettings()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         settingNavigationItem()
+        nameTextField.delegate = self
+        nickNameTextField.delegate = self
         LogOutButton.setTitle(Constant.exit, for: .normal)
         //MARK: Profile Image
-        Decor.styleImageView(profileImage)
+        profileImage.roundWithBorder()
         //MARK: TextField
-        Decor.styleTextField(nameTextField, placeholder: Constant.name)
-        Decor.styleTextField(nickNameTextField, placeholder: Constant.nickName)
-        Decor.styleTextField(birthdayTextField, placeholder: Constant.birthday)
+        nameTextField.styleTextField(placeholder: Constant.name)
+        nickNameTextField.styleTextField(placeholder: Constant.nickName)
+        birthdayTextField.styleTextField(placeholder: Constant.birthday)
         //MARK: DatePicker
         createDatePicker()
         
@@ -67,7 +84,7 @@ class ProfileViewController: UITableViewController {
         datePicker.maximumDate = Date()
         datePicker.datePickerMode = .date
         birthdayTextField.inputView = datePicker
-                
+        
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
         let doneButton = UIBarButtonItem(title: Constant.doneButton, style: .plain, target: self, action: #selector(doneAction))
@@ -93,6 +110,29 @@ class ProfileViewController: UITableViewController {
     }
 }
 
+extension ProfileViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == nameTextField {
+            textField.resignFirstResponder()
+            nickNameTextField.becomeFirstResponder()
+        } else if textField == nickNameTextField {
+            textField.resignFirstResponder()
+            birthdayTextField.becomeFirstResponder()
+        }
+        return true
+    }
+}
+
 extension ProfileViewController: ProfileDelegate {
-    
+    func updateProfile(user:Contact) {
+        DispatchQueue.main.async {
+            self.nameTextField.text = user.name
+            self.nickNameTextField.text = user.nickname
+            let url = user.profileImageUrl
+            if let urlPhoto = url {
+                let reference = StorageService.shared.getReference(url: urlPhoto)
+                self.profileImage.sd_setImage(with: reference, placeholderImage: self.placeHolderImage)
+            }
+        }
+    }
 }

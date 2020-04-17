@@ -19,7 +19,7 @@ extension FirebaseService: ChatsObserver {
     
     //Скачивание всех существующих чатов
     func downloadChats(completion: @escaping ([ChatInfo]) -> ()) {
-        guard let uid = getCurrentUser()?.uid else {return}
+        guard let uid = currentUser?.uid else {return}
         
         let chatsReference = referenceDataBase.child("chats").child(uid)
         
@@ -56,7 +56,7 @@ extension FirebaseService: ChatsObserver {
     
     //Добавление листнера на добавление новых чатов или обновление чатов
     func observeChats(completion: @escaping (ChatInfo) -> ()) {
-        guard let uid = getCurrentUser()?.uid else {return}
+        guard let uid = currentUser?.uid else {return}
         
         let chatsReference = referenceDataBase.child("chats").child(uid)
         
