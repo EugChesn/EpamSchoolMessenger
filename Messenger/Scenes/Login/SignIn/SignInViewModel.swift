@@ -17,9 +17,7 @@ protocol SignInViewModeling {
 
 class SignInViewModel: SignInViewModeling {
     weak var view: SignInDelegate?
-    
-    private var data = Contact()
-    
+        
     init(view: SignInDelegate) {
         self.view = view
     }
