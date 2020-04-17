@@ -27,8 +27,10 @@ extension ChatsViewController: UITableViewDelegate, UITableViewDataSource {
             cell.nameChat.text = chat.contact.name
             cell.lastMessage.text = chat.lastMessage
             
-            let dateMessage = Date.timeMessageToString(chat.timeSpan!)
-            cell.timeMessage.text = dateMessage?.getTimeMessage()
+            if let timeSpan = chat.timeSpan {
+                let dateMessage = Date.timeMessageToString(timeSpan)
+                cell.timeMessage.text = dateMessage?.getTimeMessage()
+            }
             
             if let url = chat.contact.profileImageUrl {
                 let reference = StorageService.shared.getReference(url: url)

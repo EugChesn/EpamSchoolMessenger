@@ -27,9 +27,9 @@ extension Date {
         else { return nil }
     }
     
-    func formatingDate(style: DateFormatter.Style, format: String) -> String {
+    func formatingDate(localIdentifier: String, style: DateFormatter.Style, format: String) -> String {
         let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "ru_RU")
+        formatter.locale = Locale(identifier: localIdentifier)
         formatter.timeStyle = style
         formatter.dateFormat = format
         let dateResult = formatter.string(from: self)
@@ -49,37 +49,41 @@ extension Date {
         let currentComponentsDate = myCalendar.dateComponents([.year, .month, .day], from: currentDate)
         
         var resultDateStr: String!
-        if currentComponentsDate.year == componentsDate.year &&
-            currentComponentsDate.month == componentsDate.month {
+        if (currentComponentsDate.year == componentsDate.year &&
+            currentComponentsDate.month == componentsDate.month) {
             
             if let curDay = currentComponentsDate.day, let day = componentsDate.day {
+                
                 if curDay == day  {
-                    return self.formatingDate(style: .short, format: "HH:mm")
+                    return self.formatingDate(localIdentifier: "ru_RU", style: .short, format: "HH:mm")
                 } else if abs(curDay - day) > 7 {
-                    return self.formatingDate(style: .short, format: "dd:MM")
+                    return self.formatingDate(localIdentifier: "ru_RU", style: .short, format: "dd:MM")
                 } else {
                     if let weekDay = weekDay {
                         switch weekDay {
-                        case DaysWeek.Monday.rawValue:
-                            resultDateStr = "Monday"
-                        case DaysWeek.Thursday.rawValue:
-                            resultDateStr =  "Thursday"
-                        case DaysWeek.Wednesday.rawValue:
-                            resultDateStr =  "Wednesday"
-                        case DaysWeek.Tuesday.rawValue:
-                            resultDateStr =  "Tuesday"
-                        case DaysWeek.Friday.rawValue:
-                            resultDateStr =  "Friday"
-                        case DaysWeek.Saturday.rawValue:
-                            resultDateStr =  "Saturday"
                         case DaysWeek.Sunday.rawValue:
-                            resultDateStr =  "Sunday"
+                            resultDateStr =  "Su"
+                        case DaysWeek.Monday.rawValue:
+                            resultDateStr = "Mo"
+                        case DaysWeek.Tuesday.rawValue:
+                            resultDateStr =  "Tu"
+                        case DaysWeek.Wednesday.rawValue:
+                            resultDateStr =  "We"
+                        case DaysWeek.Thursday.rawValue:
+                            resultDateStr =  "Th"
+                        case DaysWeek.Friday.rawValue:
+                            resultDateStr =  "Fr"
+                        case DaysWeek.Saturday.rawValue:
+                            resultDateStr =  "Sa"
                         default:
                             print("error range day")
                         }
                     }
                 }
+                
             }
+        } else if (currentComponentsDate.year != componentsDate.year) {
+            return self.formatingDate(localIdentifier: "ru_RU", style: .long, format: "yyyy/dd/MMM")
         }
         return resultDateStr
     }
