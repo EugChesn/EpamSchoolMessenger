@@ -20,19 +20,20 @@ extension ChatsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
+        
         let cell = tableView.dequeueReusableCell(with: ChatTableViewCell.self, for: indexPath)
         if viewModel.chatsCount != 0 {
             let chat = viewModel.getChat(atIndex: indexPath.row)
             cell.nameChat.text = chat.contact.name
             cell.lastMessage.text = chat.lastMessage
             
-        
+            let dateMessage = Date.timeMessageToString(chat.timeSpan!)
+            cell.timeMessage.text = dateMessage?.getTimeMessage()
+            
             if let url = chat.contact.profileImageUrl {
                 let reference = StorageService.shared.getReference(url: url)
                 cell.photo.sd_setImage(with: reference, placeholderImage: placeHolderImage)
             }
-                
             
         }
         return cell

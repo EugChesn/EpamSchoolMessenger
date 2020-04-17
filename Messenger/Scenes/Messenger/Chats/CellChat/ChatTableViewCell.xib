@@ -3,7 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,13 +18,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DbF-1L-Edc">
-                        <rect key="frame" x="70" y="18" width="45" height="21"/>
+                        <rect key="frame" x="70" y="15" width="45" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GHj-V6-4kI">
-                        <rect key="frame" x="70" y="43" width="25" height="15"/>
+                        <rect key="frame" x="70" y="40" width="25" height="15"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -36,14 +36,22 @@
                             <constraint firstAttribute="height" constant="50" id="xVC-M6-1Ad"/>
                         </constraints>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A2N-Pd-zu2">
+                        <rect key="frame" x="276" y="15" width="29" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="DbF-1L-Edc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="70" id="25c-ZQ-Y8e"/>
-                    <constraint firstItem="DbF-1L-Edc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="18" id="6To-M4-zkI"/>
                     <constraint firstItem="GHj-V6-4kI" firstAttribute="top" secondItem="DbF-1L-Edc" secondAttribute="bottom" constant="4" id="B2e-ec-AC5"/>
+                    <constraint firstItem="A2N-Pd-zu2" firstAttribute="top" secondItem="DbF-1L-Edc" secondAttribute="top" id="KMr-gS-1vU"/>
+                    <constraint firstAttribute="trailing" secondItem="A2N-Pd-zu2" secondAttribute="trailing" constant="15" id="SNE-7f-IV9"/>
                     <constraint firstItem="GHj-V6-4kI" firstAttribute="leading" secondItem="DbF-1L-Edc" secondAttribute="leading" id="Ywp-DX-aOe"/>
                     <constraint firstItem="X18-C2-JdT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="o9x-ST-1fD"/>
                     <constraint firstItem="X18-C2-JdT" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="qBM-2G-Mph"/>
+                    <constraint firstItem="DbF-1L-Edc" firstAttribute="top" secondItem="X18-C2-JdT" secondAttribute="top" id="vma-2g-ek9"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -51,6 +59,7 @@
                 <outlet property="lastMessage" destination="GHj-V6-4kI" id="cZU-Sv-iyD"/>
                 <outlet property="nameChat" destination="DbF-1L-Edc" id="ilz-bR-Ggr"/>
                 <outlet property="photo" destination="X18-C2-JdT" id="dQj-il-BHy"/>
+                <outlet property="timeMessage" destination="A2N-Pd-zu2" id="iFD-Ur-yc5"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="67.633928571428569"/>
         </tableViewCell>
