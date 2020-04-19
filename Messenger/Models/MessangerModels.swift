@@ -53,10 +53,18 @@ struct MessageModel: Codable {
     }
 }
 
-struct ChatInfo: Codable {
+struct ChatInfo: Codable, Equatable {
     var lastMessage: String?
     var timeSpan: String?
     var contact: Contact!
+    
+    static func == (lhs: Self, rhs: Self) -> Bool {
+        if lhs.contact?.name == rhs.contact.name {
+            return true
+        } else {
+            return false
+        }
+    }
 }
 
 enum StateUser {

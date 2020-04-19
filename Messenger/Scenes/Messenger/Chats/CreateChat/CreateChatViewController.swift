@@ -11,6 +11,7 @@ import UIKit
 
 protocol CreateChatDelegate: class {
     func updateContactsList()
+    func updateSearch()
 }
 
 class CreateChatViewController: UIViewController {
@@ -36,15 +37,18 @@ class CreateChatViewController: UIViewController {
     }
     
     func setupUI() {
-        let searchController = UISearchController(searchResultsController: nil)
-        searchController.searchBar.delegate = self
-        
-        creatChatNavigationItem.searchController = searchController
-        creatChatNavigationItem.title = "test"
-        
+        creatChatNavigationItem.title = "New Message"
         contactListTableView.delegate = self
         contactListTableView.dataSource = self
-        contactListTableView.register(cellType: ChatTableViewCell.self)
+        contactListTableView.register(cellType: ChatCell.self)
+        
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        navigationItem.hidesSearchBarWhenScrolling = true
+        navigationItem.searchController = searchController
+        creatChatNavigationItem.searchController = searchController
     }
     
     @IBAction func cancelCreate(_ sender: Any) {
@@ -56,6 +60,12 @@ extension CreateChatViewController: CreateChatDelegate {
     func updateContactsList() {
         DispatchQueue.main.async {
             self.contactListTableView.reloadData()
+        }
+    }
+    
+    func updateSearch() {
+        DispatchQueue.main.async {
+            self.contactListTableView.reloadSections(IndexSet(integer: 0), with: .automatic)
         }
     }
 }
@@ -74,10 +84,10 @@ extension CreateChatViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(with: ChatTableViewCell.self, for: indexPath)
+        let cell = tableView.dequeueReusableCell(with: ChatCell.self, for: indexPath)
         let contact = viewModel?.contact(atIndex: indexPath.row)
-        cell.nameChat.text = contact?.name
+        cell.nameChat.text = contact?.name ?? "Unnamed"
+        
         let url = contact?.profileImageUrl
         if let urlPhoto = url {
             let reference = StorageService.shared.getReference(url: urlPhoto)

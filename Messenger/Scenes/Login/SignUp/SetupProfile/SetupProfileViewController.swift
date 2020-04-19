@@ -50,6 +50,8 @@ class SetupProfileViewController: UIViewController {
         guard let nick = nicknameTextField.text else {return}
         guard let photo = photoNewUserImageView.image else {return}
         viewModel?.setupProfileUser(name: name, nickname: nick, photo: photo)
+        let activity = ManagerActivityIndicator.styleActivity(message: "Profile creating..", type: .ballClipRotate)
+        ManagerActivityIndicator.startAnimating(activity: activity)
     }
     
     func setupDependencies() {
@@ -92,6 +94,7 @@ extension SetupProfileViewController: UITextFieldDelegate {
 
 extension SetupProfileViewController: SetupProfileDelegate {
     func profileSucces() {
+        ManagerActivityIndicator.stopAnimating()
         router?.routeToChat(withIdentifier: "UnwindRegister", sender: self)
     }
 }

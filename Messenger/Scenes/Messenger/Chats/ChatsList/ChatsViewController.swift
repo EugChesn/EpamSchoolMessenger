@@ -14,6 +14,8 @@ protocol ChatsDelegate: class {
     func openChat()
     func setLoginFlow()
     func insertChat(removeIndex: Int?)
+
+    func updateSearch()
 }
 
 protocol NewChatOpenerDelegate: class {
@@ -23,11 +25,13 @@ protocol NewChatOpenerDelegate: class {
 
 class ChatsViewController: UIViewController {
     var viewModel: ChatsViewModeling!
+
     var router: ChatsRouting?
     
     @IBOutlet weak var chatsTableView: UITableView!
     let heightRow: CGFloat = 70
     let placeHolderImage = UIImage(named: "profile")
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,15 +55,28 @@ class ChatsViewController: UIViewController {
         router = ChatsRouter(viewController: self)
     }
     
+    
     func setupUI() {
         chatsTableView.delegate = self
         chatsTableView.dataSource = self
         chatsTableView.register(cellType: ChatTableViewCell.self)
+        chatsTableView.keyboardDismissMode = .onDrag
         
-        let searchConroller = UISearchController(searchResultsController: nil)
-        searchConroller.searchBar.delegate = self
+        //Fix bar with search bar
+        /*let appearance = UINavigationBarAppearance()
+        appearance.backgroundColor = .systemBackground
+        appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
+        navigationItem.standardAppearance = appearance
+        navigationItem.scrollEdgeAppearance = appearance*/
+        //
         
-        navigationItem.searchController = searchConroller
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        navigationItem.hidesSearchBarWhenScrolling = true
+        navigationItem.searchController = searchController
+        
         navigationItem.title = "Chats"
     }
     
@@ -73,7 +90,7 @@ class ChatsViewController: UIViewController {
         }
         if segue.identifier == "dialog" {
             if let destination = segue.destination as? DialogViewController {
-                    destination.chatInfo = viewModel.selectedChat
+                destination.chatInfo = viewModel.selectedChat
             }
         }
     }
@@ -94,6 +111,12 @@ class ChatsViewController: UIViewController {
 }
 
 extension ChatsViewController: ChatsDelegate {
+    func updateSearch() {
+        DispatchQueue.main.async {
+            self.chatsTableView.reloadSections(IndexSet(integer: 0), with: .automatic)
+        }
+    }
+    
     func updateChats() {
         DispatchQueue.main.async {
             self.chatsTableView.reloadData()

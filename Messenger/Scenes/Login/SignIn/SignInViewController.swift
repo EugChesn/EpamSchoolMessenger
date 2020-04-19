@@ -48,6 +48,8 @@ class SignInViewController: UIViewController {
             alertError(errorCode: .weakPassword)
         } else {
             viewModel?.signInHandler(email: email, pass: pass)
+            let activity = ManagerActivityIndicator.styleActivity(message: "Login..", type: .ballClipRotate)
+            ManagerActivityIndicator.startAnimating(activity: activity)
         }
     }
     
@@ -92,6 +94,7 @@ extension SignInViewController: UITextFieldDelegate {
 
 extension SignInViewController: SignInDelegate {
     func errorLogin(error: Error) {
+        ManagerActivityIndicator.stopAnimating()
         if let errorCode = AuthErrorCode(rawValue: error._code) {
             print(errorCode.errorMessage)
             let alert = UIAlertController(title: "Error", message: errorCode.errorMessage, preferredStyle: .alert)
@@ -110,9 +113,8 @@ extension SignInViewController: SignInDelegate {
     }
   
     func successLogin() {
-        //print(FirebaseService.firebaseService.currentUser?.photoURL)
-        
+        ManagerActivityIndicator.stopAnimating()
         router?.routeToMessage(withIdentifier: "unwindLogin" , sender: self)
-        //performSegue(withIdentifier: "unwindLogin", sender: self)
     }
 }
+

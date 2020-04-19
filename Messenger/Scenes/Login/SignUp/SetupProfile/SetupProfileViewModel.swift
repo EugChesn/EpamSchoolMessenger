@@ -21,8 +21,8 @@ class SetupProfileViewModel: SetupProfileViewModeling {
     }
     
     func setupProfileUser(name: String, nickname: String, photo: UIImage) {
-        FirebaseService.firebaseService.setProfileUser(name: name, nickName: nickname, photo: photo) {
+        /*FirebaseService.firebaseService.setProfileUser(name: name, nickName: nickname, photo: photo) {
             self.view?.profileSucces()
-        }
+        }*/
     }
 }

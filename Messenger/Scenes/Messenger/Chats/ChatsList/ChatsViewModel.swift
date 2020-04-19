@@ -20,6 +20,8 @@ protocol ChatsViewModeling: class {
     
     func subscribeStateUser()
     func unsubscribeStateUser()
+    
+    func handlerSearch(searchText: String)
 }
 
 protocol ChatInfoGetterDelegate: class {
@@ -33,11 +35,14 @@ class ChatsViewModel: ChatsViewModeling {
     
     let firebaseObserver: ChatsObserver = FirebaseService.firebaseService
     
+    private var filteredChatsList: [ChatInfo] = []
     private var chatsList: [ChatInfo] = []
     
     private var chat: ChatInfo? {
         didSet {
-            view?.openChat()
+            DispatchQueue.main.async {
+                self.view?.openChat()
+            }
         }
     }
     
@@ -65,12 +70,12 @@ class ChatsViewModel: ChatsViewModeling {
     
     var chatsCount: Int {
         get {
-            return chatsList.count
+            return filteredChatsList.count
         }
     }
     
     func getChat(atIndex: Int) -> ChatInfo {
-        return chatsList[atIndex]
+        return filteredChatsList[atIndex]
     }
     
     deinit {
@@ -112,6 +117,7 @@ class ChatsViewModel: ChatsViewModeling {
             guard let strongSelf = self else {return}
             
             strongSelf.chatsList = chatsList.sorted(by: {$0.timeSpan ?? "" > $1.timeSpan ?? ""})
+            strongSelf.filteredChatsList = strongSelf.chatsList
             strongSelf.view?.updateChats()
         }
         
@@ -122,13 +128,29 @@ class ChatsViewModel: ChatsViewModeling {
             }
 
             if let index = index {
+                strongSelf.filteredChatsList.remove(at: index)
                 strongSelf.chatsList.remove(at: index)
             }
             
+            strongSelf.filteredChatsList.insert(newChat, at: 0)
             strongSelf.chatsList.insert(newChat, at: 0)
+            
             strongSelf.view?.insertChat(removeIndex: index)
         }
     }
+    
+    func handlerSearch(searchText: String) {
+        let valueFilter = chatsList.filter {
+            if let name = $0.contact.name {
+                if name.hasPrefix(searchText) {
+                    return true
+                }
+            }
+            return false
+        }
+        
+        filteredChatsList = valueFilter
+        view?.updateSearch()
+    }
 }
-
 

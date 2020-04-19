@@ -1,19 +1,16 @@
 //
-//  ChatTableViewCell.swift
+//  ChatCell.swift
 //  Messenger
 //
-//  Created by Евгений on 07.04.2020.
+//  Created by Евгений on 13.04.2020.
 //  Copyright © 2020 Anastasia Demidova. All rights reserved.
 //
 
 import UIKit
 
-class ChatTableViewCell: UITableViewCell {
-    
-    @IBOutlet weak var nameChat: UILabel!
-    @IBOutlet weak var lastMessage: UILabel!
+class ChatCell: UITableViewCell {
     @IBOutlet weak var photo: UIImageView!
-    @IBOutlet weak var timeMessage: UILabel!
+    @IBOutlet weak var nameChat: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -21,7 +18,7 @@ class ChatTableViewCell: UITableViewCell {
         photo.contentMode = .scaleAspectFill
         photo.layer.masksToBounds = true
     }
-
+    
     override func prepareForReuse() { // MARK Important change!
         super.prepareForReuse()
         self.photo.sd_cancelCurrentImageLoad()

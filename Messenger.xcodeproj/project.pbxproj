@@ -8,10 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		3E3185D1241C0381000FD0C2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3E3185D0241C0381000FD0C2 /* GoogleService-Info.plist */; };
+		3E50F191244634F900B34F8F /* ManagerActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E50F190244634F900B34F8F /* ManagerActivityIndicator.swift */; };
 		3E6BD3D3241FD70800CA6780 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6BD3D2241FD70800CA6780 /* FirebaseService.swift */; };
 		3E78E7132422218F0053DD1C /* ExtensionAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E78E7122422218F0053DD1C /* ExtensionAuth.swift */; };
 		3E78E71524222A700053DD1C /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E78E71424222A700053DD1C /* Utilities.swift */; };
 		3E7CBF44242A83E6002DAD3F /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E7CBF43242A83E6002DAD3F /* Media.xcassets */; };
+		3E871EEB2444B06400B00A7C /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E871EE92444B06400B00A7C /* ChatCell.swift */; };
+		3E871EEC2444B06400B00A7C /* ChatCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E871EEA2444B06400B00A7C /* ChatCell.xib */; };
 		3EA8B18E2434AA48001B4207 /* ExtensionsStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA8B18D2434AA48001B4207 /* ExtensionsStoryboard.swift */; };
 		3EBEC40F242A2A5600AF858C /* AuthFirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBEC40E242A2A5600AF858C /* AuthFirebaseService.swift */; };
 		3ECF658E243CA0530095A53C /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECF658C243CA0530095A53C /* ChatTableViewCell.swift */; };
@@ -46,7 +49,6 @@
 		AA1B5FC6241BF0DE0080443A /* SignInRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1B5FC5241BF0DE0080443A /* SignInRouter.swift */; };
 		AA1B5FC8241BF1C30080443A /* RegistrationCodeConfirmationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1B5FC7241BF1C30080443A /* RegistrationCodeConfirmationRouter.swift */; };
 		AA1B5FCA241BF1D00080443A /* CreatePasswordRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1B5FC9241BF1D00080443A /* CreatePasswordRouter.swift */; };
-		AA1B5FCC241BF1DE0080443A /* SetupProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1B5FCB241BF1DE0080443A /* SetupProfileRouter.swift */; };
 		AA1B5FCE241BF1F00080443A /* SignUpRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1B5FCD241BF1F00080443A /* SignUpRouter.swift */; };
 		AA1B5FD0241BF2010080443A /* GreetingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1B5FCF241BF2010080443A /* GreetingRouter.swift */; };
 		AA1B5FD2241BF20F0080443A /* PasswordRecoveryRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1B5FD1241BF20F0080443A /* PasswordRecoveryRouter.swift */; };
@@ -72,8 +74,6 @@
 		AAB3AEFA241B7FB700825F00 /* NewPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB3AEF9241B7FB700825F00 /* NewPasswordViewModel.swift */; };
 		AAB3AEFC241B7FCF00825F00 /* CodeConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB3AEFB241B7FCF00825F00 /* CodeConfirmationViewController.swift */; };
 		AAB3AEFE241B7FDC00825F00 /* CodeConfirmationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB3AEFD241B7FDC00825F00 /* CodeConfirmationViewModel.swift */; };
-		AAB3AF04241B840400825F00 /* SetupProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB3AF03241B840400825F00 /* SetupProfileViewController.swift */; };
-		AAB3AF06241B840D00825F00 /* SetupProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB3AF05241B840D00825F00 /* SetupProfileViewModel.swift */; };
 		AAB3AF08241B842100825F00 /* CreatePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB3AF07241B842100825F00 /* CreatePasswordViewController.swift */; };
 		AAB3AF0A241B842A00825F00 /* CreatePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB3AF09241B842A00825F00 /* CreatePasswordViewModel.swift */; };
 		AAB3AF0C241B843900825F00 /* RegistrationCodeConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB3AF0B241B843900825F00 /* RegistrationCodeConfirmationViewController.swift */; };
@@ -100,10 +100,13 @@
 /* Begin PBXFileReference section */
 		262A7F8CC6FE8C4DBCBB667B /* Pods_Messenger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Messenger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E3185D0241C0381000FD0C2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3E50F190244634F900B34F8F /* ManagerActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerActivityIndicator.swift; sourceTree = "<group>"; };
 		3E6BD3D2241FD70800CA6780 /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
 		3E78E7122422218F0053DD1C /* ExtensionAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionAuth.swift; sourceTree = "<group>"; };
 		3E78E71424222A700053DD1C /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		3E7CBF43242A83E6002DAD3F /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		3E871EE92444B06400B00A7C /* ChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
+		3E871EEA2444B06400B00A7C /* ChatCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatCell.xib; sourceTree = "<group>"; };
 		3EA8B18D2434AA48001B4207 /* ExtensionsStoryboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsStoryboard.swift; sourceTree = "<group>"; };
 		3EBEC40E242A2A5600AF858C /* AuthFirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFirebaseService.swift; sourceTree = "<group>"; };
 		3ECF658C243CA0530095A53C /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
@@ -140,7 +143,6 @@
 		AA1B5FC5241BF0DE0080443A /* SignInRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInRouter.swift; sourceTree = "<group>"; };
 		AA1B5FC7241BF1C30080443A /* RegistrationCodeConfirmationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationCodeConfirmationRouter.swift; sourceTree = "<group>"; };
 		AA1B5FC9241BF1D00080443A /* CreatePasswordRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePasswordRouter.swift; sourceTree = "<group>"; };
-		AA1B5FCB241BF1DE0080443A /* SetupProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupProfileRouter.swift; sourceTree = "<group>"; };
 		AA1B5FCD241BF1F00080443A /* SignUpRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRouter.swift; sourceTree = "<group>"; };
 		AA1B5FCF241BF2010080443A /* GreetingRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingRouter.swift; sourceTree = "<group>"; };
 		AA1B5FD1241BF20F0080443A /* PasswordRecoveryRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordRecoveryRouter.swift; sourceTree = "<group>"; };
@@ -166,8 +168,6 @@
 		AAB3AEF9241B7FB700825F00 /* NewPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPasswordViewModel.swift; sourceTree = "<group>"; };
 		AAB3AEFB241B7FCF00825F00 /* CodeConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeConfirmationViewController.swift; sourceTree = "<group>"; };
 		AAB3AEFD241B7FDC00825F00 /* CodeConfirmationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeConfirmationViewModel.swift; sourceTree = "<group>"; };
-		AAB3AF03241B840400825F00 /* SetupProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupProfileViewController.swift; sourceTree = "<group>"; };
-		AAB3AF05241B840D00825F00 /* SetupProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupProfileViewModel.swift; sourceTree = "<group>"; };
 		AAB3AF07241B842100825F00 /* CreatePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePasswordViewController.swift; sourceTree = "<group>"; };
 		AAB3AF09241B842A00825F00 /* CreatePasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePasswordViewModel.swift; sourceTree = "<group>"; };
 		AAB3AF0B241B843900825F00 /* RegistrationCodeConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationCodeConfirmationViewController.swift; sourceTree = "<group>"; };
@@ -251,6 +251,8 @@
 			children = (
 				3ECF658C243CA0530095A53C /* ChatTableViewCell.swift */,
 				3ECF658D243CA0530095A53C /* ChatTableViewCell.xib */,
+				3E871EE92444B06400B00A7C /* ChatCell.swift */,
+				3E871EEA2444B06400B00A7C /* ChatCell.xib */,
 			);
 			path = CellChat;
 			sourceTree = "<group>";
@@ -429,16 +431,6 @@
 			path = CreatePassword;
 			sourceTree = "<group>";
 		};
-		AAB3AF01241B83AA00825F00 /* SetupProfile */ = {
-			isa = PBXGroup;
-			children = (
-				AAB3AF03241B840400825F00 /* SetupProfileViewController.swift */,
-				AAB3AF05241B840D00825F00 /* SetupProfileViewModel.swift */,
-				AA1B5FCB241BF1DE0080443A /* SetupProfileRouter.swift */,
-			);
-			path = SetupProfile;
-			sourceTree = "<group>";
-		};
 		AAB3AF02241B83B400825F00 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
@@ -504,6 +496,7 @@
 			children = (
 				3E78E7122422218F0053DD1C /* ExtensionAuth.swift */,
 				3EE90AC6243DE219009E0759 /* ImagePicker.swift */,
+				3E50F190244634F900B34F8F /* ManagerActivityIndicator.swift */,
 				3E78E71624222A7E0053DD1C /* Utilities */,
 				AAF834AC2418FCC100FDF9D2 /* PasswordRecovery */,
 				AAF834AB2418FCA700FDF9D2 /* SignUp */,
@@ -527,7 +520,6 @@
 			isa = PBXGroup;
 			children = (
 				AAB3AF02241B83B400825F00 /* SignUp */,
-				AAB3AF01241B83AA00825F00 /* SetupProfile */,
 				AAB3AF00241B839600825F00 /* CreatePassword */,
 				AAB3AEFF241B837900825F00 /* RegistrationCodeConfirmation */,
 			);
@@ -682,6 +674,7 @@
 				3E3185D1241C0381000FD0C2 /* GoogleService-Info.plist in Resources */,
 				86CB7A7C2427DE0400995986 /* Settings.storyboard in Resources */,
 				867B2F842412586000B16B01 /* Assets.xcassets in Resources */,
+				3E871EEC2444B06400B00A7C /* ChatCell.xib in Resources */,
 				86BD2C29242C1E88000404A3 /* SettingsMedia.xcassets in Resources */,
 				3ECF658F243CA0530095A53C /* ChatTableViewCell.xib in Resources */,
 				3E7CBF44242A83E6002DAD3F /* Media.xcassets in Resources */,
@@ -791,13 +784,13 @@
 				3EE90AC3243DDCEA009E0759 /* TableViewRegister.swift in Sources */,
 				AA1B5FD2241BF20F0080443A /* PasswordRecoveryRouter.swift in Sources */,
 				AAF8351624193F7800FDF9D2 /* ContactsViewController.swift in Sources */,
+				3E50F191244634F900B34F8F /* ManagerActivityIndicator.swift in Sources */,
 				AAB3AEFE241B7FDC00825F00 /* CodeConfirmationViewModel.swift in Sources */,
 				8681658224472CD100D92626 /* ProfileTableViewCell.swift in Sources */,
 				AAB3AF0A241B842A00825F00 /* CreatePasswordViewModel.swift in Sources */,
 				AA1B40F72433615B00E1D452 /* DialogKeyBoardObserverExtension.swift in Sources */,
 				86CB7AAA242B6C2C00995986 /* ProfileRouter.swift in Sources */,
 				AA1B40F5243360F800E1D452 /* ChatListTableViewExtension.swift in Sources */,
-				AAB3AF06241B840D00825F00 /* SetupProfileViewModel.swift in Sources */,
 				AA57A48E243A1452001EE763 /* MessagesObserverExtensions.swift in Sources */,
 				AA1B5FC8241BF1C30080443A /* RegistrationCodeConfirmationRouter.swift in Sources */,
 				AA1B5FD0241BF2010080443A /* GreetingRouter.swift in Sources */,
@@ -805,20 +798,19 @@
 				AAF8351E24193F9E00FDF9D2 /* ChatsViewModel.swift in Sources */,
 				AA1B5FD8241BF2390080443A /* SettingsRouter.swift in Sources */,
 				AA1B5FDE241BF26E0080443A /* GreetingViewModel.swift in Sources */,
-				AAB3AF04241B840400825F00 /* SetupProfileViewController.swift in Sources */,
 				AA1B40EA2432AC5F00E1D452 /* MessangerModels.swift in Sources */,
 				AAF834F82419297500FDF9D2 /* SignInViewModel.swift in Sources */,
 				86816577244682A400D92626 /* UITextField+Extension.swift in Sources */,
 				86CB7AA6242B6BEF00995986 /* ProfileViewController.swift in Sources */,
 				AA487C4C241E563900337FBF /* DialogRouter.swift in Sources */,
 				AA1B40EF2433607200E1D452 /* DialogCollectionViewExtension.swift in Sources */,
+				3E871EEB2444B06400B00A7C /* ChatCell.swift in Sources */,
 				AAF834F02419258100FDF9D2 /* PasswordRecoveryViewController.swift in Sources */,
 				AAF8351024193F5200FDF9D2 /* SettingsViewController.swift in Sources */,
 				AA1B5FD4241BF21B0080443A /* NewPasswordRouter.swift in Sources */,
 				AAF194BF24310E1D00BB81BE /* MessageCollectionViewCell.swift in Sources */,
 				3EE90AC5243DDF2F009E0759 /* ClassNameExtension.swift in Sources */,
 				AA1B40F3243360EB00E1D452 /* ChatListSearchBarExtension.swift in Sources */,
-				AA1B5FCC241BF1DE0080443A /* SetupProfileRouter.swift in Sources */,
 				867B2F7B2412585C00B16B01 /* AppDelegate.swift in Sources */,
 				AAB3AEFA241B7FB700825F00 /* NewPasswordViewModel.swift in Sources */,
 				AAF834E1241920B200FDF9D2 /* GreetingViewController.swift in Sources */,

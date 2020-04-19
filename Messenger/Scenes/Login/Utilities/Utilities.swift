@@ -8,26 +8,34 @@
 
 import Foundation
 import UIKit
+import NVActivityIndicatorView
 
 class Utilities {
     static let maxLenPassword: Int = 16
     static let maxLenEmail: Int = 32
-    static let maxLenText = 45
+    static let maxLenText = 20
     
     static func styleTextField(_ textfield: UITextField) {
-        let bottomLine = CALayer()
-        bottomLine.frame = CGRect(x: 0, y: textfield.frame.height - 2, width: textfield.frame.width, height: 2)
-        bottomLine.backgroundColor = UIColor .systemBlue.cgColor
-        
         textfield.borderStyle = .none
-        textfield.layer.addSublayer(bottomLine)
+        let border = CALayer()
+        let width = CGFloat(2.0)
+        border.borderColor = UIColor.systemBlue.cgColor
+        border.frame = CGRect(x: 0, y: textfield.frame.size.height - width,
+                              width:  textfield.frame.size.width, height: textfield.frame.size.height)
+        border.borderWidth = width
+        
+        textfield.layer.masksToBounds = true
+        textfield.layer.addSublayer(border)
     }
     static func styleButton(_ button: UIButton) {
         button.backgroundColor = UIColor .systemBlue
         button.layer.cornerRadius = 16
     }
     static func styleImageView(_ imageView: UIImageView) {
-        imageView.layer.cornerRadius = imageView.frame.size.width / 2
-        imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = imageView.frame.size.height / 2
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.masksToBounds = true
+        imageView.layer.borderWidth = 2
+        imageView.layer.borderColor = UIColor.lightGray.cgColor
     }
 }
