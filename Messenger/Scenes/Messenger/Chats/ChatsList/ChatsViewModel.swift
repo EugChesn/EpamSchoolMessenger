@@ -70,12 +70,20 @@ class ChatsViewModel: ChatsViewModeling {
     
     var chatsCount: Int {
         get {
-            return filteredChatsList.count
+            if view!.isFiltering {
+                return filteredChatsList.count
+            } else {
+                return chatsList.count
+            }
         }
     }
     
     func getChat(atIndex: Int) -> ChatInfo {
-        return filteredChatsList[atIndex]
+        if view!.isFiltering {
+            return filteredChatsList[atIndex]
+        } else {
+            return chatsList[atIndex]
+        }
     }
     
     deinit {
@@ -117,7 +125,6 @@ class ChatsViewModel: ChatsViewModeling {
             guard let strongSelf = self else {return}
             
             strongSelf.chatsList = chatsList.sorted(by: {$0.timeSpan ?? "" > $1.timeSpan ?? ""})
-            strongSelf.filteredChatsList = strongSelf.chatsList
             strongSelf.view?.updateChats()
         }
         
@@ -128,26 +135,26 @@ class ChatsViewModel: ChatsViewModeling {
             }
 
             if let index = index {
-                strongSelf.filteredChatsList.remove(at: index)
                 strongSelf.chatsList.remove(at: index)
             }
-            
-            strongSelf.filteredChatsList.insert(newChat, at: 0)
             strongSelf.chatsList.insert(newChat, at: 0)
             
             strongSelf.view?.insertChat(removeIndex: index)
         }
     }
     
-    func handlerSearch(searchText: String) {
+    func handlerSearch(searchText: String) {        
         let valueFilter = chatsList.filter {
             if let name = $0.contact.name {
-                if name.hasPrefix(searchText) {
+                if let _ = name.range(of: searchText, options: .caseInsensitive) {
                     return true
+                } else {
+                    return false
                 }
             }
             return false
         }
+        
         
         filteredChatsList = valueFilter
         view?.updateSearch()

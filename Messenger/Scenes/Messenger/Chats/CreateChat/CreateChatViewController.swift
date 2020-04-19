@@ -11,7 +11,10 @@ import UIKit
 
 protocol CreateChatDelegate: class {
     func updateContactsList()
+    
     func updateSearch()
+    var searchBarIsEmpty: Bool {get}
+    var isFiltering: Bool {get}
 }
 
 class CreateChatViewController: UIViewController {
@@ -23,6 +26,15 @@ class CreateChatViewController: UIViewController {
     @IBOutlet weak var creatChatNavigationItem: UINavigationItem!
     let heightRow: CGFloat = 70
     let placeHolderImage = UIImage(named: "profile")
+    
+    let searchController = UISearchController(searchResultsController: nil)
+    var searchBarIsEmpty: Bool {
+        guard let text = searchController.searchBar.text else { return false }
+        return text.isEmpty
+    }
+    var isFiltering: Bool {
+        return searchController.isActive && !searchBarIsEmpty
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,12 +54,11 @@ class CreateChatViewController: UIViewController {
         contactListTableView.dataSource = self
         contactListTableView.register(cellType: ChatCell.self)
         
-        let searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         definesPresentationContext = true
         navigationItem.hidesSearchBarWhenScrolling = true
-        navigationItem.searchController = searchController
+        //navigationItem.searchController = searchController
         creatChatNavigationItem.searchController = searchController
     }
     

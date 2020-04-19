@@ -35,7 +35,7 @@ class FirebaseService {
     }
     
     func updateProfileInfo(email: String, name: String, nickName: String, photo: URL, completion: @escaping (Error?)->()) {
-        let currUser = self.getCurrentUser()
+        let currUser = currentUser
         let changeRequest = currUser!.createProfileChangeRequest()
         changeRequest.displayName = name
         changeRequest.photoURL = photo

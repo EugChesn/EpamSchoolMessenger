@@ -16,6 +16,8 @@ protocol ChatsDelegate: class {
     func insertChat(removeIndex: Int?)
 
     func updateSearch()
+    var searchBarIsEmpty: Bool {get}
+    var isFiltering: Bool {get}
 }
 
 protocol NewChatOpenerDelegate: class {
@@ -31,6 +33,15 @@ class ChatsViewController: UIViewController {
     @IBOutlet weak var chatsTableView: UITableView!
     let heightRow: CGFloat = 70
     let placeHolderImage = UIImage(named: "profile")
+    
+    let searchController = UISearchController(searchResultsController: nil)
+    var searchBarIsEmpty: Bool {
+        guard let text = searchController.searchBar.text else { return false }
+        return text.isEmpty
+    }
+    var isFiltering: Bool {
+        return searchController.isActive && !searchBarIsEmpty
+    }
     
 
     override func viewDidLoad() {
@@ -70,7 +81,6 @@ class ChatsViewController: UIViewController {
         navigationItem.scrollEdgeAppearance = appearance*/
         //
         
-        let searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         definesPresentationContext = true

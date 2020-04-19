@@ -31,10 +31,10 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Get  photo</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Get profile photo</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Get  photo</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

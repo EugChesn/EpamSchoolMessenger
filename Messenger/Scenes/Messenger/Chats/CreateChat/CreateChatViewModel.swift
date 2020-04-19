@@ -22,7 +22,11 @@ class CreateChatViewModel: CreateChatViewModeling {
 
     var contactsCount: Int {
         get {
-            return filteredContactList.count
+            if view!.isFiltering {
+                return filteredContactList.count
+            } else {
+                return contactsList.count
+            }
         }
     }
     
@@ -31,7 +35,11 @@ class CreateChatViewModel: CreateChatViewModeling {
         downloadContacts()
     }
     func contact(atIndex: Int) -> Contact {
-        return filteredContactList[atIndex]
+        if view!.isFiltering {
+            return filteredContactList[atIndex]
+        } else {
+            return contactsList[atIndex]
+        }
     }
     
     private func downloadContacts() {
@@ -41,7 +49,6 @@ class CreateChatViewModel: CreateChatViewModeling {
             guard let strongSelf = self else {return}
             
             strongSelf.contactsList = contactsList.sorted(by: {$0.name?.lowercased() ?? "z" < $1.name?.lowercased() ?? "z"})
-            strongSelf.filteredContactList = strongSelf.contactsList
             strongSelf.view?.updateContactsList()
         }
     }
@@ -49,8 +56,10 @@ class CreateChatViewModel: CreateChatViewModeling {
     func handlerSearch(searchText: String) {
         let valueFilter = contactsList.filter {
             if let name = $0.name {
-                if name.hasPrefix(searchText) {
+                if let _ = name.range(of: searchText, options: .caseInsensitive) {
                     return true
+                } else {
+                    return false
                 }
             }
             return false
