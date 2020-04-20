@@ -7,13 +7,15 @@
 //
 
 import Foundation
+import UIKit
 
 protocol CreateChatRouting {
-    func dismiss()
+    func routeToBackInChats()
 }
 
 class CreateChatRouter: BaseRouter, CreateChatRouting {
-    func dismiss() {
-        viewController?.dismiss(animated: true, completion: nil)
+    func routeToBackInChats() {
+        //viewController?.dismiss(animated: true, completion: nil)
+        performSegue(withIdentifier: "cancelCreate", sender: viewController)
     }
 }
