@@ -23,6 +23,9 @@
 		3EE90AC5243DDF2F009E0759 /* ClassNameExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE90AC4243DDF2F009E0759 /* ClassNameExtension.swift */; };
 		3EE90AC7243DE219009E0759 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE90AC6243DE219009E0759 /* ImagePicker.swift */; };
 		860A8FCB244281600070D8D5 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860A8FCA244281600070D8D5 /* UserSettings.swift */; };
+		8668A659244DD7B400FD6BFB /* LanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8668A658244DD7B400FD6BFB /* LanguageViewController.swift */; };
+		8668A65B244DD7C900FD6BFB /* LanguageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8668A65A244DD7C900FD6BFB /* LanguageViewModel.swift */; };
+		8668A65D244DD7DD00FD6BFB /* LanguageRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8668A65C244DD7DD00FD6BFB /* LanguageRouter.swift */; };
 		867B2F7B2412585C00B16B01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867B2F7A2412585C00B16B01 /* AppDelegate.swift */; };
 		867B2F822412585C00B16B01 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 867B2F802412585C00B16B01 /* Main.storyboard */; };
 		867B2F842412586000B16B01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 867B2F832412586000B16B01 /* Assets.xcassets */; };
@@ -115,6 +118,9 @@
 		3EE90AC4243DDF2F009E0759 /* ClassNameExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassNameExtension.swift; sourceTree = "<group>"; };
 		3EE90AC6243DE219009E0759 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		860A8FCA244281600070D8D5 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
+		8668A658244DD7B400FD6BFB /* LanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageViewController.swift; sourceTree = "<group>"; };
+		8668A65A244DD7C900FD6BFB /* LanguageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageViewModel.swift; sourceTree = "<group>"; };
+		8668A65C244DD7DD00FD6BFB /* LanguageRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageRouter.swift; sourceTree = "<group>"; };
 		867B2F772412585C00B16B01 /* Messenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Messenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		867B2F7A2412585C00B16B01 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		867B2F812412585C00B16B01 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -263,6 +269,16 @@
 				860A8FCA244281600070D8D5 /* UserSettings.swift */,
 			);
 			path = UserDefaults;
+			sourceTree = "<group>";
+		};
+		8668A65E244DD7EA00FD6BFB /* Language */ = {
+			isa = PBXGroup;
+			children = (
+				8668A658244DD7B400FD6BFB /* LanguageViewController.swift */,
+				8668A65A244DD7C900FD6BFB /* LanguageViewModel.swift */,
+				8668A65C244DD7DD00FD6BFB /* LanguageRouter.swift */,
+			);
+			path = Language;
 			sourceTree = "<group>";
 		};
 		867B2F6E2412585C00B16B01 = {
@@ -587,6 +603,7 @@
 				AAF8351124193F5F00FDF9D2 /* SettingsViewModel.swift */,
 				AA1B5FD7241BF2390080443A /* SettingsRouter.swift */,
 				86CB7AAB242B6C4000995986 /* Profile */,
+				8668A65E244DD7EA00FD6BFB /* Language */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -768,6 +785,7 @@
 				AA1B5FD6241BF2250080443A /* CodeConfirmationRouter.swift in Sources */,
 				3E6BD3D3241FD70800CA6780 /* FirebaseService.swift in Sources */,
 				3EA8B18E2434AA48001B4207 /* ExtensionsStoryboard.swift in Sources */,
+				8668A659244DD7B400FD6BFB /* LanguageViewController.swift in Sources */,
 				AA1B40C72431D4A100E1D452 /* CreateChatRouter.swift in Sources */,
 				868165752446812000D92626 /* UISearchController+Extension.swift in Sources */,
 				AA487C4A241E561600337FBF /* DialogViewModel.swift in Sources */,
@@ -778,6 +796,7 @@
 				AA1B5FC6241BF0DE0080443A /* SignInRouter.swift in Sources */,
 				AA64DE12241B698D00ED2C63 /* StorageService.swift in Sources */,
 				AA1B40F9243361E000E1D452 /* ChatInfoTransferExtension.swift in Sources */,
+				8668A65D244DD7DD00FD6BFB /* LanguageRouter.swift in Sources */,
 				AA1B40C52431D49400E1D452 /* CreateChatViewModel.swift in Sources */,
 				AAF8351824193F8100FDF9D2 /* ContactsViewModel.swift in Sources */,
 				AAB3AF0C241B843900825F00 /* RegistrationCodeConfirmationViewController.swift in Sources */,
@@ -794,6 +813,7 @@
 				AA57A48E243A1452001EE763 /* MessagesObserverExtensions.swift in Sources */,
 				AA1B5FC8241BF1C30080443A /* RegistrationCodeConfirmationRouter.swift in Sources */,
 				AA1B5FD0241BF2010080443A /* GreetingRouter.swift in Sources */,
+				8668A65B244DD7C900FD6BFB /* LanguageViewModel.swift in Sources */,
 				AA1B5FDA241BF2450080443A /* ContactsRouter.swift in Sources */,
 				AAF8351E24193F9E00FDF9D2 /* ChatsViewModel.swift in Sources */,
 				AA1B5FD8241BF2390080443A /* SettingsRouter.swift in Sources */,
@@ -971,14 +991,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Messenger/Messenger.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = H5C9369377;
+				DEVELOPMENT_TEAM = SA46VNKRBQ;
 				INFOPLIST_FILE = Messenger/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = boombastic18.Messenger;
+				PRODUCT_BUNDLE_IDENTIFIER = "Anastasia-Demidova.Messenger";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -993,14 +1013,14 @@
 				CODE_SIGN_ENTITLEMENTS = Messenger/Messenger.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = H5C9369377;
+				DEVELOPMENT_TEAM = SA46VNKRBQ;
 				INFOPLIST_FILE = Messenger/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = boombastic18.Messenger;
+				PRODUCT_BUNDLE_IDENTIFIER = "Anastasia-Demidova.Messenger";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
