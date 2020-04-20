@@ -12,6 +12,7 @@ import UIKit
 protocol SettingsDelegate: class {
     func openProfile()
     func updateProfile(user:Contact)
+    func openLanguage()
 }
 
 class SettingsViewController: UITableViewController {
@@ -125,9 +126,12 @@ class SettingsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         if indexPath.section == 0 && indexPath.row == 0 {
-            tableView.deselectRow(at: indexPath, animated: true)
             viewModel?.editProfile()
+        }
+        if indexPath.section == 1 && indexPath.row == 1 {
+            viewModel?.languageSetting()
         }
     }
 }
@@ -140,6 +144,10 @@ extension SettingsViewController: UISearchResultsUpdating {
 extension SettingsViewController: SettingsDelegate {
     func openProfile() {
         router?.routeProfile(withIdentifier: "goToProfile", sender: self)
+    }
+    
+    func openLanguage() {
+        router?.routeLanguage(withIdentifier: "goToLanguage", sender: self)
     }
     
     func updateProfile(user:Contact) {
