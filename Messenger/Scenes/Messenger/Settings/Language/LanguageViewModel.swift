@@ -9,13 +9,20 @@
 import Foundation
 
 protocol LanguageViewModeling {
-    
+    var lenguage: String? { get }
 }
 
 class LanguageViewModel: LanguageViewModeling {
     weak var view: LanguageDelegete?
     
+    var lenguage: String?
+    
     init(view: LanguageDelegete) {
         self.view = view
+        defineLanguage()
+    }
+    
+    private func defineLanguage() {
+        lenguage = Locale.current.languageCode ?? ""
     }
 }
