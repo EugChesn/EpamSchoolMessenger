@@ -9,7 +9,7 @@
 import Foundation
 import Firebase
 
-protocol MessagesObserver {
+protocol MessagesObserver: class {
     func downloadMessages(recipientUid: String, completion: @escaping ([MessageModel]) -> ())
     func observeNewMessages(recipientUid: String, completion: @escaping (MessageModel) -> ())
     func sendMessages(recipientUid: String ,message: MessageModel)

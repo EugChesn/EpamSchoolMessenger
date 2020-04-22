@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E1B54BE244F549A00804E4E /* StatusUsersFirebaseExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1B54BD244F549A00804E4E /* StatusUsersFirebaseExtensions.swift */; };
+		3E1B54C02450575400804E4E /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1B54BF2450575400804E4E /* TimerManager.swift */; };
 		3E3185D1241C0381000FD0C2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3E3185D0241C0381000FD0C2 /* GoogleService-Info.plist */; };
 		3E50F191244634F900B34F8F /* ManagerActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E50F190244634F900B34F8F /* ManagerActivityIndicator.swift */; };
 		3E6BD3D3241FD70800CA6780 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6BD3D2241FD70800CA6780 /* FirebaseService.swift */; };
@@ -99,6 +101,8 @@
 
 /* Begin PBXFileReference section */
 		262A7F8CC6FE8C4DBCBB667B /* Pods_Messenger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Messenger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E1B54BD244F549A00804E4E /* StatusUsersFirebaseExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusUsersFirebaseExtensions.swift; sourceTree = "<group>"; };
+		3E1B54BF2450575400804E4E /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
 		3E3185D0241C0381000FD0C2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3E50F190244634F900B34F8F /* ManagerActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerActivityIndicator.swift; sourceTree = "<group>"; };
 		3E6BD3D2241FD70800CA6780 /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
@@ -242,6 +246,7 @@
 				AA57A48D243A1452001EE763 /* MessagesObserverExtensions.swift */,
 				AA57A48F243A470D001EE763 /* ContactsObserverExtension.swift */,
 				AA57A491243A5B28001EE763 /* ChatsObserverExtension.swift */,
+				3E1B54BD244F549A00804E4E /* StatusUsersFirebaseExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -466,6 +471,7 @@
 			children = (
 				AA64DE13241B72B600ED2C63 /* Reachability.swift */,
 				AA5AD8372440BE04009CF15A /* SnapshotDecoder.swift */,
+				3E1B54BF2450575400804E4E /* TimerManager.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -806,6 +812,7 @@
 				AA1B40EF2433607200E1D452 /* DialogCollectionViewExtension.swift in Sources */,
 				3E871EEB2444B06400B00A7C /* ChatCell.swift in Sources */,
 				AAF834F02419258100FDF9D2 /* PasswordRecoveryViewController.swift in Sources */,
+				3E1B54C02450575400804E4E /* TimerManager.swift in Sources */,
 				AAF8351024193F5200FDF9D2 /* SettingsViewController.swift in Sources */,
 				AA1B5FD4241BF21B0080443A /* NewPasswordRouter.swift in Sources */,
 				AAF194BF24310E1D00BB81BE /* MessageCollectionViewCell.swift in Sources */,
@@ -820,6 +827,7 @@
 				AAF834E62419228100FDF9D2 /* SignInViewController.swift in Sources */,
 				AA1B5FE1241BF3830080443A /* BaseRouter.swift in Sources */,
 				AAF834F62419296800FDF9D2 /* SignUpViewModel.swift in Sources */,
+				3E1B54BE244F549A00804E4E /* StatusUsersFirebaseExtensions.swift in Sources */,
 				AAB3AF0E241B844000825F00 /* RegistrationCodeConfirmationViewModel.swift in Sources */,
 				3ECF658E243CA0530095A53C /* ChatTableViewCell.swift in Sources */,
 				AA64DE14241B72B600ED2C63 /* Reachability.swift in Sources */,

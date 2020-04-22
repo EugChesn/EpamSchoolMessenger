@@ -33,12 +33,14 @@ extension DialogViewController {
             collectionViewInset -= bottom
         }
         
-        chatLogCollectionView.contentInset = UIEdgeInsets(top: 8, left: 0, bottom: 58 + collectionViewInset, right: 0)
-        chatLogCollectionView.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: 50 + collectionViewInset, right: 0)
-        
-        chatLogCollectionView.scrollToItem(at: IndexPath(row: viewModel.messageCount - 1, section: 0), at: .bottom, animated: false)
-        
-        inputTextFiledBottomConstraint.constant = newDistance
+        if let viewModel = viewModel {
+            chatLogCollectionView.contentInset = UIEdgeInsets(top: 8, left: 0, bottom: 58 + collectionViewInset, right: 0)
+            chatLogCollectionView.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: 50 + collectionViewInset, right: 0)
+            
+            chatLogCollectionView.scrollToItem(at: IndexPath(row: viewModel.messageCount - 1, section: 0), at: .bottom, animated: false)
+            
+            inputTextFiledBottomConstraint.constant = newDistance
+        }
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {

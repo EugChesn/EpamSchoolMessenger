@@ -18,10 +18,16 @@ protocol ChatsViewModeling: class {
     func createNewChat(with contact: Contact)
     func getChat(atIndex: Int) -> ChatInfo
     
+    
     func subscribeStateUser()
     func unsubscribeStateUser()
     
     func handlerSearch(searchText: String)
+    
+    func startCheckTimerTime()
+    func stopCheckTimerTime()
+    
+    func changeChatListSelected(status: String)
 }
 
 protocol ChatInfoGetterDelegate: class {
@@ -32,8 +38,10 @@ class ChatsViewModel: ChatsViewModeling {
 
     weak var view: ChatsDelegate?
     weak var authService: AuthFirebase?
+    weak var onlineFirebase: OnlineStatus?
     
     let firebaseObserver: ChatsObserver = FirebaseService.firebaseService
+    let timerManager: ControlTimer = TimerManager()
     
     private var filteredChatsList: [ChatInfo] = []
     private var chatsList: [ChatInfo] = []
@@ -49,8 +57,45 @@ class ChatsViewModel: ChatsViewModeling {
     init(view: ChatsDelegate) {
         self.view = view
         self.authService = FirebaseService.firebaseService
+        self.onlineFirebase = FirebaseService.firebaseService
         downloadChats()
     }
+    
+    deinit {
+        firebaseObserver.removeObservers()
+    }
+    
+    func changeChatListSelected(status: String) {
+        if let chat = chat {
+            let index = chatsList.firstIndex(of: chat)
+            chatsList[index!].contact.status = status
+            //view?.updateChats()
+            view?.updateSearch()
+        }
+    }
+    
+    func startCheckTimerTime() {
+        timerManager.config(delayedFunc: updateTimeUser, interval: 60.0)
+        timerManager.start(mode: .common)
+        updateTimeUser()
+    }
+    
+    func stopCheckTimerTime() {
+        timerManager.cancelTimerFire()
+    }
+    
+    private func updateTimeUser() {
+        print("update time")
+        onlineFirebase?.writeTimeOnlineCurrUser(status: .Online) { result in
+            switch result {
+            case .success( _):
+                print("good update time")
+            case .failure(let err):
+                print(err.localizedDescription)
+            }
+        }
+    }
+    
     
     let chatTransferQueue: DispatchQueue = DispatchQueue.global()
     
@@ -84,10 +129,6 @@ class ChatsViewModel: ChatsViewModeling {
         } else {
             return chatsList[atIndex]
         }
-    }
-    
-    deinit {
-        firebaseObserver.removeObservers()
     }
     
     func createNewChat(with contact: Contact) {

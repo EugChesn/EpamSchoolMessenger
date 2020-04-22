@@ -18,6 +18,7 @@ protocol ChatsDelegate: class {
     func updateSearch()
     var searchBarIsEmpty: Bool {get}
     var isFiltering: Bool {get}
+    
 }
 
 protocol NewChatOpenerDelegate: class {
@@ -48,6 +49,7 @@ class ChatsViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         setupDependencies()
+        viewModel.startCheckTimerTime()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -59,6 +61,10 @@ class ChatsViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         viewModel.unsubscribeStateUser()
+    }
+    
+    deinit {
+        viewModel.stopCheckTimerTime()
     }
     
     func setupDependencies() {
@@ -101,6 +107,9 @@ class ChatsViewController: UIViewController {
         if segue.identifier == "dialog" {
             if let destination = segue.destination as? DialogViewController {
                 destination.chatInfo = viewModel.selectedChat
+                destination.closure = { [weak self] status in
+                    self?.viewModel.changeChatListSelected(status: status)
+                }
             }
         }
     }
@@ -132,6 +141,21 @@ extension ChatsViewController: ChatsDelegate {
             self.chatsTableView.reloadData()
         }
     }
+    
+    /*func updateStatus(atIndex: Int, status: StatusUser) {
+        DispatchQueue.main.async {
+            let indexPath = IndexPath(row: atIndex, section: 0)
+            if let currCell = self.chatsTableView.cellForRow(at: indexPath) as? ChatTableViewCell{
+                switch status {
+                case .Offline:
+                    currCell.statusOnlineImage.backgroundColor = .red
+                case .Online:
+                    currCell.statusOnlineImage.backgroundColor = .green
+                }
+            }
+            self.chatsTableView.reloadRows(at: [indexPath], with: .automatic)
+        }
+    }*/
     
     func insertChat(removeIndex: Int?) {
         DispatchQueue.main.async {
