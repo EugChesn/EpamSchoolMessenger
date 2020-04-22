@@ -26,12 +26,14 @@ protocol NewChatOpenerDelegate: class {
 }
 
 class ChatsViewController: UIViewController {
+    
     var viewModel: ChatsViewModeling!
-
     var router: ChatsRouting?
     
+    @IBOutlet weak var placeholderView: UIView!
     @IBOutlet weak var chatsTableView: UITableView!
-    let heightRow: CGFloat = 70
+    
+    let heightRow: CGFloat = 110
     let placeHolderImage = UIImage(named: "profile")
     
     let searchController = UISearchController(searchResultsController: nil)
@@ -43,7 +45,6 @@ class ChatsViewController: UIViewController {
         return searchController.isActive && !searchBarIsEmpty
     }
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -65,7 +66,6 @@ class ChatsViewController: UIViewController {
         viewModel = ChatsViewModel(view: self)
         router = ChatsRouter(viewController: self)
     }
-    
     
     func setupUI() {
         chatsTableView.delegate = self
@@ -104,7 +104,6 @@ class ChatsViewController: UIViewController {
             }
         }
     }
-    
     
     func routeToDialog(_ sender: Any) {
         router?.routeToDialog()

@@ -12,6 +12,8 @@ import SDWebImage
 
 extension ChatsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        placeholderView.isHidden = viewModel.chatsCount != 0
+        chatsTableView.isHidden = viewModel.chatsCount == 0
         return viewModel.chatsCount
     }
     
