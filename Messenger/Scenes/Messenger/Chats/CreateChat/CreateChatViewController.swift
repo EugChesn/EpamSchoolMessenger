@@ -23,9 +23,10 @@ class CreateChatViewController: UIViewController {
     var chatOpenerDelegate: NewChatOpenerDelegate?
     
     @IBOutlet weak var contactListTableView: UITableView!
-    @IBOutlet weak var creatChatNavigationItem: UINavigationItem!
+    //@IBOutlet weak var creatChatNavigationItem: UINavigationItem!
     let heightRow: CGFloat = 70
     let placeHolderImage = UIImage(named: "profile")
+    var indexContact: Int!
     
     let searchController = UISearchController(searchResultsController: nil)
     var searchBarIsEmpty: Bool {
@@ -43,13 +44,24 @@ class CreateChatViewController: UIViewController {
         setupUI()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "cancelCreate" {
+            if let destination = segue.destination as? ChatsViewController {
+                if let index = indexContact {
+                    if let contact = viewModel?.contact(atIndex: index) {
+                        destination.dialogContact = contact
+                    }
+                }
+            }
+        }
+    }
+    
     func setupDependencies() {
         viewModel = CreateChatViewModel(view: self)
         router = CreateChatRouter(viewController: self)
     }
     
     func setupUI() {
-        creatChatNavigationItem.title = "New Message"
         contactListTableView.delegate = self
         contactListTableView.dataSource = self
         contactListTableView.register(cellType: ChatCell.self)
@@ -59,11 +71,13 @@ class CreateChatViewController: UIViewController {
         definesPresentationContext = true
         navigationItem.hidesSearchBarWhenScrolling = true
         //navigationItem.searchController = searchController
-        creatChatNavigationItem.searchController = searchController
+        //creatChatNavigationItem.searchController = searchController
+        navigationItem.searchController = searchController
+        navigationItem.title = "New Message"
     }
     
     @IBAction func cancelCreate(_ sender: Any) {
-        router?.dismiss()
+        //router?.dismiss()
     }
 }
 
@@ -109,12 +123,8 @@ extension CreateChatViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let contact = viewModel?.contact(atIndex: indexPath.row) else {
-            return
-        }
-        
-        chatOpenerDelegate?.dialogContact = contact
-        router?.dismiss()
+        self.indexContact = indexPath.row
+        router?.routeToBackInChats()
     }
     
 }
