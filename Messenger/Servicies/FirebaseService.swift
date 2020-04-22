@@ -26,10 +26,16 @@ class FirebaseService {
         return Auth.auth().currentUser
     }
     // обновить данные в бд
-    func writeNewDataCurrUser(update: [String:String], completion: @escaping (Error?)->()) {
-        if let uid = Auth.auth().currentUser?.uid {
+    func writeNewDataCurrUser(update: [String:String], id: String?, completion: @escaping (Error?)->()) {
+        if let uid = id {
             referenceUser.child(uid).updateChildValues(update) { err, _ in
                 completion(err)
+            }
+        } else {
+            if let uid = Auth.auth().currentUser?.uid {
+                referenceUser.child(uid).updateChildValues(update) { err, _ in
+                    completion(err)
+                }
             }
         }
     }
@@ -44,7 +50,7 @@ class FirebaseService {
                 print(err.localizedDescription)
             } else {
                 let update = ["email": email, "name": name,"nickname": nickName,"photoUrl": photo.absoluteString]
-                self.writeNewDataCurrUser(update: update) { err in
+                self.writeNewDataCurrUser(update: update, id: nil) { err in
                     completion(err)
                 }
             }

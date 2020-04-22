@@ -67,10 +67,11 @@ class ChatsViewModel: ChatsViewModeling {
     
     func changeChatListSelected(status: String) {
         if let chat = chat {
-            let index = chatsList.firstIndex(of: chat)
-            chatsList[index!].contact.status = status
-            //view?.updateChats()
-            view?.updateSearch()
+            if let index = chatsList.firstIndex(of: chat) {
+                chatsList[index].contact.status = status
+                //view?.updateChats()
+                view?.updateSearch()
+            }
         }
     }
     

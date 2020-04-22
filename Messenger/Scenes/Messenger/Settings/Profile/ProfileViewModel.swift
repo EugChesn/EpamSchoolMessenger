@@ -51,7 +51,7 @@ class ProfileViewModel: ProfileViewModeling {
     
     func updateDataProfile(update: [String: String]) {
         //base?.writeNewDataProfile(update: update)
-        base?.writeNewDataCurrUser(update: update) { errorWrite in
+        base?.writeNewDataCurrUser(update: update, id: nil) { errorWrite in
             if let errorWrite = errorWrite {
                 print("error write profile data(settings)")
             }

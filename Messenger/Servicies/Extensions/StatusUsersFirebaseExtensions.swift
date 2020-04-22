@@ -18,7 +18,7 @@ extension FirebaseService: OnlineStatus {
         
         let currTime = Date().currentTime
         let update =  ["time": currTime, "status": status.rawValue]
-        FirebaseService.firebaseService.writeNewDataCurrUser(update: update) { errorWrite in
+        FirebaseService.firebaseService.writeNewDataCurrUser(update: update, id: nil) { errorWrite in
             if let err = errorWrite {
                 completion(.failure(err))
             }
