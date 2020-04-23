@@ -112,7 +112,7 @@ extension FirebaseService: AuthFirebase {
         }
         
         let update = ["email": email, "name": name, "nickname": nickName]
-        self.writeNewDataCurrUser(update: update) { errWriteData in
+        self.writeNewDataCurrUser(update: update, id: nil) { errWriteData in
             if let errWriteData = errWriteData {
                 completion(errWriteData)
             } else {

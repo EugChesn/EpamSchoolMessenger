@@ -14,17 +14,18 @@ class ChatTableViewCell: UITableViewCell {
     @IBOutlet weak var lastMessage: UILabel!
     @IBOutlet weak var photo: UIImageView!
     @IBOutlet weak var timeMessage: UILabel!
+    @IBOutlet weak var statusOnlineImage: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        photo.layer.cornerRadius = photo.frame.size.height / 2
-        photo.contentMode = .scaleAspectFill
-        photo.layer.masksToBounds = true
+        photo.roundWithoutBorder()
+        statusOnlineImage.roundWithoutBorder()
     }
 
     override func prepareForReuse() { // MARK Important change!
         super.prepareForReuse()
         self.photo.sd_cancelCurrentImageLoad()
         self.photo?.image = nil
+        statusOnlineImage.image = nil
     }
 }

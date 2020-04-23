@@ -18,6 +18,7 @@ protocol ChatsDelegate: class {
     func updateSearch()
     var searchBarIsEmpty: Bool {get}
     var isFiltering: Bool {get}
+    
 }
 
 protocol NewChatOpenerDelegate: class {
@@ -48,16 +49,19 @@ class ChatsViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         setupDependencies()
+        viewModel.startCheckTimerTime()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewModel.subscribeStateUser()
-        updateChats()
+        viewModel.observeChats()
+        //updateChats()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+        viewModel.removeObservers()
         viewModel.unsubscribeStateUser()
     }
     
@@ -101,6 +105,9 @@ class ChatsViewController: UIViewController {
         if segue.identifier == "dialog" {
             if let destination = segue.destination as? DialogViewController {
                 destination.chatInfo = viewModel.selectedChat
+                destination.closureBackTime = { [weak self] time in
+                    self?.viewModel.setTimeSelectedChatList(time: time)
+                }
             }
         }
     }
@@ -116,6 +123,7 @@ class ChatsViewController: UIViewController {
     
     @IBAction func signOut(_ sender: Any) {
         router?.signOut()
+        viewModel.removeChatListForSignOut()
         viewModel.removeObservers()
     }
 }
@@ -132,6 +140,21 @@ extension ChatsViewController: ChatsDelegate {
             self.chatsTableView.reloadData()
         }
     }
+    
+    /*func updateStatus(atIndex: Int, status: StatusUser) {
+        DispatchQueue.main.async {
+            let indexPath = IndexPath(row: atIndex, section: 0)
+            if let currCell = self.chatsTableView.cellForRow(at: indexPath) as? ChatTableViewCell{
+                switch status {
+                case .Offline:
+                    currCell.statusOnlineImage.backgroundColor = .red
+                case .Online:
+                    currCell.statusOnlineImage.backgroundColor = .green
+                }
+            }
+            self.chatsTableView.reloadRows(at: [indexPath], with: .automatic)
+        }
+    }*/
     
     func insertChat(removeIndex: Int?) {
         DispatchQueue.main.async {
