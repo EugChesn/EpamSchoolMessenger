@@ -28,11 +28,7 @@ class DialogViewModel: DialogViewModeling {
     weak var timerFirebase: OnlineStatus? = FirebaseService.firebaseService
     let timerManager: ControlTimer = TimerManager()
     
-    private var chatInfo: ChatInfo? {
-        didSet {
-
-        }
-    }
+    private var chatInfo: ChatInfo?
 
     private var messageList: [MessageModel] = []
     
@@ -67,14 +63,17 @@ class DialogViewModel: DialogViewModeling {
             timerFirebase?.checkTime(uid: uid) { result in
                 switch result {
                 case .success(let time):
+                     print("success update status chats")
                     if let status = Date.getStatusBaseOnTime(newTime: time) {
                         switch status {
                         case StatusUser.Offline.rawValue:
                             print(status)
+                            self.chat?.contact.time = time
                             self.chat?.contact.status = status
                             self.view?.updateStatus(status: status)
                         case StatusUser.Online.rawValue:
                             print(status)
+                            self.chat?.contact.time = time
                             self.chat?.contact.status = status
                             self.view?.updateStatus(status: status)
                         default:

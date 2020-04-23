@@ -32,7 +32,7 @@ extension ChatsViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.timeMessage.text = dateMessage?.getTimeMessage()
             }
             
-            /*if let time = chat.contact.time {
+            if let time = chat.contact.time {
                 if let status = Date.getStatusBaseOnTime(newTime: time) {
                     switch status {
                     case StatusUser.Offline.rawValue:
@@ -43,8 +43,9 @@ extension ChatsViewController: UITableViewDelegate, UITableViewDataSource {
                         print("error status user raw value")
                     }
                 }
-            }*/
-            if let status = chat.contact.status {
+            }
+            
+            /*if let status = chat.contact.status {
                 switch status {
                 case StatusUser.Offline.rawValue:
                     cell.statusOnlineImage.backgroundColor = .red
@@ -53,7 +54,7 @@ extension ChatsViewController: UITableViewDelegate, UITableViewDataSource {
                 default:
                     print("error status user raw value")
             }
-            }
+            }*/
  
             
             if let url = chat.contact.profileImageUrl {

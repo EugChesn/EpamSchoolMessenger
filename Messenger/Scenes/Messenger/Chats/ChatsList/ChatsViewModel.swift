@@ -27,7 +27,7 @@ protocol ChatsViewModeling: class {
     func startCheckTimerTime()
     func stopCheckTimerTime()
     
-    func changeChatListSelected(status: String)
+    func setTimeSelectedChatList(time: String)
     
     func ObserveChats()
     
@@ -69,11 +69,11 @@ class ChatsViewModel: ChatsViewModeling {
         firebaseObserver.removeObservers()
     }*/
     
-    func changeChatListSelected(status: String) {
+    func setTimeSelectedChatList(time: String) {
         if let chat = chat {
             if let index = chatsList.firstIndex(of: chat) {
-                chatsList[index].contact.status = status
-                //view?.updateChats()
+                //chatsList[index].contact.status = status
+                chatsList[index].contact.time = time
                 view?.updateSearch()
             }
         }

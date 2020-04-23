@@ -36,6 +36,8 @@ class FirebaseService {
                 referenceUser.child(uid).updateChildValues(update) { err, _ in
                     completion(err)
                 }
+            } else {
+                print("current user is not define")
             }
         }
     }

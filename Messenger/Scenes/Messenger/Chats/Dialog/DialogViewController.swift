@@ -20,7 +20,7 @@ class DialogViewController: UIViewController {
     var viewModel: DialogViewModeling?
     var router: DialogRouting?
     
-    var closure: ((String) -> ())?
+    var closureBackTime: ((String) -> ())?
     
     var chatInfo: ChatInfo?
     
@@ -40,14 +40,8 @@ class DialogViewController: UIViewController {
   
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
-        let title = navigationItem.titleView as! UIStackView
-        title.subviews.enumerated().forEach { (index, view) in
-            if index == 1 {
-                if let label = view as? UILabel, let text = label.text {
-                    closure?(text)
-                }
-            }
+        if let time = viewModel?.chat?.contact.time {
+            closureBackTime?(time)
         }
         self.tabBarController?.tabBar.isHidden = false
     }

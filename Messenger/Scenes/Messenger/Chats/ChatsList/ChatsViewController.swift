@@ -105,8 +105,8 @@ class ChatsViewController: UIViewController {
         if segue.identifier == "dialog" {
             if let destination = segue.destination as? DialogViewController {
                 destination.chatInfo = viewModel.selectedChat
-                destination.closure = { [weak self] status in
-                    self?.viewModel.changeChatListSelected(status: status)
+                destination.closureBackTime = { [weak self] time in
+                    self?.viewModel.setTimeSelectedChatList(time: time)
                 }
             }
         }
