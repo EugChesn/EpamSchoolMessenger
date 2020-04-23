@@ -32,12 +32,38 @@ extension ChatsViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.timeMessage.text = dateMessage?.getTimeMessage()
             }
             
+            if let time = chat.contact.time {
+                if let status = Date.getStatusBaseOnTime(newTime: time) {
+                    switch status {
+                    case StatusUser.Offline.rawValue:
+                        cell.statusOnlineImage.backgroundColor = .red
+                    case StatusUser.Online.rawValue:
+                        cell.statusOnlineImage.backgroundColor = .green
+                    default:
+                        print("error status user raw value")
+                    }
+                }
+            }
+            
+            /*if let status = chat.contact.status {
+                switch status {
+                case StatusUser.Offline.rawValue:
+                    cell.statusOnlineImage.backgroundColor = .red
+                case StatusUser.Online.rawValue:
+                    cell.statusOnlineImage.backgroundColor = .green
+                default:
+                    print("error status user raw value")
+            }
+            }*/
+ 
+            
             if let url = chat.contact.profileImageUrl {
                 let reference = StorageService.shared.getReference(url: url)
                 cell.photo.sd_setImage(with: reference, placeholderImage: placeHolderImage)
             }
             
         }
+    
         return cell
     }
     

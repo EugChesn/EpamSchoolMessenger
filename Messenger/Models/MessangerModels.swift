@@ -15,6 +15,8 @@ struct Contact: Codable {
     var nickname: String?
     var uid: String?
     var profileImageUrl: String?
+    var time: String?
+    var status: String?
     
     enum CodingKeys: String, CodingKey {
         case email = "email"
@@ -22,6 +24,8 @@ struct Contact: Codable {
         case nickname = "nickname"
         case uid = "uid"
         case profileImageUrl = "photoUrl"
+        case time = "time"
+        case status = "status"
     }
 }
 
@@ -70,6 +74,10 @@ struct ChatInfo: Codable, Equatable {
 enum StateUser {
     case Authorised
     case NotAuthorised
+}
+enum StatusUser: String {
+    case Online = "online"
+    case Offline = "offline"
 }
 
 struct ContactList: Codable {

@@ -42,6 +42,13 @@
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9g7-dY-wb5">
+                        <rect key="frame" x="295" y="55" width="10" height="10"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="10" id="jr5-52-cdn"/>
+                            <constraint firstAttribute="width" constant="10" id="wCp-7S-yUt"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="DbF-1L-Edc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="70" id="25c-ZQ-Y8e"/>
@@ -50,8 +57,10 @@
                     <constraint firstAttribute="trailing" secondItem="A2N-Pd-zu2" secondAttribute="trailing" constant="15" id="SNE-7f-IV9"/>
                     <constraint firstItem="GHj-V6-4kI" firstAttribute="leading" secondItem="DbF-1L-Edc" secondAttribute="leading" id="Ywp-DX-aOe"/>
                     <constraint firstItem="X18-C2-JdT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="o9x-ST-1fD"/>
+                    <constraint firstItem="9g7-dY-wb5" firstAttribute="bottom" secondItem="X18-C2-JdT" secondAttribute="bottom" id="pfR-L3-rRp"/>
                     <constraint firstItem="X18-C2-JdT" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="qBM-2G-Mph"/>
                     <constraint firstItem="DbF-1L-Edc" firstAttribute="top" secondItem="X18-C2-JdT" secondAttribute="top" id="vma-2g-ek9"/>
+                    <constraint firstAttribute="trailing" secondItem="9g7-dY-wb5" secondAttribute="trailing" constant="15" id="xjP-xv-49v"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -59,6 +68,7 @@
                 <outlet property="lastMessage" destination="GHj-V6-4kI" id="cZU-Sv-iyD"/>
                 <outlet property="nameChat" destination="DbF-1L-Edc" id="ilz-bR-Ggr"/>
                 <outlet property="photo" destination="X18-C2-JdT" id="dQj-il-BHy"/>
+                <outlet property="statusOnlineImage" destination="9g7-dY-wb5" id="rBZ-mG-z2v"/>
                 <outlet property="timeMessage" destination="A2N-Pd-zu2" id="iFD-Ur-yc5"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="67.633928571428569"/>
