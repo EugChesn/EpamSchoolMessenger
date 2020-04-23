@@ -13,7 +13,7 @@ protocol ChatsViewModeling: class {
     var chatsCount: Int {get}
     var selectedChat: ChatInfo? {get set}
     
-    func downloadChats()
+    func downloadAndObserveChats()
     func removeObservers()
     func createNewChat(with contact: Contact)
     func getChat(atIndex: Int) -> ChatInfo
@@ -28,6 +28,10 @@ protocol ChatsViewModeling: class {
     func stopCheckTimerTime()
     
     func changeChatListSelected(status: String)
+    
+    func ObserveChats()
+    
+    func removeChatListForSignOut()
 }
 
 protocol ChatInfoGetterDelegate: class {
@@ -58,12 +62,12 @@ class ChatsViewModel: ChatsViewModeling {
         self.view = view
         self.authService = FirebaseService.firebaseService
         self.onlineFirebase = FirebaseService.firebaseService
-        downloadChats()
+        downloadAndObserveChats()
     }
     
-    deinit {
+    /*deinit {
         firebaseObserver.removeObservers()
-    }
+    }*/
     
     func changeChatListSelected(status: String) {
         if let chat = chat {
@@ -155,21 +159,18 @@ class ChatsViewModel: ChatsViewModeling {
     
     func removeObservers() {
         firebaseObserver.removeObservers()
+        //chatsList = []
+    }
+    func removeChatListForSignOut() { // так как chatsviewcontroller is root
         chatsList = []
+        view?.updateChats()
     }
     
     func unsubscribeStateUser() {
         authService?.unListenStateUser()
     }
-
-    func downloadChats() {
-        firebaseObserver.downloadChats() { [weak self] chatsList in
-            guard let strongSelf = self else {return}
-            
-            strongSelf.chatsList = chatsList.sorted(by: {$0.timeSpan ?? "" > $1.timeSpan ?? ""})
-            strongSelf.view?.updateChats()
-        }
-        
+    
+    func ObserveChats() {
         firebaseObserver.observeChats() { [weak self] newChat in
             guard let strongSelf = self else {return}
             
@@ -184,6 +185,18 @@ class ChatsViewModel: ChatsViewModeling {
             strongSelf.view?.insertChat(removeIndex: index)
         }
     }
+
+    func downloadAndObserveChats() {
+        firebaseObserver.downloadChats() { [weak self] chatsList in
+            guard let strongSelf = self else {return}
+            
+            strongSelf.chatsList = chatsList.sorted(by: {$0.timeSpan ?? "" > $1.timeSpan ?? ""})
+            strongSelf.view?.updateChats()
+        }
+        
+        ObserveChats()
+    }
+    
     
     func handlerSearch(searchText: String) {        
         let valueFilter = chatsList.filter {

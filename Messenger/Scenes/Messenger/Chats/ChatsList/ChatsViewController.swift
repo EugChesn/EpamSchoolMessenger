@@ -55,16 +55,14 @@ class ChatsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewModel.subscribeStateUser()
-        updateChats()
+        viewModel.ObserveChats()
+        //updateChats()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+        viewModel.removeObservers()
         viewModel.unsubscribeStateUser()
-    }
-    
-    deinit {
-        viewModel.stopCheckTimerTime()
     }
     
     func setupDependencies() {
@@ -125,6 +123,7 @@ class ChatsViewController: UIViewController {
     
     @IBAction func signOut(_ sender: Any) {
         router?.signOut()
+        viewModel.removeChatListForSignOut()
         viewModel.removeObservers()
     }
 }

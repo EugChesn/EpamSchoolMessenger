@@ -62,7 +62,7 @@ class SignUpViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "UnwindRegister"{
             if let destination = segue.destination as? ChatsViewController {
-                destination.viewModel.downloadChats()
+                destination.viewModel.downloadAndObserveChats()
             }
         }
     }

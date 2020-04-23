@@ -44,14 +44,11 @@ class DialogViewController: UIViewController {
         let title = navigationItem.titleView as! UIStackView
         title.subviews.enumerated().forEach { (index, view) in
             if index == 1 {
-                if let label = view as? UILabel {
-                    if let text = label.text {
-                        closure?(text)
-                    }
+                if let label = view as? UILabel, let text = label.text {
+                    closure?(text)
                 }
             }
         }
-        
         self.tabBarController?.tabBar.isHidden = false
     }
     

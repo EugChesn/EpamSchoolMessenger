@@ -14,4 +14,9 @@ extension UIImageView {
         layer.borderColor = UIColor.systemBlue.cgColor
         layer.cornerRadius = frame.size.width/2
     }
+    func roundWithoutBorder() {
+        layer.cornerRadius = frame.size.height / 2
+        contentMode = .scaleAspectFill
+        layer.masksToBounds = true
+    }
 }

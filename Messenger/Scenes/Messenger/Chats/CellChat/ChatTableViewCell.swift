@@ -18,13 +18,8 @@ class ChatTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        photo.layer.cornerRadius = photo.frame.size.height / 2
-        photo.contentMode = .scaleAspectFill
-        photo.layer.masksToBounds = true
-        
-        statusOnlineImage.layer.cornerRadius = statusOnlineImage.frame.size.height / 2
-        statusOnlineImage.contentMode = .scaleAspectFill
-        statusOnlineImage.layer.masksToBounds = true
+        photo.roundWithoutBorder()
+        statusOnlineImage.roundWithoutBorder()
     }
 
     override func prepareForReuse() { // MARK Important change!
