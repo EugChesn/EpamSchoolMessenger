@@ -22,6 +22,8 @@ class ChatTableViewCell: UITableViewCell {
         photo.contentMode = .scaleAspectFill
         photo.layer.masksToBounds = true
         
+        self.selectionStyle = .none
+        
         shadowView.layer.shadowColor = UIColor.black.cgColor
         shadowView.layer.shadowRadius = 5
         shadowView.layer.shadowOffset = CGSize(width: 0, height: 2)

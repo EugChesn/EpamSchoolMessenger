@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="f8k-05-Osx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="f8k-05-Osx">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -63,7 +63,7 @@
                                     <constraint firstItem="nHT-tk-GSi" firstAttribute="centerX" secondItem="ixX-p7-aPm" secondAttribute="centerX" id="XFI-KC-fMP"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9ma-I3-axk">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9ma-I3-axk">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
@@ -340,15 +340,15 @@
             <point key="canvasLocation" x="2142" y="929"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="emptyChat" width="512" height="512"/>
-        <image name="gear" catalog="system" width="64" height="58"/>
-        <image name="message.fill" catalog="system" width="64" height="56"/>
-        <image name="paperplane.fill" catalog="system" width="64" height="60"/>
-        <image name="person.circle.fill" catalog="system" width="64" height="60"/>
-        <image name="square.and.pencil" catalog="system" width="64" height="58"/>
-    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="n4v-XQ-Dgx"/>
     </inferredMetricsTieBreakers>
+    <resources>
+        <image name="emptyChat" width="512" height="512"/>
+        <image name="gear" catalog="system" width="128" height="119"/>
+        <image name="message.fill" catalog="system" width="128" height="113"/>
+        <image name="paperplane.fill" catalog="system" width="128" height="121"/>
+        <image name="person.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="square.and.pencil" catalog="system" width="128" height="118"/>
+    </resources>
 </document>
