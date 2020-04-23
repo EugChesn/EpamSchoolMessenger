@@ -29,7 +29,7 @@ protocol ChatsViewModeling: class {
     
     func setTimeSelectedChatList(time: String)
     
-    func ObserveChats()
+    func observeChats()
     
     func removeChatListForSignOut()
 }
@@ -170,7 +170,7 @@ class ChatsViewModel: ChatsViewModeling {
         authService?.unListenStateUser()
     }
     
-    func ObserveChats() {
+    func observeChats() {
         firebaseObserver.observeChats() { [weak self] newChat in
             guard let strongSelf = self else {return}
             
@@ -194,7 +194,7 @@ class ChatsViewModel: ChatsViewModeling {
             strongSelf.view?.updateChats()
         }
         
-        ObserveChats()
+        observeChats()
     }
     
     
