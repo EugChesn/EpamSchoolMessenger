@@ -19,6 +19,12 @@
 		3EE90AC3243DDCEA009E0759 /* TableViewRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE90AC2243DDCEA009E0759 /* TableViewRegister.swift */; };
 		3EE90AC5243DDF2F009E0759 /* ClassNameExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE90AC4243DDF2F009E0759 /* ClassNameExtension.swift */; };
 		3EE90AC7243DE219009E0759 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE90AC6243DE219009E0759 /* ImagePicker.swift */; };
+		8407FA9F244B382D0028146E /* AddContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8407FA9E244B382D0028146E /* AddContactViewController.swift */; };
+		8407FAA3244B38600028146E /* AddContactViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8407FAA2244B38600028146E /* AddContactViewModel.swift */; };
+		8407FAA5244B386F0028146E /* AddContactRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8407FAA4244B386F0028146E /* AddContactRouter.swift */; };
+		8407FAA7244B39210028146E /* ContactListExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8407FAA6244B39210028146E /* ContactListExtension.swift */; };
+		8407FAA9244B3F260028146E /* ContactViewCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8407FAA8244B3F260028146E /* ContactViewCellTableViewCell.swift */; };
+		8407FAAB244B3F730028146E /* CreateContactExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8407FAAA244B3F730028146E /* CreateContactExtension.swift */; };
 		860A8FCB244281600070D8D5 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860A8FCA244281600070D8D5 /* UserSettings.swift */; };
 		867B2F7B2412585C00B16B01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867B2F7A2412585C00B16B01 /* AppDelegate.swift */; };
 		867B2F822412585C00B16B01 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 867B2F802412585C00B16B01 /* Main.storyboard */; };
@@ -111,6 +117,12 @@
 		3EE90AC2243DDCEA009E0759 /* TableViewRegister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewRegister.swift; sourceTree = "<group>"; };
 		3EE90AC4243DDF2F009E0759 /* ClassNameExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassNameExtension.swift; sourceTree = "<group>"; };
 		3EE90AC6243DE219009E0759 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		8407FA9E244B382D0028146E /* AddContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContactViewController.swift; sourceTree = "<group>"; };
+		8407FAA2244B38600028146E /* AddContactViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContactViewModel.swift; sourceTree = "<group>"; };
+		8407FAA4244B386F0028146E /* AddContactRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContactRouter.swift; sourceTree = "<group>"; };
+		8407FAA6244B39210028146E /* ContactListExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListExtension.swift; sourceTree = "<group>"; };
+		8407FAA8244B3F260028146E /* ContactViewCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewCellTableViewCell.swift; sourceTree = "<group>"; };
+		8407FAAA244B3F730028146E /* CreateContactExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateContactExtension.swift; sourceTree = "<group>"; };
 		860A8FCA244281600070D8D5 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		867B2F772412585C00B16B01 /* Messenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Messenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		867B2F7A2412585C00B16B01 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -242,6 +254,8 @@
 				AA57A48D243A1452001EE763 /* MessagesObserverExtensions.swift */,
 				AA57A48F243A470D001EE763 /* ContactsObserverExtension.swift */,
 				AA57A491243A5B28001EE763 /* ChatsObserverExtension.swift */,
+				8407FAA6244B39210028146E /* ContactListExtension.swift */,
+				8407FAAA244B3F730028146E /* CreateContactExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -253,6 +267,16 @@
 				3ECF658D243CA0530095A53C /* ChatTableViewCell.xib */,
 			);
 			path = CellChat;
+			sourceTree = "<group>";
+		};
+		8407FA9D244B38050028146E /* AddContact */ = {
+			isa = PBXGroup;
+			children = (
+				8407FA9E244B382D0028146E /* AddContactViewController.swift */,
+				8407FAA2244B38600028146E /* AddContactViewModel.swift */,
+				8407FAA4244B386F0028146E /* AddContactRouter.swift */,
+			);
+			path = AddContact;
 			sourceTree = "<group>";
 		};
 		860A8FC9244281240070D8D5 /* UserDefaults */ = {
@@ -580,9 +604,11 @@
 		AAF83500241938CF00FDF9D2 /* Contacts */ = {
 			isa = PBXGroup;
 			children = (
+				8407FA9D244B38050028146E /* AddContact */,
 				AAF8351524193F7800FDF9D2 /* ContactsViewController.swift */,
 				AAF8351724193F8100FDF9D2 /* ContactsViewModel.swift */,
 				AA1B5FD9241BF2450080443A /* ContactsRouter.swift */,
+				8407FAA8244B3F260028146E /* ContactViewCellTableViewCell.swift */,
 			);
 			path = Contacts;
 			sourceTree = "<group>";
@@ -779,6 +805,7 @@
 				868165752446812000D92626 /* UISearchController+Extension.swift in Sources */,
 				AA487C4A241E561600337FBF /* DialogViewModel.swift in Sources */,
 				3EE90AC7243DE219009E0759 /* ImagePicker.swift in Sources */,
+				8407FAA5244B386F0028146E /* AddContactRouter.swift in Sources */,
 				AA487C48241E560900337FBF /* DialogViewController.swift in Sources */,
 				86CB7AA8242B6C0F00995986 /* ProfileViewModel.swift in Sources */,
 				3E78E7132422218F0053DD1C /* ExtensionAuth.swift in Sources */,
@@ -788,6 +815,7 @@
 				AA1B40C52431D49400E1D452 /* CreateChatViewModel.swift in Sources */,
 				AAF8351824193F8100FDF9D2 /* ContactsViewModel.swift in Sources */,
 				AAB3AF0C241B843900825F00 /* RegistrationCodeConfirmationViewController.swift in Sources */,
+				8407FAA9244B3F260028146E /* ContactViewCellTableViewCell.swift in Sources */,
 				3EE90AC3243DDCEA009E0759 /* TableViewRegister.swift in Sources */,
 				AA1B5FD2241BF20F0080443A /* PasswordRecoveryRouter.swift in Sources */,
 				AAF8351624193F7800FDF9D2 /* ContactsViewController.swift in Sources */,
@@ -812,6 +840,7 @@
 				86CB7AA6242B6BEF00995986 /* ProfileViewController.swift in Sources */,
 				AA487C4C241E563900337FBF /* DialogRouter.swift in Sources */,
 				AA1B40EF2433607200E1D452 /* DialogCollectionViewExtension.swift in Sources */,
+				8407FAAB244B3F730028146E /* CreateContactExtension.swift in Sources */,
 				AAF834F02419258100FDF9D2 /* PasswordRecoveryViewController.swift in Sources */,
 				AAF8351024193F5200FDF9D2 /* SettingsViewController.swift in Sources */,
 				AA1B5FD4241BF21B0080443A /* NewPasswordRouter.swift in Sources */,
@@ -831,6 +860,9 @@
 				AAB3AF0E241B844000825F00 /* RegistrationCodeConfirmationViewModel.swift in Sources */,
 				3ECF658E243CA0530095A53C /* ChatTableViewCell.swift in Sources */,
 				AA64DE14241B72B600ED2C63 /* Reachability.swift in Sources */,
+				8407FAA3244B38600028146E /* AddContactViewModel.swift in Sources */,
+				8407FA9F244B382D0028146E /* AddContactViewController.swift in Sources */,
+				8407FAA7244B39210028146E /* ContactListExtension.swift in Sources */,
 				860A8FCB244281600070D8D5 /* UserSettings.swift in Sources */,
 				AAF8351224193F5F00FDF9D2 /* SettingsViewModel.swift in Sources */,
 			);

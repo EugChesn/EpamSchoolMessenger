@@ -23,6 +23,10 @@ struct Contact: Codable {
         case uid = "uid"
         case profileImageUrl = "photoUrl"
     }
+    
+    func asDictionaryForContactList() -> [String: String]{
+        return ["nickname": nickname!, "email": email!/*, "uid": uid!*/]
+    }
 }
 
 struct MessageModel: Codable {
