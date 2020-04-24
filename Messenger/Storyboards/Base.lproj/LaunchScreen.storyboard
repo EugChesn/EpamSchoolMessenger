@@ -17,26 +17,38 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="MainIcon" translatesAutoresizingMaskIntoConstraints="NO" id="qYF-4h-jZW">
-                                <rect key="frame" x="90" y="216" width="234" height="234"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MainIcon" translatesAutoresizingMaskIntoConstraints="NO" id="qYF-4h-jZW">
+                                <rect key="frame" x="90" y="203" width="234" height="234"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="qYF-4h-jZW" secondAttribute="height" multiplier="1:1" id="617-Wk-WSY"/>
+                                </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Paragram" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qrv-TI-NZs">
-                                <rect key="frame" x="157" y="525" width="100" height="27"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Paragram" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qrv-TI-NZs">
+                                <rect key="frame" x="0.0" y="499" width="414" height="27"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="qrv-TI-NZs" secondAttribute="height" multiplier="46:3" id="kA5-dW-9Ja"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <color key="textColor" name="3B8AC4"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qYF-4h-jZW" secondAttribute="trailing" constant="90" id="Ugp-6g-YXK"/>
+                            <constraint firstItem="qrv-TI-NZs" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="c7A-Xa-LXc"/>
+                            <constraint firstItem="qYF-4h-jZW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="90" id="emX-54-Xtj"/>
+                            <constraint firstItem="qrv-TI-NZs" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="jcC-Eb-6Oo"/>
+                            <constraint firstItem="qrv-TI-NZs" firstAttribute="top" secondItem="qYF-4h-jZW" secondAttribute="bottom" constant="62" id="sRe-Ua-LAp"/>
+                            <constraint firstItem="qYF-4h-jZW" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" priority="750" constant="159" id="xuM-6g-wTy"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52.173913043478265" y="375"/>
         </scene>
     </scenes>
     <resources>
