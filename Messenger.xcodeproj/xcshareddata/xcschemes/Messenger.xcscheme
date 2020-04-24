@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "867B2F762412585C00B16B01"
-               BuildableName = "Messenger.app"
+               BuildableName = "Paragram.app"
                BlueprintName = "Messenger"
                ReferencedContainer = "container:Messenger.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "867B2F762412585C00B16B01"
-            BuildableName = "Messenger.app"
+            BuildableName = "Paragram.app"
             BlueprintName = "Messenger"
             ReferencedContainer = "container:Messenger.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "867B2F762412585C00B16B01"
-            BuildableName = "Messenger.app"
+            BuildableName = "Paragram.app"
             BlueprintName = "Messenger"
             ReferencedContainer = "container:Messenger.xcodeproj">
          </BuildableReference>
