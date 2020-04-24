@@ -9,10 +9,10 @@
 import UIKit
 
 extension UITextField {
-    func styleTextField(placeholder: String) {
+    func styleTextField(placeholder: String, colorLine: String = "main") {
         let bottomLine = CALayer()
         bottomLine.frame = CGRect(x: 0, y: frame.height - 2, width: frame.width, height: 2)
-        bottomLine.backgroundColor = UIColor .systemBlue.cgColor
+        bottomLine.backgroundColor = UIColor(named: colorLine)?.cgColor
         layer.addSublayer(bottomLine)
         self.placeholder = placeholder
         borderStyle = .none
