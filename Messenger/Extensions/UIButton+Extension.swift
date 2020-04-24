@@ -10,7 +10,7 @@ import UIKit
 
 extension UIButton {
     func styleButton() {
-        backgroundColor = UIColor .systemBlue
+        backgroundColor = UIColor(named: "3B8AC4")
         layer.cornerRadius = 16
     }
 }

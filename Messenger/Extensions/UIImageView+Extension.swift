@@ -9,9 +9,9 @@
 import UIKit
 
 extension UIImageView {
-    func roundWithBorder() {
+    func roundWithBorder(colorLine: String = "main") {
         layer.borderWidth = 2
-        layer.borderColor = UIColor.systemBlue.cgColor
+        layer.borderColor = UIColor(named: colorLine)?.cgColor
         layer.cornerRadius = frame.size.width/2
     }
     func roundWithoutBorder() {

@@ -24,7 +24,7 @@ class PasswordRecoveryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        emailInputText.styleTextField(placeholder: "Email")
+        emailInputText.styleTextField(placeholder: "Email", colorLine: "3B8AC4")
         resetPassword.styleButton()
         
         setupDependencies()

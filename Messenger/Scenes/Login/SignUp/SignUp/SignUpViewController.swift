@@ -28,14 +28,15 @@ class SignUpViewController: UIViewController {
     var viewModel: SignUpViewModeling?
     var router: SignUpRouting?
     private lazy var imagePicker = ImagePicker()
-    
+    let color = "3B8AC4"
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        nameTextField.styleTextField(placeholder: "Name")
-        nickTextField.styleTextField(placeholder: "Nickname")
-        emailTextField.styleTextField(placeholder: "Email")
-        passwordTextField.styleTextField(placeholder: "Password")
-        photoProfile.roundWithBorder()
+        nameTextField.styleTextField(placeholder: "Name", colorLine: color)
+        nickTextField.styleTextField(placeholder: "Nickname", colorLine: color)
+        emailTextField.styleTextField(placeholder: "Email", colorLine: color)
+        passwordTextField.styleTextField(placeholder: "Password", colorLine: color)
+        photoProfile.roundWithBorder(colorLine: color)
         signUpButton.styleButton()
         
         let pictureTap = UITapGestureRecognizer(target: self, action: #selector(SignUpViewController.imageTapped))

@@ -28,8 +28,8 @@ class SignInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        emailTextField.styleTextField(placeholder: "Email")
-        passwordTextField.styleTextField(placeholder: "Password")
+        emailTextField.styleTextField(placeholder: "Email", colorLine: "3B8AC4")
+        passwordTextField.styleTextField(placeholder: "Password", colorLine: "3B8AC4")
         logInButton.styleButton()
         
         emailTextField.delegate = self
