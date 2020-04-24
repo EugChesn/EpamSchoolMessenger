@@ -32,7 +32,9 @@ extension FirebaseService: ContactsObserver {
                 
                 if var contact = contact {
                     contact.uid = currentUser.key
-                    contactsList.append(contact)
+                    if uid != contact.uid { // чтоб нельзя было создат чат с самим с собой
+                        contactsList.append(contact)
+                    }
                 }
             }
             

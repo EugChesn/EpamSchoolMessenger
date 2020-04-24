@@ -87,4 +87,27 @@ extension Date {
         }
         return resultDateStr
     }
+    
+    func days(to secondDate: Date, calendar: Calendar = Calendar.current) -> Int? {
+        return calendar.dateComponents([.day], from: self, to: secondDate).day
+    }
+    func mins(to secondDate: Date, calendar: Calendar = Calendar.current) -> Int? {
+        return calendar.dateComponents([.minute], from: self, to: secondDate).minute
+    }
+    func seconds(to secondDate: Date, calendar: Calendar = Calendar.current) -> Int? {
+        return calendar.dateComponents([.second], from: self, to: secondDate).second
+    }
+    
+    static func getStatusBaseOnTime(newTime: String) -> String? {
+        if let date = Date.timeMessageToString(newTime) {
+            if let mins = date.mins(to: Date()), mins > 1 {
+                return StatusUser.Offline.rawValue
+            } else {
+                return StatusUser.Online.rawValue
+            }
+        } else {
+            return nil
+        }
+    }
+    
 }

@@ -28,15 +28,16 @@ class SignUpViewController: UIViewController {
     var viewModel: SignUpViewModeling?
     var router: SignUpRouting?
     private lazy var imagePicker = ImagePicker()
-    
+    let color = "3B8AC4"
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        Utilities.styleTextField(nameTextField)
-        Utilities.styleTextField(nickTextField)
-        Utilities.styleTextField(emailTextField)
-        Utilities.styleTextField(passwordTextField)
-        Utilities.styleImageView(photoProfile)
-        Utilities.styleButton(signUpButton)
+        nameTextField.styleTextField(placeholder: "Name", colorLine: color)
+        nickTextField.styleTextField(placeholder: "Nickname", colorLine: color)
+        emailTextField.styleTextField(placeholder: "Email", colorLine: color)
+        passwordTextField.styleTextField(placeholder: "Password", colorLine: color)
+        photoProfile.roundWithBorder(colorLine: color)
+        signUpButton.styleButton()
         
         let pictureTap = UITapGestureRecognizer(target: self, action: #selector(SignUpViewController.imageTapped))
         photoProfile.addGestureRecognizer(pictureTap)
@@ -62,7 +63,7 @@ class SignUpViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "UnwindRegister"{
             if let destination = segue.destination as? ChatsViewController {
-                destination.viewModel.downloadChats()
+                destination.viewModel.downloadAndObserveChats()
             }
         }
     }

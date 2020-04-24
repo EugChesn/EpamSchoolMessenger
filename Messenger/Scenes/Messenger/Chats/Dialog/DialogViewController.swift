@@ -12,11 +12,15 @@ import FirebaseUI
 protocol DialogDelegate: class {
     func updateChatLog()
     func insertMessage(index: Int)
+    
+    func updateStatus(status: String)
 }
 
 class DialogViewController: UIViewController {
-    var viewModel: DialogViewModeling!
+    var viewModel: DialogViewModeling?
     var router: DialogRouting?
+    
+    var closureBackTime: ((String) -> ())?
     
     var chatInfo: ChatInfo?
     
@@ -24,27 +28,32 @@ class DialogViewController: UIViewController {
     @IBOutlet weak var messageTextField: UITextField!
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var inputTextFiledBottomConstraint: NSLayoutConstraint!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupDependencies()
         setupUI()
-        viewModel.updateChatLog()
+        viewModel?.updateChatLog()
+        viewModel?.startCheckStatusTimer()
     }
   
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
+        if let time = viewModel?.chat?.contact.time {
+            closureBackTime?(time)
+        }
         self.tabBarController?.tabBar.isHidden = false
     }
     
     deinit {
         removeKeyBoardObservers()
+        viewModel?.stopCheckStatusTimer()
     }
     
     func setupDependencies() {
         viewModel = DialogViewModel(view: self)
-        viewModel.chat = chatInfo
+        viewModel?.chat = chatInfo
         router = DialogRouter(viewController: self)
     }
     
@@ -60,7 +69,27 @@ class DialogViewController: UIViewController {
         messageTextField.layer.masksToBounds = true
         messageTextField.layer.borderWidth = 0.5
         
-        navigationItem.title = viewModel.chat?.contact.name
+        
+        var subtitleStatus: String!
+        if let newTime = viewModel?.chat?.contact.time {
+            subtitleStatus = Date.getStatusBaseOnTime(newTime: newTime)
+        }
+        let titleStackView: UIStackView = {
+            let titleLabel = UILabel()
+            titleLabel.textAlignment = .center
+            titleLabel.font = .boldSystemFont(ofSize: 17)
+            titleLabel.text = viewModel?.chat?.contact.name
+            let subtitleLabel = UILabel()
+            subtitleLabel.textAlignment = .center
+            subtitleLabel.font = UIFont.systemFont(ofSize: 13)
+            subtitleLabel.textColor = .darkGray
+            subtitleLabel.text = subtitleStatus
+            let stackView = UIStackView(arrangedSubviews: [titleLabel, subtitleLabel])
+            stackView.axis = .vertical
+            stackView.spacing = 5
+            return stackView
+        }()
+        navigationItem.titleView = titleStackView
         
         self.tabBarController?.tabBar.isHidden = true
         
@@ -72,7 +101,7 @@ class DialogViewController: UIViewController {
             return
         }
         
-        viewModel.sendMessage(messageText: text)
+        viewModel?.sendMessage(messageText: text)
         messageTextField.text = ""
     }
     
@@ -82,11 +111,27 @@ class DialogViewController: UIViewController {
 }
 
 extension DialogViewController: DialogDelegate {
+    func updateStatus(status: String) {
+        let title = navigationItem.titleView as! UIStackView
+        title.subviews.enumerated().forEach { (index, view) in
+            if index == 1 {
+                if let label = view as? UILabel {
+                    label.text = status
+                }
+            }
+        }
+        DispatchQueue.main.async {
+            self.navigationItem.titleView = title
+        }
+    }
+    
     func updateChatLog() {
         DispatchQueue.main.async {
             self.chatLogCollectionView.reloadData()
             
-            self.chatLogCollectionView.scrollToItem(at: IndexPath(row: self.viewModel.messageCount - 1 , section: 0), at: .bottom, animated: false)
+            if let viewModel = self.viewModel {
+                self.chatLogCollectionView.scrollToItem(at: IndexPath(row: viewModel.messageCount - 1 , section: 0), at: .bottom, animated: false)
+            }
         }
     }
     
@@ -100,4 +145,5 @@ extension DialogViewController: DialogDelegate {
         }
     }
 }
+
 

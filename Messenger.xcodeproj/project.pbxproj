@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E1B54BE244F549A00804E4E /* StatusUsersFirebaseExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1B54BD244F549A00804E4E /* StatusUsersFirebaseExtensions.swift */; };
+		3E1B54C02450575400804E4E /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1B54BF2450575400804E4E /* TimerManager.swift */; };
 		3E3185D1241C0381000FD0C2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3E3185D0241C0381000FD0C2 /* GoogleService-Info.plist */; };
 		3E50F191244634F900B34F8F /* ManagerActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E50F190244634F900B34F8F /* ManagerActivityIndicator.swift */; };
 		3E6BD3D3241FD70800CA6780 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6BD3D2241FD70800CA6780 /* FirebaseService.swift */; };
@@ -23,6 +25,7 @@
 		3EE90AC5243DDF2F009E0759 /* ClassNameExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE90AC4243DDF2F009E0759 /* ClassNameExtension.swift */; };
 		3EE90AC7243DE219009E0759 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE90AC6243DE219009E0759 /* ImagePicker.swift */; };
 		860A8FCB244281600070D8D5 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860A8FCA244281600070D8D5 /* UserSettings.swift */; };
+		8625597424527350009B849C /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8625597324527350009B849C /* UIButton+Extension.swift */; };
 		867B2F7B2412585C00B16B01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867B2F7A2412585C00B16B01 /* AppDelegate.swift */; };
 		867B2F822412585C00B16B01 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 867B2F802412585C00B16B01 /* Main.storyboard */; };
 		867B2F842412586000B16B01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 867B2F832412586000B16B01 /* Assets.xcassets */; };
@@ -99,6 +102,8 @@
 
 /* Begin PBXFileReference section */
 		262A7F8CC6FE8C4DBCBB667B /* Pods_Messenger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Messenger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E1B54BD244F549A00804E4E /* StatusUsersFirebaseExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusUsersFirebaseExtensions.swift; sourceTree = "<group>"; };
+		3E1B54BF2450575400804E4E /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
 		3E3185D0241C0381000FD0C2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3E50F190244634F900B34F8F /* ManagerActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerActivityIndicator.swift; sourceTree = "<group>"; };
 		3E6BD3D2241FD70800CA6780 /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
@@ -115,7 +120,8 @@
 		3EE90AC4243DDF2F009E0759 /* ClassNameExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassNameExtension.swift; sourceTree = "<group>"; };
 		3EE90AC6243DE219009E0759 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		860A8FCA244281600070D8D5 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
-		867B2F772412585C00B16B01 /* Messenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Messenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8625597324527350009B849C /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		867B2F772412585C00B16B01 /* Paragram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Paragram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		867B2F7A2412585C00B16B01 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		867B2F812412585C00B16B01 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		867B2F832412586000B16B01 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -231,6 +237,7 @@
 				8681657224466F2700D92626 /* UIImageView+Extension.swift */,
 				868165742446812000D92626 /* UISearchController+Extension.swift */,
 				86816576244682A400D92626 /* UITextField+Extension.swift */,
+				8625597324527350009B849C /* UIButton+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -242,6 +249,7 @@
 				AA57A48D243A1452001EE763 /* MessagesObserverExtensions.swift */,
 				AA57A48F243A470D001EE763 /* ContactsObserverExtension.swift */,
 				AA57A491243A5B28001EE763 /* ChatsObserverExtension.swift */,
+				3E1B54BD244F549A00804E4E /* StatusUsersFirebaseExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -278,7 +286,7 @@
 		867B2F782412585C00B16B01 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				867B2F772412585C00B16B01 /* Messenger.app */,
+				867B2F772412585C00B16B01 /* Paragram.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -466,6 +474,7 @@
 			children = (
 				AA64DE13241B72B600ED2C63 /* Reachability.swift */,
 				AA5AD8372440BE04009CF15A /* SnapshotDecoder.swift */,
+				3E1B54BF2450575400804E4E /* TimerManager.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -628,7 +637,7 @@
 			);
 			name = Messenger;
 			productName = Messenger;
-			productReference = 867B2F772412585C00B16B01 /* Messenger.app */;
+			productReference = 867B2F772412585C00B16B01 /* Paragram.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -765,6 +774,7 @@
 				AA1B5FCA241BF1D00080443A /* CreatePasswordRouter.swift in Sources */,
 				8681657324466F2700D92626 /* UIImageView+Extension.swift in Sources */,
 				AA64DE0F241B694400ED2C63 /* NetworkService.swift in Sources */,
+				8625597424527350009B849C /* UIButton+Extension.swift in Sources */,
 				AA1B5FD6241BF2250080443A /* CodeConfirmationRouter.swift in Sources */,
 				3E6BD3D3241FD70800CA6780 /* FirebaseService.swift in Sources */,
 				3EA8B18E2434AA48001B4207 /* ExtensionsStoryboard.swift in Sources */,
@@ -806,6 +816,7 @@
 				AA1B40EF2433607200E1D452 /* DialogCollectionViewExtension.swift in Sources */,
 				3E871EEB2444B06400B00A7C /* ChatCell.swift in Sources */,
 				AAF834F02419258100FDF9D2 /* PasswordRecoveryViewController.swift in Sources */,
+				3E1B54C02450575400804E4E /* TimerManager.swift in Sources */,
 				AAF8351024193F5200FDF9D2 /* SettingsViewController.swift in Sources */,
 				AA1B5FD4241BF21B0080443A /* NewPasswordRouter.swift in Sources */,
 				AAF194BF24310E1D00BB81BE /* MessageCollectionViewCell.swift in Sources */,
@@ -820,6 +831,7 @@
 				AAF834E62419228100FDF9D2 /* SignInViewController.swift in Sources */,
 				AA1B5FE1241BF3830080443A /* BaseRouter.swift in Sources */,
 				AAF834F62419296800FDF9D2 /* SignUpViewModel.swift in Sources */,
+				3E1B54BE244F549A00804E4E /* StatusUsersFirebaseExtensions.swift in Sources */,
 				AAB3AF0E241B844000825F00 /* RegistrationCodeConfirmationViewModel.swift in Sources */,
 				3ECF658E243CA0530095A53C /* ChatTableViewCell.swift in Sources */,
 				AA64DE14241B72B600ED2C63 /* Reachability.swift in Sources */,
@@ -978,8 +990,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = boombastic18.Messenger;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "Anastasia-Demidova.Messengerr";
+				PRODUCT_NAME = Paragram;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1000,8 +1012,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = boombastic18.Messenger;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "Anastasia-Demidova.Messengerr";
+				PRODUCT_NAME = Paragram;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

@@ -13,15 +13,25 @@ protocol ChatsViewModeling: class {
     var chatsCount: Int {get}
     var selectedChat: ChatInfo? {get set}
     
-    func downloadChats()
+    func downloadAndObserveChats()
     func removeObservers()
     func createNewChat(with contact: Contact)
     func getChat(atIndex: Int) -> ChatInfo
+    
     
     func subscribeStateUser()
     func unsubscribeStateUser()
     
     func handlerSearch(searchText: String)
+    
+    func startCheckTimerTime()
+    func stopCheckTimerTime()
+    
+    func setTimeSelectedChatList(time: String)
+    
+    func observeChats()
+    
+    func removeChatListForSignOut()
 }
 
 protocol ChatInfoGetterDelegate: class {
@@ -32,8 +42,10 @@ class ChatsViewModel: ChatsViewModeling {
 
     weak var view: ChatsDelegate?
     weak var authService: AuthFirebase?
+    weak var onlineFirebase: OnlineStatus?
     
     let firebaseObserver: ChatsObserver = FirebaseService.firebaseService
+    let timerManager: ControlTimer = TimerManager()
     
     private var filteredChatsList: [ChatInfo] = []
     private var chatsList: [ChatInfo] = []
@@ -49,8 +61,46 @@ class ChatsViewModel: ChatsViewModeling {
     init(view: ChatsDelegate) {
         self.view = view
         self.authService = FirebaseService.firebaseService
-        downloadChats()
+        self.onlineFirebase = FirebaseService.firebaseService
+        downloadAndObserveChats()
     }
+    
+    /*deinit {
+        firebaseObserver.removeObservers()
+    }*/
+    
+    func setTimeSelectedChatList(time: String) {
+        if let chat = chat {
+            if let index = chatsList.firstIndex(of: chat) {
+                //chatsList[index].contact.status = status
+                chatsList[index].contact.time = time
+                view?.updateSearch()
+            }
+        }
+    }
+    
+    func startCheckTimerTime() {
+        timerManager.config(delayedFunc: updateTimeUser, interval: 60.0)
+        timerManager.start(mode: .common)
+        updateTimeUser()
+    }
+    
+    func stopCheckTimerTime() {
+        timerManager.cancelTimerFire()
+    }
+    
+    private func updateTimeUser() {
+        print("update time")
+        onlineFirebase?.writeTimeOnlineCurrUser(status: .Online) { result in
+            switch result {
+            case .success( _):
+                print("good update time")
+            case .failure(let err):
+                print(err.localizedDescription)
+            }
+        }
+    }
+    
     
     let chatTransferQueue: DispatchQueue = DispatchQueue.global()
     
@@ -86,10 +136,6 @@ class ChatsViewModel: ChatsViewModeling {
         }
     }
     
-    deinit {
-        firebaseObserver.removeObservers()
-    }
-    
     func createNewChat(with contact: Contact) {
         let chat = ChatInfo(contact: contact)
 
@@ -113,21 +159,18 @@ class ChatsViewModel: ChatsViewModeling {
     
     func removeObservers() {
         firebaseObserver.removeObservers()
+        //chatsList = []
+    }
+    func removeChatListForSignOut() { // так как chatsviewcontroller is root
         chatsList = []
+        view?.updateChats()
     }
     
     func unsubscribeStateUser() {
         authService?.unListenStateUser()
     }
-
-    func downloadChats() {
-        firebaseObserver.downloadChats() { [weak self] chatsList in
-            guard let strongSelf = self else {return}
-            
-            strongSelf.chatsList = chatsList.sorted(by: {$0.timeSpan ?? "" > $1.timeSpan ?? ""})
-            strongSelf.view?.updateChats()
-        }
-        
+    
+    func observeChats() {
         firebaseObserver.observeChats() { [weak self] newChat in
             guard let strongSelf = self else {return}
             
@@ -142,6 +185,18 @@ class ChatsViewModel: ChatsViewModeling {
             strongSelf.view?.insertChat(removeIndex: index)
         }
     }
+
+    func downloadAndObserveChats() {
+        firebaseObserver.downloadChats() { [weak self] chatsList in
+            guard let strongSelf = self else {return}
+            
+            strongSelf.chatsList = chatsList.sorted(by: {$0.timeSpan ?? "" > $1.timeSpan ?? ""})
+            strongSelf.view?.updateChats()
+        }
+        
+        observeChats()
+    }
+    
     
     func handlerSearch(searchText: String) {        
         let valueFilter = chatsList.filter {

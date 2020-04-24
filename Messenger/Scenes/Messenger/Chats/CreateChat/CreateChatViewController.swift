@@ -111,12 +111,15 @@ extension CreateChatViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(with: ChatCell.self, for: indexPath)
         let contact = viewModel?.contact(atIndex: indexPath.row)
-        cell.nameChat.text = contact?.name ?? "Unnamed"
         
-        let url = contact?.profileImageUrl
-        if let urlPhoto = url {
-            let reference = StorageService.shared.getReference(url: urlPhoto)
-            cell.photo.sd_setImage(with: reference, placeholderImage: placeHolderImage)
+        if let name = contact?.name { // Заглушка на всякий случай (имя должно быть у любого юзера
+            cell.nameChat.text = name //contact?.name ?? "Unnamed"
+            
+            let url = contact?.profileImageUrl
+            if let urlPhoto = url {
+                let reference = StorageService.shared.getReference(url: urlPhoto)
+                cell.photo.sd_setImage(with: reference, placeholderImage: placeHolderImage)
+            }
         }
         
         return cell
