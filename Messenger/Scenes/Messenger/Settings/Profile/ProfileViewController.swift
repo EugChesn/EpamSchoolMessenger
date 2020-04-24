@@ -23,6 +23,7 @@ class ProfileViewController: UITableViewController {
     
     let datePicker = UIDatePicker()
     let placeHolderImage = UIImage(named: "profile")
+    private lazy var imagePicker = ImagePicker()
     
     var viewModel: ProfileViewModeling?
     var router: ProfileRoutering?
@@ -34,6 +35,9 @@ class ProfileViewController: UITableViewController {
         static let name = "Name"
         static let nickName = "Nickname"
         static let birthday = "Birthday"
+        static let cancel = "Cancel"
+        static let camera = "Camera"
+        static let galery = "Galery"
     }
     
     @IBAction func doneButton(_ sender: Any) {
@@ -53,6 +57,7 @@ class ProfileViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         settingNavigationItem()
+        imagePicker.delegate = self
         nameTextField.delegate = self
         nickNameTextField.delegate = self
         LogOutButton.setTitle(Constant.exit, for: .normal)
@@ -65,6 +70,10 @@ class ProfileViewController: UITableViewController {
         //MARK: DatePicker
         createDatePicker()
         
+        let pictureTap = UITapGestureRecognizer(target: self, action: #selector(ProfileViewController.imageTapped))
+        profileImage.addGestureRecognizer(pictureTap)
+        profileImage.isUserInteractionEnabled = true
+        
         setupDependencies()
     }
     
@@ -72,7 +81,33 @@ class ProfileViewController: UITableViewController {
         viewModel = ProfileViewModel(view: self)
         router = ProfileRouter(viewController: self)
     }
+        
+    @objc func imageTapped() {
+        alertSheetPhotoSource()
+    }
     
+    private func presentImagePicker(sourceType: UIImagePickerController.SourceType) {
+         imagePicker.present(parent: self, sourceType: sourceType)
+    }
+    
+    private func alertSheetPhotoSource() {
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        let actionCancel = UIAlertAction(title: Constant.cancel, style: .cancel, handler: nil)
+        let actionCamera = UIAlertAction(title: Constant.camera, style: .default) { action in
+            self.imagePicker.cameraAsscessRequest()
+        }
+        let actionGalery = UIAlertAction(title: Constant.galery, style: .default) { action in
+            self.imagePicker.photoGalleryAsscessRequest()
+        }
+        
+        actionSheet.addAction(actionCamera)
+        actionSheet.addAction(actionGalery)
+        actionSheet.addAction(actionCancel)
+        
+        present(actionSheet, animated: true, completion: nil)
+    }
+        
     private func settingNavigationItem() {
         navigationItem.title = Constant.edit
         navigationItem.rightBarButtonItem?.title = Constant.doneButton
@@ -120,6 +155,28 @@ extension ProfileViewController: UITextFieldDelegate {
             birthdayTextField.becomeFirstResponder()
         }
         return true
+    }
+}
+
+extension ProfileViewController: ImagePickerDelegate {
+    func imagePickerDelegate(didSelect image: UIImage, delegatedForm: ImagePicker) {
+        profileImage.image = image
+        imagePicker.dismiss()
+    }
+
+    func imagePickerDelegate(didCancel delegatedForm: ImagePicker) {
+        if profileImage.image == nil {
+            //labelPhoto.isHidden = false
+        }
+        imagePicker.dismiss()
+    }
+
+    func imagePickerDelegate(canUseGallery accessIsAllowed: Bool, delegatedForm: ImagePicker) {
+        if accessIsAllowed { presentImagePicker(sourceType: .photoLibrary) }
+    }
+
+    func imagePickerDelegate(canUseCamera accessIsAllowed: Bool, delegatedForm: ImagePicker) {
+        if accessIsAllowed { presentImagePicker(sourceType: .camera) }
     }
 }
 
