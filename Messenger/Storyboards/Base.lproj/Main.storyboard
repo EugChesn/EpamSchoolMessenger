@@ -283,41 +283,44 @@
                                 <color key="textColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="5Dm-RH-YMj">
-                                <rect key="frame" x="20" y="217" width="374" height="88"/>
-                                <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zbV-mp-S0b">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="34"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
-                                    </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pvK-XZ-axI">
-                                        <rect key="frame" x="0.0" y="54" width="374" height="34"/>
-                                        <color key="backgroundColor" red="0.063193187119999994" green="0.46654158829999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                        <state key="normal" title="Reset Password">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="resetButtonPressed:" destination="b7k-60-xVb" eventType="touchUpInside" id="RLZ-y2-zqL"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pvK-XZ-axI">
+                                <rect key="frame" x="20" y="336" width="374" height="40"/>
+                                <color key="backgroundColor" red="0.063193187119999994" green="0.46654158829999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <state key="normal" title="Reset Password">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="resetButtonPressed:" destination="b7k-60-xVb" eventType="touchUpInside" id="RLZ-y2-zqL"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zbV-mp-S0b">
+                                <rect key="frame" x="20" y="214" width="374" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="hrg-z7-LSD"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="1nK-qD-sfO" firstAttribute="trailing" secondItem="5Dm-RH-YMj" secondAttribute="trailing" constant="20" id="Tag-yh-SBY"/>
-                            <constraint firstItem="5Dm-RH-YMj" firstAttribute="leading" secondItem="1nK-qD-sfO" secondAttribute="leading" constant="20" id="WOw-zE-2fL"/>
+                            <constraint firstItem="zbV-mp-S0b" firstAttribute="leading" secondItem="pvK-XZ-axI" secondAttribute="leading" id="BT0-xd-yd1"/>
+                            <constraint firstItem="zbV-mp-S0b" firstAttribute="leading" secondItem="dhf-HY-dIx" secondAttribute="leadingMargin" id="Hnu-zS-JEq"/>
+                            <constraint firstItem="pvK-XZ-axI" firstAttribute="top" secondItem="zbV-mp-S0b" secondAttribute="bottom" constant="82" id="Iwx-Le-Sz8"/>
                             <constraint firstItem="aTH-PC-WAb" firstAttribute="top" secondItem="1nK-qD-sfO" secondAttribute="top" constant="100" id="dAu-vK-iMu"/>
+                            <constraint firstItem="zbV-mp-S0b" firstAttribute="top" secondItem="aTH-PC-WAb" secondAttribute="bottom" constant="77" id="dai-LK-YtN"/>
+                            <constraint firstItem="zbV-mp-S0b" firstAttribute="centerX" secondItem="aTH-PC-WAb" secondAttribute="centerX" id="dnq-9g-PJN"/>
                             <constraint firstItem="aTH-PC-WAb" firstAttribute="centerX" secondItem="dhf-HY-dIx" secondAttribute="centerX" id="f1Y-vI-dMI"/>
-                            <constraint firstItem="5Dm-RH-YMj" firstAttribute="top" secondItem="aTH-PC-WAb" secondAttribute="bottom" constant="80" id="i6Z-2z-0zh"/>
+                            <constraint firstItem="zbV-mp-S0b" firstAttribute="trailing" secondItem="pvK-XZ-axI" secondAttribute="trailing" id="tSC-O9-1De"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1nK-qD-sfO"/>
                     </view>
                     <navigationItem key="navigationItem" id="2ln-eV-2ci"/>
                     <connections>
                         <outlet property="emailInputText" destination="zbV-mp-S0b" id="Xz0-jp-7qD"/>
+                        <outlet property="resetPassword" destination="pvK-XZ-axI" id="CiR-xo-yFA"/>
                         <segue destination="clX-Yj-jFY" kind="show" identifier="codeConfirm" id="cah-YN-Nr9"/>
                     </connections>
                 </viewController>

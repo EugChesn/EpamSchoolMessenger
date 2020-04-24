@@ -20,9 +20,13 @@ class PasswordRecoveryViewController: UIViewController {
     var viewModel: PasswordRecoveryViewModeling?
     var router: PasswordRecoveryRouting?
     @IBOutlet weak var emailInputText: UITextField!
+    @IBOutlet weak var resetPassword: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        emailInputText.styleTextField(placeholder: "Email")
+        resetPassword.styleButton()
+        
         setupDependencies()
     }
     
