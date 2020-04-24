@@ -25,6 +25,7 @@
 		3EE90AC5243DDF2F009E0759 /* ClassNameExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE90AC4243DDF2F009E0759 /* ClassNameExtension.swift */; };
 		3EE90AC7243DE219009E0759 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE90AC6243DE219009E0759 /* ImagePicker.swift */; };
 		860A8FCB244281600070D8D5 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860A8FCA244281600070D8D5 /* UserSettings.swift */; };
+		8625597424527350009B849C /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8625597324527350009B849C /* UIButton+Extension.swift */; };
 		867B2F7B2412585C00B16B01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867B2F7A2412585C00B16B01 /* AppDelegate.swift */; };
 		867B2F822412585C00B16B01 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 867B2F802412585C00B16B01 /* Main.storyboard */; };
 		867B2F842412586000B16B01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 867B2F832412586000B16B01 /* Assets.xcassets */; };
@@ -119,6 +120,7 @@
 		3EE90AC4243DDF2F009E0759 /* ClassNameExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassNameExtension.swift; sourceTree = "<group>"; };
 		3EE90AC6243DE219009E0759 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		860A8FCA244281600070D8D5 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
+		8625597324527350009B849C /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		867B2F772412585C00B16B01 /* Paragram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Paragram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		867B2F7A2412585C00B16B01 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		867B2F812412585C00B16B01 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 				8681657224466F2700D92626 /* UIImageView+Extension.swift */,
 				868165742446812000D92626 /* UISearchController+Extension.swift */,
 				86816576244682A400D92626 /* UITextField+Extension.swift */,
+				8625597324527350009B849C /* UIButton+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -771,6 +774,7 @@
 				AA1B5FCA241BF1D00080443A /* CreatePasswordRouter.swift in Sources */,
 				8681657324466F2700D92626 /* UIImageView+Extension.swift in Sources */,
 				AA64DE0F241B694400ED2C63 /* NetworkService.swift in Sources */,
+				8625597424527350009B849C /* UIButton+Extension.swift in Sources */,
 				AA1B5FD6241BF2250080443A /* CodeConfirmationRouter.swift in Sources */,
 				3E6BD3D3241FD70800CA6780 /* FirebaseService.swift in Sources */,
 				3EA8B18E2434AA48001B4207 /* ExtensionsStoryboard.swift in Sources */,

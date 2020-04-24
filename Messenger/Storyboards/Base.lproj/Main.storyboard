@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,7 +11,7 @@
         <!--Greeting View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="LoginFlow" id="BYZ-38-t0r" customClass="GreetingViewController" customModule="Messenger" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginFlow" id="BYZ-38-t0r" customClass="GreetingViewController" customModule="Paragram" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -22,8 +22,8 @@
                                     <constraint firstAttribute="height" constant="234" id="OvH-JZ-hEB"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Telegram" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7b5-cd-bzH">
-                                <rect key="frame" x="115.5" y="460" width="183.5" height="24"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Paragram" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7b5-cd-bzH">
+                                <rect key="frame" x="114" y="460" width="186.5" height="24"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -93,7 +93,7 @@
         <!--Sign In View Controller-->
         <scene sceneID="LDB-eL-YqF">
             <objects>
-                <viewController id="paf-fB-Ehw" customClass="SignInViewController" customModule="Messenger" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="paf-fB-Ehw" customClass="SignInViewController" customModule="Paragram" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Byk-YD-I8b">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -110,7 +110,7 @@
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yCV-Nj-AdD">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NG1-HE-qSU">
                                         <rect key="frame" x="0.0" y="60" width="374" height="40"/>
@@ -175,7 +175,7 @@
         <!--Sign Up View Controller-->
         <scene sceneID="91D-bj-tnF">
             <objects>
-                <viewController id="PIG-lb-XbT" customClass="SignUpViewController" customModule="Messenger" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="PIG-lb-XbT" customClass="SignUpViewController" customModule="Paragram" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OY2-Bt-hjB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -186,17 +186,17 @@
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iN5-aS-Gsx">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next" textContentType="name"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nickname" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b6C-6V-sbD">
                                         <rect key="frame" x="0.0" y="60" width="374" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next" textContentType="name"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wxj-Lr-b2n">
                                         <rect key="frame" x="0.0" y="120" width="374" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mhc-hf-Jgf">
                                         <rect key="frame" x="0.0" y="180" width="374" height="40"/>
@@ -235,7 +235,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qTv-hE-V62">
                                 <rect key="frame" x="183" y="70" width="48" height="21.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <color key="textColor" red="0.242961854" green="0.63663328139999997" blue="0.96655136350000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="textColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -272,7 +272,7 @@
         <!--Password Recovery View Controller-->
         <scene sceneID="Uxk-Md-vdp">
             <objects>
-                <viewController id="b7k-60-xVb" customClass="PasswordRecoveryViewController" customModule="Messenger" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="b7k-60-xVb" customClass="PasswordRecoveryViewController" customModule="Paragram" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dhf-HY-dIx">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -289,7 +289,7 @@
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zbV-mp-S0b">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pvK-XZ-axI">
                                         <rect key="frame" x="0.0" y="54" width="374" height="34"/>
@@ -328,7 +328,7 @@
         <!--Code Confirmation View Controller-->
         <scene sceneID="NDj-Zy-aAQ">
             <objects>
-                <viewController id="clX-Yj-jFY" customClass="CodeConfirmationViewController" customModule="Messenger" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="clX-Yj-jFY" customClass="CodeConfirmationViewController" customModule="Paragram" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Q41-Mo-Vwu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -347,7 +347,7 @@
         <!--New Password View Controller-->
         <scene sceneID="hIM-kv-hQ3">
             <objects>
-                <viewController id="ViK-sn-YtU" customClass="NewPasswordViewController" customModule="Messenger" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ViK-sn-YtU" customClass="NewPasswordViewController" customModule="Paragram" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bOI-hL-Mw0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -363,7 +363,7 @@
         <!--Setup Profile View Controller-->
         <scene sceneID="1WL-YO-fEW">
             <objects>
-                <viewController id="SpG-Fd-5fg" customClass="SetupProfileViewController" customModule="Messenger" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="SpG-Fd-5fg" customClass="SetupProfileViewController" customModule="Paragram" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JpX-Dt-FJ9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

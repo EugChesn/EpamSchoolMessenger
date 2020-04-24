@@ -31,12 +31,12 @@ class SignUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        Utilities.styleTextField(nameTextField)
-        Utilities.styleTextField(nickTextField)
-        Utilities.styleTextField(emailTextField)
-        Utilities.styleTextField(passwordTextField)
-        Utilities.styleImageView(photoProfile)
-        Utilities.styleButton(signUpButton)
+        nameTextField.styleTextField(placeholder: "Name")
+        nickTextField.styleTextField(placeholder: "Nickname")
+        emailTextField.styleTextField(placeholder: "Email")
+        passwordTextField.styleTextField(placeholder: "Password")
+        photoProfile.roundWithBorder()
+        signUpButton.styleButton()
         
         let pictureTap = UITapGestureRecognizer(target: self, action: #selector(SignUpViewController.imageTapped))
         photoProfile.addGestureRecognizer(pictureTap)
