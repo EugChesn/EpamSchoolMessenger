@@ -122,6 +122,8 @@ extension CreateChatViewController: UITableViewDelegate, UITableViewDataSource {
             if let urlPhoto = url {
                 let reference = StorageService.shared.getReference(url: urlPhoto)
                 cell.photo.sd_setImage(with: reference, placeholderImage: placeHolderImage)
+            } else {
+                cell.photo.image = placeHolderImage
             }
         }
         
