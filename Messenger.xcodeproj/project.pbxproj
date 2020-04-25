@@ -243,6 +243,7 @@
 				86816576244682A400D92626 /* UITextField+Extension.swift */,
 				8625597324527350009B849C /* UIButton+Extension.swift */,
 				86BA53732453F54D00CA4329 /* UIView+Extension.swift */,
+				863D4C2B245497AD00B3FD89 /* UISearchBar+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -361,7 +362,6 @@
 				AA1B40F2243360EB00E1D452 /* ChatListSearchBarExtension.swift */,
 				AA1B40F8243361E000E1D452 /* ChatInfoTransferExtension.swift */,
 				AA1B40F4243360F800E1D452 /* ChatListTableViewExtension.swift */,
-				863D4C2B245497AD00B3FD89 /* UISearchBar+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
