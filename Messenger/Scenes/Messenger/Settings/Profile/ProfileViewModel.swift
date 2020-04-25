@@ -7,9 +7,11 @@
 //
 
 import Foundation
+import UIKit
 
 protocol ProfileViewModeling {
     func updateDataProfile(update: [String: String])
+    func updatePhoto(photo: UIImage)
     var contact: Contact { get }
     var userName: String { get }
     var userNickname: String { get }
@@ -22,7 +24,9 @@ class ProfileViewModel: ProfileViewModeling {
     
     private var data = Contact()
     var contact: Contact {
-        return data
+        get {
+            return data
+        }
     }
     
     var userName: String {
@@ -54,6 +58,22 @@ class ProfileViewModel: ProfileViewModeling {
         base?.writeNewDataCurrUser(update: update, id: nil) { errorWrite in
             if let errorWrite = errorWrite {
                 print("error write profile data(settings)")
+            }
+        }
+    }
+    
+    func updatePhoto(photo: UIImage) {
+        StorageService.shared.uploadImageProfile(img: photo) { reference in
+            reference.downloadURL { (url,error) in
+                if let newUrl = url {
+                    self.base?.writeNewDataCurrUser(update: ["photoUrl": newUrl.absoluteString], id: nil) { error in
+                        if let error = error {
+                            print("error change url")
+                        } 
+                    }
+                } else {
+                    print("error upload new image")
+                }
             }
         }
     }
