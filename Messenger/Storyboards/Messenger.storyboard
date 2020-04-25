@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" name="main"/>
-                        <color key="selectedImageTintColor" red="0.0" green="0.10929698359999999" blue="0.2507323393" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="selectedImageTintColor" name="main"/>
                     </tabBar>
                     <connections>
                         <segue destination="42M-X7-K1x" kind="relationship" relationship="viewControllers" id="qZ7-Jt-RKb"/>
@@ -67,19 +67,19 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9ma-I3-axk">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="0.1519441903" green="0.2406567037" blue="0.34819096329999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="tintColor" red="0.1519441903" green="0.2406567037" blue="0.34819096329999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" name="main"/>
+                        <color key="tintColor" name="main"/>
                         <constraints>
                             <constraint firstItem="ixX-p7-aPm" firstAttribute="trailing" secondItem="3BC-2j-Ajx" secondAttribute="trailing" id="Dre-mn-XF7"/>
                             <constraint firstItem="ixX-p7-aPm" firstAttribute="bottom" secondItem="3BC-2j-Ajx" secondAttribute="bottom" id="HHb-fa-UVR"/>
-                            <constraint firstItem="3BC-2j-Ajx" firstAttribute="bottom" secondItem="9ma-I3-axk" secondAttribute="bottom" id="JOL-vJ-V4g"/>
                             <constraint firstItem="3BC-2j-Ajx" firstAttribute="trailing" secondItem="9ma-I3-axk" secondAttribute="trailing" id="Px4-K1-tFh"/>
                             <constraint firstItem="ixX-p7-aPm" firstAttribute="top" secondItem="3BC-2j-Ajx" secondAttribute="top" id="Rae-Sk-ziR"/>
                             <constraint firstItem="9ma-I3-axk" firstAttribute="leading" secondItem="3BC-2j-Ajx" secondAttribute="leading" id="hSf-91-POt"/>
+                            <constraint firstAttribute="bottom" secondItem="9ma-I3-axk" secondAttribute="bottom" id="ofa-4N-Z9h"/>
                             <constraint firstItem="9ma-I3-axk" firstAttribute="top" secondItem="3BC-2j-Ajx" secondAttribute="top" id="pwB-Q5-DvW"/>
                             <constraint firstItem="ixX-p7-aPm" firstAttribute="leading" secondItem="3BC-2j-Ajx" secondAttribute="leading" id="qE6-3E-gJR"/>
                         </constraints>
@@ -152,13 +152,15 @@
         <scene sceneID="omV-18-iNl">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MNJ-fe-PKg" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Chats" image="message.fill" catalog="system" id="WJk-vt-E1v"/>
+                    <tabBarItem key="tabBarItem" title="Chats" image="message.fill" catalog="system" id="WJk-vt-E1v">
+                        <color key="badgeColor" name="main"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xSz-ma-cA2">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" red="0.1519441903" green="0.2406567037" blue="0.34819096329999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="barTintColor" red="0.0" green="0.10929698359999999" blue="0.2507323393" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" name="main"/>
+                        <color key="barTintColor" name="main"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
@@ -200,7 +202,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fij-Ve-xi2">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <gestureRecognizers/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="OPr-2X-RxO">
@@ -247,13 +249,14 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.1519441903" green="0.2406567037" blue="0.34819096329999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" name="main"/>
+                        <color key="tintColor" name="main"/>
                         <constraints>
                             <constraint firstItem="fij-Ve-xi2" firstAttribute="trailing" secondItem="aWY-um-hZl" secondAttribute="trailing" id="58D-s7-qhO"/>
                             <constraint firstItem="fss-7t-Uzr" firstAttribute="bottom" secondItem="aWY-um-hZl" secondAttribute="bottom" id="Cp3-e1-IEK"/>
+                            <constraint firstAttribute="bottom" secondItem="fij-Ve-xi2" secondAttribute="bottom" id="FJD-rN-wc5"/>
                             <constraint firstItem="fss-7t-Uzr" firstAttribute="trailing" secondItem="aWY-um-hZl" secondAttribute="trailing" id="N2D-7h-yON"/>
                             <constraint firstItem="fss-7t-Uzr" firstAttribute="leading" secondItem="aWY-um-hZl" secondAttribute="leading" id="dCg-MS-rWE"/>
-                            <constraint firstItem="aWY-um-hZl" firstAttribute="bottom" secondItem="fij-Ve-xi2" secondAttribute="bottom" id="sL1-no-xd6"/>
                             <constraint firstItem="fij-Ve-xi2" firstAttribute="leading" secondItem="aWY-um-hZl" secondAttribute="leading" id="vPN-dA-4xt"/>
                             <constraint firstItem="fij-Ve-xi2" firstAttribute="top" secondItem="aWY-um-hZl" secondAttribute="top" id="vzT-8K-dFm"/>
                         </constraints>
@@ -274,7 +277,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2141" y="205"/>
+            <point key="canvasLocation" x="2139.130434782609" y="204.91071428571428"/>
         </scene>
         <!--Create Chat-->
         <scene sceneID="eiJ-Gy-QlO">
@@ -345,7 +348,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="12M-tD-FXw"/>
+        <segue reference="n4v-XQ-Dgx"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="emptyChat" width="512" height="512"/>
