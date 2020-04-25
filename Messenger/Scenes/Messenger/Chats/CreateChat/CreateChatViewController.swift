@@ -67,7 +67,8 @@ class CreateChatViewController: UIViewController {
         contactListTableView.register(cellType: ChatCell.self)
         
         searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = false 
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.setTextColor(color: .black)
         definesPresentationContext = true
         navigationItem.hidesSearchBarWhenScrolling = true
         //navigationItem.searchController = searchController
