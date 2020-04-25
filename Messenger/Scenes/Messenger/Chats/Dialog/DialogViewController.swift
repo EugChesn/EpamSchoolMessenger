@@ -58,6 +58,8 @@ class DialogViewController: UIViewController {
     }
     
     func setupUI() {
+        navigationController?.navigationBar.tintColor = .white
+        
         chatLogCollectionView.delegate = self
         chatLogCollectionView.dataSource = self
 
@@ -65,10 +67,12 @@ class DialogViewController: UIViewController {
         chatLogCollectionView.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: 50, right: 0)
         chatLogCollectionView.register(MessageCollectionViewCell.self, forCellWithReuseIdentifier: "messageCell")
         
-        messageTextField.layer.cornerRadius = 15
+        messageTextField.layer.cornerRadius = 17
         messageTextField.layer.masksToBounds = true
         messageTextField.layer.borderWidth = 0.5
-        
+        let leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 6.0, height: 2.0))
+         messageTextField.leftView = leftView
+         messageTextField.leftViewMode = .always
         
         var subtitleStatus: String!
         if let newTime = viewModel?.chat?.contact.time {
@@ -79,10 +83,11 @@ class DialogViewController: UIViewController {
             titleLabel.textAlignment = .center
             titleLabel.font = .boldSystemFont(ofSize: 17)
             titleLabel.text = viewModel?.chat?.contact.name
+            titleLabel.textColor = .white
             let subtitleLabel = UILabel()
             subtitleLabel.textAlignment = .center
-            subtitleLabel.font = UIFont.systemFont(ofSize: 13)
-            subtitleLabel.textColor = .darkGray
+            subtitleLabel.font = UIFont.systemFont(ofSize: 10)
+            subtitleLabel.textColor = .white
             subtitleLabel.text = subtitleStatus
             let stackView = UIStackView(arrangedSubviews: [titleLabel, subtitleLabel])
             stackView.axis = .vertical
@@ -97,12 +102,9 @@ class DialogViewController: UIViewController {
     }
 
     @IBAction func sendMessage(_ sender: Any) {
-        guard let text = messageTextField.text, text != "" else {
-            return
-        }
-        
+        guard let text = messageTextField.text, !text.isEmpty else { return }
         viewModel?.sendMessage(messageText: text)
-        messageTextField.text = ""
+        messageTextField.text = nil
     }
     
     @IBAction func hideKeyboard(_ sender: Any) {
@@ -145,5 +147,3 @@ extension DialogViewController: DialogDelegate {
         }
     }
 }
-
-

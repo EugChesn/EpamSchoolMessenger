@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -216,36 +217,37 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fss-7t-Uzr">
                                 <rect key="frame" x="0.0" y="763" width="414" height="50"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kM6-PL-Lzp">
-                                        <rect key="frame" x="5" y="5" width="323" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="323" id="gOJ-qH-uAG"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bOa-E3-T8l">
-                                        <rect key="frame" x="336" y="5" width="73" height="40"/>
+                                        <rect key="frame" x="371" y="5" width="40" height="40"/>
+                                        <color key="tintColor" red="0.0" green="0.10929698359999999" blue="0.2507323393" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" image="paperplane.fill" catalog="system"/>
                                         <connections>
                                             <action selector="sendMessage:" destination="JPB-Bh-H4w" eventType="touchUpInside" id="Pqn-nZ-GMC"/>
                                         </connections>
                                     </button>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Message" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kM6-PL-Lzp">
+                                        <rect key="frame" x="12" y="7" width="360" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="360" id="gOJ-qH-uAG"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                    </textField>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="4r6-oO-DZL"/>
-                                    <constraint firstAttribute="trailing" secondItem="bOa-E3-T8l" secondAttribute="trailing" constant="5" id="5Eo-HW-l68"/>
-                                    <constraint firstAttribute="bottom" secondItem="kM6-PL-Lzp" secondAttribute="bottom" constant="5" id="EbD-Wp-JMM"/>
-                                    <constraint firstItem="kM6-PL-Lzp" firstAttribute="leading" secondItem="fss-7t-Uzr" secondAttribute="leading" constant="5" id="HH4-pA-F5L"/>
+                                    <constraint firstAttribute="trailing" secondItem="bOa-E3-T8l" secondAttribute="trailing" constant="3" id="5Eo-HW-l68"/>
+                                    <constraint firstAttribute="bottom" secondItem="kM6-PL-Lzp" secondAttribute="bottom" constant="7" id="EbD-Wp-JMM"/>
+                                    <constraint firstItem="kM6-PL-Lzp" firstAttribute="leading" secondItem="fss-7t-Uzr" secondAttribute="leading" constant="12" id="HH4-pA-F5L"/>
                                     <constraint firstItem="bOa-E3-T8l" firstAttribute="top" secondItem="fss-7t-Uzr" secondAttribute="top" constant="5" id="PgS-NS-sbE"/>
                                     <constraint firstAttribute="bottom" secondItem="bOa-E3-T8l" secondAttribute="bottom" constant="5" id="jR0-7O-KMk"/>
-                                    <constraint firstItem="kM6-PL-Lzp" firstAttribute="top" secondItem="fss-7t-Uzr" secondAttribute="top" constant="5" id="mwV-WI-Q6d"/>
-                                    <constraint firstItem="bOa-E3-T8l" firstAttribute="leading" secondItem="kM6-PL-Lzp" secondAttribute="trailing" constant="8" id="zlQ-hm-bEI"/>
+                                    <constraint firstItem="kM6-PL-Lzp" firstAttribute="top" secondItem="fss-7t-Uzr" secondAttribute="top" constant="7" id="mwV-WI-Q6d"/>
+                                    <constraint firstItem="bOa-E3-T8l" firstAttribute="leading" secondItem="kM6-PL-Lzp" secondAttribute="trailing" constant="-1" id="zlQ-hm-bEI"/>
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.1519441903" green="0.2406567037" blue="0.34819096329999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="fij-Ve-xi2" firstAttribute="trailing" secondItem="aWY-um-hZl" secondAttribute="trailing" id="58D-s7-qhO"/>
                             <constraint firstItem="fss-7t-Uzr" firstAttribute="bottom" secondItem="aWY-um-hZl" secondAttribute="bottom" id="Cp3-e1-IEK"/>
@@ -272,7 +274,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2143.1999999999998" y="204.64767616191907"/>
+            <point key="canvasLocation" x="2141" y="205"/>
         </scene>
         <!--Create Chat-->
         <scene sceneID="eiJ-Gy-QlO">
@@ -343,7 +345,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="n4v-XQ-Dgx"/>
+        <segue reference="12M-tD-FXw"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="emptyChat" width="512" height="512"/>

@@ -28,7 +28,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last message" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GHj-V6-4kI">
-                        <rect key="frame" x="98" y="57.5" width="100.5" height="19.5"/>
+                        <rect key="frame" x="98" y="57.5" width="206" height="20"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <color key="textColor" red="0.037884032844155265" green="0.095581559067779709" blue="0.11698921319796951" alpha="0.55000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
@@ -61,6 +61,7 @@
                     <constraint firstItem="qRr-gV-SM6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="YaC-os-wl0"/>
                     <constraint firstItem="GHj-V6-4kI" firstAttribute="leading" secondItem="DbF-1L-Edc" secondAttribute="leading" id="Ywp-DX-aOe"/>
                     <constraint firstAttribute="bottom" secondItem="qRr-gV-SM6" secondAttribute="bottom" constant="8" id="h3j-dW-D95"/>
+                    <constraint firstItem="GHj-V6-4kI" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="kgs-7m-Btl"/>
                     <constraint firstItem="X18-C2-JdT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="18" id="o9x-ST-1fD"/>
                     <constraint firstItem="X18-C2-JdT" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="qBM-2G-Mph"/>
                     <constraint firstItem="DbF-1L-Edc" firstAttribute="top" secondItem="X18-C2-JdT" secondAttribute="top" id="vma-2g-ek9"/>
