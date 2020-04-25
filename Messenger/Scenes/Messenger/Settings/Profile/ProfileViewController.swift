@@ -26,6 +26,7 @@ class ProfileViewController: UITableViewController {
     let placeHolderImage = UIImage(named: "profile")
     private lazy var imagePicker = ImagePicker()
     var checkChangePhoto: Bool = false
+    var alertIndicator: UIAlertController!
     
     var viewModel: ProfileViewModeling?
     var router: ProfileRoutering?
@@ -48,12 +49,37 @@ class ProfileViewController: UITableViewController {
                 let update = ["name": name, "nickname": nickname]
                 self.viewModel?.updateDataProfile(update: update)
                 self.viewModel?.updateUserDefaults(name, nickname)
-            }
-            if checkChangePhoto {
-                self.viewModel?.updatePhoto(photo: profileImage.image!)
+                if !checkChangePhoto { self.router?.routeSettings() }
             }
         }
-        router?.routeSettings()
+        
+        if checkChangePhoto {
+            self.testIndicatorAlert()
+            SDImageCache.shared.removeImage(forKey: viewModel?.contact.profileImageUrl!) {
+                print("complete remove cash")
+                self.viewModel?.updatePhoto(photo: self.profileImage.image!) { newUrl in
+                    /*self.profileImage.sd_imageIndicator = SDWebImageActivityIndicator.medium
+                    self.profileImage.sd_setImage(with: newUrl, placeholderImage: nil, options: [], completed: nil)*/
+                    self.dismiss(animated: true) {
+                        self.router?.routeSettings()
+                    }
+                }
+            }
+        }
+        
+        self.router?.routeSettings()
+    }
+    
+    func testIndicatorAlert() {
+        alertIndicator = UIAlertController(title: nil, message: "Applying changes...", preferredStyle: .alert)
+
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.gray
+        loadingIndicator.startAnimating();
+
+        alertIndicator.view.addSubview(loadingIndicator)
+        present(alertIndicator, animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
@@ -166,20 +192,10 @@ extension ProfileViewController: ProfileDelegate {
             self.nickNameTextField.text = user.nickname
             let url = user.profileImageUrl
             if let urlPhoto = url {
-                let reference = StorageService.shared.getReference(url: urlPhoto)
-                //self.profileImage.sd_setImage(with: reference, placeholderImage: self.placeHolderImage)
-                
-                /*let test = SDImageCache.shared.imageFromCache(forKey: urlPhoto)
-                self.profileImage.image = test*/
-                SDImageCache.shared.removeImage(forKey: urlPhoto) {
-                    print("complete remove cash")
-                    self.profileImage.sd_setImage(with: URL(string: urlPhoto), placeholderImage: nil, options: .refreshCached)
-                }
-                
-                /*StorageService.shared.downloadImage(ref: reference) { image in
-                    self.profileImage.image = image
-                }*/
-                
+                //let reference = StorageService.shared.getReference(url: urlPhoto)
+               //self.profileImage.sd_setImage(with: reference, placeholderImage: self.placeHolderImage)
+                self.profileImage.sd_setImage(with: URL(string: urlPhoto), placeholderImage: nil, options: [], completed: nil)
+                /*self.profileImage.sd_setImage(with: URL(string: urlPhoto), placeholderImage: nil, options: .refreshCached)*/
             }
         }
     }

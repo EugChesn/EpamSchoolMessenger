@@ -54,13 +54,13 @@ class SettingsViewController: UITableViewController {
         searchController.searchResultsUpdater = self
         definesPresentationContext = true
         setupDependencies()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewModel?.getDataProfile()
     }
-    
     
     private func setupDependencies() {
         viewModel = SettingsViewModel(view: self)
@@ -106,8 +106,12 @@ class SettingsViewController: UITableViewController {
             let url = viewModel?.contact.profileImageUrl
             if let urlPhoto = url {
                 let reference = StorageService.shared.getReference(url: urlPhoto)
+                
+                customCell.profileImage.sd_imageIndicator = SDWebImageActivityIndicator.medium
                 /*customCell.profileImage.sd_setImage(with: reference, placeholderImage: placeHolderImage)*/
-                customCell.profileImage.sd_setImage(with: URL(string: urlPhoto), placeholderImage: nil, options: [.refreshCached, .retryFailed])
+                customCell.profileImage.sd_setImage(with: URL(string: urlPhoto), placeholderImage: nil, options: [], completed: nil)
+                
+                /*customCell.profileImage.sd_setImage(with: URL(string: urlPhoto), placeholderImage: nil, options: [.refreshCached, .retryFailed])*/
             } else {
                 customCell.profileImage.image = placeHolderImage
             }
@@ -147,8 +151,7 @@ extension SettingsViewController: UISearchResultsUpdating {
 }
 
 extension SettingsViewController: SettingsDelegate {
-    func
-        openProfile() {
+    func openProfile() {
         router?.routeProfile(withIdentifier: "goToProfile", sender: self)
     }
     

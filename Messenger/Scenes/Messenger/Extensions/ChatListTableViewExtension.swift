@@ -59,6 +59,7 @@ extension ChatsViewController: UITableViewDelegate, UITableViewDataSource {
             
             if let url = chat.contact.profileImageUrl {
                 let reference = StorageService.shared.getReference(url: url)
+                cell.photo.sd_imageIndicator = SDWebImageActivityIndicator.whiteLarge
                 cell.photo.sd_setImage(with: reference, placeholderImage: placeHolderImage)
             }
             

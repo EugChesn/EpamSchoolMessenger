@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import SDWebImage
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
+        clearCashe()
         navigateStart()
         return true
     }
@@ -23,5 +25,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let vc = MessengerTabBarController.instantiate()
         vc.selectedIndex = 1
         UIApplication.shared.windows.first?.rootViewController = vc
+    }
+    
+    func clearCashe() {
+        let objCache = SDImageCache.shared
+        objCache.clearMemory()
+        objCache.clearDisk(onCompletion: nil)
     }
 }
