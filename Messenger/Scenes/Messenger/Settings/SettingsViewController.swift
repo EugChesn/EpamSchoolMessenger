@@ -56,6 +56,11 @@ class SettingsViewController: UITableViewController {
         setupDependencies()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel?.getDataProfile()
+    }
+    
     private func setupDependencies() {
         viewModel = SettingsViewModel(view: self)
         router = SettingsRouter(viewController: self)
@@ -101,6 +106,8 @@ class SettingsViewController: UITableViewController {
             if let urlPhoto = url {
                 let reference = StorageService.shared.getReference(url: urlPhoto)
                 customCell.profileImage.sd_setImage(with: reference, placeholderImage: placeHolderImage)
+            } else {
+                customCell.profileImage.image = placeHolderImage
             }
             
             cell = customCell

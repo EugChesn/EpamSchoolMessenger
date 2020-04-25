@@ -11,6 +11,7 @@ import Foundation
 protocol SettingsViewModeling {
     func editProfile()
     var contact: Contact { get }
+    func getDataProfile()
 }
 
 class SettingsViewModel: SettingsViewModeling {
@@ -23,14 +24,13 @@ class SettingsViewModel: SettingsViewModeling {
     
     init(view: SettingsDelegate) {
         self.view = view
-        getDataProfileSettings()
     }
     
     func editProfile() {
         self.view?.openProfile()
     }
     
-    private func getDataProfileSettings() {
+    func getDataProfile() {
         FirebaseService.firebaseService.getUserData() { [weak self] (user) in
             guard let self = self else { return }
             guard let current = user else { return }
