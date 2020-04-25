@@ -117,11 +117,31 @@
                     <view key="view" contentMode="scaleToFill" id="Lme-jh-IWB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="ekz-7x-4bL">
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" name="main"/>
+                        <constraints>
+                            <constraint firstItem="ekz-7x-4bL" firstAttribute="trailing" secondItem="0wy-Lx-kfK" secondAttribute="trailing" id="0aU-Yl-ueg"/>
+                            <constraint firstAttribute="bottom" secondItem="ekz-7x-4bL" secondAttribute="bottom" id="DnJ-P9-RtD"/>
+                            <constraint firstItem="ekz-7x-4bL" firstAttribute="leading" secondItem="0wy-Lx-kfK" secondAttribute="leading" id="b6S-JO-70l"/>
+                            <constraint firstItem="ekz-7x-4bL" firstAttribute="top" secondItem="0wy-Lx-kfK" secondAttribute="top" id="tRs-5f-yWa"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="0wy-Lx-kfK"/>
                     </view>
-                    <navigationItem key="navigationItem" id="GMF-sb-cEo"/>
+                    <navigationItem key="navigationItem" id="GMF-sb-cEo">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="calendar" catalog="system" id="IZt-4Z-gOv">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="person.badge.plus" catalog="system" id="cye-TK-Fpb">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="contactTableView" destination="ekz-7x-4bL" id="rEa-Om-Enr"/>
                         <segue destination="JPB-Bh-H4w" kind="show" identifier="dialogWithContact" id="12M-tD-FXw"/>
                     </connections>
                 </viewController>
@@ -138,6 +158,11 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="z8V-zQ-BcE">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" name="main"/>
+                        <color key="barTintColor" name="main"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -284,7 +309,7 @@
             <objects>
                 <viewController id="qLn-hQ-cMr" customClass="CreateChatViewController" customModule="Paragram" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9YL-k4-aX1">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dfz-K6-e47">
@@ -348,13 +373,15 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="n4v-XQ-Dgx"/>
+        <segue reference="12M-tD-FXw"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="calendar" catalog="system" width="128" height="106"/>
         <image name="emptyChat" width="512" height="512"/>
         <image name="gear" catalog="system" width="128" height="119"/>
         <image name="message.fill" catalog="system" width="128" height="113"/>
         <image name="paperplane.fill" catalog="system" width="128" height="121"/>
+        <image name="person.badge.plus" catalog="system" width="128" height="116"/>
         <image name="person.circle.fill" catalog="system" width="128" height="121"/>
         <image name="square.and.pencil" catalog="system" width="128" height="118"/>
         <namedColor name="main">
