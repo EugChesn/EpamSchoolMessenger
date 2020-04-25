@@ -21,14 +21,8 @@ class ChatTableViewCell: UITableViewCell {
         super.awakeFromNib()
         photo.roundWithoutBorder()
         statusOnlineImage.roundWithoutBorder()
-        
+        shadowView.addShadow()
         self.selectionStyle = .none
-        
-        shadowView.layer.shadowColor = UIColor.black.cgColor
-        shadowView.layer.shadowRadius = 5
-        shadowView.layer.shadowOffset = CGSize(width: 0, height: 2)
-        shadowView.layer.shadowOpacity = 0.1
-        shadowView.layer.cornerRadius = 8
     }
 
     override func prepareForReuse() { // MARK Important change!

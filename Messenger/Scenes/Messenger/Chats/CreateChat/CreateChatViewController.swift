@@ -67,11 +67,12 @@ class CreateChatViewController: UIViewController {
         contactListTableView.register(cellType: ChatCell.self)
         
         searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.obscuresBackgroundDuringPresentation = false 
         definesPresentationContext = true
         navigationItem.hidesSearchBarWhenScrolling = true
         //navigationItem.searchController = searchController
         //creatChatNavigationItem.searchController = searchController
+        navigationController?.navigationBar.tintColor = UIColor.init(named: "main")
         navigationItem.searchController = searchController
         navigationItem.title = "New Message"
     }

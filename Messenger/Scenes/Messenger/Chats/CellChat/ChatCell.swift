@@ -11,12 +11,13 @@ import UIKit
 class ChatCell: UITableViewCell {
     @IBOutlet weak var photo: UIImageView!
     @IBOutlet weak var nameChat: UILabel!
+    @IBOutlet weak var shadowView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        photo.layer.cornerRadius = photo.frame.size.height / 2
-        photo.contentMode = .scaleAspectFill
-        photo.layer.masksToBounds = true
+        photo.roundWithoutBorder()
+        shadowView.addShadow()
+        self.selectionStyle = .none
     }
     
     override func prepareForReuse() { // MARK Important change!
