@@ -22,14 +22,15 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var logInButton: UIButton!
     
     var backName = ""
+    var blue = "3B8AC4"
     var viewModel: SignInViewModeling?
     var router: SignInRouting?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        emailTextField.styleTextField(placeholder: "Email", colorLine: "3B8AC4")
-        passwordTextField.styleTextField(placeholder: "Password", colorLine: "3B8AC4")
+        self.navigationController?.navigationBar.tintColor = UIColor(named: blue)
+        emailTextField.styleTextField(placeholder: "Email", colorLine: blue)
+        passwordTextField.styleTextField(placeholder: "Password", colorLine: blue)
         logInButton.styleButton()
         
         emailTextField.delegate = self
@@ -99,6 +100,7 @@ extension SignInViewController: SignInDelegate {
             let alert = UIAlertController(title: "Error", message: errorCode.errorMessage, preferredStyle: .alert)
             let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
             alert.addAction(okAction)
+            alert.view.tintColor = UIColor(named: blue)
             self.present(alert, animated: true, completion: nil)
         }
     }
