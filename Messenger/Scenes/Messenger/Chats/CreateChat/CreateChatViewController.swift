@@ -115,6 +115,7 @@ extension CreateChatViewController: UITableViewDelegate, UITableViewDataSource {
         
         if let name = contact?.name { // Заглушка на всякий случай (имя должно быть у любого юзера
             cell.nameChat.text = name //contact?.name ?? "Unnamed"
+            cell.emailLabel.text = contact?.email
             
             let url = contact?.profileImageUrl
             if let urlPhoto = url {

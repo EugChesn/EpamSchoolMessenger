@@ -12,6 +12,7 @@ class ChatCell: UITableViewCell {
     @IBOutlet weak var photo: UIImageView!
     @IBOutlet weak var nameChat: UILabel!
     @IBOutlet weak var shadowView: UIView!
+    @IBOutlet weak var emailLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

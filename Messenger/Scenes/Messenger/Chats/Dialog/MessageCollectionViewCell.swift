@@ -82,6 +82,4 @@ class MessageCollectionViewCell: UICollectionViewCell {
             messageTextView.textColor = .black
         }
     }
-    
-    
 }
