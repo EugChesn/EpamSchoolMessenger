@@ -11,11 +11,13 @@
         <!--Messenger Tab Bar Controller-->
         <scene sceneID="m5Y-bI-NEn">
             <objects>
-                <tabBarController storyboardIdentifier="StartPoint" id="f8k-05-Osx" customClass="MessengerTabBarController" customModule="Messenger" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="StartPoint" id="f8k-05-Osx" customClass="MessengerTabBarController" customModule="Paragram" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5qI-PH-xsL">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" name="main"/>
+                        <color key="selectedImageTintColor" red="0.0" green="0.10929698359999999" blue="0.2507323393" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="42M-X7-K1x" kind="relationship" relationship="viewControllers" id="qZ7-Jt-RKb"/>
@@ -30,7 +32,7 @@
         <!--Chats View Controller-->
         <scene sceneID="s9E-lF-KjF">
             <objects>
-                <viewController id="svb-cc-S14" customClass="ChatsViewController" customModule="Messenger" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="svb-cc-S14" customClass="ChatsViewController" customModule="Paragram" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Z7e-ap-TGl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -110,7 +112,7 @@
         <!--Contacts View Controller-->
         <scene sceneID="u6o-Vg-9qt">
             <objects>
-                <viewController id="TgB-xy-fpk" customClass="ContactsViewController" customModule="Messenger" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="TgB-xy-fpk" customClass="ContactsViewController" customModule="Paragram" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Lme-jh-IWB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -191,7 +193,7 @@
         <!--Chat-->
         <scene sceneID="3Ym-mc-hHS">
             <objects>
-                <viewController id="JPB-Bh-H4w" customClass="DialogViewController" customModule="Messenger" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="JPB-Bh-H4w" customClass="DialogViewController" customModule="Paragram" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dEp-8U-8bd">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -275,7 +277,7 @@
         <!--Create Chat-->
         <scene sceneID="eiJ-Gy-QlO">
             <objects>
-                <viewController id="qLn-hQ-cMr" customClass="CreateChatViewController" customModule="Messenger" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="qLn-hQ-cMr" customClass="CreateChatViewController" customModule="Paragram" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9YL-k4-aX1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -350,5 +352,8 @@
         <image name="paperplane.fill" catalog="system" width="128" height="121"/>
         <image name="person.circle.fill" catalog="system" width="128" height="121"/>
         <image name="square.and.pencil" catalog="system" width="128" height="118"/>
+        <namedColor name="main">
+            <color red="0.15299999713897705" green="0.23299999535083771" blue="0.35499998927116394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

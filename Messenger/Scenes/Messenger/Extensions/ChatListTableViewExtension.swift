@@ -38,9 +38,9 @@ extension ChatsViewController: UITableViewDelegate, UITableViewDataSource {
                 if let status = Date.getStatusBaseOnTime(newTime: time) {
                     switch status {
                     case StatusUser.Offline.rawValue:
-                        cell.statusOnlineImage.backgroundColor = .red
+                        cell.statusOnlineImage.backgroundColor = .none
                     case StatusUser.Online.rawValue:
-                        cell.statusOnlineImage.backgroundColor = .green
+                        cell.statusOnlineImage.backgroundColor = .systemGreen
                     default:
                         print("error status user raw value")
                     }

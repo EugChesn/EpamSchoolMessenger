@@ -84,13 +84,22 @@ class ChatsViewController: UIViewController {
         navigationItem.standardAppearance = appearance
         navigationItem.scrollEdgeAppearance = appearance*/
         //
-        
+        //MARK: SearchBar
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.tintColor = .white
+        UITextField.appearance(whenContainedInInstancesOf:
+            [UISearchBar.self]).defaultTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        let textField = searchController.searchBar.value(forKey: "searchField") as! UITextField
+        let glassIconView = textField.leftView as! UIImageView
+        glassIconView.image = glassIconView.image?.withRenderingMode(.alwaysTemplate)
+        if #available(iOS 13.0, *) {
+            glassIconView.tintColor = .gray
+        }
+        
         definesPresentationContext = true
         navigationItem.hidesSearchBarWhenScrolling = true
         navigationItem.searchController = searchController
-        
         navigationItem.title = "Chats"
     }
     
@@ -179,7 +188,3 @@ extension ChatsViewController: ChatsDelegate {
         }
     }
 }
-
-
-
-
