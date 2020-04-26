@@ -13,8 +13,6 @@ protocol ProfileViewModeling {
     func updateDataProfile(update: [String: String])
     func updatePhoto(photo: UIImage, completion: @escaping (URL) -> ())
     var contact: Contact { get }
-    var userName: String { get }
-    var userNickname: String { get }
     func updateUserDefaults(_ name: String, _ nickname: String)
 }
 
@@ -27,16 +25,6 @@ class ProfileViewModel: ProfileViewModeling {
         get {
             return data
         }
-    }
-    
-    var userName: String {
-        //return UserSettings.getObject(for: ProfileSetting.name) as! String
-        return contact.name!
-    }
-    
-    var userNickname: String {
-        return contact.nickname!
-        //return UserSettings.getObject(for: ProfileSetting.nickname) as! String
     }
     
     init(view: ProfileDelegate) {
@@ -56,20 +44,19 @@ class ProfileViewModel: ProfileViewModeling {
     }
     
     func updateDataProfile(update: [String: String]) {
-        //base?.writeNewDataProfile(update: update)
         base?.writeNewDataCurrUser(update: update, id: nil) { errorWrite in
             if let errorWrite = errorWrite {
-                print("error write profile data(settings)")
+                print(errorWrite.localizedDescription)
             }
         }
     }
     
     func updatePhoto(photo: UIImage, completion: @escaping (URL) -> ()) {
         StorageService.shared.uploadImageProfile(img: photo) { reference in
-            reference.downloadURL { (url,error) in
+            reference.downloadURL { (url, error) in
                 if let newUrl = url {
                     self.base?.writeNewDataCurrUser(update: ["photoUrl": newUrl.absoluteString], id: nil) { error in
-                        if let error = error {
+                        if let _ = error {
                             print("error change url")
                         }  else {
                             completion(newUrl)

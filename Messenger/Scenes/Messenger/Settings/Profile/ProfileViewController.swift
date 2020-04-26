@@ -44,8 +44,9 @@ class ProfileViewController: UITableViewController {
         guard let name = nameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
         guard let nickname = nickNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
         
+        let curContact = viewModel?.contact
         if !name.isEmpty && !nickname.isEmpty {
-            if viewModel?.userName != name || viewModel?.userNickname != nickname {
+            if curContact?.name != name || curContact?.nickname != nickname {
                 let update = ["name": name, "nickname": nickname]
                 self.viewModel?.updateDataProfile(update: update)
                 self.viewModel?.updateUserDefaults(name, nickname)
@@ -54,12 +55,20 @@ class ProfileViewController: UITableViewController {
         }
         
         if checkChangePhoto {
+            guard let curImage = profileImage.image else { return }
+            
             self.testIndicatorAlert()
-            SDImageCache.shared.removeImage(forKey: viewModel?.contact.profileImageUrl!) {
-                print("complete remove cash")
-                self.viewModel?.updatePhoto(photo: self.profileImage.image!) { newUrl in
-                    /*self.profileImage.sd_imageIndicator = SDWebImageActivityIndicator.medium
-                    self.profileImage.sd_setImage(with: newUrl, placeholderImage: nil, options: [], completed: nil)*/
+            if let urlPhoto = curContact?.profileImageUrl {
+                SDImageCache.shared.removeImage(forKey: urlPhoto) {
+                    print("complete remove cash")
+                    self.viewModel?.updatePhoto(photo: curImage) { newUrl in
+                        self.dismiss(animated: true) {
+                            self.router?.routeSettings()
+                        }
+                    }
+                }
+            } else {
+                self.viewModel?.updatePhoto(photo: curImage) { newUrl in
                     self.dismiss(animated: true) {
                         self.router?.routeSettings()
                     }
@@ -192,10 +201,7 @@ extension ProfileViewController: ProfileDelegate {
             self.nickNameTextField.text = user.nickname
             let url = user.profileImageUrl
             if let urlPhoto = url {
-                //let reference = StorageService.shared.getReference(url: urlPhoto)
-               //self.profileImage.sd_setImage(with: reference, placeholderImage: self.placeHolderImage)
                 self.profileImage.sd_setImage(with: URL(string: urlPhoto), placeholderImage: nil, options: [], completed: nil)
-                /*self.profileImage.sd_setImage(with: URL(string: urlPhoto), placeholderImage: nil, options: .refreshCached)*/
             }
         }
     }
@@ -209,6 +215,7 @@ extension ProfileViewController: ImagePickerDelegate  {
     }
 
     func imagePickerDelegate(didCancel delegatedForm: ImagePicker) {
+        checkChangePhoto = false
         imagePicker.dismiss()
     }
 
