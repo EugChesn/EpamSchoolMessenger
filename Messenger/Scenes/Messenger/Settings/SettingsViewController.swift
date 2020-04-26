@@ -13,6 +13,7 @@ import SDWebImage
 protocol SettingsDelegate: class {
     func openProfile()
     func openLanguage()
+    func openAppearance()
     func updateProfile(user:Contact)
 }
 
@@ -146,6 +147,9 @@ class SettingsViewController: UITableViewController {
         if indexPath.section == 1 && indexPath.row == 1 {
             viewModel?.languageSetting()
         }
+        if indexPath.section == 1 && indexPath.row == 2 {
+            viewModel?.appearanceSetting()
+        }
     }
 }
 
@@ -161,6 +165,10 @@ extension SettingsViewController: SettingsDelegate {
     
     func openLanguage() {
         router?.routeLanguage(withIdentifier: "goToLanguage", sender: self)
+    }
+    
+    func openAppearance() {
+        router?.routeAppearance(withIdentifier: "goToAppearance", sender: self)
     }
     
     func updateProfile(user:Contact) {
