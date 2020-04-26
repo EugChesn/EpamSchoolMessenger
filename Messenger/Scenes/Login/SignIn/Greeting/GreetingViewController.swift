@@ -25,14 +25,22 @@ class GreetingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         LogInButton.styleButton()
         SignUpButton.styleButton()
         setupDependencies()
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = true
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.isNavigationBarHidden = false
+    }
+    
 //
 //    }
 //    override func viewWillDisappear(_ animated: Bool) {
@@ -57,6 +65,7 @@ class GreetingViewController: UIViewController {
     @IBAction func LogInTap(_ sender: UIButton) {
         router?.routeToLogin(withIdentifier: "signIn", sender: self)
     }
+    
     @IBAction func SignUpTap(_ sender: UIButton) {
         router?.routeToLogin(withIdentifier: "singUp", sender: self)
     }
