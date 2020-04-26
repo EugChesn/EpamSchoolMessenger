@@ -36,6 +36,7 @@ class SignInViewController: UIViewController {
         emailTextField.delegate = self
         passwordTextField.delegate = self
         setupDependencies()
+        hideKeyboardWhenTappedAround()
         
         NotificationCenter.default.addObserver(self, selector: #selector(SignInViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(SignInViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -93,9 +94,8 @@ class SignInViewController: UIViewController {
 extension SignInViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == emailTextField {
-            textField.resignFirstResponder()
             passwordTextField.becomeFirstResponder()
-        } else if textField == passwordTextField {
+        } else {
             textField.resignFirstResponder()
         }
         return true
