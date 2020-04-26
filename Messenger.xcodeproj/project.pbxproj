@@ -28,6 +28,9 @@
 		860A8FCB244281600070D8D5 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860A8FCA244281600070D8D5 /* UserSettings.swift */; };
 		8625597424527350009B849C /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8625597324527350009B849C /* UIButton+Extension.swift */; };
 		863D4C2C245497AD00B3FD89 /* UISearchBar+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863D4C2B245497AD00B3FD89 /* UISearchBar+Extension.swift */; };
+		8648547F2455EE78007EE9E3 /* LanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8648547E2455EE78007EE9E3 /* LanguageViewController.swift */; };
+		864854812455EEC7007EE9E3 /* LanguageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864854802455EEC7007EE9E3 /* LanguageViewModel.swift */; };
+		864854832455EEEE007EE9E3 /* LanguageRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864854822455EEEE007EE9E3 /* LanguageRouter.swift */; };
 		867B2F7B2412585C00B16B01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867B2F7A2412585C00B16B01 /* AppDelegate.swift */; };
 		867B2F822412585C00B16B01 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 867B2F802412585C00B16B01 /* Main.storyboard */; };
 		867B2F842412586000B16B01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 867B2F832412586000B16B01 /* Assets.xcassets */; };
@@ -126,6 +129,9 @@
 		860A8FCA244281600070D8D5 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		8625597324527350009B849C /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		863D4C2B245497AD00B3FD89 /* UISearchBar+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISearchBar+Extension.swift"; sourceTree = "<group>"; };
+		8648547E2455EE78007EE9E3 /* LanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageViewController.swift; sourceTree = "<group>"; };
+		864854802455EEC7007EE9E3 /* LanguageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageViewModel.swift; sourceTree = "<group>"; };
+		864854822455EEEE007EE9E3 /* LanguageRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageRouter.swift; sourceTree = "<group>"; };
 		867B2F772412585C00B16B01 /* Paragram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Paragram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		867B2F7A2412585C00B16B01 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		867B2F812412585C00B16B01 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -280,6 +286,16 @@
 				860A8FCA244281600070D8D5 /* UserSettings.swift */,
 			);
 			path = UserDefaults;
+			sourceTree = "<group>";
+		};
+		864854842455EF0C007EE9E3 /* Language */ = {
+			isa = PBXGroup;
+			children = (
+				8648547E2455EE78007EE9E3 /* LanguageViewController.swift */,
+				864854802455EEC7007EE9E3 /* LanguageViewModel.swift */,
+				864854822455EEEE007EE9E3 /* LanguageRouter.swift */,
+			);
+			path = Language;
 			sourceTree = "<group>";
 		};
 		867B2F6E2412585C00B16B01 = {
@@ -605,6 +621,7 @@
 				AAF8351124193F5F00FDF9D2 /* SettingsViewModel.swift */,
 				AA1B5FD7241BF2390080443A /* SettingsRouter.swift */,
 				86CB7AAB242B6C4000995986 /* Profile */,
+				864854842455EF0C007EE9E3 /* Language */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -769,6 +786,7 @@
 			files = (
 				AA1B5FDC241BF24D0080443A /* ChatsRouter.swift in Sources */,
 				AAF834F42419295900FDF9D2 /* PasswordRecoveryViewModel.swift in Sources */,
+				8648547F2455EE78007EE9E3 /* LanguageViewController.swift in Sources */,
 				AA57A490243A470D001EE763 /* ContactsObserverExtension.swift in Sources */,
 				AAB3AEFC241B7FCF00825F00 /* CodeConfirmationViewController.swift in Sources */,
 				3EBEC40F242A2A5600AF858C /* AuthFirebaseService.swift in Sources */,
@@ -824,8 +842,10 @@
 				AAF834F82419297500FDF9D2 /* SignInViewModel.swift in Sources */,
 				86816577244682A400D92626 /* UITextField+Extension.swift in Sources */,
 				86CB7AA6242B6BEF00995986 /* ProfileViewController.swift in Sources */,
+				864854812455EEC7007EE9E3 /* LanguageViewModel.swift in Sources */,
 				AA487C4C241E563900337FBF /* DialogRouter.swift in Sources */,
 				AA1B40EF2433607200E1D452 /* DialogCollectionViewExtension.swift in Sources */,
+				864854832455EEEE007EE9E3 /* LanguageRouter.swift in Sources */,
 				3E871EEB2444B06400B00A7C /* ChatCell.swift in Sources */,
 				AAF834F02419258100FDF9D2 /* PasswordRecoveryViewController.swift in Sources */,
 				3E1B54C02450575400804E4E /* TimerManager.swift in Sources */,
