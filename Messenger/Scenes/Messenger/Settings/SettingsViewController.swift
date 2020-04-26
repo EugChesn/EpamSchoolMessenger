@@ -12,6 +12,7 @@ import SDWebImage
 
 protocol SettingsDelegate: class {
     func openProfile()
+    func openLanguage()
     func updateProfile(user:Contact)
 }
 
@@ -142,6 +143,9 @@ class SettingsViewController: UITableViewController {
             tableView.deselectRow(at: indexPath, animated: true)
             viewModel?.editProfile()
         }
+        if indexPath.section == 1 && indexPath.row == 1 {
+            viewModel?.languageSetting()
+        }
     }
 }
 
@@ -153,6 +157,10 @@ extension SettingsViewController: UISearchResultsUpdating {
 extension SettingsViewController: SettingsDelegate {
     func openProfile() {
         router?.routeProfile(withIdentifier: "goToProfile", sender: self)
+    }
+    
+    func openLanguage() {
+        router?.routeLanguage(withIdentifier: "goToLanguage", sender: self)
     }
     
     func updateProfile(user:Contact) {
