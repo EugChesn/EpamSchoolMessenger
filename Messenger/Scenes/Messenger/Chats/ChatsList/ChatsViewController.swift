@@ -27,12 +27,14 @@ protocol NewChatOpenerDelegate: class {
 }
 
 class ChatsViewController: UIViewController {
+    
     var viewModel: ChatsViewModeling!
-
     var router: ChatsRouting?
     
+    @IBOutlet weak var placeholderView: UIView!
     @IBOutlet weak var chatsTableView: UITableView!
-    let heightRow: CGFloat = 70
+    
+    let heightRow: CGFloat = 110
     let placeHolderImage = UIImage(named: "profile")
     
     let searchController = UISearchController(searchResultsController: nil)
@@ -44,7 +46,6 @@ class ChatsViewController: UIViewController {
         return searchController.isActive && !searchBarIsEmpty
     }
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -70,7 +71,6 @@ class ChatsViewController: UIViewController {
         router = ChatsRouter(viewController: self)
     }
     
-    
     func setupUI() {
         chatsTableView.delegate = self
         chatsTableView.dataSource = self
@@ -84,13 +84,22 @@ class ChatsViewController: UIViewController {
         navigationItem.standardAppearance = appearance
         navigationItem.scrollEdgeAppearance = appearance*/
         //
-        
+        //MARK: SearchBar
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.tintColor = .white
+        searchController.searchBar.setTextColor(color: .white)
+        
+        let textField = searchController.searchBar.value(forKey: "searchField") as! UITextField
+        let glassIconView = textField.leftView as! UIImageView
+        glassIconView.image = glassIconView.image?.withRenderingMode(.alwaysTemplate)
+        if #available(iOS 13.0, *) {
+            glassIconView.tintColor = .gray
+        }
+        
         definesPresentationContext = true
         navigationItem.hidesSearchBarWhenScrolling = true
         navigationItem.searchController = searchController
-        
         navigationItem.title = "Chats"
     }
     
@@ -111,7 +120,6 @@ class ChatsViewController: UIViewController {
             }
         }
     }
-    
     
     func routeToDialog(_ sender: Any) {
         router?.routeToDialog()
@@ -180,7 +188,3 @@ extension ChatsViewController: ChatsDelegate {
         }
     }
 }
-
-
-
-

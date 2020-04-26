@@ -73,14 +73,13 @@ class MessageCollectionViewCell: UICollectionViewCell {
             leftMessageAnchor?.isActive = false
             rightMessageAnchor?.isActive = true
             messageTextView.textColor = .white
-            bubbleView.backgroundColor = UIColor(red: 0, green: 0.65, blue: 1.0, alpha: 1.0)
+//            bubbleView.backgroundColor = UIColor(red: 0, green: 0.65, blue: 1.0, alpha: 1.0)
+            bubbleView.backgroundColor = UIColor(named: "bubble2")
         case .gray:
             leftMessageAnchor?.isActive = true
             rightMessageAnchor?.isActive = false
-            bubbleView.backgroundColor = .lightGray
+            bubbleView.backgroundColor = UIColor(named: "bubble1")
             messageTextView.textColor = .black
         }
     }
-    
-    
 }

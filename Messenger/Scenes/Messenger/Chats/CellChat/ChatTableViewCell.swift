@@ -14,12 +14,15 @@ class ChatTableViewCell: UITableViewCell {
     @IBOutlet weak var lastMessage: UILabel!
     @IBOutlet weak var photo: UIImageView!
     @IBOutlet weak var timeMessage: UILabel!
+    @IBOutlet weak var shadowView: UIView!
     @IBOutlet weak var statusOnlineImage: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         photo.roundWithoutBorder()
         statusOnlineImage.roundWithoutBorder()
+        shadowView.addShadow()
+        self.selectionStyle = .none
     }
 
     override func prepareForReuse() { // MARK Important change!

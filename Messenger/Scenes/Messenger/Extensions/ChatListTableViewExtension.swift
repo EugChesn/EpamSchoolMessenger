@@ -12,6 +12,8 @@ import SDWebImage
 
 extension ChatsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        placeholderView.isHidden = viewModel.chatsCount != 0
+        chatsTableView.isHidden = viewModel.chatsCount == 0
         return viewModel.chatsCount
     }
     
@@ -36,9 +38,9 @@ extension ChatsViewController: UITableViewDelegate, UITableViewDataSource {
                 if let status = Date.getStatusBaseOnTime(newTime: time) {
                     switch status {
                     case StatusUser.Offline.rawValue:
-                        cell.statusOnlineImage.backgroundColor = .red
+                        cell.statusOnlineImage.backgroundColor = .none
                     case StatusUser.Online.rawValue:
-                        cell.statusOnlineImage.backgroundColor = .green
+                        cell.statusOnlineImage.backgroundColor = .systemGreen
                     default:
                         print("error status user raw value")
                     }

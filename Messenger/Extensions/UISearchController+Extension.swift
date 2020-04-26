@@ -11,7 +11,7 @@ import UIKit
 extension UISearchController {
     func searchBarStyle(placeholder: String) {
         let searchController = UISearchController(searchResultsController: nil)
-        searchController.obscuresBackgroundDuringPresentation = true
         searchController.searchBar.placeholder = placeholder
+        searchController.searchBar.tintColor = .white
     }
 }

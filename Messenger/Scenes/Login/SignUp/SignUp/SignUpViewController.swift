@@ -28,15 +28,16 @@ class SignUpViewController: UIViewController {
     var viewModel: SignUpViewModeling?
     var router: SignUpRouting?
     private lazy var imagePicker = ImagePicker()
-    let color = "3B8AC4"
+    let blue = "3B8AC4"
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        nameTextField.styleTextField(placeholder: "Name", colorLine: color)
-        nickTextField.styleTextField(placeholder: "Nickname", colorLine: color)
-        emailTextField.styleTextField(placeholder: "Email", colorLine: color)
-        passwordTextField.styleTextField(placeholder: "Password", colorLine: color)
-        photoProfile.roundWithBorder(colorLine: color)
+        self.navigationController?.navigationBar.tintColor = UIColor(named: blue)
+        nameTextField.styleTextField(placeholder: "Name", colorLine: blue)
+        nickTextField.styleTextField(placeholder: "Nickname", colorLine: blue)
+        emailTextField.styleTextField(placeholder: "Email", colorLine: blue)
+        passwordTextField.styleTextField(placeholder: "Password", colorLine: blue)
+        photoProfile.roundWithBorder(colorLine: blue)
         signUpButton.styleButton()
         
         let pictureTap = UITapGestureRecognizer(target: self, action: #selector(SignUpViewController.imageTapped))
@@ -112,6 +113,7 @@ class SignUpViewController: UIViewController {
         actionSheet.addAction(actionCamera)
         actionSheet.addAction(actionGalery)
         actionSheet.addAction(actionCancel)
+        actionSheet.view.tintColor = UIColor(named: blue)
         
         present(actionSheet, animated: true, completion: nil)
     }
@@ -120,6 +122,7 @@ class SignUpViewController: UIViewController {
         let alert = UIAlertController(title: "Error", message: errorMessage, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
         alert.addAction(okAction)
+        alert.view.tintColor = UIColor(named: blue)
         self.present(alert, animated: true, completion: nil)
     }
     

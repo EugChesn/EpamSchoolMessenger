@@ -19,12 +19,13 @@ protocol PasswordRecoveryDelegate: class {
 class PasswordRecoveryViewController: UIViewController {
     var viewModel: PasswordRecoveryViewModeling?
     var router: PasswordRecoveryRouting?
+    var blue = "3B8AC4"
     @IBOutlet weak var emailInputText: UITextField!
     @IBOutlet weak var resetPassword: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        emailInputText.styleTextField(placeholder: "Email", colorLine: "3B8AC4")
+        emailInputText.styleTextField(placeholder: "Email", colorLine: blue)
         resetPassword.styleButton()
         
         setupDependencies()
@@ -62,6 +63,7 @@ extension PasswordRecoveryViewController: PasswordRecoveryDelegate {
             self.emailInputText.text = ""
         }
         alert.addAction(okAction)
+        alert.view.tintColor = UIColor(named: blue)
         self.present(alert, animated: true, completion: nil)
     }
     
@@ -71,6 +73,7 @@ extension PasswordRecoveryViewController: PasswordRecoveryDelegate {
             self.navigationController?.popViewController(animated: true)
         }
         alert.addAction(okAction)
+        alert.view.tintColor = UIColor(named: blue)
         self.present(alert, animated: true, completion: nil)
     }
 }

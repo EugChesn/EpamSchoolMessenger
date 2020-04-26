@@ -68,10 +68,12 @@ class CreateChatViewController: UIViewController {
         
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.setTextColor(color: .black)
         definesPresentationContext = true
         navigationItem.hidesSearchBarWhenScrolling = true
         //navigationItem.searchController = searchController
         //creatChatNavigationItem.searchController = searchController
+        navigationController?.navigationBar.tintColor = UIColor.init(named: "main")
         navigationItem.searchController = searchController
         navigationItem.title = "New Message"
     }
@@ -114,11 +116,14 @@ extension CreateChatViewController: UITableViewDelegate, UITableViewDataSource {
         
         if let name = contact?.name { // Заглушка на всякий случай (имя должно быть у любого юзера
             cell.nameChat.text = name //contact?.name ?? "Unnamed"
+            cell.emailLabel.text = contact?.email
             
             let url = contact?.profileImageUrl
             if let urlPhoto = url {
                 let reference = StorageService.shared.getReference(url: urlPhoto)
                 cell.photo.sd_setImage(with: reference, placeholderImage: placeHolderImage)
+            } else {
+                cell.photo.image = placeHolderImage
             }
         }
         
