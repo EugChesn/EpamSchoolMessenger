@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="AppearanceCollectionViewCell" customModule="Paragram" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="173" height="300"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="173" height="300"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nga-uq-m5c">
+                        <rect key="frame" x="0.0" y="0.0" width="173" height="300"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </imageView>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="nga-uq-m5c" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="fgB-xz-qwb"/>
+                <constraint firstItem="nga-uq-m5c" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="lpp-fz-7sU"/>
+                <constraint firstAttribute="trailing" secondItem="nga-uq-m5c" secondAttribute="trailing" id="q5I-KA-phg"/>
+                <constraint firstAttribute="bottom" secondItem="nga-uq-m5c" secondAttribute="bottom" id="zQz-ZG-9D9"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="173" height="501"/>
+            <connections>
+                <outlet property="pictureImageView" destination="nga-uq-m5c" id="8jo-hm-a06"/>
+            </connections>
+            <point key="canvasLocation" x="92.028985507246389" y="-6.6964285714285712"/>
+        </collectionViewCell>
+    </objects>
+</document>
