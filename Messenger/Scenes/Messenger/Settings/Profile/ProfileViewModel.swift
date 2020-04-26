@@ -7,9 +7,11 @@
 //
 
 import Foundation
+import UIKit
 
 protocol ProfileViewModeling {
     func updateDataProfile(update: [String: String])
+    func updatePhoto(photo: UIImage, completion: @escaping (URL) -> ())
     var contact: Contact { get }
     var userName: String { get }
     var userNickname: String { get }
@@ -22,15 +24,19 @@ class ProfileViewModel: ProfileViewModeling {
     
     private var data = Contact()
     var contact: Contact {
-        return data
+        get {
+            return data
+        }
     }
     
     var userName: String {
-        return UserSettings.getObject(for: ProfileSetting.name) as! String
+        //return UserSettings.getObject(for: ProfileSetting.name) as! String
+        return contact.name!
     }
     
     var userNickname: String {
-        return UserSettings.getObject(for: ProfileSetting.nickname) as! String
+        return contact.nickname!
+        //return UserSettings.getObject(for: ProfileSetting.nickname) as! String
     }
     
     init(view: ProfileDelegate) {
@@ -54,6 +60,24 @@ class ProfileViewModel: ProfileViewModeling {
         base?.writeNewDataCurrUser(update: update, id: nil) { errorWrite in
             if let errorWrite = errorWrite {
                 print("error write profile data(settings)")
+            }
+        }
+    }
+    
+    func updatePhoto(photo: UIImage, completion: @escaping (URL) -> ()) {
+        StorageService.shared.uploadImageProfile(img: photo) { reference in
+            reference.downloadURL { (url,error) in
+                if let newUrl = url {
+                    self.base?.writeNewDataCurrUser(update: ["photoUrl": newUrl.absoluteString], id: nil) { error in
+                        if let error = error {
+                            print("error change url")
+                        }  else {
+                            completion(newUrl)
+                        }
+                    }
+                } else {
+                    print("error upload new image")
+                }
             }
         }
     }

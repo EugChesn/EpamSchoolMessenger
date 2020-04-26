@@ -8,6 +8,11 @@
 
 import Foundation
 
+protocol NewChatOpenerDelegate: class {
+    var dialogContact: Contact {get set}
+    func openNewChat()
+}
+
 extension ChatsViewController: NewChatOpenerDelegate {
     var dialogContact: Contact {
         get {

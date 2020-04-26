@@ -36,6 +36,32 @@ class SignInViewController: UIViewController {
         emailTextField.delegate = self
         passwordTextField.delegate = self
         setupDependencies()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(SignInViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(SignInViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+
+    @objc func keyboardWillShow(notification: NSNotification) { // условие поднятие content view под вопросом
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            
+            if self.view.frame.origin.y == 0 {
+                if screenType == .iPhones_5_5s_5c_SE &&  emailTextField.isFirstResponder {
+                    UIView.animate(withDuration: 1, animations: {
+                        self.view.frame.origin.y -= (keyboardSize.height - 100)
+                    })
+                }
+            }
+        }
+    }
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if passwordTextField.resignFirstResponder() {
+            if self.view.frame.origin.y != 0 {
+                self.view.frame.origin.y = 0
+            }
+        }
+    }
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     @IBAction func LogInTap(_ sender: UIButton) {

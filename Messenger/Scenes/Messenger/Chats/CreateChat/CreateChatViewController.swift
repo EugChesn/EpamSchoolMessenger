@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SDWebImage
 
 protocol CreateChatDelegate: class {
     func updateContactsList()
@@ -121,6 +122,7 @@ extension CreateChatViewController: UITableViewDelegate, UITableViewDataSource {
             let url = contact?.profileImageUrl
             if let urlPhoto = url {
                 let reference = StorageService.shared.getReference(url: urlPhoto)
+                cell.photo.sd_imageIndicator = SDWebImageActivityIndicator.whiteLarge
                 cell.photo.sd_setImage(with: reference, placeholderImage: placeHolderImage)
             } else {
                 cell.photo.image = placeHolderImage

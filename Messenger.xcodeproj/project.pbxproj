@@ -18,6 +18,7 @@
 		3E871EEB2444B06400B00A7C /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E871EE92444B06400B00A7C /* ChatCell.swift */; };
 		3E871EEC2444B06400B00A7C /* ChatCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E871EEA2444B06400B00A7C /* ChatCell.xib */; };
 		3EA8B18E2434AA48001B4207 /* ExtensionsStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA8B18D2434AA48001B4207 /* ExtensionsStoryboard.swift */; };
+		3EB574FD2455802000E44603 /* ExtensionSizeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB574FC2455802000E44603 /* ExtensionSizeScreen.swift */; };
 		3EBEC40F242A2A5600AF858C /* AuthFirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBEC40E242A2A5600AF858C /* AuthFirebaseService.swift */; };
 		3ECF658E243CA0530095A53C /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECF658C243CA0530095A53C /* ChatTableViewCell.swift */; };
 		3ECF658F243CA0530095A53C /* ChatTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3ECF658D243CA0530095A53C /* ChatTableViewCell.xib */; };
@@ -115,6 +116,7 @@
 		3E871EE92444B06400B00A7C /* ChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
 		3E871EEA2444B06400B00A7C /* ChatCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatCell.xib; sourceTree = "<group>"; };
 		3EA8B18D2434AA48001B4207 /* ExtensionsStoryboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsStoryboard.swift; sourceTree = "<group>"; };
+		3EB574FC2455802000E44603 /* ExtensionSizeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionSizeScreen.swift; sourceTree = "<group>"; };
 		3EBEC40E242A2A5600AF858C /* AuthFirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFirebaseService.swift; sourceTree = "<group>"; };
 		3ECF658C243CA0530095A53C /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
 		3ECF658D243CA0530095A53C /* ChatTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatTableViewCell.xib; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 				8625597324527350009B849C /* UIButton+Extension.swift */,
 				86BA53732453F54D00CA4329 /* UIView+Extension.swift */,
 				863D4C2B245497AD00B3FD89 /* UISearchBar+Extension.swift */,
+				3EB574FC2455802000E44603 /* ExtensionSizeScreen.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -810,6 +813,7 @@
 				86CB7AAA242B6C2C00995986 /* ProfileRouter.swift in Sources */,
 				AA1B40F5243360F800E1D452 /* ChatListTableViewExtension.swift in Sources */,
 				AA57A48E243A1452001EE763 /* MessagesObserverExtensions.swift in Sources */,
+				3EB574FD2455802000E44603 /* ExtensionSizeScreen.swift in Sources */,
 				AA1B5FC8241BF1C30080443A /* RegistrationCodeConfirmationRouter.swift in Sources */,
 				AA1B5FD0241BF2010080443A /* GreetingRouter.swift in Sources */,
 				AA1B5FDA241BF2450080443A /* ContactsRouter.swift in Sources */,

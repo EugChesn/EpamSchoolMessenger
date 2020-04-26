@@ -55,11 +55,6 @@ class SignUpViewController: UIViewController {
         
         setupDependencies()
     }
-
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        NotificationCenter.default.removeObserver(self)
-    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "UnwindRegister"{
@@ -76,20 +71,26 @@ class SignUpViewController: UIViewController {
     
     @objc func keyboardWillShow(notification: NSNotification) { // условие поднятие content view под вопросом
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            if emailTextField.isFirstResponder {
-                let freeSpace = StackContent.frame.origin.y + photoProfile.frame.origin.y - self.view.frame.origin.y
-                if freeSpace < keyboardSize.height {
-                    self.view.frame.origin.y -= keyboardSize.height
+            
+            if self.view.frame.origin.y == 0 {
+                if screenType == .iPhones_5_5s_5c_SE &&  nameTextField.isFirstResponder {
+                    UIView.animate(withDuration: 1, animations: {
+                        self.view.frame.origin.y -= (keyboardSize.height - 100)
+                    })
                 }
             }
         }
     }
-    @objc func keyboardWillHide(notification: NSNotification) {
+    @objc func keyboardWillHide() {
         if passwordTextField.resignFirstResponder() {
             if self.view.frame.origin.y != 0 {
                 self.view.frame.origin.y = 0
             }
         }
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     @objc func imageTapped() {
@@ -131,7 +132,6 @@ class SignUpViewController: UIViewController {
         guard let pass = passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
         guard let name = nameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
         guard let nick = nickTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
-        
         
         if ((!name.isValidName()) || (!nick.isValidName())) {
             alertErrorName(errorMessage: "Invalid name.")

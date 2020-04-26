@@ -21,11 +21,6 @@ protocol ChatsDelegate: class {
     
 }
 
-protocol NewChatOpenerDelegate: class {
-    var dialogContact: Contact {get set}
-    func openNewChat()
-}
-
 class ChatsViewController: UIViewController {
     
     var viewModel: ChatsViewModeling!

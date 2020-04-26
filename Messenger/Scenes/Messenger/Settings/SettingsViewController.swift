@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SDWebImage
 
 protocol SettingsDelegate: class {
     func openProfile()
@@ -52,8 +53,8 @@ class SettingsViewController: UITableViewController {
         searchController.searchBarStyle(placeholder: Constant.search)
         searchController.searchResultsUpdater = self
         definesPresentationContext = true
-        
         setupDependencies()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -105,7 +106,12 @@ class SettingsViewController: UITableViewController {
             let url = viewModel?.contact.profileImageUrl
             if let urlPhoto = url {
                 let reference = StorageService.shared.getReference(url: urlPhoto)
-                customCell.profileImage.sd_setImage(with: reference, placeholderImage: placeHolderImage)
+                
+                customCell.profileImage.sd_imageIndicator = SDWebImageActivityIndicator.medium
+                /*customCell.profileImage.sd_setImage(with: reference, placeholderImage: placeHolderImage)*/
+                customCell.profileImage.sd_setImage(with: URL(string: urlPhoto), placeholderImage: nil, options: [], completed: nil)
+                
+                /*customCell.profileImage.sd_setImage(with: URL(string: urlPhoto), placeholderImage: nil, options: [.refreshCached, .retryFailed])*/
             } else {
                 customCell.profileImage.image = placeHolderImage
             }
