@@ -31,6 +31,9 @@
 		8648547F2455EE78007EE9E3 /* LanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8648547E2455EE78007EE9E3 /* LanguageViewController.swift */; };
 		864854812455EEC7007EE9E3 /* LanguageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864854802455EEC7007EE9E3 /* LanguageViewModel.swift */; };
 		864854832455EEEE007EE9E3 /* LanguageRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864854822455EEEE007EE9E3 /* LanguageRouter.swift */; };
+		864854862455F5E3007EE9E3 /* AppearanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864854852455F5E3007EE9E3 /* AppearanceViewController.swift */; };
+		864854882455F6B1007EE9E3 /* AppearanceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864854872455F6B1007EE9E3 /* AppearanceViewModel.swift */; };
+		8648548A2455F6C4007EE9E3 /* AppearanceRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864854892455F6C4007EE9E3 /* AppearanceRouter.swift */; };
 		867B2F7B2412585C00B16B01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867B2F7A2412585C00B16B01 /* AppDelegate.swift */; };
 		867B2F822412585C00B16B01 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 867B2F802412585C00B16B01 /* Main.storyboard */; };
 		867B2F842412586000B16B01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 867B2F832412586000B16B01 /* Assets.xcassets */; };
@@ -132,6 +135,9 @@
 		8648547E2455EE78007EE9E3 /* LanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageViewController.swift; sourceTree = "<group>"; };
 		864854802455EEC7007EE9E3 /* LanguageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageViewModel.swift; sourceTree = "<group>"; };
 		864854822455EEEE007EE9E3 /* LanguageRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageRouter.swift; sourceTree = "<group>"; };
+		864854852455F5E3007EE9E3 /* AppearanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceViewController.swift; sourceTree = "<group>"; };
+		864854872455F6B1007EE9E3 /* AppearanceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceViewModel.swift; sourceTree = "<group>"; };
+		864854892455F6C4007EE9E3 /* AppearanceRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceRouter.swift; sourceTree = "<group>"; };
 		867B2F772412585C00B16B01 /* Paragram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Paragram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		867B2F7A2412585C00B16B01 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		867B2F812412585C00B16B01 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -296,6 +302,16 @@
 				864854822455EEEE007EE9E3 /* LanguageRouter.swift */,
 			);
 			path = Language;
+			sourceTree = "<group>";
+		};
+		8648548B2455F6DF007EE9E3 /* Appearance */ = {
+			isa = PBXGroup;
+			children = (
+				864854852455F5E3007EE9E3 /* AppearanceViewController.swift */,
+				864854872455F6B1007EE9E3 /* AppearanceViewModel.swift */,
+				864854892455F6C4007EE9E3 /* AppearanceRouter.swift */,
+			);
+			path = Appearance;
 			sourceTree = "<group>";
 		};
 		867B2F6E2412585C00B16B01 = {
@@ -622,6 +638,7 @@
 				AA1B5FD7241BF2390080443A /* SettingsRouter.swift */,
 				86CB7AAB242B6C4000995986 /* Profile */,
 				864854842455EF0C007EE9E3 /* Language */,
+				8648548B2455F6DF007EE9E3 /* Appearance */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -803,6 +820,7 @@
 				8681657324466F2700D92626 /* UIImageView+Extension.swift in Sources */,
 				AA64DE0F241B694400ED2C63 /* NetworkService.swift in Sources */,
 				8625597424527350009B849C /* UIButton+Extension.swift in Sources */,
+				864854882455F6B1007EE9E3 /* AppearanceViewModel.swift in Sources */,
 				AA1B5FD6241BF2250080443A /* CodeConfirmationRouter.swift in Sources */,
 				86BA53742453F54D00CA4329 /* UIView+Extension.swift in Sources */,
 				3E6BD3D3241FD70800CA6780 /* FirebaseService.swift in Sources */,
@@ -817,6 +835,7 @@
 				AA1B5FC6241BF0DE0080443A /* SignInRouter.swift in Sources */,
 				AA64DE12241B698D00ED2C63 /* StorageService.swift in Sources */,
 				AA1B40F9243361E000E1D452 /* ChatInfoTransferExtension.swift in Sources */,
+				8648548A2455F6C4007EE9E3 /* AppearanceRouter.swift in Sources */,
 				AA1B40C52431D49400E1D452 /* CreateChatViewModel.swift in Sources */,
 				AAF8351824193F8100FDF9D2 /* ContactsViewModel.swift in Sources */,
 				AAB3AF0C241B843900825F00 /* RegistrationCodeConfirmationViewController.swift in Sources */,
@@ -856,6 +875,7 @@
 				AA1B40F3243360EB00E1D452 /* ChatListSearchBarExtension.swift in Sources */,
 				867B2F7B2412585C00B16B01 /* AppDelegate.swift in Sources */,
 				AAB3AEFA241B7FB700825F00 /* NewPasswordViewModel.swift in Sources */,
+				864854862455F5E3007EE9E3 /* AppearanceViewController.swift in Sources */,
 				AAF834E1241920B200FDF9D2 /* GreetingViewController.swift in Sources */,
 				AAB3AF08241B842100825F00 /* CreatePasswordViewController.swift in Sources */,
 				AA1B5FCE241BF1F00080443A /* SignUpRouter.swift in Sources */,
