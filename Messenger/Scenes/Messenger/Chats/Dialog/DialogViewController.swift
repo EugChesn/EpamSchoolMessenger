@@ -40,10 +40,16 @@ class DialogViewController: UIViewController {
   
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        UIView.animate(withDuration: 0.5, animations: {
+            self.tabBarController?.tabBar.isHidden = false })
         if let time = viewModel?.chat?.contact.time {
             closureBackTime?(time)
         }
-        self.tabBarController?.tabBar.isHidden = false
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        UIView.animate(withDuration: 0.5, animations: {
+            self.tabBarController?.tabBar.isHidden = true })
     }
     
     deinit {
@@ -96,13 +102,11 @@ class DialogViewController: UIViewController {
         }()
         navigationItem.titleView = titleStackView
         
-        self.tabBarController?.tabBar.isHidden = true
-        
         addKeyBoardObservers()
     }
 
     @IBAction func sendMessage(_ sender: Any) {
-        guard let text = messageTextField.text, !text.isEmpty else { return }
+        guard let text = messageTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
         viewModel?.sendMessage(messageText: text)
         messageTextField.text = nil
     }
