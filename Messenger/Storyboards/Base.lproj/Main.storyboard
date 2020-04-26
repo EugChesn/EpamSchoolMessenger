@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -184,6 +184,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LWZ-6d-fyq">
+                                <rect key="frame" x="147" y="20" width="120" height="120"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jjf-od-FbL">
+                                        <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qTv-hE-V62">
+                                        <rect key="frame" x="36" y="49.5" width="48" height="21.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <color key="textColor" name="3B8AC4"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="jjf-od-FbL" firstAttribute="top" secondItem="LWZ-6d-fyq" secondAttribute="top" id="L6g-Uy-ZHX"/>
+                                    <constraint firstAttribute="trailing" secondItem="jjf-od-FbL" secondAttribute="trailing" id="Qep-Mj-BdE"/>
+                                    <constraint firstItem="qTv-hE-V62" firstAttribute="centerY" secondItem="LWZ-6d-fyq" secondAttribute="centerY" id="SXM-aA-8WY"/>
+                                    <constraint firstItem="qTv-hE-V62" firstAttribute="centerX" secondItem="LWZ-6d-fyq" secondAttribute="centerX" id="Yjm-KX-GYW"/>
+                                    <constraint firstItem="jjf-od-FbL" firstAttribute="leading" secondItem="LWZ-6d-fyq" secondAttribute="leading" id="eRt-Z5-rjn"/>
+                                    <constraint firstAttribute="bottom" secondItem="jjf-od-FbL" secondAttribute="bottom" id="k5c-OX-mIp"/>
+                                    <constraint firstAttribute="height" constant="120" id="knt-YM-Ghg"/>
+                                    <constraint firstAttribute="width" constant="120" id="lIf-rf-oyA"/>
+                                </constraints>
+                            </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="5h0-Xg-U21">
                                 <rect key="frame" x="20" y="160" width="374" height="280"/>
                                 <subviews>
@@ -229,29 +254,14 @@
                                     <constraint firstItem="wxj-Lr-b2n" firstAttribute="height" secondItem="iN5-aS-Gsx" secondAttribute="height" id="qFH-Mj-CgW"/>
                                 </constraints>
                             </stackView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jjf-od-FbL">
-                                <rect key="frame" x="147" y="20" width="120" height="120"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="120" id="ACB-4O-nC8"/>
-                                    <constraint firstAttribute="height" constant="120" id="RNG-dz-3o0"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qTv-hE-V62">
-                                <rect key="frame" x="183" y="70" width="48" height="21.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <color key="textColor" name="3B8AC4"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="5h0-Xg-U21" firstAttribute="leading" secondItem="I6K-wh-PME" secondAttribute="leading" constant="20" id="EDP-b6-U09"/>
                             <constraint firstItem="I6K-wh-PME" firstAttribute="trailing" secondItem="5h0-Xg-U21" secondAttribute="trailing" constant="20" id="IMj-uR-2MT"/>
-                            <constraint firstItem="5h0-Xg-U21" firstAttribute="top" secondItem="jjf-od-FbL" secondAttribute="bottom" constant="20" id="VxE-ZF-jWM"/>
-                            <constraint firstItem="jjf-od-FbL" firstAttribute="centerX" secondItem="OY2-Bt-hjB" secondAttribute="centerX" id="YDB-5F-Tx9"/>
-                            <constraint firstItem="qTv-hE-V62" firstAttribute="top" secondItem="I6K-wh-PME" secondAttribute="top" constant="70" id="bNp-aB-6Rt"/>
-                            <constraint firstItem="jjf-od-FbL" firstAttribute="top" secondItem="I6K-wh-PME" secondAttribute="top" constant="20" id="jsY-I7-43g"/>
-                            <constraint firstItem="qTv-hE-V62" firstAttribute="centerX" secondItem="OY2-Bt-hjB" secondAttribute="centerX" id="yTE-Vv-4Ae"/>
+                            <constraint firstItem="LWZ-6d-fyq" firstAttribute="centerX" secondItem="I6K-wh-PME" secondAttribute="centerX" id="Ku4-fn-EEl"/>
+                            <constraint firstItem="LWZ-6d-fyq" firstAttribute="top" secondItem="I6K-wh-PME" secondAttribute="top" constant="20" id="MzE-3S-Bgc"/>
+                            <constraint firstItem="5h0-Xg-U21" firstAttribute="top" secondItem="LWZ-6d-fyq" secondAttribute="bottom" constant="20" id="e9v-A2-aON"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="I6K-wh-PME"/>
                     </view>
@@ -265,6 +275,7 @@
                         <outlet property="passwordTextField" destination="Mhc-hf-Jgf" id="1QQ-bA-x8w"/>
                         <outlet property="photoProfile" destination="jjf-od-FbL" id="eNH-xy-Cyv"/>
                         <outlet property="signUpButton" destination="T2P-sb-mri" id="KS1-SW-CHn"/>
+                        <outlet property="topConstraint" destination="MzE-3S-Bgc" id="gEj-St-OzQ"/>
                         <segue destination="WkQ-RQ-Zn2" kind="unwind" identifier="UnwindRegister" unwindAction="unwindSegueChat:" id="4Kd-jA-0Nu"/>
                     </connections>
                 </viewController>

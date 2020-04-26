@@ -16,6 +16,13 @@ protocol SignUpDelegate: class {
 }
 
 class SignUpViewController: UIViewController {
+    
+    private enum Constants {
+        static let topConstraint: CGFloat = 20.0
+        static let seKeyboardOffset: CGFloat = 160.0
+        static let keyboardAnimateDuration: Double = 0.5
+    }
+    
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var nameTextField: UITextField!
@@ -24,10 +31,12 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var labelPhoto: UILabel!
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var StackContent: UIStackView!
+    @IBOutlet weak var topConstraint: NSLayoutConstraint!
     
     var viewModel: SignUpViewModeling?
     var router: SignUpRouting?
     private lazy var imagePicker = ImagePicker()
+    
     let blue = "3B8AC4"
 
     override func viewDidLoad() {
@@ -53,11 +62,12 @@ class SignUpViewController: UIViewController {
         nickTextField.delegate = self
         passwordTextField.delegate = self
         
+        hideKeyboardWhenTappedAround()
         setupDependencies()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "UnwindRegister"{
+        if segue.identifier == "UnwindRegister" {
             if let destination = segue.destination as? ChatsViewController {
                 destination.viewModel.downloadAndObserveChats()
             }
@@ -69,22 +79,22 @@ class SignUpViewController: UIViewController {
         router = SignUpRouter(viewController: self)
     }
     
-    @objc func keyboardWillShow(notification: NSNotification) { // условие поднятие content view под вопросом
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if screenType == .iPhones_5_5s_5c_SE {
+            topConstraint.constant = Constants.topConstraint - Constants.seKeyboardOffset
             
-            if self.view.frame.origin.y == 0 {
-                if screenType == .iPhones_5_5s_5c_SE &&  nameTextField.isFirstResponder {
-                    UIView.animate(withDuration: 1, animations: {
-                        self.view.frame.origin.y -= (keyboardSize.height - 100)
-                    })
-                }
+            UIView.animate(withDuration: Constants.keyboardAnimateDuration) {
+                self.view.layoutIfNeeded()
             }
         }
     }
-    @objc func keyboardWillHide() {
-        if passwordTextField.resignFirstResponder() {
-            if self.view.frame.origin.y != 0 {
-                self.view.frame.origin.y = 0
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if screenType == .iPhones_5_5s_5c_SE {
+            topConstraint.constant = Constants.topConstraint
+            
+            UIView.animate(withDuration: Constants.keyboardAnimateDuration) {
+                self.view.layoutIfNeeded()
             }
         }
     }
@@ -96,6 +106,7 @@ class SignUpViewController: UIViewController {
     @objc func imageTapped() {
         alertSheetPhotoSource()
     }
+    
     private func presentImagePicker(sourceType: UIImagePickerController.SourceType) {
          imagePicker.present(parent: self, sourceType: sourceType)
     }
@@ -151,13 +162,10 @@ extension SignUpViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == nameTextField {
-            textField.resignFirstResponder()
             nickTextField.becomeFirstResponder()
         } else if textField == nickTextField {
-            textField.resignFirstResponder()
             emailTextField.becomeFirstResponder()
         } else if textField == emailTextField {
-            textField.resignFirstResponder()
             passwordTextField.becomeFirstResponder()
         } else {
             textField.resignFirstResponder()

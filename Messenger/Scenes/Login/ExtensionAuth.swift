@@ -8,6 +8,7 @@
 
 import Foundation
 import FirebaseAuth
+
 extension AuthErrorCode {
     var errorMessage: String {
         switch self {
@@ -34,7 +35,18 @@ extension UIViewController {
         alert.addAction(okAction)
         self.present(alert, animated: true, completion: nil)
     }
+    
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
 }
+
 public extension UIView {
     func shake(count : Float = 4,
                for duration : TimeInterval = 0.5,
@@ -56,13 +68,13 @@ extension String {
         let emailPredicate = NSPredicate(format:"SELF MATCHES %@", emailFormat)
         return emailPredicate.evaluate(with: self)
     }
-    func isValidatePass() -> Bool
-    {
-        //let regularExpression = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&])[A-Za-z\\d$@$!%*?&]{8,}"
+    
+    func isValidatePass() -> Bool {
         let regularExpression = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*()\\-_=+{}|?>.<,:;~']{8,}$"
         let passwordValidation = NSPredicate(format: "SELF MATCHES %@", regularExpression)
         return passwordValidation.evaluate(with: self)
     }
+    
     func isValidName() -> Bool {
        let RegEx = "^[а-яА-ЯёЁa-zA-Z0-9]{2,20}$"
        let Test = NSPredicate(format:"SELF MATCHES %@", RegEx)
