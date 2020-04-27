@@ -311,10 +311,10 @@
 		8648548B2455F6DF007EE9E3 /* Appearance */ = {
 			isa = PBXGroup;
 			children = (
+				86FCCC1F245604BC0022BAD4 /* AppearanceCollectionViewCell */,
 				864854852455F5E3007EE9E3 /* AppearanceViewController.swift */,
 				864854872455F6B1007EE9E3 /* AppearanceViewModel.swift */,
 				864854892455F6C4007EE9E3 /* AppearanceRouter.swift */,
-				86FCCC1F245604BC0022BAD4 /* AppearanceCollectionViewCell */,
 			);
 			path = Appearance;
 			sourceTree = "<group>";

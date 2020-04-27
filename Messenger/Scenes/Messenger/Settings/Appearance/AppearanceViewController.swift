@@ -75,6 +75,7 @@ extension AppearanceViewController: UICollectionViewDataSource, UICollectionView
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         viewModel?.saveSetting(image: Constant.arrayImage[indexPath.row])
+        router?.routeSettings()
     }
 }
 

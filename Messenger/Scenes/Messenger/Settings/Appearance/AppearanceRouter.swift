@@ -10,9 +10,11 @@ import Foundation
 import UIKit
 
 protocol AppearanceRoutering {
-    
+    func routeSettings()
 }
 
 class AppearanceRouter: BaseRouter, AppearanceRoutering {
-    
+    func routeSettings() {
+        viewController?.navigationController?.popViewController(animated: true)
+    }
 }

@@ -21,13 +21,17 @@ struct AppearanceKey {
 
 class UserSettings {
     static func save(object: String, for key: String) {
-        if UserDefaults.standard.value(forKey: key) != nil {
-            UserDefaults.standard.removeObject(forKey: key)
-        }
+        clear(for: key)
         UserDefaults.standard.set(object, forKey: key)
     }
     
     static func getObject(for key: String) -> Any? {
         return UserDefaults.standard.value(forKey: key)
+    }
+    
+    static func clear(for key: String) {
+        if UserDefaults.standard.value(forKey: key) != nil {
+            UserDefaults.standard.removeObject(forKey: key)
+        }
     }
 }
