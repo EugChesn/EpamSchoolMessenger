@@ -11,6 +11,7 @@ import Foundation
 protocol SettingsViewModeling {
     func editProfile()
     func languageSetting()
+    func appearanceSetting()
     var contact: Contact { get }
     func getDataProfile()
 }
@@ -33,6 +34,10 @@ class SettingsViewModel: SettingsViewModeling {
     
     func languageSetting() {
         self.view?.openLanguage()
+    }
+    
+    func appearanceSetting() {
+        self.view?.openAppearance()
     }
     
     func getDataProfile() {

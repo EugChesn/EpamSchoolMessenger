@@ -128,6 +128,8 @@ class ChatsViewController: UIViewController {
         router?.signOut()
         viewModel.removeChatListForSignOut()
         viewModel.removeObservers()
+        //MARK: Clear UserDefaults
+        viewModel.clearUD()
     }
 }
 

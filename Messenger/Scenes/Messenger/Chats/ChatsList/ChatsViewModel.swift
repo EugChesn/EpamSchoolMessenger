@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 protocol ChatsViewModeling: class {
+    func clearUD()
     var chatsCount: Int {get}
     var selectedChat: ChatInfo? {get set}
     
@@ -164,6 +165,11 @@ class ChatsViewModel: ChatsViewModeling {
     func removeChatListForSignOut() { // так как chatsviewcontroller is root
         chatsList = []
         view?.updateChats()
+    }
+    
+    func clearUD() {
+        UserSettings.clear(for: AppearanceKey.imageBackgroundChat)
+        UserSettings.clear(for: ProfileSetting.birthday)
     }
     
     func unsubscribeStateUser() {

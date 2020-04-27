@@ -24,6 +24,5 @@ class ChatCell: UITableViewCell {
     override func prepareForReuse() { // MARK Important change!
         super.prepareForReuse()
         self.photo.sd_cancelCurrentImageLoad()
-        self.photo?.image = nil
     }
 }
