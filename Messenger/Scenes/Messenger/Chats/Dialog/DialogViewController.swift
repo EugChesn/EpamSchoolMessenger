@@ -110,9 +110,14 @@ class DialogViewController: UIViewController {
     }
 
     @IBAction func sendMessage(_ sender: Any) {
-        guard let text = messageTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
-        viewModel?.sendMessage(messageText: text)
-        messageTextField.text = nil
+        if let text = messageTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) {
+            if text.isEmpty {
+                return
+            } else {
+                viewModel?.sendMessage(messageText: text)
+                messageTextField.text = nil
+            }
+        }
     }
     
     @IBAction func hideKeyboard(_ sender: Any) {
