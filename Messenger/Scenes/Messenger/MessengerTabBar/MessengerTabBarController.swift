@@ -10,14 +10,35 @@ import Foundation
 import UIKit
 
 class MessengerTabBarController: UITabBarController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        self.selectedIndex = 1
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationController?.navigationBar.isHidden = false
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+    }
+    
+}
+
+extension MessengerTabBarController: StoryboardInstantiatable {
+    static let storyboardId = "StartPoint"
+    static let nameStoryboard = "Messenger"
+    
+    static var instantiateType: StoryboardInstantiateType {
+        return .identifier(storyboardId)
+    }
+    static var storyboardName: String {
+        return nameStoryboard
     }
 }

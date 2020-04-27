@@ -7,13 +7,29 @@
 //
 
 import UIKit
+import Firebase
+import SDWebImage
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        FirebaseApp.configure()
+        clearCashe()
+        navigateStart()
         return true
+    }
+    
+    func navigateStart() {
+        let vc = MessengerTabBarController.instantiate()
+        vc.selectedIndex = 1
+        UIApplication.shared.windows.first?.rootViewController = vc
+    }
+    
+    func clearCashe() {
+        let objCache = SDImageCache.shared
+        objCache.clearMemory()
+        objCache.clearDisk(onCompletion: nil)
     }
 }
