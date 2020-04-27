@@ -9,7 +9,7 @@
 import Foundation
 
 protocol AppearanceViewModeling {
-
+    func saveSetting(image: String)
 }
 
 class AppearanceViewModel: AppearanceViewModeling {
@@ -17,5 +17,9 @@ class AppearanceViewModel: AppearanceViewModeling {
     
     init(view: AppearanceDelegate) {
         self.view = view
+    }
+    
+    func saveSetting(image: String) {
+        UserSettings.save(object: image, for: AppearanceKey.imageBackgroundChat)
     }
 }

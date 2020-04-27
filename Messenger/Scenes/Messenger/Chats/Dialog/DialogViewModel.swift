@@ -9,6 +9,7 @@
 import Foundation
 
 protocol DialogViewModeling: class {
+    var background: String { get }
     var messageCount: Int {get}
     var chat: ChatInfo? {get set}
     
@@ -31,6 +32,11 @@ class DialogViewModel: DialogViewModeling {
     private var chatInfo: ChatInfo?
 
     private var messageList: [MessageModel] = []
+    
+    var background: String {
+        guard let img = UserSettings.getObject(for: AppearanceKey.imageBackgroundChat) as? String else { return "img"}
+        return img
+    }
     
     var chat: ChatInfo? {
         get {

@@ -24,7 +24,7 @@ class AppearanceViewController: UIViewController {
         static let appearance = "Appearance"
         static let chatBackground = "Chat Background"
         static let cellID = "AppearanceCollectionViewCell"
-        static let arrayImage = ["img1", "img2", "img3", "img4"]
+        static let arrayImage = ["img1", "img2", "img3", "img4", "img5", "img"]
     }
     
     override func viewDidLoad() {
@@ -53,10 +53,10 @@ extension AppearanceViewController: UICollectionViewDataSource, UICollectionView
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constant.cellID,
                                                       for: indexPath) as! AppearanceCollectionViewCell
         
-        let picture = UIImage(named: Constant.arrayImage[indexPath.row])
-        cell.pictureImageView.contentMode = .scaleToFill
-        cell.setupCell(picture: picture!)
-   
+        if let picture = UIImage(named: Constant.arrayImage[indexPath.row]) {
+            cell.pictureImageView.contentMode = .scaleToFill
+            cell.setupCell(picture: picture)
+        }
         return cell
     }
     
@@ -70,6 +70,11 @@ extension AppearanceViewController: UICollectionViewDataSource, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        viewModel?.saveSetting(image: Constant.arrayImage[indexPath.row])
     }
 }
 

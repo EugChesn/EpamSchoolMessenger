@@ -15,6 +15,10 @@ struct ProfileSetting {
     static let birthday = "birthday"
 }
 
+struct AppearanceKey {
+    static let imageBackgroundChat = "imageBackgroundChat"
+}
+
 class UserSettings {
     static func save(object: String, for key: String) {
         if UserDefaults.standard.value(forKey: key) != nil {

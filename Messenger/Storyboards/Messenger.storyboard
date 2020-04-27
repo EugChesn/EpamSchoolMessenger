@@ -236,13 +236,17 @@
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
+                                <imageView key="backgroundView" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="ZUo-ZV-v8a">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </imageView>
                                 <cells/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="Nip-YC-JE8" appends="YES" id="X3E-Gq-Md4"/>
                                 </connections>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fss-7t-Uzr">
-                                <rect key="frame" x="0.0" y="763" width="414" height="50"/>
+                                <rect key="frame" x="0.0" y="763" width="414" height="133"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bOa-E3-T8l">
                                         <rect key="frame" x="371" y="5" width="40" height="40"/>
@@ -264,12 +268,12 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="4r6-oO-DZL"/>
+                                    <constraint firstAttribute="height" constant="133" id="4r6-oO-DZL"/>
                                     <constraint firstAttribute="trailing" secondItem="bOa-E3-T8l" secondAttribute="trailing" constant="3" id="5Eo-HW-l68"/>
-                                    <constraint firstAttribute="bottom" secondItem="kM6-PL-Lzp" secondAttribute="bottom" constant="7" id="EbD-Wp-JMM"/>
+                                    <constraint firstAttribute="bottom" secondItem="kM6-PL-Lzp" secondAttribute="bottom" constant="90" id="EbD-Wp-JMM"/>
                                     <constraint firstItem="kM6-PL-Lzp" firstAttribute="leading" secondItem="fss-7t-Uzr" secondAttribute="leading" constant="12" id="HH4-pA-F5L"/>
                                     <constraint firstItem="bOa-E3-T8l" firstAttribute="top" secondItem="fss-7t-Uzr" secondAttribute="top" constant="5" id="PgS-NS-sbE"/>
-                                    <constraint firstAttribute="bottom" secondItem="bOa-E3-T8l" secondAttribute="bottom" constant="5" id="jR0-7O-KMk"/>
+                                    <constraint firstAttribute="bottom" secondItem="bOa-E3-T8l" secondAttribute="bottom" constant="88" id="jR0-7O-KMk"/>
                                     <constraint firstItem="kM6-PL-Lzp" firstAttribute="top" secondItem="fss-7t-Uzr" secondAttribute="top" constant="7" id="mwV-WI-Q6d"/>
                                     <constraint firstItem="bOa-E3-T8l" firstAttribute="leading" secondItem="kM6-PL-Lzp" secondAttribute="trailing" constant="-1" id="zlQ-hm-bEI"/>
                                 </constraints>
@@ -279,7 +283,7 @@
                         <color key="tintColor" name="main"/>
                         <constraints>
                             <constraint firstItem="fij-Ve-xi2" firstAttribute="trailing" secondItem="aWY-um-hZl" secondAttribute="trailing" id="58D-s7-qhO"/>
-                            <constraint firstItem="fss-7t-Uzr" firstAttribute="bottom" secondItem="aWY-um-hZl" secondAttribute="bottom" id="Cp3-e1-IEK"/>
+                            <constraint firstItem="fss-7t-Uzr" firstAttribute="bottom" secondItem="aWY-um-hZl" secondAttribute="bottom" constant="83" id="Cp3-e1-IEK"/>
                             <constraint firstAttribute="bottom" secondItem="fij-Ve-xi2" secondAttribute="bottom" id="FJD-rN-wc5"/>
                             <constraint firstItem="fss-7t-Uzr" firstAttribute="trailing" secondItem="aWY-um-hZl" secondAttribute="trailing" id="N2D-7h-yON"/>
                             <constraint firstItem="fss-7t-Uzr" firstAttribute="leading" secondItem="aWY-um-hZl" secondAttribute="leading" id="dCg-MS-rWE"/>
@@ -290,6 +294,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Chat" id="TZm-kd-xcL"/>
                     <connections>
+                        <outlet property="backgroundImageView" destination="ZUo-ZV-v8a" id="OtB-Q9-HQ4"/>
                         <outlet property="chatLogCollectionView" destination="fij-Ve-xi2" id="fCX-fU-ff4"/>
                         <outlet property="inputTextFiledBottomConstraint" destination="Cp3-e1-IEK" id="McB-Yh-0yT"/>
                         <outlet property="messageTextField" destination="kM6-PL-Lzp" id="Dge-nJ-OQ7"/>
@@ -374,7 +379,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="12M-tD-FXw"/>
+        <segue reference="n4v-XQ-Dgx"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="calendar" catalog="system" width="128" height="106"/>

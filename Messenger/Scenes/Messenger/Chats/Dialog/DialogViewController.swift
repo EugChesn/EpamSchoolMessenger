@@ -24,6 +24,7 @@ class DialogViewController: UIViewController {
     
     var chatInfo: ChatInfo?
     
+    @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var chatLogCollectionView: UICollectionView!
     @IBOutlet weak var messageTextField: UITextField!
     @IBOutlet weak var sendButton: UIButton!
@@ -59,6 +60,9 @@ class DialogViewController: UIViewController {
     
     func setupUI() {
         navigationController?.navigationBar.tintColor = .white
+        
+        backgroundImageView.image = UIImage(named: viewModel!.background)
+        backgroundImageView.contentMode = .scaleToFill
         
         chatLogCollectionView.delegate = self
         chatLogCollectionView.dataSource = self
