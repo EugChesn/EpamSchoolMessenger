@@ -16,8 +16,6 @@ protocol ProfileDelegate: class {
 
 class ProfileViewController: UITableViewController {
     @IBOutlet private weak var profileImage: UIImageView!
-    @IBOutlet private weak var LogOutButton: UIButton!
-    @IBOutlet private weak var EditPhotoButton: UIButton!
     @IBOutlet private weak var nameTextField: UITextField!
     @IBOutlet private weak var nickNameTextField: UITextField!
     @IBOutlet private weak var birthdayTextField: UITextField!
@@ -98,7 +96,7 @@ class ProfileViewController: UITableViewController {
         settingNavigationItem()
         nameTextField.delegate = self
         nickNameTextField.delegate = self
-        LogOutButton.setTitle(Constant.exit, for: .normal)
+        //LogOutButton.setTitle(Constant.exit, for: .normal)
         //MARK: Profile Image
         profileImage.roundWithBorder()
         let pictureTap = UITapGestureRecognizer(target: self, action: #selector(ProfileViewController.imageTapped))
