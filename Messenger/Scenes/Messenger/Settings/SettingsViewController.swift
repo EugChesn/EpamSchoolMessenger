@@ -11,6 +11,7 @@ import UIKit
 import SDWebImage
 
 protocol SettingsDelegate: class {
+    func openInfo()
     func openProfile()
     func openLanguage()
     func openAppearance()
@@ -143,6 +144,8 @@ class SettingsViewController: UITableViewController {
         }
         if indexPath.section == 1 && indexPath.row == 2 {
             viewModel?.appearanceSetting()
+        } else if indexPath.section == 2 {
+            viewModel?.openInfo()
         }
     }
 }
@@ -153,13 +156,16 @@ extension SettingsViewController: SettingsDelegate {
     }
     
     func openLanguage() {
-        router?.routeLanguage(withIdentifier: "goToLanguage", sender: self)
+        router?.routeScreen(withIdentifier: "goToLanguage", sender: self)
     }
     
     func openAppearance() {
-        router?.routeAppearance(withIdentifier: "goToAppearance", sender: self)
+        router?.routeScreen(withIdentifier: "goToAppearance", sender: self)
     }
     
+    func openInfo() {
+        router?.routeScreen(withIdentifier: "goToInfo", sender: self)
+    }
     func updateProfile(user:Contact) {
         DispatchQueue.main.async {
             self.settingTableView.reloadSections(IndexSet(integer: 0), with: .automatic)

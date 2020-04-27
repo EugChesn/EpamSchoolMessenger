@@ -94,6 +94,7 @@
                         <segue destination="kDl-0n-PFR" kind="show" identifier="goToProfile" id="QLb-TR-dN7"/>
                         <segue destination="Snn-Xt-Z0J" kind="show" identifier="goToLanguage" id="Mc6-4i-SlE"/>
                         <segue destination="4zO-HX-gXD" kind="show" identifier="goToAppearance" id="v19-ti-OtX"/>
+                        <segue destination="tcx-2R-aZq" kind="presentation" identifier="goToInfo" id="OTQ-if-64C"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iTN-gs-pee" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -130,7 +131,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="idA-13-t50" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1108.6956521739132" y="1670.7589285714284"/>
+            <point key="canvasLocation" x="1072" y="1671"/>
         </scene>
         <!--Appearance View Controller-->
         <scene sceneID="MuO-km-8bn">
@@ -281,6 +282,33 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Iuq-Qy-i7Q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1944.9275362318842" y="928.79464285714278"/>
+        </scene>
+        <!--Info View Controller-->
+        <scene sceneID="W8a-Ey-EIi">
+            <objects>
+                <viewController id="tcx-2R-aZq" customClass="InfoViewController" customModule="Paragram" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="E2N-vq-7dE">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="zYq-UG-WBG">
+                                <rect key="frame" x="20" y="20" width="374" height="788"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="Nkx-TS-HxW"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Uag-HN-Thr"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2sa-rz-c08" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="153.62318840579712" y="1670.7589285714284"/>
         </scene>
     </scenes>
     <resources>
