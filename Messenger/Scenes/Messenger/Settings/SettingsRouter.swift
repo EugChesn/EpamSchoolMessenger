@@ -11,8 +11,7 @@ import UIKit
 
 protocol SettingsRouting {
     func routeProfile(withIdentifier: String, sender: UITableViewController?)
-    func routeAppearance(withIdentifier: String, sender: UIViewController?)
-    func routeLanguage(withIdentifier: String, sender: UIViewController?)
+    func routeScreen(withIdentifier: String, sender: UIViewController?)
 }
 
 class SettingsRouter: BaseRouter, SettingsRouting {
@@ -20,11 +19,7 @@ class SettingsRouter: BaseRouter, SettingsRouting {
         performSegue(withIdentifier: withIdentifier, sender: sender)
     }
     
-    func routeLanguage(withIdentifier: String, sender: UIViewController?) {
-        performSegue(withIdentifier: withIdentifier, sender: sender)
-    }
-    
-    func routeAppearance(withIdentifier: String, sender: UIViewController?) {
+    func routeScreen(withIdentifier: String, sender: UIViewController?) {
         performSegue(withIdentifier: withIdentifier, sender: sender)
     }
 }

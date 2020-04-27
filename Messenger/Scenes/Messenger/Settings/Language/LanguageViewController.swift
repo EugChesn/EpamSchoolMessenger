@@ -22,7 +22,7 @@ class LanguageViewController: UIViewController {
         static let enLanguage = "English"
         static let ruLanguage = ["Russian","Русский"]
     }
-
+    
     @IBOutlet weak var languageNavigationBar: UINavigationItem!
     @IBOutlet weak var tableView: UITableView!
     
@@ -73,7 +73,12 @@ extension LanguageViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
     }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 }
+
 
 extension LanguageViewController: LanguageDelegete {
     

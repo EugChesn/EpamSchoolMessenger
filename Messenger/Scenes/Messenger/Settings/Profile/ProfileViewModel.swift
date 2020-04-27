@@ -10,9 +10,10 @@ import Foundation
 import UIKit
 
 protocol ProfileViewModeling {
+    var contact: Contact { get }
+    var birthday: String { get set }
     func updateDataProfile(update: [String: String])
     func updatePhoto(photo: UIImage, completion: @escaping (URL) -> ())
-    var contact: Contact { get }
     func updateUserDefaults(_ name: String, _ nickname: String)
 }
 
@@ -24,6 +25,15 @@ class ProfileViewModel: ProfileViewModeling {
     var contact: Contact {
         get {
             return data
+        }
+    }
+    
+    var birthday: String {
+        get {
+            return UserSettings.getObject(for: ProfileSetting.birthday) as! String
+        }
+        set {
+            UserSettings.save(object: newValue, for: ProfileSetting.birthday)
         }
     }
     

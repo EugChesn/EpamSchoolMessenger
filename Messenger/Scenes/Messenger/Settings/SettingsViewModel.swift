@@ -9,11 +9,13 @@
 import Foundation
 
 protocol SettingsViewModeling {
+    func getDataProfile()
+    var contact: Contact { get }
+    
+    func openInfo()
     func editProfile()
     func languageSetting()
     func appearanceSetting()
-    var contact: Contact { get }
-    func getDataProfile()
 }
 
 class SettingsViewModel: SettingsViewModeling {
@@ -38,6 +40,10 @@ class SettingsViewModel: SettingsViewModeling {
     
     func appearanceSetting() {
         self.view?.openAppearance()
+    }
+    
+    func openInfo() {
+        self.view?.openInfo()
     }
     
     func getDataProfile() {

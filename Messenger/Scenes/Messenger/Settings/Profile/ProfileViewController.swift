@@ -16,8 +16,6 @@ protocol ProfileDelegate: class {
 
 class ProfileViewController: UITableViewController {
     @IBOutlet private weak var profileImage: UIImageView!
-    @IBOutlet private weak var LogOutButton: UIButton!
-    @IBOutlet private weak var EditPhotoButton: UIButton!
     @IBOutlet private weak var nameTextField: UITextField!
     @IBOutlet private weak var nickNameTextField: UITextField!
     @IBOutlet private weak var birthdayTextField: UITextField!
@@ -43,6 +41,8 @@ class ProfileViewController: UITableViewController {
     @IBAction func doneButton(_ sender: Any) {
         guard let name = nameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
         guard let nickname = nickNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
+    
+        viewModel?.birthday = birthdayTextField.text ?? ""
         
         let curContact = viewModel?.contact
         if !name.isEmpty && !nickname.isEmpty {
@@ -96,7 +96,7 @@ class ProfileViewController: UITableViewController {
         settingNavigationItem()
         nameTextField.delegate = self
         nickNameTextField.delegate = self
-        LogOutButton.setTitle(Constant.exit, for: .normal)
+        //LogOutButton.setTitle(Constant.exit, for: .normal)
         //MARK: Profile Image
         profileImage.roundWithBorder()
         let pictureTap = UITapGestureRecognizer(target: self, action: #selector(ProfileViewController.imageTapped))
@@ -107,6 +107,7 @@ class ProfileViewController: UITableViewController {
         nameTextField.styleTextField(placeholder: Constant.name)
         nickNameTextField.styleTextField(placeholder: Constant.nickName)
         birthdayTextField.styleTextField(placeholder: Constant.birthday)
+        birthdayTextField.text = UserSettings.getObject(for: ProfileSetting.birthday) as? String
         //MARK: DatePicker
         createDatePicker()
         
@@ -189,7 +190,7 @@ extension ProfileViewController: UITextFieldDelegate {
         } else if textField == nickNameTextField {
             textField.resignFirstResponder()
             birthdayTextField.becomeFirstResponder()
-        }
+        } 
         return true
     }
 }
