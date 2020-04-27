@@ -31,7 +31,6 @@ class SettingsViewController: UITableViewController {
     
     var viewModel: SettingsViewModeling?
     var router: SettingsRouting?
-    private let searchController = UISearchController(searchResultsController: nil)
     private let placeHolderImage = UIImage(named: "profile")
     private let settingCellId = "SettingCell"
     private let generalCellId = "General"
@@ -40,7 +39,6 @@ class SettingsViewController: UITableViewController {
     private enum Constant {
         static let rightBarButtonItem = "Edit"
         static let settings = "Settings"
-        static let search = "Search"
         static let notification = "Notification"
         static let language = "Language"
         static let appearance = "Appearance"
@@ -51,12 +49,8 @@ class SettingsViewController: UITableViewController {
         super.viewDidLoad()
         settingNavigationItem()
         self.registerTableViewCells()
-        //MARK: SearchBar
-        searchController.searchBarStyle(placeholder: Constant.search)
-        searchController.searchResultsUpdater = self
-        definesPresentationContext = true
-        setupDependencies()
         
+        setupDependencies()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -78,8 +72,8 @@ class SettingsViewController: UITableViewController {
     
     private func settingNavigationItem() {
         navigationItem.rightBarButtonItem?.title = Constant.rightBarButtonItem
+        navigationController?.navigationBar.tintColor = .white
         navigationItem.title = Constant.settings
-        navigationItem.searchController = searchController
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -101,7 +95,7 @@ class SettingsViewController: UITableViewController {
         switch (indexPath.section) {
         case 0:
             guard let customCell = tableView.dequeueReusableCell(withIdentifier: settingCellId, for: indexPath) as? ProfileTableViewCell else { return UITableViewCell() }
-           
+            
             customCell.nameLabel.text = viewModel?.contact.name
             customCell.emailLabel.text = viewModel?.contact.email
             
@@ -150,11 +144,6 @@ class SettingsViewController: UITableViewController {
         if indexPath.section == 1 && indexPath.row == 2 {
             viewModel?.appearanceSetting()
         }
-    }
-}
-
-extension SettingsViewController: UISearchResultsUpdating {
-    func updateSearchResults(for searchController: UISearchController) {
     }
 }
 

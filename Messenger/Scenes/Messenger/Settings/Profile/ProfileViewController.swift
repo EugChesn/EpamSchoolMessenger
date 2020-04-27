@@ -43,6 +43,8 @@ class ProfileViewController: UITableViewController {
     @IBAction func doneButton(_ sender: Any) {
         guard let name = nameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
         guard let nickname = nickNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
+    
+        viewModel?.birthday = birthdayTextField.text ?? ""
         
         let curContact = viewModel?.contact
         if !name.isEmpty && !nickname.isEmpty {
@@ -107,6 +109,7 @@ class ProfileViewController: UITableViewController {
         nameTextField.styleTextField(placeholder: Constant.name)
         nickNameTextField.styleTextField(placeholder: Constant.nickName)
         birthdayTextField.styleTextField(placeholder: Constant.birthday)
+        birthdayTextField.text = UserSettings.getObject(for: ProfileSetting.birthday) as? String
         //MARK: DatePicker
         createDatePicker()
         
@@ -189,7 +192,7 @@ extension ProfileViewController: UITextFieldDelegate {
         } else if textField == nickNameTextField {
             textField.resignFirstResponder()
             birthdayTextField.becomeFirstResponder()
-        }
+        } 
         return true
     }
 }
